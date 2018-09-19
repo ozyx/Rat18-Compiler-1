@@ -7,137 +7,142 @@
 #include <map>
 #include <fstream>
 #include <string>
+#include "header.h"
 
 using namespace std;
 
-
-vector<string ,char*> *lexer(ifstream Rat18);
-bool isKeyword(char* word);
-void printLex(vector<string,char*> LexRat);
-
-
-
+// TODO: Make this a map
+map<char *, State> *lexer(ifstream &Rat18);
+bool isKeyword(char *word);
+void printLex(vector<string, char *> lexRat);
 
 int main()
 {
-	ifstream fin;
-	fin.open("asdsad");
-	if (fin);
-	else {
-		cout << "Couldn't open file =(\n";
-		exit(0);
-	}
+    ifstream fin;
+    fin.open("asdsad");
+    if (!fin)
+    {
+        cout << "Couldn't open file =(\n";
 
-	vector<string,char*> *lexedData;
+        // Something is wrong -- exit code 1
+        exit(1);
+    }
 
-	lexedData = lexer(fin);
-	if (lexedData) cout << "success!\n";
+    map<char*, State> *lexedData;
+
+    lexedData = lexer(fin);
+    if (lexedData)
+        cout << "success!\n";
 
     return 0;
 }
 
-vector<string, char*> *lexer(ifstream Rat18) {
-	vector<string,char*> *lex;
-	char unit;
+map<char *, State> *lexer(ifstream &Rat18)
+{
+    map<char *, State> *lex;
 
-	char* thing;
-	int length = 0;
+    char unit;
 
-	int prevstate = 0; // previous state
-	int curstate = 0; // current space
+    char *word;
+    int length = 0;
 
-	int space = 0;
-	int separator = 1;
-	int oper = 2;
-	int boo = 3;
-	int number = 4;
-	int real = 5;
-	int word = 6;
+    State prevstate = SPACE; // previous state
+    State curstate = SPACE;  // current space
 
+    while (!Rat18.eof())
+    {
+        Rat18.get(unit);
+        if (unit == '\n')
+            continue; // skip tests - ignor new line
+        if (unit == '\0')
+            continue; // skip tests - ignor string terminator
+        if (unit == ' ' && prevstate == SPACE)
+            continue; // skip test - ignore more than one space
+        //space
+        if (unit == ' ')
+            curstate = SPACE;
+        //Separator
+        else if (unit == '(' | unit == ')' | unit == '{' | unit == '}')
+            curstate = SEPARATOR;
+        //operator
+        else if (unit == '+' | unit == '-' | unit == '/' | unit == '*' | unit == '%')
+            curstate = OPERATOR;
+        //boolean op
+        else if ((unit == '=' | unit == '<' | unit == '>') && prevstate == OPERATOR)
+            curstate = BOOLEAN;
+        //number
+        else if (unit > 47 && unit < 58 && prevstate != IDENTIFIER)
+            curstate = NUMBER;
+        //real
+        else if (unit == '.' && prevstate == NUMBER)
+            curstate = REAL;
+        // word           uppercase                       lowercase                     digit             did not come from num   did not come from real
+        else if (((int)unit > 64 && unit < 91) | (unit > 96 && unit < 123) | (unit > 47 && unit < 58) && prevstate != NUMBER && prevstate != REAL)
+            curstate = IDENTIFIER;
+        // breaks grammar
+        else
+        {
+            return nullptr;
+        }
 
-	while ( !Rat18.eof()) {
-		Rat18.get(unit);
-		if (unit == '\n') continue; // skip tests - ignor new line
-		if (unit == '\0') continue; // skip tests - ignor string terminator
-		if (unit == ' ' && prevstate = space) continue; // skip test - ignore more than one space
-		//space
-		if (unit == ' ') curstate = space;
-		//Separator
-		else if (unit == '(' | unit == ')' | unit == '{' | unit == '}')curstate = separator;
-		//operator
-		else if (unit == '+' | unit == '-' | unit == '/' | unit == '*' | unit == '%' ) curstate = oper;
-		//boolean op
-		else if ( (unit == '=' | unit == '<' | unit == '>') && prevstate = oper) curstate = boo;
-		//number
-		else if (unit > 47 && unit < 58 && prevstate != word) curstate = number;
-		//real
-		else if (unit == '.' && prevstate == number) curstate = real;
-		// word           uppercase                       lowercase                     digit             did not come from num   did not come from real          
-		else if (( (int)unit > 64 && unit < 91) | (unit > 96 && unit < 123) | (unit > 47 && unit < 58) && prevstate != number && prevstate != real) curstate = word;
-		// breaks grammar
-		else {
-			return lex = nullptr;
-		}
+        //build word
+        if (curstate == IDENTIFIER)
+        {
+            *word = unit;
+            word++;
+            length++;
+        }
+        //build num or real
+        if (curstate == NUMBER)
+        {
+        }
+        //build separator
+        if (curstate == SEPARATOR)
+        {
+            word = &unit;
+            lex->insert({word, SEPARATOR});
+        }
+        // add token and lexeme to lex vector
+        if (curstate == SPACE && prevstate == IDENTIFIER)
+        {
+            word = nullptr;
+            for (int i = length; length > 0; i--)
+            {
+                word--;
+            }
+            if (isKeyword(word))
+            {
+                lex->insert({word, KEYWORD});
+            }
+            else
+                lex->insert({word, IDENTIFIER});
+        }
 
-		//build word
-		if (curstate = word) {
-			*thing = unit;
-			thing++;
-		}
-		//build num or real
-		if (curstate = number) {
+        prevstate = curstate;
+    }
 
-		}
-		//build separator
-		if (curstate = separator) {
-			*lex->push_back("Separator", unit);
-		}
-		// add token and lexeme to lex vector
-		if (curstate = space && prevstate == word) {
-			thing = '\0';
-			for (int i = length; length > 0; i--) thing--;
-			if (isKeyword(thing)) {
-				*lex->push_back("keyword", thing);
-			}
-			else *lex->push_back("ID", thing);
-		}
-
-
-
-
-
-		prevstate = curstate;
-		}
-
-	return lex;
-			
-
-	}
+    return lex;
+}
 // step through vector and print
-void printLex(vector<string, char*> LexRat) {
+void printLex(map<char*, State> lexRat)
+{
+    cout << "Output:\n";
+    cout << "token\tlexeme\n";
+    cout << "___________________________\n";
 
-	cout << "Output:\n";
-	cout << "token\tlexeme\n";
-	cout << "___________________________\n";
-	for (int i = 0; i < LexRat.size(); i++) {
-		cout << LexRat.at(i) << "\t" << LexRat.at(i).at(i) << "\n";
-	}
+    map<char*, State>::iterator it = lexRat.begin();
 
+    while(it != lexRat.end())
+    {
+        cout << (*it).first << "\t" << stateToString((*it).second) << "\n";
+        ++it;
+    }
 }
 
 // check if word is keyword or ID
-bool isKeyword(char* word) {
-
-	if (strcmp(word, "if") == 0) return 1;
-	else if (strcmp(word, "ifend") == 0) return 1;
-	else if (strcmp(word, "while") == 0) return 1;
-	else if (strcmp(word, "whileend") == 0) return 1;
-	else if (strcmp(word, "else") == 0) return 1;
-	else if (strcmp(word, "elseend") == 0) return 1;
-	else if (strcmp(word, "switch") == 0) return 1;
-	else if (strcmp(word, "case") == 0) return 1;
-	else if (strcmp(word, "break") == 0) return 1;
-	return 0;
+bool isKeyword(char *word)
+{
+    return strcmp(word, "if") == 0 | strcmp(word, "ifend") == 0 | strcmp(word, "while") == 0
+    | strcmp(word, "whileend") == 0 | strcmp(word, "else") == 0 | strcmp(word, "elseend") == 0
+    | strcmp(word, "switch") == 0 | strcmp(word, "case") == 0 | strcmp(word, "break") == 0;
 }
-
-
