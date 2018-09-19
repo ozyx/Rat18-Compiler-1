@@ -130,7 +130,9 @@ std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
                 lex->insert({word, KEYWORD});
             }
             else
+            {
                 lex->insert({word, IDENTIFIER});
+            }
         }
 
         prevstate = curstate;
