@@ -144,6 +144,7 @@ std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
 // check if word is keyword or ID
 bool Lexer::isKeyword(char *word)
 {
+    if(word == nullptr) { throw new std::runtime_error("word cannot be null"); }
     return strcmp(word, "if") == 0 | strcmp(word, "ifend") == 0 | strcmp(word, "while") == 0 | 
     strcmp(word, "whileend") == 0 | strcmp(word, "else") == 0 | strcmp(word, "elseend") == 0 | 
     strcmp(word, "switch") == 0 | strcmp(word, "case") == 0 | strcmp(word, "break") == 0;

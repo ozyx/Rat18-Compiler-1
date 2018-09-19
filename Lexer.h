@@ -4,6 +4,7 @@
 #include <fstream>
 #include <map>
 #include <iostream>
+#include <exception>
 
 class Lexer
 {
