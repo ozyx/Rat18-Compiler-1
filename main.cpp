@@ -11,7 +11,6 @@
 
 using namespace std;
 
-// TODO: Make this a map
 map<char *, State> *lexer(ifstream &Rat18);
 bool isKeyword(char *word);
 void printLex(vector<string, char *> lexRat);
