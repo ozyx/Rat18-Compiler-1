@@ -171,9 +171,9 @@ std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
 bool Lexer::isKeyword(char *word)
 {
     if(word == nullptr) { throw new std::runtime_error("word cannot be null"); }
-    return strcmp(word, "if") == 0 | strcmp(word, "ifend") == 0 | strcmp(word, "while") == 0 | 
-    strcmp(word, "whileend") == 0 | strcmp(word, "else") == 0 | strcmp(word, "elseend") == 0 | 
-    strcmp(word, "switch") == 0 | strcmp(word, "case") == 0 | strcmp(word, "break") == 0;
+    return std::strcmp(word, "if") == 0 | std::strcmp(word, "ifend") == 0 | std::strcmp(word, "while") == 0 | 
+    std::strcmp(word, "whileend") == 0 | std::strcmp(word, "else") == 0 | std::strcmp(word, "elseend") == 0 | 
+    std::strcmp(word, "switch") == 0 | std::strcmp(word, "case") == 0 | std::strcmp(word, "break") == 0;
 }
 
 // step through map and print
