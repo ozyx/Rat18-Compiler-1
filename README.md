@@ -1,5 +1,7 @@
 # Rat18-Compiler
 
+[![Build Status](https://travis-ci.com/ozyx/Rat18-Compiler.svg?token=LcYXAVDBn9GV5KJ3qLhq&branch=master)](https://travis-ci.com/ozyx/Rat18-Compiler)
+
 ## Assignment 1
 
 ```txt
