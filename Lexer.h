@@ -6,6 +6,7 @@
 #include <iostream>
 #include <exception>
 #include <string>
+#include <cstring>
 
 class Lexer
 {
