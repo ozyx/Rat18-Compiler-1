@@ -5,6 +5,7 @@
 #include <map>
 #include <iostream>
 #include <exception>
+#include <string>
 
 class Lexer
 {

@@ -79,13 +79,13 @@ std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
         {
             curstate = BOOLEAN;
         }
-        //number
-        else if (unit > 47 && unit < 58 && prevstate != IDENTIFIER)
+        //number        digit
+        else if (unit > 47 && unit < 58 && prevstate != IDENTIFIER && prevstate != REAL)
         {
             curstate = NUMBER;
         }
-        //real
-        else if (unit == '.' && prevstate == NUMBER)
+        //real   we just entered into real from NUMBER | we are still in real and current char is digit // can't get two periods, because they are only accepted if we come from NUMBER
+        else if ((unit == '.' && prevstate == NUMBER) | (prevstate == REAL && unit > 47 && unit < 58))
         {
             curstate = REAL;
         }
@@ -110,7 +110,17 @@ std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
         //build num or real
         if (curstate == NUMBER)
         {
+			*word = unit;
+			word++;
+			length++;
         }
+		//build operator
+		if (curstate == OPERATOR | curstate == BOOLEAN)
+		{
+			*word = unit;
+			word++;
+			length++;
+		}
         //build separator
         if (curstate == SEPARATOR)
         {
@@ -134,6 +144,22 @@ std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
                 lex->insert({word, IDENTIFIER});
             }
         }
+		else if(curstate == SPACE && prevstate == NUMBER | prevstate == REAL)
+		{
+			if (prevstate = NUMBER)
+			{
+				lex->insert({ word, NUMBER });
+			}
+			else
+			{
+				lex->insert({ word,REAL });
+			}
+		}
+		else if (curstate == OPERATOR | curstate == BOOLEAN) 
+		{
+			lex->insert({ word,OPERATOR });
+		}
+
 
         prevstate = curstate;
     }
@@ -161,7 +187,7 @@ void Lexer::printLex(std::map<char *, Lexer::State> lexRat)
 
     while (it != lexRat.end())
     {
-        std::cout << (*it).first << "\t" << stateToString((*it).second) << "\n";
+		std::cout << (*it).first << "\t" << stateToString((*it).second) << "\n";
         ++it;
     }
 }
