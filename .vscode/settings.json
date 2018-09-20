@@ -19,5 +19,6 @@
         "**/.DS_Store": true,
         "**/*.o": true,
         "**/*.out": true,
+        "**/*.exe": true
     }
 }
