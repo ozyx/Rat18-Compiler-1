@@ -44,7 +44,7 @@ std::vector<Lexer::Token> Lexer::lex(std::string expression)
     {
         token.token = currentToken;
         token.lexeme = currentState;
-        token.lexemeName = getTransition(token.lexeme);
+        token.lexemeName = stateToString(token.lexeme);
         tokens.push_back(token);
     }
 
