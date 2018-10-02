@@ -1,44 +1,30 @@
 #ifndef LEXER_H
 #define LEXER_H
-
 #include <fstream>
-#include <map>
-#include <iostream>
-#include <exception>
-#include <string>
-#include <cstring>
+#include <vector>
+#include "stdafx.h"
+struct Token
+{
+  std::string token;
+  int lexeme;
+  std::string lexemeName;
+};
 
 class Lexer
 {
-  public:
+public:
+  // Constructor
+  Lexer();
 
-    enum State
-    {
-        SPACE = 0,
-        SEPARATOR = 1,
-        OPERATOR = 2,
-        BOOLEAN = 3,
-        NUMBER = 4,
-        REAL = 5,
-        KEYWORD = 6,
-        IDENTIFIER = 7
-    };
+  // Destructor
+  ~Lexer();
 
-    // Constructor
-    Lexer();
+  std::vector<Token> lex(std::string expression);
 
-    // Destructor
-    ~Lexer();
+private:
+  Rat18::TransitionType getTransition(char tokenChar);
 
-    std::string stateToString(State state);
-
-    std::map<char *, State> *lex(std::ifstream &fin);
-
-    void printLex(std::map<char*, Lexer::State> lexRat);
-
-  private:
-
-  bool isKeyword(char *word);
+  std::string stateToString(int state);
 };
 
 #endif // LEXER_H

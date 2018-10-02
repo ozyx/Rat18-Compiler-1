@@ -9,7 +9,10 @@
         "new": "cpp",
         "stdexcept": "cpp",
         "type_traits": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "iosfwd": "cpp",
+        "algorithm": "cpp",
+        "vector": "cpp"
     },
     "files.exclude": {
         "**/.git": true,
