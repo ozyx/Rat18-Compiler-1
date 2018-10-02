@@ -11,7 +11,7 @@ int main()
     std::ifstream infile;
     std::string fileName = "";
     std::string expression = "";
-    std::vector<Token> tokens;
+    std::vector<Lexer::Token> tokens;
 
     // get data from user
     std::cout << "nPlease enter the name of the file: ";

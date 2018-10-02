@@ -4,14 +4,14 @@ Lexer::Lexer() {}
 
 Lexer::~Lexer() {}
 
-std::vector<Token> Lexer::lex(std::string expression)
+std::vector<Lexer::Token> Lexer::lex(std::string expression)
 {
     Token token;
     std::vector<Token> tokens;
     char current = ' ';
-    int col = Rat18::REJECT;
-    int currentState = Rat18::REJECT;
-    int prevState = Rat18::REJECT;
+    int col = REJECT;
+    int currentState = REJECT;
+    int prevState = REJECT;
     std::string currentToken = "";
     int i = 0;
 
@@ -21,11 +21,11 @@ std::vector<Token> Lexer::lex(std::string expression)
 
         col = getTransition(current);
 
-        currentState = Rat18::dfsm[currentState][col];
+        currentState = dfsm[currentState][col];
 
-        if (currentState == Rat18::REJECT)
+        if (currentState == REJECT)
         {
-            if (prevState != Rat18::REJECT)
+            if (prevState != REJECT)
             {
                 token.token = current;
                 token.lexeme = prevState;
@@ -40,7 +40,7 @@ std::vector<Token> Lexer::lex(std::string expression)
         prevState = currentState;
     }
 
-    if (currentState != Rat18::REJECT && currentToken != "")
+    if (currentState != REJECT && currentToken != "")
     {
         token.token = currentToken;
         token.lexeme = currentState;
@@ -51,25 +51,25 @@ std::vector<Token> Lexer::lex(std::string expression)
     return tokens;
 }
 
-Rat18::TransitionType Lexer::getTransition(char tokenChar)
+Lexer::TransitionType Lexer::getTransition(char tokenChar)
 {
-    Rat18::TransitionType transition = Rat18::UNKNOWN;
+    TransitionType transition = UNKNOWN;
 
     if (isspace(tokenChar))
     {
-        transition = Rat18::REJECT;
+        transition = REJECT;
     }
     else if (isdigit(tokenChar))
     {
-        transition = Rat18::INTEGER;
+        transition = INTEGER;
     }
     else if (tokenChar == '.')
     {
-        transition = Rat18::REAL;
+        transition = REAL;
     }
     else if (isalpha(tokenChar))
     {
-        transition = Rat18::IDENTIFIER;
+        transition = IDENTIFIER;
     }
 
     return transition;
@@ -81,19 +81,19 @@ std::string Lexer::stateToString(int state)
 
     switch (state)
     {
-    case Rat18::INTEGER:
+    case INTEGER:
         stateStr = "Integer";
         break;
-    case Rat18::REAL:
+    case REAL:
         stateStr = "Real";
         break;
-    case Rat18::IDENTIFIER:
+    case IDENTIFIER:
         stateStr = "Identifier";
         break;
-    case Rat18::UNKNOWN:
+    case UNKNOWN:
         stateStr = "Unknown";
         break;
-    case Rat18::REJECT:
+    case REJECT:
         stateStr = "Reject";
         break;
     }
