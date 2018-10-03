@@ -14,15 +14,17 @@ public:
         INTEGER,
         REAL,
         IDENTIFIER,
+        SPACE,
         UNKNOWN
     };
 
     // State table
-     int dfsm[5][5] = {{0, INTEGER, REAL, IDENTIFIER, UNKNOWN},
-                     {INTEGER, INTEGER, REAL, REJECT, REJECT},
-                     {REAL, REAL, REJECT, REJECT, REJECT},
-                     {IDENTIFIER, REJECT, REJECT, IDENTIFIER, REJECT},
-                     {UNKNOWN, REJECT, REJECT, REJECT, REJECT}};
+     int dfsm[6][6] = {{0, INTEGER, REAL, IDENTIFIER, SPACE, UNKNOWN},
+                     {INTEGER, INTEGER, REAL, REJECT, REJECT, REJECT},
+                     {REAL, REAL, REJECT, REJECT, REJECT, REJECT},
+                     {IDENTIFIER, REJECT, REJECT, IDENTIFIER, REJECT, REJECT},
+                     {SPACE, INTEGER, REJECT, IDENTIFIER, SPACE, REJECT},
+                     {UNKNOWN, REJECT, REJECT, REJECT, REJECT, REJECT}};
 
     struct Token
     {

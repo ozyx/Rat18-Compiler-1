@@ -42,7 +42,12 @@ std::vector<Lexer::Token> Lexer::lex(std::string expression)
         // Otherwise, build our next token
         else
         {
-            currentToken += current;
+            if (currentState != SPACE)
+            {
+                currentToken += current;
+            }
+
+            // Iterate
             ++i;
         }
 
@@ -73,7 +78,7 @@ Lexer::TransitionType Lexer::getTransition(char tokenChar)
 
     if (isspace(tokenChar))
     {
-        transition = REJECT;
+        transition = SPACE;
     }
     else if (isdigit(tokenChar))
     {
@@ -86,6 +91,10 @@ Lexer::TransitionType Lexer::getTransition(char tokenChar)
     else if (isalpha(tokenChar))
     {
         transition = IDENTIFIER;
+    }
+    else
+    {
+        transition = REJECT;
     }
 
     return transition;
