@@ -2,6 +2,7 @@
 //
 #include "Lexer.h"
 #include <iostream>
+#include <iomanip>
 
 int main()
 {
@@ -35,8 +36,8 @@ int main()
         // display the tokens to the screen
         for (unsigned x = 0; x < tokens.size(); ++x)
         {
-            std::cout << tokens[x].lexemeName << "\t"
-                      << tokens[x].token << std::endl;
+            std::cout << std::left << std::setw(11) << tokens[x].lexemeName << "\t"
+                      << "\"" << tokens[x].token << "\"" << std::endl;
         }
     }
 

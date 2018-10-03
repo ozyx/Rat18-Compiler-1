@@ -17,28 +17,36 @@ std::vector<Lexer::Token> Lexer::lex(std::string expression)
 
     while (i < expression.length())
     {
+        // Get one character
         current = expression[i];
 
+        // Get the transition type given the character
         col = getTransition(current);
-        
+
+        // Record previous state and get new state
         prevState = currentState;
         currentState = dfsm[currentState][col];
 
         if (currentState == REJECT)
         {
+            // If the previous state was not reject, then we know
+            // we have a token.
             if (prevState != REJECT)
             {
+                // TODO: reexamine this l
                 token.token = current;
                 token.lexeme = prevState;
                 token.lexemeName = stateToString(token.lexeme);
             }
         }
+        // Otherwise, build our next token
         else
         {
             currentToken += current;
             ++i;
         }
 
+        // TODO: reexamine this logic
         if (currentState == REJECT && currentToken != "")
         {
             token.token = currentToken;
@@ -48,7 +56,14 @@ std::vector<Lexer::Token> Lexer::lex(std::string expression)
             currentToken = "";
         }
     }
-
+    if (currentState != REJECT && currentToken != "")
+    {
+        token.token = currentToken;
+        token.lexeme = prevState;
+        token.lexemeName = stateToString(token.lexeme);
+        tokens.push_back(token);
+        currentToken = "";
+    }
     return tokens;
 }
 
