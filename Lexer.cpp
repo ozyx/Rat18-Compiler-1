@@ -20,7 +20,8 @@ std::vector<Lexer::Token> Lexer::lex(std::string expression)
         current = expression[i];
 
         col = getTransition(current);
-
+        
+        prevState = currentState;
         currentState = dfsm[currentState][col];
 
         if (currentState == REJECT)
@@ -37,15 +38,15 @@ std::vector<Lexer::Token> Lexer::lex(std::string expression)
             currentToken += current;
             ++i;
         }
-        prevState = currentState;
-    }
 
-    if (currentState != REJECT && currentToken != "")
-    {
-        token.token = currentToken;
-        token.lexeme = currentState;
-        token.lexemeName = stateToString(token.lexeme);
-        tokens.push_back(token);
+        if (currentState == REJECT && currentToken != "")
+        {
+            token.token = currentToken;
+            token.lexeme = prevState;
+            token.lexemeName = stateToString(token.lexeme);
+            tokens.push_back(token);
+            currentToken = "";
+        }
     }
 
     return tokens;
