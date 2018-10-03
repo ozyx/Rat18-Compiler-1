@@ -4,190 +4,124 @@ Lexer::Lexer() {}
 
 Lexer::~Lexer() {}
 
-std::string Lexer::stateToString(Lexer::State state)
+std::vector<Lexer::Token> Lexer::lex(std::string expression)
+{
+    Token token;
+    std::vector<Token> tokens;
+    char current = ' ';
+    int col = REJECT;
+    int currentState = REJECT;
+    int prevState = REJECT;
+    std::string currentToken = "";
+    int i = 0;
+
+    while (i < expression.length())
+    {
+        // Get one character
+        current = expression[i];
+
+        // Get the transition type given the character
+        col = getTransition(current);
+
+        // Record previous state and get new state
+        prevState = currentState;
+        currentState = dfsm[currentState][col];
+
+        if (currentState == REJECT)
+        {
+            // If the previous state was not reject, then we know
+            // we have a token.
+            if (prevState != REJECT)
+            {
+                // TODO: reexamine this l
+                token.token = current;
+                token.lexeme = prevState;
+                token.lexemeName = stateToString(token.lexeme);
+            }
+        }
+        // Otherwise, build our next token
+        else
+        {
+            if (currentState != SPACE)
+            {
+                currentToken += current;
+            }
+
+            // Iterate
+            ++i;
+        }
+
+        // TODO: reexamine this logic
+        if (currentState == REJECT && currentToken != "")
+        {
+            token.token = currentToken;
+            token.lexeme = prevState;
+            token.lexemeName = stateToString(token.lexeme);
+            tokens.push_back(token);
+            currentToken = "";
+        }
+    }
+    if (currentState != REJECT && currentToken != "")
+    {
+        token.token = currentToken;
+        token.lexeme = prevState;
+        token.lexemeName = stateToString(token.lexeme);
+        tokens.push_back(token);
+        currentToken = "";
+    }
+    return tokens;
+}
+
+Lexer::TransitionType Lexer::getTransition(char tokenChar)
+{
+    TransitionType transition = UNKNOWN;
+
+    if (isspace(tokenChar))
+    {
+        transition = SPACE;
+    }
+    else if (isdigit(tokenChar))
+    {
+        transition = INTEGER;
+    }
+    else if (tokenChar == '.')
+    {
+        transition = REAL;
+    }
+    else if (isalpha(tokenChar))
+    {
+        transition = IDENTIFIER;
+    }
+    else
+    {
+        transition = REJECT;
+    }
+
+    return transition;
+}
+
+std::string Lexer::stateToString(int state)
 {
     std::string stateStr = "";
+
     switch (state)
     {
-    case SPACE:
-        stateStr = "Space";
-        break;
-    case SEPARATOR:
-        stateStr = "Separator";
-        break;
-    case OPERATOR:
-        stateStr = "Operator";
-        break;
-    case BOOLEAN:
-        stateStr = "Boolean";
-        break;
-    case NUMBER:
-        stateStr = "Number";
+    case INTEGER:
+        stateStr = "Integer";
         break;
     case REAL:
         stateStr = "Real";
         break;
-    case KEYWORD:
-        stateStr = "Keyword";
-        break;
     case IDENTIFIER:
         stateStr = "Identifier";
+        break;
+    case UNKNOWN:
+        stateStr = "Unknown";
+        break;
+    case REJECT:
+        stateStr = "Reject";
         break;
     }
 
     return stateStr;
-}
-
-std::map<char *, Lexer::State> *Lexer::lex(std::ifstream &Rat18)
-{
-    std::map<char *, State> *lex = new std::map<char *, State>();
-
-    char unit;
-
-    char *word;
-    int length = 0;
-
-    State prevstate = SPACE; // previous state
-    State curstate = SPACE;  // current space
-
-    while (!Rat18.eof())
-    {
-        Rat18.get(unit);
-        if (unit == '\n')
-            continue; // skip tests - ignor new line
-        if (unit == '\0')
-            continue; // skip tests - ignor string terminator
-        if (unit == ' ' && prevstate == SPACE)
-            continue; // skip test - ignore more than one space
-        //space
-        if (unit == ' ')
-        {
-            curstate = SPACE;
-        }
-        //Separator
-        else if (unit == '(' | unit == ')' | unit == '{' | unit == '}')
-        {
-            curstate = SEPARATOR;
-        }
-        //operator
-        else if (unit == '+' | unit == '-' | unit == '/' | unit == '*' | unit == '%')
-        {
-            curstate = OPERATOR;
-        }
-        //boolean op
-        else if ((unit == '=' | unit == '<' | unit == '>') && prevstate == OPERATOR)
-        {
-            curstate = BOOLEAN;
-        }
-        //number        digit
-        else if (unit > 47 && unit < 58 && prevstate != IDENTIFIER && prevstate != REAL)
-        {
-            curstate = NUMBER;
-        }
-        //real   we just entered into real from NUMBER | we are still in real and current char is digit // can't get two periods, because they are only accepted if we come from NUMBER
-        else if ((unit == '.' && prevstate == NUMBER) | (prevstate == REAL && unit > 47 && unit < 58))
-        {
-            curstate = REAL;
-        }
-        // word           uppercase                       lowercase                     digit             did not come from num   did not come from real
-        else if ((unit > 64 && unit < 91) | (unit > 96 && unit < 123) | (unit > 47 && unit < 58) && prevstate != NUMBER && prevstate != REAL)
-        {
-            curstate = IDENTIFIER;
-        }
-        // breaks grammar
-        else
-        {
-            return nullptr;
-        }
-
-        //build word
-        if (curstate == IDENTIFIER)
-        {
-            *word = unit;
-            word++;
-            length++;
-        }
-        //build num or real
-        if (curstate == NUMBER)
-        {
-			*word = unit;
-			word++;
-			length++;
-        }
-		//build operator
-		if (curstate == OPERATOR | curstate == BOOLEAN)
-		{
-			*word = unit;
-			word++;
-			length++;
-		}
-        //build separator
-        if (curstate == SEPARATOR)
-        {
-            word = &unit;
-            lex->insert({word, SEPARATOR});
-        }
-        // add token and lexeme to lex vector
-        if (curstate == SPACE && prevstate == IDENTIFIER)
-        {
-            word = nullptr;
-            for (int i = length; i > 0; i--)
-            {
-                word--;
-            }
-            if (isKeyword(word))
-            {
-                lex->insert({word, KEYWORD});
-            }
-            else
-            {
-                lex->insert({word, IDENTIFIER});
-            }
-        }
-		else if(curstate == SPACE && prevstate == NUMBER | prevstate == REAL)
-		{
-			if (prevstate = NUMBER)
-			{
-				lex->insert({ word, NUMBER });
-			}
-			else
-			{
-				lex->insert({ word,REAL });
-			}
-		}
-		else if (curstate == OPERATOR | curstate == BOOLEAN) 
-		{
-			lex->insert({ word,OPERATOR });
-		}
-
-
-        prevstate = curstate;
-    }
-
-    return lex;
-}
-
-// check if word is keyword or ID
-bool Lexer::isKeyword(char *word)
-{
-    if(word == nullptr) { throw new std::runtime_error("word cannot be null"); }
-    return strcmp(word, "if") == 0 | strcmp(word, "ifend") == 0 | strcmp(word, "while") == 0 | 
-    strcmp(word, "whileend") == 0 | strcmp(word, "else") == 0 | strcmp(word, "elseend") == 0 | 
-    strcmp(word, "switch") == 0 | strcmp(word, "case") == 0 | strcmp(word, "break") == 0;
-}
-
-// step through map and print
-void Lexer::printLex(std::map<char *, Lexer::State> lexRat)
-{
-    std::cout << "Output:\n";
-    std::cout << "token\tlexeme\n";
-    std::cout << "___________________________\n";
-
-    std::map<char *, Lexer::State>::iterator it = lexRat.begin();
-
-    while (it != lexRat.end())
-    {
-		std::cout << (*it).first << "\t" << stateToString((*it).second) << "\n";
-        ++it;
-    }
 }

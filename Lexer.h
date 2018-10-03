@@ -1,44 +1,50 @@
 #ifndef LEXER_H
 #define LEXER_H
-
 #include <fstream>
-#include <map>
-#include <iostream>
-#include <exception>
-#include <string>
-#include <cstring>
+#include <vector>
+#include "stdafx.h"
 
 class Lexer
 {
-  public:
+public:
 
-    enum State
+      enum TransitionType
     {
-        SPACE = 0,
-        SEPARATOR = 1,
-        OPERATOR = 2,
-        BOOLEAN = 3,
-        NUMBER = 4,
-        REAL = 5,
-        KEYWORD = 6,
-        IDENTIFIER = 7
+        REJECT = 0,
+        INTEGER,
+        REAL,
+        IDENTIFIER,
+        SPACE,
+        UNKNOWN
     };
 
-    // Constructor
-    Lexer();
+    // State table
+     int dfsm[6][6] = {{0, INTEGER, REAL, IDENTIFIER, SPACE, UNKNOWN},
+                     {INTEGER, INTEGER, REAL, REJECT, REJECT, REJECT},
+                     {REAL, REAL, REJECT, REJECT, REJECT, REJECT},
+                     {IDENTIFIER, REJECT, REJECT, IDENTIFIER, REJECT, REJECT},
+                     {SPACE, INTEGER, REJECT, IDENTIFIER, SPACE, REJECT},
+                     {UNKNOWN, REJECT, REJECT, REJECT, REJECT, REJECT}};
 
-    // Destructor
-    ~Lexer();
+    struct Token
+    {
+        std::string token;
+        int lexeme;
+        std::string lexemeName;
+    };
 
-    std::string stateToString(State state);
+  // Constructor
+  Lexer();
 
-    std::map<char *, State> *lex(std::ifstream &fin);
+  // Destructor
+  ~Lexer();
 
-    void printLex(std::map<char*, Lexer::State> lexRat);
+  std::vector<Token> lex(std::string expression);
 
-  private:
+private:
+  TransitionType getTransition(char tokenChar);
 
-  bool isKeyword(char *word);
+  std::string stateToString(int state);
 };
 
 #endif // LEXER_H
