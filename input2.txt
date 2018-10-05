@@ -1,6 +1,11 @@
 [* this is comment for this sample code which
    converts  Fahrenheit into Celcius *]
 
+function isEqual (a: int, b: int)
+{
+    return a == b;
+}
+
 function convert1x (fahr : int)
 {
            return 5 * (fahr -32) / 9;

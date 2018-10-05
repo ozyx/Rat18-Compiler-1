@@ -40,18 +40,45 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
         {
             tokenStr = stateToString(prevState);
 
-            // Create token and add to list of tokens
-            token = new Token(tokenStr, lexeme);
-            tokens.push_back(*token);
+            if (tokenStr != "Unknown")
+            {
+                // Create token and add to list of tokens
+                token = new Token(tokenStr, lexeme);
+                tokens.push_back(*token);
 
-            // reset state machine
-            currState = NS;
-            lexeme.clear();
-            tokenStr.clear();
+                // reset state machine
+                currState = NS;
+                lexeme.clear();
+                tokenStr.clear();
+
+                // If we reached the terminating state by anything other
+                // than whitespace, we need to put it back and re-examine
+                // the character on the next iteration.
+                if(!isspace(c))
+                {
+                    fin.putback(c);
+                }
+            }
         }
         else
         {
-            lexeme.push_back(c);
+            if (!isspace(c))
+            {
+                lexeme.push_back(c);
+            }
+
+            if (isValidOperator(c))
+            {
+                token = new Token("Operator", lexeme);
+                tokens.push_back(*token);
+                lexeme.clear();
+            }
+            else if (isValidSeparator(c))
+            {
+                token = new Token("Separator", lexeme);
+                tokens.push_back(*token);
+                lexeme.clear();
+            }
         }
 
         prevState = currState;
@@ -104,4 +131,14 @@ std::string Lexer::stateToString(int state)
     }
 
     return stateStr;
+}
+
+bool Lexer::isValidOperator(char c)
+{
+    return c == '-' | c == '+' | c == '=' | c == '<' | c == '>' | c == '*';
+}
+
+bool Lexer::isValidSeparator(char c)
+{
+    return c == '(' | c == ')' | c == '{' | c == '}' | c == ':' | c == ';' | c == ',';
 }

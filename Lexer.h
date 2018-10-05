@@ -31,7 +31,7 @@ public:
   };
 
   // State table
-  int stateTable[8][4] = {{S1, S4, S7, S7},
+  int stateTable[8][4] = {{S1, S4, S7, NS},
                           {S2, S3, S7, S7}, // ACCEPTABLE ID
                           {S2, S3, S7, S7}, // ACCEPTABLE ID
                           {S2, S3, S7, S7},
@@ -64,6 +64,10 @@ private:
   int getTransition(char tokenChar);
 
   std::string stateToString(int state);
+
+  bool isValidOperator(char c);
+
+  bool isValidSeparator(char c);
 };
 
 #endif // LEXER_H
