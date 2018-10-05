@@ -1,7 +1,7 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-#include <fstream>
+#include <sstream>
 #include <vector>
 #include <iostream>
 #include "stdafx.h"
@@ -58,7 +58,7 @@ public:
   // Destructor
   ~Lexer();
 
-  std::vector<Token> lex(std::ifstream &fin);
+  std::vector<Token> lex(std::stringstream &fin);
 
 private:
   int getTransition(char tokenChar) const;

@@ -9,6 +9,8 @@ int main()
     std::ifstream fin;                // Input file stream
     std::string inFile;               // Input file name
     std::vector<Lexer::Token> tokens; // List of tokens
+    std::stringstream *ss;
+    std::string buffer;
 
     // Get file name from user
     std::cout << "Which file would you like to open?: ";
@@ -26,17 +28,21 @@ int main()
     // File has opened, instantiate the lexer.
     Lexer *lexer = new Lexer();
 
-    tokens = lexer->lex(fin);
-
     // Output header
     std::cout << std::left;
     std::cout << std::setw(11) << "LEXEME"
               << "TOKEN" << std::endl;
 
-    // Output token list
-    for (std::vector<Lexer::Token>::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
+    while (getline(fin, buffer))
     {
-        std::cout << std::setw(11) << (*it).lexeme << (*it).token << std::endl;
+        ss = new std::stringstream(buffer);
+        tokens = lexer->lex(*ss);
+
+        // Output token list
+        for (std::vector<Lexer::Token>::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
+        {
+            std::cout << std::setw(11) << (*it).lexeme << (*it).token << std::endl;
+        }
     }
 
     return 0;

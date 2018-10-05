@@ -4,7 +4,7 @@ Lexer::Lexer() {}
 
 Lexer::~Lexer() {}
 
-std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
+std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
 {
     std::vector<Token> tokens;
     Token *token;
@@ -15,18 +15,18 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
     int prevState = 0;
     int currState = 0;
 
-    while (fin.get(c))
+    while (buffer.get(c))
     {
         //check for and ignore comments
         if (c == '[')
         {
             do
             {
-                fin.get(c);
+                buffer.get(c);
             } while (c != ']');
 
             // Get the next token after ']'
-            fin.get(c);
+            buffer.get(c);
         }
 
         //get transition type
@@ -63,7 +63,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
                 // the character on the next iteration.
                 if (!isspace(c))
                 {
-                    fin.putback(c);
+                    buffer.putback(c);
                 }
             }
         }
@@ -91,6 +91,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
         prevState = currState;
     }
 
+    // Grab the last token
     tokenStr = stateToString(prevState);
 
     if (tokenStr != "Unknown")
