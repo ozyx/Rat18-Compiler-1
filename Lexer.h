@@ -2,36 +2,41 @@
 #define LEXER_H
 #include <fstream>
 #include <vector>
+#include <iostream>
 #include "stdafx.h"
 
 class Lexer
 {
 public:
+  enum TransitionType
+  {
+      IDENTIFIER,
+      INTEGER,
+      REAL,
+      UNKNOWN
+  };
 
-      enum TransitionType
+  // State table
+  int stateTable[8][4] = {{1, 4, 7, 7},
+                          {2, 3, 7, 7}, //ACCEPTABLE ID
+                          {2, 3, 7, 7}, //ACCEPTABLE ID
+                          {2, 3, 7, 7},
+                          {7, 4, 5, 7}, //ACCEPTABLE INT
+                          {7, 6, 7, 7},
+                          {7, 6, 7, 7}, //ACCEPTABLE REAL
+                          {7, 7, 7, 7}};
+
+  struct Token
+  {
+    Token(std::string token, std::string lexeme)
     {
-        REJECT = 0,
-        INTEGER,
-        REAL,
-        IDENTIFIER,
-        SPACE,
-        UNKNOWN
-    };
+      this->token = token;
+      this->lexeme = lexeme;
+    }
 
-    // State table
-     int dfsm[6][6] = {{0, INTEGER, REAL, IDENTIFIER, SPACE, UNKNOWN},
-                     {INTEGER, INTEGER, REAL, REJECT, REJECT, REJECT},
-                     {REAL, REAL, REJECT, REJECT, REJECT, REJECT},
-                     {IDENTIFIER, REJECT, REJECT, IDENTIFIER, REJECT, REJECT},
-                     {SPACE, INTEGER, REJECT, IDENTIFIER, SPACE, REJECT},
-                     {UNKNOWN, REJECT, REJECT, REJECT, REJECT, REJECT}};
-
-    struct Token
-    {
-        std::string token;
-        int lexeme;
-        std::string lexemeName;
-    };
+    std::string token;
+    std::string lexeme;
+  };
 
   // Constructor
   Lexer();
@@ -39,12 +44,13 @@ public:
   // Destructor
   ~Lexer();
 
-  std::vector<Token> lex(std::string expression);
+  std::vector<Token> lex(std::ifstream &fin);
 
 private:
-  TransitionType getTransition(char tokenChar);
+  int getTransition(char tokenChar);
 
   std::string stateToString(int state);
+  std::ifstream *_fin;
 };
 
 #endif // LEXER_H

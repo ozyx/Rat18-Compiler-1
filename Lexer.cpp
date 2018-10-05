@@ -4,100 +4,78 @@ Lexer::Lexer() {}
 
 Lexer::~Lexer() {}
 
-std::vector<Lexer::Token> Lexer::lex(std::string expression)
+std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
 {
-    Token token;
+    int prevState = 0;
+    int currState = 0;
     std::vector<Token> tokens;
-    char current = ' ';
-    int col = REJECT;
-    int currentState = REJECT;
-    int prevState = REJECT;
-    std::string currentToken = "";
-    int i = 0;
+    Token *token;
+    char c;
+    int transition;
+    std::string lexeme = "";
+    std::string tokenStr = "";
 
-    while (i < expression.length())
+    while (fin.get(c))
     {
-        // Get one character
-        current = expression[i];
-
-        // Get the transition type given the character
-        col = getTransition(current);
-
-        // Record previous state and get new state
-        prevState = currentState;
-        currentState = dfsm[currentState][col];
-
-        if (currentState == REJECT)
+        //check for and ignore comments
+        if (c == '[')
         {
-            // If the previous state was not reject, then we know
-            // we have a token.
-            if (prevState != REJECT)
+            do
             {
-                // TODO: reexamine this l
-                token.token = current;
-                token.lexeme = prevState;
-                token.lexemeName = stateToString(token.lexeme);
-            }
+                fin.get(c);
+            } while (c != ']');
         }
-        // Otherwise, build our next token
+
+        //get transition type
+        transition = getTransition(c);
+
+        //update state
+        currState = Lexer::stateTable[currState][transition];
+
+        // Terminating state
+        if (currState == 7)
+        {
+            tokenStr = stateToString(prevState);
+
+            // Create token and add to list of tokens
+            token = new Token(tokenStr, lexeme);
+            tokens.push_back(*token);
+
+            // reset state machine
+            prevState = currState = 0;
+            lexeme.clear();
+            tokenStr.clear();
+        }
         else
         {
-            if (currentState != SPACE)
-            {
-                currentToken += current;
-            }
-
-            // Iterate
-            ++i;
+            lexeme.push_back(c);
         }
 
-        // TODO: reexamine this logic
-        if (currentState == REJECT && currentToken != "")
-        {
-            token.token = currentToken;
-            token.lexeme = prevState;
-            token.lexemeName = stateToString(token.lexeme);
-            tokens.push_back(token);
-            currentToken = "";
-        }
-    }
-    if (currentState != REJECT && currentToken != "")
-    {
-        token.token = currentToken;
-        token.lexeme = prevState;
-        token.lexemeName = stateToString(token.lexeme);
-        tokens.push_back(token);
-        currentToken = "";
+        prevState = currState;
     }
     return tokens;
 }
 
-Lexer::TransitionType Lexer::getTransition(char tokenChar)
+int Lexer::getTransition(char c)
 {
-    TransitionType transition = UNKNOWN;
-
-    if (isspace(tokenChar))
+    if (isdigit(c))
     {
-        transition = SPACE;
+        return INTEGER;
     }
-    else if (isdigit(tokenChar))
+    else if (isalpha(c))
     {
-        transition = INTEGER;
+        return IDENTIFIER;
     }
-    else if (tokenChar == '.')
+    else if ((int)c == 46)
     {
-        transition = REAL;
-    }
-    else if (isalpha(tokenChar))
-    {
-        transition = IDENTIFIER;
+        return REAL;
     }
     else
     {
-        transition = REJECT;
+        return UNKNOWN;
     }
 
-    return transition;
+    return 0;
 }
 
 std::string Lexer::stateToString(int state)
@@ -106,20 +84,18 @@ std::string Lexer::stateToString(int state)
 
     switch (state)
     {
-    case INTEGER:
-        stateStr = "Integer";
-        break;
-    case REAL:
-        stateStr = "Real";
-        break;
-    case IDENTIFIER:
+    case 1:
+    case 2:
         stateStr = "Identifier";
         break;
-    case UNKNOWN:
-        stateStr = "Unknown";
+    case 4:
+        stateStr = "Integer";
         break;
-    case REJECT:
-        stateStr = "Reject";
+    case 6:
+        stateStr = "Real";
+        break;
+    default:
+        stateStr = "Unknown";
         break;
     }
 

@@ -1,47 +1,43 @@
-// CPSC 323 Lexer.cpp : Defines the entry point for the console application.
-//
+
 #include "Lexer.h"
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 
 int main()
 {
+    std::ifstream fin;                // Input file stream
+    std::string inFile;               // Input file name
+    std::vector<Lexer::Token> tokens; // List of tokens
 
-    Lexer lexer;
-    // declare variables
-    std::ifstream infile;
-    std::string fileName = "";
-    std::string expression = "";
-    std::vector<Lexer::Token> tokens;
+    // Get file name from user
+    std::cout << "Which file would you like to open?: ";
+    std::getline(std::cin, inFile);
 
-    // get data from user
-    std::cout << "nPlease enter the name of the file: ";
-    std::getline(std::cin, fileName);
+    // Open the file
+    fin.open(inFile.c_str());
 
-    infile.open(fileName.c_str());
-
-    if (infile.fail())
+    if (!fin)
     {
-        std::cout << "n** ERROR - the file " << fileName << " cannot be found!nn";
+        std::cout << "input file did not open" << std::endl;
         exit(1);
     }
 
-    // use a loop to scan each line in the file
-    while (getline(infile, expression))
+    // File has opened, instantiate the lexer.
+    Lexer *lexer = new Lexer();
+
+    tokens = lexer->lex(fin);
+
+    // Output header
+    std::cout << std::left;
+    std::cout << std::setw(11) << "LEXEME"
+              << "TOKEN" << std::endl;
+
+    // Output token list
+    for (std::vector<Lexer::Token>::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
     {
-        // use the "Lexer" function to isolate integer, real, operator,
-        // string, and unknown tokens
-        tokens = lexer.lex(expression);
-
-        // display the tokens to the screen
-        for (unsigned x = 0; x < tokens.size(); ++x)
-        {
-            std::cout << std::left << std::setw(11) << tokens[x].lexemeName << "\t"
-                      << "\"" << tokens[x].token << "\"" << std::endl;
-        }
+        std::cout << std::setw(11) << (*it).lexeme << (*it).token << std::endl;
     }
-
-    infile.close();
 
     return 0;
 }
