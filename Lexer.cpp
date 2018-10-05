@@ -42,6 +42,13 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
 
             if (tokenStr != "Unknown")
             {
+                if (tokenStr == "Identifier")
+                {
+                    if (isKeyword(lexeme))
+                    {
+                        tokenStr = "Keyword";
+                    }
+                }
                 // Create token and add to list of tokens
                 token = new Token(tokenStr, lexeme);
                 tokens.push_back(*token);
@@ -88,6 +95,13 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
 
     if (tokenStr != "Unknown")
     {
+        if (tokenStr == "Identifier")
+        {
+            if (isKeyword(lexeme))
+            {
+                tokenStr = "Keyword";
+            }
+        }
         // Create token and add to list of tokens
         token = new Token(tokenStr, lexeme);
         tokens.push_back(*token);
@@ -96,7 +110,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
     return tokens;
 }
 
-int Lexer::getTransition(char c)
+int Lexer::getTransition(char c) const
 {
     if (isdigit(c))
     {
@@ -118,7 +132,7 @@ int Lexer::getTransition(char c)
     return 0;
 }
 
-std::string Lexer::stateToString(int state)
+std::string Lexer::stateToString(int state) const
 {
     std::string stateStr = "";
 
@@ -142,12 +156,18 @@ std::string Lexer::stateToString(int state)
     return stateStr;
 }
 
-bool Lexer::isValidOperator(char c)
+bool Lexer::isValidOperator(char c) const
 {
     return c == '-' | c == '+' | c == '=' | c == '<' | c == '>' | c == '*';
 }
 
-bool Lexer::isValidSeparator(char c)
+bool Lexer::isValidSeparator(char c) const
 {
     return c == '(' | c == ')' | c == '{' | c == '}' | c == ':' | c == ';' | c == ',';
+}
+
+bool Lexer::isKeyword(std::string token) const
+{
+    // These are just a few
+    return token == "while" | token == "whileend" | token == "int" | token == "function";
 }

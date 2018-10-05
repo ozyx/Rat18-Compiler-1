@@ -61,13 +61,15 @@ public:
   std::vector<Token> lex(std::ifstream &fin);
 
 private:
-  int getTransition(char tokenChar);
+  int getTransition(char tokenChar) const;
 
-  std::string stateToString(int state);
+  std::string stateToString(int state) const;
 
-  bool isValidOperator(char c);
+  bool isValidOperator(char c) const;
 
-  bool isValidSeparator(char c);
+  bool isValidSeparator(char c) const;
+
+  bool isKeyword(std::string token) const;
 };
 
 #endif // LEXER_H
