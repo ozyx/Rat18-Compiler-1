@@ -1,6 +1,6 @@
 #include "Lexer.h"
 
-Lexer::Lexer() {}
+Lexer::Lexer() : comment(false) {}
 
 Lexer::~Lexer() {}
 
@@ -18,15 +18,26 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
     while (buffer.get(c))
     {
         //check for and ignore comments
-        if (c == '[')
+        if ((c == '[') | comment)
         {
             do
             {
                 buffer.get(c);
-            } while (c != ']');
 
-            // Get the next token after ']'
-            buffer.get(c);
+                // Handle the case if we reach the end of the line but haven't reached terminating ']' yet.
+            } while (c != ']' && !buffer.eof());
+
+            this->comment = c != ']';
+
+            if (this->comment)
+            {
+                c = ' ';
+            }
+            else
+            {
+                // Get the next token after ']'
+                buffer.get(c);
+            }
         }
 
         //get transition type
@@ -72,19 +83,39 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
             if (!isspace(c))
             {
                 lexeme.push_back(c);
-            }
 
-            if (isValidOperator(c))
-            {
-                token = new Token("Operator", lexeme);
-                tokens.push_back(*token);
-                lexeme.clear();
-            }
-            else if (isValidSeparator(c))
-            {
-                token = new Token("Separator", lexeme);
-                tokens.push_back(*token);
-                lexeme.clear();
+                if (isValidOperator(c))
+                {
+                    // Check for double operators
+                    buffer.get(c);
+                    if (isValidOperator(c))
+                    {
+                        // Check if this becomes a valid double-operator (looking ahead)
+                        lexeme.push_back(c);
+
+                        // If it does not, remove from lexeme and put the char back.
+                        if (!isValidOperator(lexeme))
+                        {
+                            lexeme.pop_back();
+                            buffer.putback(c);
+                        }
+                    }
+                    else
+                    {
+                        // If it isn't an operator, just put it back.
+                        buffer.putback(c);
+                    }
+
+                    token = new Token("Operator", lexeme);
+                    tokens.push_back(*token);
+                    lexeme.clear();
+                }
+                else if (isValidSeparator(c))
+                {
+                    token = new Token("Separator", lexeme);
+                    tokens.push_back(*token);
+                    lexeme.clear();
+                }
             }
         }
 
@@ -160,6 +191,11 @@ std::string Lexer::stateToString(int state) const
 bool Lexer::isValidOperator(char c) const
 {
     return c == '-' | c == '+' | c == '=' | c == '<' | c == '>' | c == '*';
+}
+
+bool Lexer::isValidOperator(std::string s) const
+{
+    return s == "==" | s == "!=" | s == "++" | s == "--" | s == "+=" | s == "-=" | s == "*=" | s == "<<" | s == ">>";
 }
 
 bool Lexer::isValidSeparator(char c) const

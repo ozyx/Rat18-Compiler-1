@@ -58,14 +58,21 @@ public:
   // Destructor
   ~Lexer();
 
-  std::vector<Token> lex(std::stringstream &fin);
+  std::vector<Token> lex(std::stringstream &buffer);
 
 private:
+
+  bool comment;
+  
   int getTransition(char tokenChar) const;
 
   std::string stateToString(int state) const;
 
+  // Use for single operators
   bool isValidOperator(char c) const;
+
+  // Use for double operators
+  bool isValidOperator(std::string s) const;
 
   bool isValidSeparator(char c) const;
 

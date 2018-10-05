@@ -12,7 +12,8 @@
         "typeinfo": "cpp",
         "iosfwd": "cpp",
         "algorithm": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "istream": "cpp"
     },
     "files.exclude": {
         "**/.git": true,
