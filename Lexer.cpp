@@ -54,7 +54,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
                 // If we reached the terminating state by anything other
                 // than whitespace, we need to put it back and re-examine
                 // the character on the next iteration.
-                if(!isspace(c))
+                if (!isspace(c))
                 {
                     fin.putback(c);
                 }
@@ -82,6 +82,15 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
         }
 
         prevState = currState;
+    }
+
+    tokenStr = stateToString(prevState);
+
+    if (tokenStr != "Unknown")
+    {
+        // Create token and add to list of tokens
+        token = new Token(tokenStr, lexeme);
+        tokens.push_back(*token);
     }
 
     return tokens;
