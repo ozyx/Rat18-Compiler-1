@@ -13,7 +13,8 @@
         "iosfwd": "cpp",
         "algorithm": "cpp",
         "vector": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "unordered_set": "cpp"
     },
     "files.exclude": {
         "**/.git": true,

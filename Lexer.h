@@ -4,12 +4,12 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <unordered_set>
 #include "stdafx.h"
 
 class Lexer
 {
 public:
-
   enum State
   {
     NS = 0, // NULL STATE
@@ -40,6 +40,11 @@ public:
                           {S7, S6, S7, S7}, // ACCEPTABLE REAL
                           {S7, S7, S7, S7}};
 
+  std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put"};
+  std::unordered_set<char> separators = {'(',')','{','}',',',':', ';'};
+  std::unordered_set<char> operators = {'+','-','*','/','<','>','=','!'};
+  std::unordered_set<std::string> double_operators = {"++", "--", "==", "!=", "<=", ">="};
+
   struct Token
   {
     Token(std::string token, std::string lexeme)
@@ -61,9 +66,8 @@ public:
   std::vector<Token> lex(std::stringstream &buffer);
 
 private:
-
   bool comment;
-  
+
   int getTransition(char tokenChar) const;
 
   std::string stateToString(int state) const;

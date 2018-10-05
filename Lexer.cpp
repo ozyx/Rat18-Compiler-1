@@ -150,24 +150,22 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
 
 int Lexer::getTransition(char c) const
 {
+    int  transition = UNKNOWN;
+
     if (isdigit(c))
     {
-        return INTEGER;
+        transition = INTEGER;
     }
     else if (isalpha(c))
     {
-        return IDENTIFIER;
+        transition = IDENTIFIER;
     }
     else if (c == '.')
     {
-        return REAL;
-    }
-    else
-    {
-        return UNKNOWN;
+        transition = REAL;
     }
 
-    return 0;
+    return transition;
 }
 
 std::string Lexer::stateToString(int state) const
@@ -196,21 +194,20 @@ std::string Lexer::stateToString(int state) const
 
 bool Lexer::isValidOperator(char c) const
 {
-    return (c == '-') | (c == '+') | (c == '=') | (c == '<') | (c == '>') | (c == '*');
+    return operators.count(c);
 }
 
 bool Lexer::isValidOperator(std::string s) const
 {
-    return (s == "==") | (s == "!=") | (s == "++") | (s == "--") | (s == "+=") | (s == "-=") | (s == "*=") | (s == "<<") | (s == ">>");
+    return double_operators.count(s);
 }
 
 bool Lexer::isValidSeparator(char c) const
 {
-    return (c == '(') | (c == ')') | (c == '{') | (c == '}') | (c == ':') | (c == ';') | (c == ',');
+    return separators.count(c);
 }
 
 bool Lexer::isKeyword(std::string token) const
 {
-    // These are just a few
-    return token == "while" | token == "whileend" | token == "int" | token == "function";
+    return keywords.count(token);
 }
