@@ -24,13 +24,17 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
             {
                 buffer.get(c);
 
-                // Handle the case if we reach the end of the line but haven't reached terminating ']' yet.
+                // Handling for multi-line comments
             } while (c != ']' && !buffer.eof());
 
+            // comment == true if we are in a multi-line comment
             this->comment = c != ']';
 
             if (this->comment)
             {
+                // We are currently in a multi-line comment, and we
+                // have reached the end of the line.
+                // Just set the character to a space so can ignore it.
                 c = ' ';
             }
             else
@@ -55,6 +59,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
             {
                 if (tokenStr == "Identifier")
                 {
+                    // Check if this identifier is a keyword
                     if (isKeyword(lexeme))
                     {
                         tokenStr = "Keyword";
@@ -125,6 +130,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
     // Grab the last token
     tokenStr = stateToString(prevState);
 
+    // Evaluate the last token
     if (tokenStr != "Unknown")
     {
         if (tokenStr == "Identifier")
