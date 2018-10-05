@@ -1,1 +1,2 @@
+[ This is a comment. ]
 while  (fahr < upper)   a = 23.00 whileend

@@ -6,14 +6,14 @@ Lexer::~Lexer() {}
 
 std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
 {
-    int prevState = 0;
-    int currState = 0;
     std::vector<Token> tokens;
     Token *token;
     char c;
     int transition;
     std::string lexeme = "";
     std::string tokenStr = "";
+    int prevState = 0;
+    int currState = 0;
 
     while (fin.get(c))
     {
@@ -24,6 +24,9 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
             {
                 fin.get(c);
             } while (c != ']');
+
+            // Get the next token after ']'
+            fin.get(c);
         }
 
         //get transition type
@@ -33,7 +36,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
         currState = Lexer::stateTable[currState][transition];
 
         // Terminating state
-        if (currState == 7)
+        if (currState == S7)
         {
             tokenStr = stateToString(prevState);
 
@@ -42,7 +45,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
             tokens.push_back(*token);
 
             // reset state machine
-            prevState = currState = 0;
+            currState = NS;
             lexeme.clear();
             tokenStr.clear();
         }
@@ -53,6 +56,7 @@ std::vector<Lexer::Token> Lexer::lex(std::ifstream &fin)
 
         prevState = currState;
     }
+
     return tokens;
 }
 
@@ -66,7 +70,7 @@ int Lexer::getTransition(char c)
     {
         return IDENTIFIER;
     }
-    else if ((int)c == 46)
+    else if (c == '.')
     {
         return REAL;
     }
@@ -84,14 +88,14 @@ std::string Lexer::stateToString(int state)
 
     switch (state)
     {
-    case 1:
-    case 2:
+    case S1:
+    case S2:
         stateStr = "Identifier";
         break;
-    case 4:
+    case S4:
         stateStr = "Integer";
         break;
-    case 6:
+    case S6:
         stateStr = "Real";
         break;
     default:
