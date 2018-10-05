@@ -13,13 +13,16 @@ public:
   enum State
   {
     NS = 0, // NULL STATE
-    S1 = 1,
+    S1 = 1, //ACCEPTABLE ID
     S2 = 2, //ACCEPTABLE ID
-    S3 = 3, //ACCEPTABLE ID
-    S4 = 4,
-    S5 = 5, //ACCEPTABLE INT
-    S6 = 6,
-    S7 = 7 //ACCEPTABLE REAL
+    S3 = 3,
+    S4 = 4, //ACCEPTABLE INT
+    S5 = 5,
+    S6 = 6, //ACCEPTABLE REAL
+    S7 = 7, //
+    S8 = 8,
+    S9 = 9,
+    S10 = 10
   };
 
   enum TransitionType
@@ -27,18 +30,23 @@ public:
     IDENTIFIER,
     INTEGER,
     REAL,
-    UNKNOWN
+    OPERATOR,
+    SEPARATOR,
+    REJECT
   };
 
   // State table
-  int stateTable[8][4] = {{S1, S4, S7, NS},
-                          {S2, S3, S7, S7}, // ACCEPTABLE ID
-                          {S2, S3, S7, S7}, // ACCEPTABLE ID
-                          {S2, S3, S7, S7},
-                          {S7, S4, S5, S7}, // ACCEPTABLE INT
-                          {S7, S6, S7, S7},
-                          {S7, S6, S7, S7}, // ACCEPTABLE REAL
-                          {S7, S7, S7, S7}};
+  int stateTable[11][6] = {{S1,  S4,  S10, S7,  S9,  S10},
+                           {S2,  S3,  S10, S10, S10, S10},    // ACCEPTABLE ID
+                           {S2,  S3,  S10, S10, S10, S10},    // ACCEPTABLE ID
+                           {S2,  S3,  S10, S10, S10, S10},
+                           {S10, S4,  S5,  S10, S10, S10},    // ACCEPTABLE INT
+                           {S10, S6,  S10, S10, S10, S10},
+                           {S10, S6,  S10, S10, S10, S10},   // ACCEPTABLE REAL
+                           {S10, S10, S10, S8,  S10, S10},   // ACCEPTABLE 1-OP
+                           {S10, S10, S10, S10, S10, S10},  // ACCEPTABLE 2-OP
+                           {S10, S10, S10, S10, S10, S10},  // ACCEPTABLE SEPARATOR
+                           {S10, S10, S10, S10, S10, S10}}; // TERMINATING
 
   std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put"};
   std::unordered_set<char> separators = {'(',')','{','}',',',':', ';'};
@@ -81,6 +89,8 @@ private:
   bool isValidSeparator(char c) const;
 
   bool isKeyword(std::string token) const;
+
+  bool isAccepting(int state) const;
 };
 
 #endif // LEXER_H

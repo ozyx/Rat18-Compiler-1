@@ -1,2 +1,2 @@
-[ This is a comment. ]
-while  (fahr < upper)   a = 23.00 whileend
+[* This is a comment. *]
+while2  (fahr < upper)   a == 23.00 whileend

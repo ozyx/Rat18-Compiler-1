@@ -28,7 +28,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
             } while (c != ']' && !buffer.eof());
 
             // comment == true if we are in a multi-line comment
-            this->comment = c != ']';
+            this->comment = (c != ']');
 
             if (this->comment)
             {
@@ -51,18 +51,26 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         currState = Lexer::stateTable[currState][transition];
 
         // Terminating state
-        if (currState == S7)
+        if (currState == S10)
         {
             tokenStr = stateToString(prevState);
 
-            if (tokenStr != "Unknown")
+            if (tokenStr != "Reject")
             {
+
                 if (tokenStr == "Identifier")
                 {
                     // Check if this identifier is a keyword
                     if (isKeyword(lexeme))
                     {
                         tokenStr = "Keyword";
+                    }
+                }
+                else if (tokenStr == "Operator")
+                {
+                    if (lexeme.length() > 1 && !isValidOperator(lexeme))
+                    {
+                        lexeme.pop_back();
                     }
                 }
                 // Create token and add to list of tokens
@@ -82,45 +90,19 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
                     buffer.putback(c);
                 }
             }
+            else
+            {
+                // reset state machine
+                currState = NS;
+                lexeme.clear();
+                tokenStr.clear();
+            }
         }
         else
         {
             if (!isspace(c))
             {
                 lexeme.push_back(c);
-
-                if (isValidOperator(c))
-                {
-                    // Check for double operators
-                    buffer.get(c);
-                    if (isValidOperator(c))
-                    {
-                        // Check if this becomes a valid double-operator (looking ahead)
-                        lexeme.push_back(c);
-
-                        // If it does not, remove from lexeme and put the char back.
-                        if (!isValidOperator(lexeme))
-                        {
-                            lexeme.pop_back();
-                            buffer.putback(c);
-                        }
-                    }
-                    else
-                    {
-                        // If it isn't an operator, just put it back.
-                        buffer.putback(c);
-                    }
-
-                    token = new Token("Operator", lexeme);
-                    tokens.push_back(*token);
-                    lexeme.clear();
-                }
-                else if (isValidSeparator(c))
-                {
-                    token = new Token("Separator", lexeme);
-                    tokens.push_back(*token);
-                    lexeme.clear();
-                }
             }
         }
 
@@ -131,13 +113,21 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
     tokenStr = stateToString(prevState);
 
     // Evaluate the last token
-    if (tokenStr != "Unknown")
+    if (tokenStr != "Reject")
     {
         if (tokenStr == "Identifier")
         {
+            // Check if this identifier is a keyword
             if (isKeyword(lexeme))
             {
                 tokenStr = "Keyword";
+            }
+        }
+        else if (tokenStr == "Operator")
+        {
+            if (lexeme.length() > 1 && !isValidOperator(lexeme))
+            {
+                lexeme.pop_back();
             }
         }
         // Create token and add to list of tokens
@@ -150,7 +140,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
 
 int Lexer::getTransition(char c) const
 {
-    int  transition = UNKNOWN;
+    int transition = REJECT;
 
     if (isdigit(c))
     {
@@ -164,13 +154,21 @@ int Lexer::getTransition(char c) const
     {
         transition = REAL;
     }
+    else if (isValidOperator(c))
+    {
+        transition = OPERATOR;
+    }
+    else if (isValidSeparator(c))
+    {
+        transition = SEPARATOR;
+    }
 
     return transition;
 }
 
 std::string Lexer::stateToString(int state) const
 {
-    std::string stateStr = "";
+    std::string stateStr = "Reject";
 
     switch (state)
     {
@@ -178,14 +176,23 @@ std::string Lexer::stateToString(int state) const
     case S2:
         stateStr = "Identifier";
         break;
+    case S3:
+        stateStr = "Reject";
+        break;
     case S4:
         stateStr = "Integer";
         break;
+    case S5:
+        stateStr = "Reject";
     case S6:
         stateStr = "Real";
         break;
-    default:
-        stateStr = "Unknown";
+    case S7:
+    case S8:
+        stateStr = "Operator";
+        break;
+    case S9:
+        stateStr = "Separator";
         break;
     }
 
@@ -210,4 +217,9 @@ bool Lexer::isValidSeparator(char c) const
 bool Lexer::isKeyword(std::string token) const
 {
     return keywords.count(token);
+}
+
+bool Lexer::isAccepting(int state) const
+{
+    return state == S1 | state == S2 | state == S4 | state == S6 | state == S7 | state == S8 | state == S9;
 }
