@@ -48,10 +48,10 @@ public:
                            {S10, S10, S10, S10, S10, S10},  // ACCEPTABLE SEPARATOR
                            {S10, S10, S10, S10, S10, S10}}; // TERMINATING
 
-  std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put"};
+  std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put", "true", "false"};
   std::unordered_set<char> separators = {'(',')','{','}',',',':', ';'};
-  std::unordered_set<char> operators = {'+','-','*','/','<','>','=','!'};
-  std::unordered_set<std::string> double_operators = {"++", "--", "==", "!=", "<=", ">="};
+  std::unordered_set<char> operators = {'+','-','*','/','<','>','=','^'};
+  std::unordered_set<std::string> double_operators = {"==", "^=", "=>", "=<"};
 
   struct Token
   {
