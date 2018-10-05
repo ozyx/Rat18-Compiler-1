@@ -190,17 +190,17 @@ std::string Lexer::stateToString(int state) const
 
 bool Lexer::isValidOperator(char c) const
 {
-    return c == '-' | c == '+' | c == '=' | c == '<' | c == '>' | c == '*';
+    return (c == '-') | (c == '+') | (c == '=') | (c == '<') | (c == '>') | (c == '*');
 }
 
 bool Lexer::isValidOperator(std::string s) const
 {
-    return s == "==" | s == "!=" | s == "++" | s == "--" | s == "+=" | s == "-=" | s == "*=" | s == "<<" | s == ">>";
+    return (s == "==") | (s == "!=") | (s == "++") | (s == "--") | (s == "+=") | (s == "-=") | (s == "*=") | (s == "<<") | (s == ">>");
 }
 
 bool Lexer::isValidSeparator(char c) const
 {
-    return c == '(' | c == ')' | c == '{' | c == '}' | c == ':' | c == ';' | c == ',';
+    return (c == '(') | (c == ')') | (c == '{') | (c == '}') | (c == ':') | (c == ';') | (c == ',');
 }
 
 bool Lexer::isKeyword(std::string token) const
