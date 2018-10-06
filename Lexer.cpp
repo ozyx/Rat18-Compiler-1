@@ -17,30 +17,22 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
 
     while (buffer.get(c))
     {
-        //check for and ignore comments
-        if ((c == '[') | comment)
+        if (comment | (c == '[' && buffer.peek() == '*'))
         {
-            do
+            while (c != '*' | buffer.peek() != ']')
             {
+                if (buffer.eof())
+                {
+                    comment = true;
+                    c = ' ';
+                    break;
+                }
                 buffer.get(c);
-
-                // Handling for multi-line comments
-            } while (c != ']' && !buffer.eof());
-
-            // comment == true if we are in a multi-line comment
-            this->comment = (c != ']');
-
-            if (this->comment)
-            {
-                // We are currently in a multi-line comment, and we
-                // have reached the end of the line.
-                // Just set the character to a space so can ignore it.
-                c = ' ';
             }
-            else
+            if(!buffer.eof() && c == '*')
             {
-                // Get the next token after ']'
-                buffer.get(c);
+                comment = false;
+                buffer.get(c).get(c);
             }
         }
 
