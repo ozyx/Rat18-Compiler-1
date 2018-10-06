@@ -17,29 +17,42 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
 
     while (buffer.get(c))
     {
+        // Check if we are inside of a multiline comment,
+        // or at the beginning of a new comment range.
         if (comment | (c == '[' && buffer.peek() == '*'))
         {
+            // Iterate until we see a '*]'
             while (c != '*' | buffer.peek() != ']')
             {
+                // If we hit the end of the line, set
+                // comment switch to "true" and reset
+                // the current character so it gets ignored.
                 if (buffer.eof())
                 {
                     comment = true;
                     c = ' ';
                     break;
                 }
+
                 buffer.get(c);
             }
+
+            // If we haven't reached the end of the file,
+            // and the current character is a '*', we know
+            // we have reached the end of the comment section.
             if(!buffer.eof() && c == '*')
             {
                 comment = false;
+
+                // Get both characters '*]' out of the stream
                 buffer.get(c).get(c);
             }
         }
 
-        //get transition type
+        // Get the character type (transition)
         transition = getTransition(c);
 
-        //update state
+        // Update state
         currState = Lexer::stateTable[currState][transition];
 
         // Terminating state
