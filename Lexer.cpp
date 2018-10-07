@@ -234,8 +234,3 @@ bool Lexer::isKeyword(std::string token) const
 {
     return keywords.count(token);
 }
-
-bool Lexer::isAccepting(int state) const
-{
-    return state == S1 | state == S2 | state == S4 | state == S6 | state == S7 | state == S8 | state == S9;
-}

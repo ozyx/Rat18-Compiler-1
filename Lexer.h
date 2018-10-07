@@ -89,8 +89,6 @@ private:
   bool isValidSeparator(char c) const;
 
   bool isKeyword(std::string token) const;
-
-  bool isAccepting(int state) const;
 };
 
 #endif // LEXER_H
