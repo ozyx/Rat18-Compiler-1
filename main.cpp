@@ -53,5 +53,10 @@ int main()
         }
         fin.close();
     }
+
+    std::cout << std::endl << "EXECUTION HAS COMPLETED." << std::endl;
+    std::cout << "Press any key to continue. . ." << std::endl;
+    std::cin.get();
+
     return 0;
 }
