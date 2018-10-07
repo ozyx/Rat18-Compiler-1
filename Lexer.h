@@ -37,13 +37,13 @@ public:
 
   // State table
   int stateTable[11][6] = {{S1,  S4,  S10, S7,  S9,  S10},
-                           {S2,  S3,  S10, S10, S10, S10},    // ACCEPTABLE ID
-                           {S2,  S3,  S10, S10, S10, S10},    // ACCEPTABLE ID
+                           {S2,  S3,  S10, S10, S10, S10},  // ACCEPTABLE ID
+                           {S2,  S3,  S10, S10, S10, S10},  // ACCEPTABLE ID
                            {S2,  S3,  S10, S10, S10, S10},
-                           {S10, S4,  S5,  S10, S10, S10},    // ACCEPTABLE INT
+                           {S10, S4,  S5,  S10, S10, S10},  // ACCEPTABLE INT
                            {S10, S6,  S10, S10, S10, S10},
-                           {S10, S6,  S10, S10, S10, S10},   // ACCEPTABLE REAL
-                           {S10, S10, S10, S8,  S10, S10},   // ACCEPTABLE 1-OP
+                           {S10, S6,  S10, S10, S10, S10},  // ACCEPTABLE REAL
+                           {S10, S10, S10, S8,  S10, S10},  // ACCEPTABLE 1-OP
                            {S10, S10, S10, S10, S10, S10},  // ACCEPTABLE 2-OP
                            {S10, S10, S10, S10, S10, S10},  // ACCEPTABLE SEPARATOR
                            {S10, S10, S10, S10, S10, S10}}; // TERMINATING
