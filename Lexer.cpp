@@ -40,7 +40,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
             // If we haven't reached the end of the file,
             // and the current character is a '*', we know
             // we have reached the end of the comment section.
-            if(!buffer.eof() && c == '*')
+            if (!buffer.eof() && c == '*')
             {
                 comment = false;
 
@@ -56,7 +56,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         currState = Lexer::stateTable[currState][transition];
 
         // TODO: Add states for weird separator case '$$'
-        if(c == '$' && buffer.peek() == '$')
+        if (c == '$' && buffer.peek() == '$')
         {
             lexeme.push_back(c);
             buffer.get(c);

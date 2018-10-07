@@ -1,0 +1,22 @@
+[* this is the third test case,
+   where we include some edge cases *]
+
+function myInvalidFunction (var1: int, var2: int)
+{
+    [* this comment should be ignored *]
+
+    return (var1 * var2) + 50;
+}
+
+$$ [* this should be registered *]
+    int a, b;
+    a = 0;
+    b = 1;
+
+    while (a < b)
+    {
+        b = myInvalidFunction(a, b);
+        a = a + 25;
+    }
+    whileend
+$$
