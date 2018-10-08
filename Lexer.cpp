@@ -55,19 +55,19 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         // Update state
         currState = Lexer::stateTable[currState][transition];
 
-        // TODO: Add states for weird separator case '$$'
-        if (c == '$' && buffer.peek() == '$')
-        {
-            lexeme.push_back(c);
-            buffer.get(c);
-            lexeme.push_back(c);
-            transition = SEPARATOR;
-            currState = S10;
-            prevState = S9;
-        }
+        // // TODO: Add states for weird separator case '$$'
+        // if (c == '$' && buffer.peek() == '$')
+        // {
+        //     lexeme.push_back(c);
+        //     buffer.get(c);
+        //     lexeme.push_back(c);
+        //     transition = SEPARATOR;
+        //     currState = S10;
+        //     prevState = S9;
+        // }
 
         // Terminating state
-        if (currState == S10)
+        if (currState == S12)
         {
             tokenStr = stateToString(prevState);
 
@@ -178,6 +178,10 @@ int Lexer::getTransition(char c) const
     {
         transition = SEPARATOR;
     }
+    else if (c == '$')
+    {
+        transition = FUNC_SEPARATOR;
+    }
 
     return transition;
 }
@@ -208,6 +212,9 @@ std::string Lexer::stateToString(int state) const
         stateStr = "Operator";
         break;
     case S9:
+        stateStr = "Separator";
+        break;
+    case S11:
         stateStr = "Separator";
         break;
     }
