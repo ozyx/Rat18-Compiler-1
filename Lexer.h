@@ -13,12 +13,12 @@ public:
   enum State
   {
     NS = 0, // NULL STATE
-    S1,     //ACCEPTABLE ID
-    S2,     //ACCEPTABLE ID
+    S1,     // ACCEPTABLE ID
+    S2,     // ACCEPTABLE ID
     S3,
-    S4,     //ACCEPTABLE INT
+    S4,     // ACCEPTABLE INT
     S5,
-    S6,     //ACCEPTABLE REAL
+    S6,     // ACCEPTABLE REAL
     S7,
     S8,
     S9,
