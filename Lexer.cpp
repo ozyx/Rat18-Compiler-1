@@ -201,8 +201,6 @@ std::string Lexer::stateToString(int state) const
         stateStr = "Operator";
         break;
     case S9:
-        stateStr = "Separator";
-        break;
     case S11:
         stateStr = "Separator";
         break;
