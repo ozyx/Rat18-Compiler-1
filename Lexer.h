@@ -24,7 +24,7 @@ public:
     S9,
     S10,
     S11,    // ACCEPTABLE '$$'
-    S12     // TERMINATING
+    TRM     // TERMINATING
   };
 
   enum TransitionType
@@ -39,19 +39,19 @@ public:
   };
 
   // State table
-  int stateTable[13][7] = {{S1,  S4,  S12, S7,  S9,  S10, S12},  // INITIAL STATE
-                           {S2,  S3,  S12, S12, S12, S12, S12},  // ACCEPTABLE ID
-                           {S2,  S3,  S12, S12, S12, S12, S12},  // ACCEPTABLE ID
-                           {S2,  S3,  S12, S12, S12, S12, S12},
-                           {S12, S4,  S5,  S12, S12, S12, S12},  // ACCEPTABLE INT
-                           {S12, S6,  S12, S12, S12, S12, S12},
-                           {S12, S6,  S12, S12, S12, S12, S12},  // ACCEPTABLE REAL
-                           {S12, S12, S12, S8,  S12, S12, S12},  // ACCEPTABLE 1-OP
-                           {S12, S12, S12, S12, S12, S12, S12},  // ACCEPTABLE 2-OP
-                           {S12, S12, S12, S12, S12, S12, S12},  // ACCEPTABLE SEPARATOR
-                           {S12, S12, S12, S12, S12, S11, S12},
-                           {S12, S12, S12, S12, S12, S12, S12},  // ACCEPTABLE '$$'
-                           {S12, S12, S12, S12, S12, S12, S12}}; // TERMINATING
+  int stateTable[13][7] = {{S1,  S4,  TRM, S7,  S9,  S10, TRM},  // INITIAL STATE
+                           {S2,  S3,  TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE ID
+                           {S2,  S3,  TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE ID
+                           {S2,  S3,  TRM, TRM, TRM, TRM, TRM},
+                           {TRM, S4,  S5,  TRM, TRM, TRM, TRM},  // ACCEPTABLE INT
+                           {TRM, S6,  TRM, TRM, TRM, TRM, TRM},
+                           {TRM, S6,  TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE REAL
+                           {TRM, TRM, TRM, S8,  TRM, TRM, TRM},  // ACCEPTABLE 1-OP
+                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE 2-OP
+                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE SEPARATOR
+                           {TRM, TRM, TRM, TRM, TRM, S11, TRM},
+                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE '$$'
+                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM}}; // TERMINATING
 
   std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put", "true", "false"};
   std::unordered_set<char> separators = {'(',')','{','}',',',':', ';'};

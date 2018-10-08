@@ -56,7 +56,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         currState = Lexer::stateTable[currState][transition];
 
         // Terminating state
-        if (currState == S12)
+        if (currState == TRM)
         {
             tokenStr = stateToString(prevState);
 
