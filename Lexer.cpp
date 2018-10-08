@@ -185,14 +185,9 @@ std::string Lexer::stateToString(int state) const
     case S2:
         stateStr = "Identifier";
         break;
-    case S3:
-        stateStr = "Reject";
-        break;
     case S4:
         stateStr = "Integer";
         break;
-    case S5:
-        stateStr = "Reject";
     case S6:
         stateStr = "Real";
         break;
