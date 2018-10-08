@@ -55,17 +55,6 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         // Update state
         currState = Lexer::stateTable[currState][transition];
 
-        // // TODO: Add states for weird separator case '$$'
-        // if (c == '$' && buffer.peek() == '$')
-        // {
-        //     lexeme.push_back(c);
-        //     buffer.get(c);
-        //     lexeme.push_back(c);
-        //     transition = SEPARATOR;
-        //     currState = S10;
-        //     prevState = S9;
-        // }
-
         // Terminating state
         if (currState == S12)
         {
