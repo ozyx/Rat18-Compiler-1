@@ -53,7 +53,7 @@ public:
                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE '$$'
                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM}}; // TERMINATING
 
-  std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put", "true", "false"};
+  std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put", "true", "false", "boolean", "real", "else"};
   std::unordered_set<char> separators = {'(',')','{','}',',',':', ';'};
   std::unordered_set<char> operators = {'+','-','*','/','<','>','=','^'};
   std::unordered_set<std::string> double_operators = {"==", "^=", "=>", "=<"};
