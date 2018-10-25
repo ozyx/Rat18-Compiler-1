@@ -71,13 +71,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
                         tokenStr = "Keyword";
                     }
                 }
-                else if (tokenStr == "Operator")
-                {
-                    if (lexeme.length() > 1 && !isValidOperator(lexeme))
-                    {
-                        lexeme.pop_back();
-                    }
-                }
+
                 // Create token and add to list of tokens
                 token = new Token(tokenStr, lexeme);
                 tokens.push_back(*token);
@@ -97,6 +91,13 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
             }
             else
             {
+                // Push back rejected token
+                if (!lexeme.empty())
+                {
+                    token = new Token(tokenStr, lexeme);
+                    tokens.push_back(*token);
+                }
+
                 // reset state machine
                 currState = NS;
                 lexeme.clear();
@@ -128,13 +129,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
                 tokenStr = "Keyword";
             }
         }
-        else if (tokenStr == "Operator")
-        {
-            if (lexeme.length() > 1 && !isValidOperator(lexeme))
-            {
-                lexeme.pop_back();
-            }
-        }
+
         // Create token and add to list of tokens
         token = new Token(tokenStr, lexeme);
         tokens.push_back(*token);
@@ -159,9 +154,37 @@ int Lexer::getTransition(char c) const
     {
         transition = REAL;
     }
-    else if (isValidOperator(c))
+    else if (c == '^')
     {
-        transition = OPERATOR;
+        transition = CARROT;
+    }
+    else if (c == '=')
+    {
+        transition = EQUALS;
+    }
+    else if (c == '>')
+    {
+        transition = GREATERTHAN;
+    }
+    else if (c == '<')
+    {
+        transition = LESSTHAN;
+    }
+    else if (c == '+')
+    {
+        transition = PLUS;
+    }
+    else if (c == '-')
+    {
+        transition = MINUS;
+    }
+    else if (c == '*')
+    {
+        transition = MULTIPLY;
+    }
+    else if (c == '/')
+    {
+        transition = DIVIDE;
     }
     else if (isValidSeparator(c))
     {
@@ -181,37 +204,29 @@ std::string Lexer::stateToString(int state) const
 
     switch (state)
     {
-    case S1:
-    case S2:
+    case S01:
+    case S02:
         stateStr = "Identifier";
         break;
-    case S4:
+    case S04:
         stateStr = "Integer";
         break;
-    case S6:
+    case S06:
         stateStr = "Real";
         break;
-    case S7:
-    case S8:
-        stateStr = "Operator";
-        break;
-    case S9:
+    case S09:
     case S11:
         stateStr = "Separator";
+        break;
+    case S13:
+    case S14:
+    case S15:
+    case S16:
+        stateStr = "Operator";
         break;
     }
 
     return stateStr;
-}
-
-bool Lexer::isValidOperator(char c) const
-{
-    return operators.count(c);
-}
-
-bool Lexer::isValidOperator(std::string s) const
-{
-    return double_operators.count(s);
 }
 
 bool Lexer::isValidSeparator(char c) const

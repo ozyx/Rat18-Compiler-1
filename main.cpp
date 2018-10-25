@@ -56,7 +56,7 @@ int main()
 
     std::cout << std::endl << "EXECUTION HAS COMPLETED." << std::endl;
     std::cout << "Press enter to continue. . ." << std::endl;
-    std::cin.get();
+    // std::cin.get();
 
     return 0;
 }

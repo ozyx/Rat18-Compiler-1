@@ -13,18 +13,23 @@ public:
   enum State
   {
     NS = 0, // NULL STATE
-    S1,     // ACCEPTABLE ID
-    S2,     // ACCEPTABLE ID
-    S3,
-    S4,     // ACCEPTABLE INT
-    S5,
-    S6,     // ACCEPTABLE REAL
-    S7,
-    S8,
-    S9,
+    S01,    // ACCEPTABLE ID
+    S02,    // ACCEPTABLE ID
+    S03,
+    S04, // ACCEPTABLE INT
+    S05,
+    S06, // ACCEPTABLE REAL
+    S07,
+    S08,
+    S09,
     S10,
-    S11,    // ACCEPTABLE '$$'
-    TRM     // TERMINATING
+    S11, // ACCEPTABLE '$$'
+    S12,
+    S13,
+    S14,
+    S15,
+    S16,
+    TRM // TERMINATING
   };
 
   enum TransitionType
@@ -32,31 +37,41 @@ public:
     IDENTIFIER = 0,
     INTEGER,
     REAL,
-    OPERATOR,
+    CARROT,
+    EQUALS,
+    GREATERTHAN,
+    LESSTHAN,
+    PLUS,
+    MINUS,
+    MULTIPLY,
+    DIVIDE,
     SEPARATOR,
     FUNC_SEPARATOR,
     REJECT
   };
 
   // State table
-  int stateTable[13][7] = {{S1,  S4,  TRM, S7,  S9,  S10, TRM},  // INITIAL STATE
-                           {S2,  S3,  TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE ID
-                           {S2,  S3,  TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE ID
-                           {S2,  S3,  TRM, TRM, TRM, TRM, TRM},
-                           {TRM, S4,  S5,  TRM, TRM, TRM, TRM},  // ACCEPTABLE INT
-                           {TRM, S6,  TRM, TRM, TRM, TRM, TRM},
-                           {TRM, S6,  TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE REAL
-                           {TRM, TRM, TRM, S8,  TRM, TRM, TRM},  // ACCEPTABLE 1-OP
-                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE 2-OP
-                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE SEPARATOR
-                           {TRM, TRM, TRM, TRM, TRM, S11, TRM},
-                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE '$$'
-                           {TRM, TRM, TRM, TRM, TRM, TRM, TRM}}; // TERMINATING
+  int stateTable[18][14] = {{S01, S04, TRM, S12, S14, S16, S16, S16, S16, S16, S16, S09, S10, TRM}, // INITIAL STATE
+                            {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE ID
+                            {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE ID
+                            {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
+                            {TRM, S04, S05, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE INT
+                            {TRM, S06, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
+                            {TRM, S06, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE REAL
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, 
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, 
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE SEPARATOR
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, S11, TRM},
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE '$$'
+                            {TRM, TRM, TRM, TRM, S13, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "^="
+                            {TRM, TRM, TRM, TRM, S15, S15, S15, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "="
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE DOUBLE OP
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE SINGLE OF
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}}; // TERMINATING
 
   std::unordered_set<std::string> keywords = {"while", "whileend", "int", "function", "if", "ifend", "return", "get", "put", "true", "false", "boolean", "real", "else"};
-  std::unordered_set<char> separators = {'(',')','{','}',',',':', ';'};
-  std::unordered_set<char> operators = {'+','-','*','/','<','>','=','^'};
-  std::unordered_set<std::string> double_operators = {"==", "^=", "=>", "=<"};
+  std::unordered_set<char> separators = {'(', ')', '{', '}', ',', ':', ';'};
 
   struct Token
   {
@@ -84,12 +99,6 @@ private:
   int getTransition(char tokenChar) const;
 
   std::string stateToString(int state) const;
-
-  // Use for single operators
-  bool isValidOperator(char c) const;
-
-  // Use for double operators
-  bool isValidOperator(std::string s) const;
 
   bool isValidSeparator(char c) const;
 
