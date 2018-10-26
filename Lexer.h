@@ -27,8 +27,6 @@ public:
     S12,
     S13,
     S14,
-    S15,
-    S16,
     TRM // TERMINATING
   };
 
@@ -51,21 +49,19 @@ public:
   };
 
   // State table
-  int stateTable[18][14] = {{S01, S04, TRM, S12, S14, S16, S16, S16, S16, S16, S16, S09, S10, TRM}, // INITIAL STATE
+  int stateTable[18][14] = {{S01, S04, TRM, S10, S12, S14, S14, S14, S14, S14, S14, S07, S08, TRM}, // INITIAL STATE
                             {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE ID
                             {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE ID
                             {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
                             {TRM, S04, S05, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE INT
                             {TRM, S06, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
                             {TRM, S06, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE REAL
-                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, 
-                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, 
                             {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE SEPARATOR
-                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, S11, TRM},
+                            {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, S09, TRM},
                             {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE '$$'
-                            {TRM, TRM, TRM, TRM, S13, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
+                            {TRM, TRM, TRM, TRM, S11, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},
                             {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "^="
-                            {TRM, TRM, TRM, TRM, S15, S15, S15, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "="
+                            {TRM, TRM, TRM, TRM, S13, S13, S13, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "="
                             {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE DOUBLE OP
                             {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE SINGLE OF
                             {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}}; // TERMINATING

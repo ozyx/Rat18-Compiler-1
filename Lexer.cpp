@@ -214,14 +214,14 @@ std::string Lexer::stateToString(int state) const
     case S06:
         stateStr = "Real";
         break;
+    case S07:
     case S09:
-    case S11:
         stateStr = "Separator";
         break;
+    case S11:
+    case S12:
     case S13:
     case S14:
-    case S15:
-    case S16:
         stateStr = "Operator";
         break;
     }
