@@ -60,7 +60,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         {
             tokenStr = stateToString(prevState);
 
-            if (tokenStr != "Reject")
+            if (tokenStr != "Illegal")
             {
 
                 if (tokenStr == "Identifier")
@@ -119,7 +119,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
     tokenStr = stateToString(prevState);
 
     // Evaluate the last token
-    if (tokenStr != "Reject")
+    if (tokenStr != "Illegal")
     {
         if (tokenStr == "Identifier")
         {
@@ -200,7 +200,7 @@ int Lexer::getTransition(char c) const
 
 std::string Lexer::stateToString(int state) const
 {
-    std::string stateStr = "Reject";
+    std::string stateStr = "Illegal";
 
     switch (state)
     {
