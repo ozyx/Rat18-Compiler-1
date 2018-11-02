@@ -4,7 +4,7 @@ Lexer::Lexer() : comment(false) {}
 
 Lexer::~Lexer() {}
 
-std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
+std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer, int lineNumber)
 {
     std::vector<Token> tokens;
     Token *token;
@@ -73,7 +73,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
                 }
 
                 // Create token and add to list of tokens
-                token = new Token(tokenStr, lexeme);
+                token = new Token(tokenStr, lexeme, lineNumber);
                 tokens.push_back(*token);
 
                 // reset state machine
@@ -94,7 +94,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
                 // Push back rejected token
                 if (!lexeme.empty())
                 {
-                    token = new Token(tokenStr, lexeme);
+                    token = new Token(tokenStr, lexeme, lineNumber);
                     tokens.push_back(*token);
                 }
 
@@ -131,7 +131,7 @@ std::vector<Lexer::Token> Lexer::lex(std::stringstream &buffer)
         }
 
         // Create token and add to list of tokens
-        token = new Token(tokenStr, lexeme);
+        token = new Token(tokenStr, lexeme, lineNumber);
         tokens.push_back(*token);
     }
 

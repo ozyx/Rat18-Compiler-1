@@ -71,14 +71,16 @@ public:
 
   struct Token
   {
-    Token(std::string token, std::string lexeme)
+    Token(std::string token, std::string lexeme, int lineNumber)
     {
       this->token = token;
       this->lexeme = lexeme;
+      this->lineNumber = lineNumber;
     }
 
     std::string token;
     std::string lexeme;
+    int lineNumber;
   };
 
   // Constructor
@@ -87,7 +89,7 @@ public:
   // Destructor
   ~Lexer();
 
-  std::vector<Token> lex(std::stringstream &buffer);
+  std::vector<Token> lex(std::stringstream &buffer, int lineNumber);
 
 private:
   bool comment;
