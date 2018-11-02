@@ -36,20 +36,26 @@ int main()
         // Output header
         std::cout << std::left;
         std::cout << std::setw(COL_SIZE) << "LEXEME"
-                  << "TOKEN" << std::endl;
+                  << std::setw(COL_SIZE) << "TOKEN" 
+                  << "LINE NUMBER" << std::endl;
         std::cout << std::setfill('-') << std::setw(COL_SIZE) << "-"
+                  << std::setw(COL_SIZE) << '-'
                   << "-----" << std::setfill(' ') << std::endl;
+        
+        int lineNumber = 1;
 
         while (getline(fin, line))
         {
             buffer = new std::stringstream(line);
-            tokens = lexer->lex(*buffer);
+            tokens = lexer->lex(*buffer, lineNumber);
 
             // Output token list
             for (std::vector<Lexer::Token>::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
             {
-                std::cout << std::setw(COL_SIZE) << (*it).lexeme << (*it).token << std::endl;
+                std::cout << std::setw(COL_SIZE) << (*it).lexeme << std::setw(COL_SIZE) << (*it).token << (*it).lineNumber << std::endl;
             }
+
+            lineNumber++;
         }
         fin.close();
     }
