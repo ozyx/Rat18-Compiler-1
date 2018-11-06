@@ -42,6 +42,7 @@ class SyntaxAnalyzer
     void Empty();
     void ExpressionPrime();
     void TermPrime();
+    void Identifier();
     
     void getNextToken();
 
