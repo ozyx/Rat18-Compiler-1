@@ -13,10 +13,13 @@ SyntaxAnalyzer::~SyntaxAnalyzer()
 
 void SyntaxAnalyzer::getNextToken()
 {
+    // Increment iterator
     ++it;
+
     if(it == this->tokens.end())
     {
         // No more tokens!
+        // Throw an error
     }
 
     this->currentToken = *(it);
