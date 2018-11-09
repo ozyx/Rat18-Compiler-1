@@ -28,15 +28,12 @@ void SyntaxAnalyzer::Rat18F()
 {
     OptFunctionDefinitions();
 
-    getNextToken();
-
     if (currentToken.lexeme == "$$")
     {
+        getNextToken();
         OptDeclarationList();
         StatementList();
     }
-
-    getNextToken();
 
     if (currentToken.lexeme != "$$")
     {
@@ -44,9 +41,21 @@ void SyntaxAnalyzer::Rat18F()
     }
 }
 
+void SyntaxAnalyzer::Parameter()
+{
+    IDs();
+
+    if (currentToken.lexeme != ":")
+    {
+        // TODO: throw error
+    }
+
+    getNextToken();
+    Qualifier();
+}
+
 void SyntaxAnalyzer::Function()
 {
-    getNextToken();
     Identifier();
 
     getNextToken();
@@ -55,24 +64,25 @@ void SyntaxAnalyzer::Function()
         // TODO: throw error
     }
 
+    getNextToken();
+
     OptParameterList();
 
-    getNextToken();
     if (currentToken.lexeme != ")")
     {
         // TODO: throw error
     }
 
+    getNextToken();
     OptDeclarationList();
     Body();
 }
 
 void SyntaxAnalyzer::OptFunctionDefinitions()
 {
-    getNextToken();
-
     if (currentToken.lexeme == "function")
     {
+        getNextToken();
         FunctionDefinitions();
     }
     else
@@ -83,8 +93,6 @@ void SyntaxAnalyzer::OptFunctionDefinitions()
 
 void SyntaxAnalyzer::OptDeclarationList()
 {
-    getNextToken();
-
     if (currentToken.lexeme == "real" | currentToken.lexeme == "boolean" | currentToken.lexeme == "int")
     {
         DeclarationList();
@@ -99,8 +107,6 @@ void SyntaxAnalyzer::DeclarationList()
 {
     Declaration();
 
-    getNextToken();
-
     if (currentToken.lexeme == ";")
     {
         getNextToken();
@@ -114,7 +120,6 @@ void SyntaxAnalyzer::DeclarationList()
 void SyntaxAnalyzer::Declaration()
 {
     Qualifier();
-
     getNextToken();
 
     if (currentToken.token == "Identifier")
@@ -132,6 +137,7 @@ void SyntaxAnalyzer::IDs()
 {
     Identifier();
     getNextToken();
+
     if (currentToken.lexeme == ",")
     {
         getNextToken();
@@ -155,7 +161,6 @@ void SyntaxAnalyzer::StatementList()
 {
     Statement();
 
-    getNextToken();
     if (currentToken.lexeme == "get" | currentToken.lexeme == "put" | currentToken.lexeme == "while" | currentToken.lexeme == "if" |
         currentToken.lexeme == "return" | currentToken.token == "Identifier")
     {
@@ -165,10 +170,10 @@ void SyntaxAnalyzer::StatementList()
 
 void SyntaxAnalyzer::Statement()
 {
-    getNextToken();
 
     if (currentToken.lexeme == "{")
     {
+        getNextToken();
         Compound();
     }
     else if (currentToken.token == "Identifier")
@@ -177,22 +182,27 @@ void SyntaxAnalyzer::Statement()
     }
     else if (currentToken.lexeme == "if")
     {
+        getNextToken();
         If();
     }
     else if (currentToken.lexeme == "return")
     {
+        getNextToken();
         Return();
     }
     else if (currentToken.lexeme == "put")
     {
+        getNextToken();
         Print();
     }
     else if (currentToken.lexeme == "get")
     {
+        getNextToken();
         Scan();
     }
     else if (currentToken.lexeme == "while")
     {
+        getNextToken();
         While();
     }
     else
@@ -205,12 +215,12 @@ void SyntaxAnalyzer::Compound()
 {
     StatementList();
 
-    getNextToken();
-
     if (currentToken.lexeme != "}")
     {
         // TODO: throw error
     }
+
+    getNextToken();
 }
 
 void SyntaxAnalyzer::Assign()
@@ -224,7 +234,14 @@ void SyntaxAnalyzer::Assign()
         // TODO: throw error
     }
 
+    getNextToken();
     Expression();
+
+    if(currentToken.lexeme != ";")
+    {
+        // TODO: throw error
+    }
+    getNextToken();
 }
 
 void SyntaxAnalyzer::Expression()
@@ -235,9 +252,10 @@ void SyntaxAnalyzer::Expression()
 
 void SyntaxAnalyzer::ExpressionPrime()
 {
-    getNextToken();
     if (currentToken.lexeme == "+" | currentToken.lexeme == "-")
     {
+        getNextToken();
+
         Term();
         ExpressionPrime();
     }
@@ -255,8 +273,6 @@ void SyntaxAnalyzer::Term()
 
 void SyntaxAnalyzer::Factor()
 {
-    getNextToken();
-
     if (currentToken.lexeme == "-")
     {
         getNextToken();
@@ -274,41 +290,48 @@ void SyntaxAnalyzer::Primary()
         getNextToken();
         if (currentToken.lexeme == "(")
         {
-            IDs();
             getNextToken();
+            IDs();
 
             if (currentToken.lexeme != ")")
             {
                 // TODO: throw error
             }
+
+            getNextToken();
         }
     }
     else if (currentToken.token == "Integer")
     {
         Integer();
+        getNextToken();
     }
     else if (currentToken.lexeme == "(")
     {
-        Expression();
-
         getNextToken();
+
+        Expression();
 
         if (currentToken.lexeme != ")")
         {
             // TODO: throw error
         }
+        getNextToken();
     }
     else if (currentToken.token == "Real")
     {
         Real();
+        getNextToken();
     }
     else if (currentToken.lexeme == "true")
     {
         // TODO:
+        getNextToken();
     }
     else if (currentToken.lexeme == "false")
     {
         // TODO:
+        getNextToken();
     }
 }
 
@@ -324,18 +347,15 @@ void SyntaxAnalyzer::Real()
 
 void SyntaxAnalyzer::Return()
 {
-    getNextToken();
-
     if (currentToken.lexeme != ";")
     {
         Expression();
     }
+    getNextToken();
 }
 
 void SyntaxAnalyzer::If()
 {
-    getNextToken();
-
     if (currentToken.lexeme != "(")
     {
         // TODO: throw error
@@ -369,7 +389,6 @@ void SyntaxAnalyzer::If()
 
 void SyntaxAnalyzer::Condition()
 {
-    getNextToken();
     Expression();
 
     Relop();
@@ -393,11 +412,12 @@ void SyntaxAnalyzer::Empty()
 
 void SyntaxAnalyzer::Body()
 {
-    getNextToken();
     if (currentToken.lexeme != "{")
     {
         // TODO: throw error
     }
+
+    getNextToken();
 
     StatementList();
 
@@ -405,22 +425,23 @@ void SyntaxAnalyzer::Body()
     {
         // TODO: throw error
     }
+
+    getNextToken();
 }
 
 void SyntaxAnalyzer::FunctionDefinitions()
 {
     Function();
 
-    getNextToken();
     if (currentToken.lexeme == "function")
     {
+        getNextToken();
         FunctionDefinitions();
     }
 }
 
 void SyntaxAnalyzer::Print()
 {
-    getNextToken();
     if (currentToken.lexeme != "(")
     {
         // TODO: throw error
@@ -429,22 +450,22 @@ void SyntaxAnalyzer::Print()
     getNextToken();
     Expression();
 
-    getNextToken();
     if (currentToken.lexeme != ")")
     {
         // TODO: throw error
     }
-
     getNextToken();
+
     if (currentToken.lexeme != ";")
     {
         // TODO: throw error
     }
+
+    getNextToken();
 }
 
 void SyntaxAnalyzer::Scan()
 {
-    getNextToken();
     if (currentToken.lexeme != "(")
     {
         // TODO: throw error
@@ -453,7 +474,6 @@ void SyntaxAnalyzer::Scan()
     getNextToken();
     IDs();
 
-    getNextToken();
     if (currentToken.lexeme != ")")
     {
         // TODO: throw error
@@ -464,15 +484,77 @@ void SyntaxAnalyzer::Scan()
     {
         // TODO: throw error
     }
+
+    getNextToken();
 }
 
 void SyntaxAnalyzer::TermPrime()
 {
-    getNextToken();
-
     if (currentToken.lexeme == "*" | currentToken.lexeme == "/")
     {
+        getNextToken();
+
         Factor();
         TermPrime();
     }
+}
+
+void SyntaxAnalyzer::Analyze()
+{
+    Rat18F();
+}
+
+void SyntaxAnalyzer::OptParameterList()
+{
+    if (currentToken.lexeme == ")")
+    {
+        Empty();
+    }
+    else if (currentToken.token == "Identifier")
+    {
+        ParameterList();
+    }
+    else
+    {
+        // TODO: throw error
+    }
+}
+
+void SyntaxAnalyzer::ParameterList()
+{
+    Parameter();
+
+    getNextToken();
+
+    if (currentToken.lexeme == ",")
+    {
+        getNextToken();
+        ParameterList();
+    }
+}
+
+void SyntaxAnalyzer::While()
+{
+
+    if (currentToken.lexeme != "(")
+    {
+        // TODO: throw error
+    }
+    getNextToken();
+
+    Condition();
+
+
+    if (currentToken.lexeme != ")")
+    {
+        // TODO: throw error
+    }
+    getNextToken();
+    Statement();
+
+    if (currentToken.lexeme != "whileend")
+    {
+        // TODO: throw error
+    }
+    getNextToken();
 }

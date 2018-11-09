@@ -9,6 +9,8 @@ class SyntaxAnalyzer
     SyntaxAnalyzer(std::vector<Lexer::Token> tokens, bool print = false);
     ~SyntaxAnalyzer();
 
+    void Analyze();
+
   private:
 
     void Rat18F();
