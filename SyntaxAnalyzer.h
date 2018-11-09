@@ -43,6 +43,8 @@ class SyntaxAnalyzer
     void ExpressionPrime();
     void TermPrime();
     void Identifier();
+    void Integer();
+    void Real();
     
     void getNextToken();
 
