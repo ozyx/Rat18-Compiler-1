@@ -237,7 +237,7 @@ void SyntaxAnalyzer::Assign()
     getNextToken();
     Expression();
 
-    if(currentToken.lexeme != ";")
+    if (currentToken.lexeme != ";")
     {
         // TODO: throw error
     }
@@ -544,7 +544,6 @@ void SyntaxAnalyzer::While()
 
     Condition();
 
-
     if (currentToken.lexeme != ")")
     {
         // TODO: throw error
@@ -557,4 +556,17 @@ void SyntaxAnalyzer::While()
         // TODO: throw error
     }
     getNextToken();
+}
+
+SyntaxError::SyntaxError(std::string message, int lineNumber)
+{
+    this->message = message;
+    this->lineNumber = lineNumber;
+}
+
+SyntaxError::~SyntaxError() {}
+
+std::string SyntaxError::getMessage()
+{
+    return (this->message + " Line: " + std::to_string(this->lineNumber));
 }

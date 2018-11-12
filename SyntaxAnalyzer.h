@@ -3,57 +3,68 @@
 
 #include "Lexer.h"
 
+class SyntaxError
+{
+public:
+  SyntaxError(std::string message, int lineNumber);
+  ~SyntaxError();
+
+  std::string getMessage();
+
+private:
+  std::string message;
+  int lineNumber;
+};
 class SyntaxAnalyzer
 {
-  public:
-    SyntaxAnalyzer(std::vector<Lexer::Token> tokens, bool print = false);
-    ~SyntaxAnalyzer();
+public:
+  SyntaxAnalyzer(std::vector<Lexer::Token> tokens, bool print = false);
+  ~SyntaxAnalyzer();
 
-    void Analyze();
+  void Analyze();
 
-  private:
+private:
+  void Rat18F();
+  void OptFunctionDefinitions();
+  void FunctionDefinitions();
+  void Function();
+  void OptParameterList();
+  void ParameterList();
+  void Parameter();
+  void Qualifier();
+  void Body();
+  void OptDeclarationList();
+  void DeclarationList();
+  void Declaration();
+  void IDs();
+  void StatementList();
+  void Statement();
+  void Compound();
+  void Assign();
+  void If();
+  void Return();
+  void Print();
+  void Scan();
+  void While();
+  void Condition();
+  void Relop();
+  void Expression();
+  void Term();
+  void Factor();
+  void Primary();
+  void Empty();
+  void ExpressionPrime();
+  void TermPrime();
+  void Identifier();
+  void Integer();
+  void Real();
 
-    void Rat18F();
-    void OptFunctionDefinitions();
-    void FunctionDefinitions();
-    void Function();
-    void OptParameterList();
-    void ParameterList();
-    void Parameter();
-    void Qualifier();
-    void Body();
-    void OptDeclarationList();
-    void DeclarationList();
-    void Declaration();
-    void IDs();
-    void StatementList();
-    void Statement();
-    void Compound();
-    void Assign();
-    void If();
-    void Return();
-    void Print();
-    void Scan();
-    void While();
-    void Condition();
-    void Relop();
-    void Expression();
-    void Term();
-    void Factor();
-    void Primary();
-    void Empty();
-    void ExpressionPrime();
-    void TermPrime();
-    void Identifier();
-    void Integer();
-    void Real();
-    
-    void getNextToken();
+  void getNextToken();
 
-    std::vector<Lexer::Token> tokens;
-    std::vector<Lexer::Token>::iterator it;
-    Lexer::Token currentToken;
-    bool print;
+  std::vector<Lexer::Token> tokens;
+  std::vector<Lexer::Token>::iterator it;
+  Lexer::Token currentToken;
+  bool print;
 };
 
 #endif // SYNTAXANALYZER_H
