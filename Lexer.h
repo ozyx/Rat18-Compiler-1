@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <unordered_set>
+#include <iomanip>
 #include "stdafx.h"
 
 class Lexer

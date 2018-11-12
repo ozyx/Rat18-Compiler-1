@@ -9,12 +9,13 @@ public:
   SyntaxError(std::string message, int lineNumber);
   ~SyntaxError();
 
-  std::string getMessage();
+  std::string getMessage() const;
 
 private:
   std::string message;
   int lineNumber;
 };
+
 class SyntaxAnalyzer
 {
 public:
@@ -60,6 +61,7 @@ private:
   void Real();
 
   void getNextToken();
+  void printCurrentToken();
 
   std::vector<Lexer::Token> tokens;
   std::vector<Lexer::Token>::iterator it;
