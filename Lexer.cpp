@@ -1,5 +1,6 @@
 #include "Lexer.h"
 
+
 Lexer::Lexer() : comment(false) {}
 
 Lexer::~Lexer() {}

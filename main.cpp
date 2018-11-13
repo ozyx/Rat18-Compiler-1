@@ -15,54 +15,57 @@ int main()
     std::stringstream *buffer;
     std::string line;
 
-    std::vector<std::string> files = {"testfile.txt"};
+    std::vector<std::string> files = {"test1.txt", "test2.txt", "test3.txt"};
 
-    for (std::string file : files)
-    {
+	for (std::string file : files)
+	{
 
-        // Open the file
-        fin.open(file.c_str());
+		// Open the file
+		fin.open(file.c_str());
 
-        if (!fin)
-        {
-            std::cout << "input file did not open" << std::endl;
-            exit(1);
-        }
+		if (!fin)
+		{
+			std::cout << "file not found" << std::endl;
+			continue;
+		}
 
-        std::cout << std::endl
-                  << "RUNNING TEST CASE FILE \"" << file << "\"" << std::endl
-                  << std::endl;
+		std::cout << std::endl
+			<< "RUNNING TEST CASE FILE \"" << file << "\"" << std::endl
+			<< std::endl;
 
-        // File has opened, instantiate the lexer.
-        Lexer *lexer = new Lexer();
+		// File has opened, instantiate the lexer.
+		Lexer *lexer = new Lexer();
 
-        int lineNumber = 1;
+		int lineNumber = 1;
 
-        while (getline(fin, line))
-        {
-            buffer = new std::stringstream(line);
-            lineTokens = lexer->lex(*buffer, lineNumber);
+		while (getline(fin, line))
+		{
+			buffer = new std::stringstream(line);
+			lineTokens = lexer->lex(*buffer, lineNumber);
 
-            tokens.insert(tokens.end(), lineTokens.begin(), lineTokens.end());
+			tokens.insert(tokens.end(), lineTokens.begin(), lineTokens.end());
 
-            lineNumber++;
-        }
-        fin.close();
-    }
+			lineNumber++;
+		}
+		fin.close();
 
-    SyntaxAnalyzer syntaxAnalyzer = SyntaxAnalyzer(tokens, true);
+		std::ofstream out;
+		out.open("output.txt");
 
-    try
-    {
-        // Run syntactical analysis
-        syntaxAnalyzer.Analyze();
-    }
-    catch (const SyntaxError &e)
-    {
-        std::cout << "ERROR: " << e.getMessage();
-        exit(1);
-    }
+		SyntaxAnalyzer *syntaxAnalyzer = new SyntaxAnalyzer(tokens, out, true);
 
+		try
+		{
+			// Run syntactical analysis
+			syntaxAnalyzer->Analyze();
+		}
+		catch (const SyntaxError &e)
+		{
+			out << std::endl << "ERROR: " << e.getMessage();
+		}
+
+		tokens.clear();
+	}
     std::cout << std::endl
               << "EXECUTION HAS COMPLETED." << std::endl;
     std::cout << "Press enter to continue. . ." << std::endl;

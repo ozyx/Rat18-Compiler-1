@@ -1,12 +1,16 @@
 #ifndef SYNTAXANALYZER_H
 #define SYNTAXANALYZER_H
 
+#include <fstream>
 #include "Lexer.h"
 
 class SyntaxError
 {
 public:
+
+  // Constructor
   SyntaxError(std::string message, int lineNumber);
+
   ~SyntaxError();
 
   std::string getMessage() const;
@@ -19,9 +23,12 @@ private:
 class SyntaxAnalyzer
 {
 public:
-  SyntaxAnalyzer(std::vector<Lexer::Token> tokens, bool print = false);
+
+	// Constructor
+  SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print = false);
   ~SyntaxAnalyzer();
 
+  // Begins the analysis process with the given tokens
   void Analyze();
 
 private:
@@ -63,10 +70,11 @@ private:
   void getNextToken();
   void printCurrentToken();
 
-  std::vector<Lexer::Token> tokens;
-  std::vector<Lexer::Token>::iterator it;
+  const std::vector<Lexer::Token> &tokens;
+  std::vector<Lexer::Token>::const_iterator it;
   Lexer::Token currentToken;
   bool print;
+  std::ofstream &output;
 };
 
 #endif // SYNTAXANALYZER_H

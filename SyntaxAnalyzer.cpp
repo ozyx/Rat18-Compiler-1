@@ -1,14 +1,11 @@
 #include "SyntaxAnalyzer.h"
 
-SyntaxAnalyzer::SyntaxAnalyzer(std::vector<Lexer::Token> tokens, bool print) : it(tokens.begin()), currentToken(*(it))
+SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print) : tokens(tokens), it(tokens.begin()), currentToken(*(it)), output(output)
 {
-    this->print = print;
-    this->tokens = tokens;
+	this->print = print;
 }
 
-SyntaxAnalyzer::~SyntaxAnalyzer()
-{
-}
+SyntaxAnalyzer::~SyntaxAnalyzer() { output.close(); }
 
 /**
  * Get the next token in the list of tokens
@@ -17,7 +14,7 @@ SyntaxAnalyzer::~SyntaxAnalyzer()
 void SyntaxAnalyzer::getNextToken()
 {
     // Increment iterator
-    ++it;
+	++it;
 
     if (it == this->tokens.end())
     {
@@ -31,14 +28,20 @@ void SyntaxAnalyzer::getNextToken()
     {
         printCurrentToken();
     }
+
+	if (this->currentToken.token == "Illegal")
+	{
+		throw SyntaxError("Illegal symbol \'" + this->currentToken.lexeme + "\'", this->currentToken.lineNumber);
+	}
 }
 
+// The root of the top-down parser
 void SyntaxAnalyzer::Rat18F()
 {
     if (print)
     {
         printCurrentToken();
-        std::cout << "\t<Rat18F> -> <Opt Function Definitions> $$ <Opt Declaration List> <Statement List>" << std::endl;
+        output << "\t<Rat18F> -> <Opt Function Definitions> $$ <Opt Declaration List> <Statement List>" << std::endl;
     }
 
     OptFunctionDefinitions();
@@ -60,7 +63,7 @@ void SyntaxAnalyzer::Parameter()
 {
     if (print)
     {
-        std::cout << "\t<Parameter> -> <IDs> : <Qualifier>" << std::endl;
+        output << "\t<Parameter> -> <IDs> : <Qualifier>" << std::endl;
     }
 
     IDs();
@@ -78,7 +81,7 @@ void SyntaxAnalyzer::Function()
 {
     if (print)
     {
-        std::cout << "\t<Function> ->  function <Identifier> ( <Opt Parameter List> ) <Opt Declaration List> <Body>" << std::endl;
+        output << "\t<Function> ->  function <Identifier> ( <Opt Parameter List> ) <Opt Declaration List> <Body>" << std::endl;
     }
 
     Identifier();
@@ -107,7 +110,7 @@ void SyntaxAnalyzer::OptFunctionDefinitions()
 {
     if (print)
     {
-        std::cout << "\t<Opt Function Definitions> ->  <Function Definitions> | <Empty>" << std::endl;
+        output << "\t<Opt Function Definitions> ->  <Function Definitions> | <Empty>" << std::endl;
     }
 
     if (currentToken.lexeme == "function")
@@ -125,7 +128,7 @@ void SyntaxAnalyzer::OptDeclarationList()
 {
     if (print)
     {
-        std::cout << "\t<Opt Declaration List> -> <Declaration List> | <Empty>" << std::endl;
+        output << "\t<Opt Declaration List> -> <Declaration List> | <Empty>" << std::endl;
     }
 
     if (currentToken.lexeme == "real" | currentToken.lexeme == "boolean" | currentToken.lexeme == "int")
@@ -142,7 +145,7 @@ void SyntaxAnalyzer::DeclarationList()
 {
     if (print)
     {
-        std::cout << "\t<Declaration List> -> <Declaration>; | <Declaration>; <Declaration List>\n";
+        output << "\t<Declaration List> -> <Declaration>; | <Declaration>; <Declaration List>\n";
     }
 
     Declaration();
@@ -161,7 +164,7 @@ void SyntaxAnalyzer::Declaration()
 {
     if (print)
     {
-        std::cout << "\t<Declaration> -> <Qualifier> <IDs>" << std::endl;
+        output << "\t<Declaration> -> <Qualifier> <IDs>" << std::endl;
     }
 
     Qualifier();
@@ -177,7 +180,7 @@ void SyntaxAnalyzer::Qualifier()
 {
     if (print)
     {
-        std::cout << "\t<Qualifier> ->  int | boolean | real" << std::endl;
+        output << "\t<Qualifier> ->  int | boolean | real" << std::endl;
     }
 }
 
@@ -185,7 +188,7 @@ void SyntaxAnalyzer::IDs()
 {
     if (print)
     {
-        std::cout << "\t<IDs> -> <Identifier> | <Identifier>, <IDs>" << std::endl;
+        output << "\t<IDs> -> <Identifier> | <Identifier>, <IDs>" << std::endl;
     }
 
     Identifier();
@@ -209,7 +212,7 @@ void SyntaxAnalyzer::Identifier()
 {
     if (print)
     {
-        std::cout << "\t<Identifier>" << std::endl;
+        output << "\t<Identifier>" << std::endl;
     }
 }
 
@@ -217,7 +220,7 @@ void SyntaxAnalyzer::StatementList()
 {
     if (print)
     {
-        std::cout << "\t<Statement List> -> <Statement> | <Statement> <Statement List>" << std::endl;
+        output << "\t<Statement List> -> <Statement> | <Statement> <Statement List>" << std::endl;
     }
 
     Statement();
@@ -233,7 +236,7 @@ void SyntaxAnalyzer::Statement()
 {
     if (print)
     {
-        std::cout << "\t<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>" << std::endl;
+        output << "\t<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>" << std::endl;
     }
 
     if (currentToken.lexeme == "{")
@@ -280,7 +283,7 @@ void SyntaxAnalyzer::Compound()
 {
     if (print)
     {
-        std::cout << "\t<Compound> -> { <Statement List> }" << std::endl;
+        output << "\t<Compound> -> { <Statement List> }" << std::endl;
     }
 
     StatementList();
@@ -297,7 +300,7 @@ void SyntaxAnalyzer::Assign()
 {
     if (print)
     {
-        std::cout << "\t<Assign> -> <Identifier> = <Expression>;" << std::endl;
+        output << "\t<Assign> -> <Identifier> = <Expression>;" << std::endl;
     }
 
     Identifier();
@@ -323,7 +326,7 @@ void SyntaxAnalyzer::Expression()
 {
     if (print)
     {
-        std::cout << "\t<Expression> -> <Term> <ExpressionPrime>" << std::endl;
+        output << "\t<Expression> -> <Term> <ExpressionPrime>" << std::endl;
     }
 
     Term();
@@ -334,7 +337,7 @@ void SyntaxAnalyzer::ExpressionPrime()
 {
     if (print)
     {
-        std::cout << "\t<ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrime> | <Empty>" << std::endl;
+        output << "\t<ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrime> | <Empty>" << std::endl;
     }
 
     if (currentToken.lexeme == "+" | currentToken.lexeme == "-")
@@ -354,7 +357,7 @@ void SyntaxAnalyzer::Term()
 {
     if (print)
     {
-        std::cout << "\t<Term> -> <Factor> <TermPrime>" << std::endl;
+        output << "\t<Term> -> <Factor> <TermPrime>" << std::endl;
     }
 
     Factor();
@@ -365,7 +368,7 @@ void SyntaxAnalyzer::Factor()
 {
     if (print)
     {
-        std::cout << "\t<Factor> -> - <Primary> | <Primary>" << std::endl;
+        output << "\t<Factor> -> - <Primary> | <Primary>" << std::endl;
     }
 
     if (currentToken.lexeme == "-")
@@ -380,7 +383,7 @@ void SyntaxAnalyzer::Primary()
 {
     if (print)
     {
-        std::cout << "\t<Primary> -> <Identifier> | <Integer> | <Identifier> ( <IDs> ) | ( <Expression> ) | <Real> | true | false" << std::endl;
+        output << "\t<Primary> -> <Identifier> | <Integer> | <Identifier> ( <IDs> ) | ( <Expression> ) | <Real> | true | false" << std::endl;
     }
 
     if (currentToken.token == "Identifier")
@@ -425,12 +428,12 @@ void SyntaxAnalyzer::Primary()
     }
     else if (currentToken.lexeme == "true")
     {
-        std::cout << "\ttrue" << std::endl;
+        output << "\ttrue" << std::endl;
         getNextToken();
     }
     else if (currentToken.lexeme == "false")
     {
-        std::cout << "\tfalse" << std::endl;
+        output << "\tfalse" << std::endl;
         getNextToken();
     }
 }
@@ -439,7 +442,7 @@ void SyntaxAnalyzer::Integer()
 {
     if (print)
     {
-        std::cout << "\t<Integer>" << std::endl;
+        output << "\t<Integer>" << std::endl;
     }
 }
 
@@ -447,7 +450,7 @@ void SyntaxAnalyzer::Real()
 {
     if (print)
     {
-        std::cout << "\t<Real>" << std::endl;
+        output << "\t<Real>" << std::endl;
     }
 }
 
@@ -455,7 +458,7 @@ void SyntaxAnalyzer::Return()
 {
     if (print)
     {
-        std::cout << "\t<Return> -> return; |  return <Expression>;" << std::endl;
+        output << "\t<Return> -> return; |  return <Expression>;" << std::endl;
     }
 
     if (currentToken.lexeme != ";")
@@ -469,7 +472,7 @@ void SyntaxAnalyzer::If()
 {
     if (print)
     {
-        std::cout << "\t<If> -> if ( <Condition> ) <Statement> endif | if ( <Condition> ) <Statement> else <Statement> endif" << std::endl;
+        output << "\t<If> -> if ( <Condition> ) <Statement> endif | if ( <Condition> ) <Statement> else <Statement> endif" << std::endl;
     }
 
     if (currentToken.lexeme != "(")
@@ -477,9 +480,9 @@ void SyntaxAnalyzer::If()
         throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
 
-    Condition();
+	getNextToken();
 
-    getNextToken();
+    Condition();
 
     if (currentToken.lexeme != ")")
     {
@@ -507,7 +510,7 @@ void SyntaxAnalyzer::Condition()
 {
     if (print)
     {
-        std::cout << "\t<Condition> -> <Expression>  <Relop>  <Expression>" << std::endl;
+        output << "\t<Condition> -> <Expression>  <Relop>  <Expression>" << std::endl;
     }
 
     Expression();
@@ -527,7 +530,7 @@ void SyntaxAnalyzer::Relop()
 
     if (print)
     {
-        std::cout << "\t<Relop> -> " << currentToken.lexeme << std::endl;
+        output << "\t<Relop> -> " << currentToken.lexeme << std::endl;
     }
 }
 
@@ -535,7 +538,7 @@ void SyntaxAnalyzer::Empty()
 {
     if (print)
     {
-        std::cout << "\t<Empty> -> ε" << std::endl;
+        output << "\t<Empty> -> ε" << std::endl;
     }
 }
 
@@ -543,7 +546,7 @@ void SyntaxAnalyzer::Body()
 {
     if (print)
     {
-        std::cout << "\t<Body> -> { <Statement List> }" << std::endl;
+        output << "\t<Body> -> { <Statement List> }" << std::endl;
     }
 
     if (currentToken.lexeme != "{")
@@ -567,7 +570,7 @@ void SyntaxAnalyzer::FunctionDefinitions()
 {
     if (print)
     {
-        std::cout << "\t<Function Definitions> -> <Function> | <Function> <Function Definitions>" << std::endl;
+        output << "\t<Function Definitions> -> <Function> | <Function> <Function Definitions>" << std::endl;
     }
 
     Function();
@@ -583,7 +586,7 @@ void SyntaxAnalyzer::Print()
 {
     if (print)
     {
-        std::cout << "\t<Print> -> put ( <Expression> );" << std::endl;
+        output << "\t<Print> -> put ( <Expression> );" << std::endl;
     }
 
     if (currentToken.lexeme != "(")
@@ -612,7 +615,7 @@ void SyntaxAnalyzer::Scan()
 {
     if (print)
     {
-        std::cout << "\t<Scan> -> get ( <IDs> );" << std::endl;
+        output << "\t<Scan> -> get ( <IDs> );" << std::endl;
     }
 
     if (currentToken.lexeme != "(")
@@ -641,7 +644,7 @@ void SyntaxAnalyzer::TermPrime()
 {
     if (print)
     {
-        std::cout << "\t<TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>" << std::endl;
+        output << "\t<TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>" << std::endl;
     }
 
     if (currentToken.lexeme == "*" | currentToken.lexeme == "/")
@@ -660,14 +663,14 @@ void SyntaxAnalyzer::TermPrime()
 void SyntaxAnalyzer::Analyze()
 {
     Rat18F();
-    std::cout << "Syntax Analysis Successful." << std::endl;
+    output << "Syntax Analysis Successful." << std::endl;
 }
 
 void SyntaxAnalyzer::OptParameterList()
 {
     if (print)
     {
-        std::cout << "\t<Opt Parameter List> -> <Parameter List> | <Empty>" << std::endl;
+        output << "\t<Opt Parameter List> -> <Parameter List> | <Empty>" << std::endl;
     }
 
     if (currentToken.lexeme == ")")
@@ -688,7 +691,7 @@ void SyntaxAnalyzer::ParameterList()
 {
     if (print)
     {
-        std::cout << "\t<Parameter List> -> <Parameter> | <Parameter> , <Parameter List>" << std::endl;
+        output << "\t<Parameter List> -> <Parameter> | <Parameter> , <Parameter List>" << std::endl;
     }
 
     Parameter();
@@ -706,7 +709,7 @@ void SyntaxAnalyzer::While()
 {
     if (print)
     {
-        std::cout << "\t<While> -> while ( <Condition> )  <Statement>" << std::endl;
+        output << "\t<While> -> while ( <Condition> )  <Statement>" << std::endl;
     }
 
     if (currentToken.lexeme != "(")
@@ -733,7 +736,7 @@ void SyntaxAnalyzer::While()
 
 void SyntaxAnalyzer::printCurrentToken()
 {
-    std::cout << std::left << std::endl
+    output << std::left << std::endl
               << std::setw(8) << "Token:" << std::setw(16) << currentToken.token << std::setw(8) << "Lexeme:" << currentToken.lexeme << std::endl
               << std::endl;
 }
