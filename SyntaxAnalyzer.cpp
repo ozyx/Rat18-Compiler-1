@@ -10,6 +10,10 @@ SyntaxAnalyzer::~SyntaxAnalyzer()
 {
 }
 
+/**
+ * Get the next token in the list of tokens
+ * Increments iterator to current token
+ */
 void SyntaxAnalyzer::getNextToken()
 {
     // Increment iterator
@@ -17,8 +21,8 @@ void SyntaxAnalyzer::getNextToken()
 
     if (it == this->tokens.end())
     {
-        // No more tokens!
-        // Throw an error
+        --it;
+        throw SyntaxError("Unexpected end of file", currentToken.lineNumber);
     }
 
     this->currentToken = *(it);
@@ -48,7 +52,7 @@ void SyntaxAnalyzer::Rat18F()
 
     if (currentToken.lexeme != "$$")
     {
-        throw new SyntaxError("Expected '$$'.", currentToken.lineNumber);
+        throw SyntaxError("Expected '$$'.", currentToken.lineNumber);
     }
 }
 
@@ -63,7 +67,7 @@ void SyntaxAnalyzer::Parameter()
 
     if (currentToken.lexeme != ":")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ':'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -72,12 +76,17 @@ void SyntaxAnalyzer::Parameter()
 
 void SyntaxAnalyzer::Function()
 {
+    if (print)
+    {
+        std::cout << "\t<Function> ->  function <Identifier> ( <Opt Parameter List> ) <Opt Declaration List> <Body>" << std::endl;
+    }
+
     Identifier();
 
     getNextToken();
     if (currentToken.lexeme != "(")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -86,7 +95,7 @@ void SyntaxAnalyzer::Function()
 
     if (currentToken.lexeme != ")")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ')'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -191,7 +200,7 @@ void SyntaxAnalyzer::IDs()
         }
         else
         {
-            // TODO: error
+            throw SyntaxError("Expected identifier", currentToken.lineNumber);
         }
     }
 }
@@ -263,7 +272,7 @@ void SyntaxAnalyzer::Statement()
     }
     else
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '{', identifier or keyword", currentToken.lineNumber);
     }
 }
 
@@ -278,7 +287,7 @@ void SyntaxAnalyzer::Compound()
 
     if (currentToken.lexeme != "}")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '}'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -297,7 +306,7 @@ void SyntaxAnalyzer::Assign()
 
     if (currentToken.lexeme != "=")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '='", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -305,7 +314,7 @@ void SyntaxAnalyzer::Assign()
 
     if (currentToken.lexeme != ";")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ';'", currentToken.lineNumber);
     }
     getNextToken();
 }
@@ -386,7 +395,7 @@ void SyntaxAnalyzer::Primary()
 
             if (currentToken.lexeme != ")")
             {
-                // TODO: throw error
+                throw SyntaxError("Expected ')'", currentToken.lineNumber);
             }
 
             getNextToken();
@@ -405,7 +414,7 @@ void SyntaxAnalyzer::Primary()
 
         if (currentToken.lexeme != ")")
         {
-            // TODO: throw error
+            throw SyntaxError("Expected ')'", currentToken.lineNumber);
         }
         getNextToken();
     }
@@ -416,12 +425,12 @@ void SyntaxAnalyzer::Primary()
     }
     else if (currentToken.lexeme == "true")
     {
-        // TODO:
+        std::cout << "\ttrue" << std::endl;
         getNextToken();
     }
     else if (currentToken.lexeme == "false")
     {
-        // TODO:
+        std::cout << "\tfalse" << std::endl;
         getNextToken();
     }
 }
@@ -465,7 +474,7 @@ void SyntaxAnalyzer::If()
 
     if (currentToken.lexeme != "(")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
 
     Condition();
@@ -474,7 +483,7 @@ void SyntaxAnalyzer::If()
 
     if (currentToken.lexeme != ")")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ')'", currentToken.lineNumber);
     }
 
     Statement();
@@ -490,7 +499,7 @@ void SyntaxAnalyzer::If()
 
     if (currentToken.lexeme != "ifend")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected 'ifend' keyword", currentToken.lineNumber);
     }
 }
 
@@ -513,7 +522,7 @@ void SyntaxAnalyzer::Relop()
 {
     if (currentToken.lexeme != "==" && currentToken.lexeme != "^=" && currentToken.lexeme != ">" && currentToken.lexeme != "<" && currentToken.lexeme != "=>" && currentToken.lexeme != "=<")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected relational operator", currentToken.lineNumber);
     }
 
     if (print)
@@ -539,7 +548,7 @@ void SyntaxAnalyzer::Body()
 
     if (currentToken.lexeme != "{")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '{'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -548,7 +557,7 @@ void SyntaxAnalyzer::Body()
 
     if (currentToken.lexeme != "}")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '}'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -579,7 +588,7 @@ void SyntaxAnalyzer::Print()
 
     if (currentToken.lexeme != "(")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -587,13 +596,13 @@ void SyntaxAnalyzer::Print()
 
     if (currentToken.lexeme != ")")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ')'", currentToken.lineNumber);
     }
     getNextToken();
 
     if (currentToken.lexeme != ";")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ';'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -601,9 +610,14 @@ void SyntaxAnalyzer::Print()
 
 void SyntaxAnalyzer::Scan()
 {
+    if (print)
+    {
+        std::cout << "\t<Scan> -> get ( <IDs> );" << std::endl;
+    }
+
     if (currentToken.lexeme != "(")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -611,13 +625,13 @@ void SyntaxAnalyzer::Scan()
 
     if (currentToken.lexeme != ")")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ')'", currentToken.lineNumber);
     }
 
     getNextToken();
     if (currentToken.lexeme != ";")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ';'", currentToken.lineNumber);
     }
 
     getNextToken();
@@ -639,9 +653,14 @@ void SyntaxAnalyzer::TermPrime()
     }
 }
 
+/**
+ * Attempt to syntactically analyze a list of
+ * Lexer tokens
+ */
 void SyntaxAnalyzer::Analyze()
 {
     Rat18F();
+    std::cout << "Syntax Analysis Successful." << std::endl;
 }
 
 void SyntaxAnalyzer::OptParameterList()
@@ -661,7 +680,7 @@ void SyntaxAnalyzer::OptParameterList()
     }
     else
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ')' or identifier", currentToken.lineNumber);
     }
 }
 
@@ -685,14 +704,14 @@ void SyntaxAnalyzer::ParameterList()
 
 void SyntaxAnalyzer::While()
 {
-    if(print)
+    if (print)
     {
         std::cout << "\t<While> -> while ( <Condition> )  <Statement>" << std::endl;
     }
 
     if (currentToken.lexeme != "(")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
     getNextToken();
 
@@ -700,23 +719,22 @@ void SyntaxAnalyzer::While()
 
     if (currentToken.lexeme != ")")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected ')'", currentToken.lineNumber);
     }
     getNextToken();
     Statement();
 
     if (currentToken.lexeme != "whileend")
     {
-        // TODO: throw error
+        throw SyntaxError("Expected 'whileend' keyword", currentToken.lineNumber);
     }
     getNextToken();
 }
 
 void SyntaxAnalyzer::printCurrentToken()
 {
-    std::cout << std::endl
-              << std::setw(8) << "Token: " << currentToken.token << std::endl
-              << std::setw(8) << "Lexeme: " << currentToken.lexeme << std::endl
+    std::cout << std::left << std::endl
+              << std::setw(8) << "Token:" << std::setw(16) << currentToken.token << std::setw(8) << "Lexeme:" << currentToken.lexeme << std::endl
               << std::endl;
 }
 
