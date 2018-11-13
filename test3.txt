@@ -1,17 +1,18 @@
 [* this is the third test case,
    where we include some edge cases *]
 
-function myInvalidFunction (var1: int, var2: int)
+function myInvalidFunction (var1x : int)
 {
     [* this comment should be ignored *]
 
-    return (var1 * var2) + 50;
+    return (var1x * var2x) + 50;
 }
 
 $$ [* this should be registered *]
     int a, b;
     a = 0;
     b = 1;
+    invalidVar1 = 3;
 
     while (a < b)
     {
