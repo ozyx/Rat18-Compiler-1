@@ -1,0 +1,2960 @@
+%PDF-1.3
+%����
+2 0 obj
+<<
+/Length 3063
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(1)]TJ
+/TT4 1 Tf
+2.5 -1.6333 TD
+(1:)Tj
+0 -1.1 TD
+[(2:)-599.8(RUNNING TEST CASE FILE "test1.txt")]TJ
+T*
+(3:)Tj
+T*
+(4:)Tj
+T*
+[(5:)-599.8(Token:  Keyword         Lexeme: function)]TJ
+T*
+(6:)Tj
+T*
+[(7:)-599.8(        <Rat18F> -> <Opt Function Definitions> $$ <Opt Declaration List> <Statemen)]TJ
+-2.5 -1.1 TD
+(t List>)Tj
+2.5 -1.1 TD
+[(8:)-599.8(        <Opt Function Definitions> ->  <Function Definitions> | <Empty>)]TJ
+T*
+(9:)Tj
+-0.6 -1.1 TD
+[(10:)-599.7(Token:  Identifier      Lexeme: add)]TJ
+T*
+(11:)Tj
+T*
+[(12:)-599.7(        <Function Definitions> -> <Function> | <Function> <Function Definitions>)]TJ
+T*
+[(13:)-599.7(        <Function> ->  function <Identifier> \( <Opt Parameter List> \) <Opt Declara)]TJ
+-1.9 -1.1 TD
+(tion List> <Body>)Tj
+1.9 -1.1 TD
+[(14:)-599.7(        <Identifier>)]TJ
+T*
+(15:)Tj
+T*
+[(16:)-599.7(Token:  Separator       Lexeme: \()]TJ
+T*
+(17:)Tj
+T*
+(18:)Tj
+T*
+[(19:)-599.7(Token:  Identifier      Lexeme: a)]TJ
+T*
+(20:)Tj
+T*
+[(21:)-599.7(        <Opt Parameter List> -> <Parameter List> | <Empty>)]TJ
+T*
+[(22:)-599.7(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(23:)-599.7(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(24:)-599.7(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(25:)-599.7(        <Identifier>)]TJ
+T*
+(26:)Tj
+T*
+[(27:)-599.7(Token:  Separator       Lexeme: :)]TJ
+T*
+(28:)Tj
+T*
+(29:)Tj
+T*
+[(30:)-599.7(Token:  Keyword         Lexeme: int)]TJ
+T*
+(31:)Tj
+T*
+[(32:)-599.7(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(33:)Tj
+T*
+[(34:)-599.7(Token:  Separator       Lexeme: ,)]TJ
+T*
+(35:)Tj
+T*
+(36:)Tj
+T*
+[(37:)-599.7(Token:  Identifier      Lexeme: b)]TJ
+T*
+(38:)Tj
+T*
+[(39:)-599.7(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(40:)-599.7(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(41:)-599.7(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(42:)-599.7(        <Identifier>)]TJ
+T*
+(43:)Tj
+T*
+[(44:)-599.7(Token:  Separator       Lexeme: :)]TJ
+T*
+(45:)Tj
+T*
+(46:)Tj
+T*
+[(47:)-599.7(Token:  Keyword         Lexeme: int)]TJ
+T*
+(48:)Tj
+T*
+[(49:)-599.7(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(50:)Tj
+T*
+[(51:)-599.7(Token:  Separator       Lexeme: \))]TJ
+T*
+(52:)Tj
+T*
+(53:)Tj
+T*
+[(54:)-599.7(Token:  Separator       Lexeme: {)]TJ
+T*
+(55:)Tj
+T*
+[(56:)-599.7(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(57:)-599.7(        <Empty> -> ε)]TJ
+T*
+[(58:)-599.7(        <Body> -> { <Statement List> })]TJ
+T*
+(59:)Tj
+T*
+[(60:)-599.7(Token:  Keyword         Lexeme: return)]TJ
+T*
+(61:)Tj
+T*
+[(62:)-599.7(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(63:)-599.7(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.9 -1.1 TD
+(| <While>)Tj
+1.9 -1.1 TD
+(64:)Tj
+T*
+[(65:)-599.7(Token:  Identifier      Lexeme: a)]TJ
+T*
+(66:)Tj
+T*
+[(67:)-599.7(        <Return> -> return; |  return <Expression>;)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Length 3413
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(2)]TJ
+/TT4 1 Tf
+1.9 -1.6333 TD
+[(68:)-599.7(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+0 -1.1 TD
+[(69:)-599.7(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(70:)-599.7(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(71:)-599.7(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.9 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.9 -1.1 TD
+[(72:)-599.7(        <Identifier>)]TJ
+T*
+(73:)Tj
+T*
+[(74:)-599.7(Token:  Operator        Lexeme: +)]TJ
+T*
+(75:)Tj
+T*
+[(76:)-599.7(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(77:)-599.7(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.9 -1.1 TD
+(e> | <Empty>)Tj
+1.9 -1.1 TD
+(78:)Tj
+T*
+[(79:)-599.7(Token:  Identifier      Lexeme: b)]TJ
+T*
+(80:)Tj
+T*
+[(81:)-599.7(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(82:)-599.7(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(83:)-599.7(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.9 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.9 -1.1 TD
+[(84:)-599.7(        <Identifier>)]TJ
+T*
+(85:)Tj
+T*
+[(86:)-599.7(Token:  Separator       Lexeme: ;)]TJ
+T*
+(87:)Tj
+T*
+[(88:)-599.7(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(89:)-599.7(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.9 -1.1 TD
+(e> | <Empty>)Tj
+1.9 -1.1 TD
+[(90:)-599.7(        <Empty> -> ε)]TJ
+T*
+(91:)Tj
+T*
+[(92:)-599.7(Token:  Separator       Lexeme: })]TJ
+T*
+(93:)Tj
+T*
+(94:)Tj
+T*
+[(95:)-599.7(Token:  Keyword         Lexeme: function)]TJ
+T*
+(96:)Tj
+T*
+(97:)Tj
+T*
+[(98:)-599.7(Token:  Identifier      Lexeme: subtract)]TJ
+T*
+(99:)Tj
+-0.6 -1.1 TD
+[(100:)-599.6(        <Function Definitions> -> <Function> | <Function> <Function Definitions>)]TJ
+T*
+[(101:)-599.6(        <Function> ->  function <Identifier> \( <Opt Parameter List> \) <Opt Declara)]TJ
+-1.3 -1.1 TD
+(tion List> <Body>)Tj
+1.3 -1.1 TD
+[(102:)-599.6(        <Identifier>)]TJ
+T*
+(103:)Tj
+T*
+[(104:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(105:)Tj
+T*
+(106:)Tj
+T*
+[(107:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(108:)Tj
+T*
+[(109:)-599.6(        <Opt Parameter List> -> <Parameter List> | <Empty>)]TJ
+T*
+[(110:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(111:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(112:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(113:)-599.6(        <Identifier>)]TJ
+T*
+(114:)Tj
+T*
+[(115:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(116:)Tj
+T*
+(117:)Tj
+T*
+[(118:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(119:)Tj
+T*
+[(120:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(121:)Tj
+T*
+[(122:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(123:)Tj
+T*
+(124:)Tj
+T*
+[(125:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(126:)Tj
+T*
+[(127:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(128:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(129:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(130:)-599.6(        <Identifier>)]TJ
+T*
+(131:)Tj
+T*
+[(132:)-599.6(Token:  Separator       Lexeme: :)]TJ
+ET
+endstream
+endobj
+10 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+12 0 obj
+<<
+/Length 3329
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(3)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(133:)Tj
+0 -1.1 TD
+(134:)Tj
+T*
+[(135:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(136:)Tj
+T*
+[(137:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(138:)Tj
+T*
+[(139:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(140:)Tj
+T*
+(141:)Tj
+T*
+[(142:)-599.6(Token:  Separator       Lexeme: {)]TJ
+T*
+(143:)Tj
+T*
+[(144:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(145:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(146:)-599.6(        <Body> -> { <Statement List> })]TJ
+T*
+(147:)Tj
+T*
+[(148:)-599.6(Token:  Keyword         Lexeme: return)]TJ
+T*
+(149:)Tj
+T*
+[(150:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(151:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(152:)Tj
+T*
+[(153:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(154:)Tj
+T*
+[(155:)-599.6(        <Return> -> return; |  return <Expression>;)]TJ
+T*
+[(156:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(157:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(158:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(159:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(160:)-599.6(        <Identifier>)]TJ
+T*
+(161:)Tj
+T*
+[(162:)-599.6(Token:  Operator        Lexeme: -)]TJ
+T*
+(163:)Tj
+T*
+[(164:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(165:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(166:)Tj
+T*
+[(167:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(168:)Tj
+T*
+[(169:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(170:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(171:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(172:)-599.6(        <Identifier>)]TJ
+T*
+(173:)Tj
+T*
+[(174:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(175:)Tj
+T*
+[(176:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(177:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(178:)-599.6(        <Empty> -> ε)]TJ
+T*
+(179:)Tj
+T*
+[(180:)-599.6(Token:  Separator       Lexeme: })]TJ
+T*
+(181:)Tj
+T*
+(182:)Tj
+T*
+[(183:)-599.6(Token:  Keyword         Lexeme: function)]TJ
+T*
+(184:)Tj
+T*
+(185:)Tj
+T*
+[(186:)-599.6(Token:  Identifier      Lexeme: divide)]TJ
+T*
+(187:)Tj
+T*
+[(188:)-599.6(        <Function Definitions> -> <Function> | <Function> <Function Definitions>)]TJ
+T*
+[(189:)-599.6(        <Function> ->  function <Identifier> \( <Opt Parameter List> \) <Opt Declara)]TJ
+-1.3 -1.1 TD
+(tion List> <Body>)Tj
+1.3 -1.1 TD
+[(190:)-599.6(        <Identifier>)]TJ
+T*
+(191:)Tj
+T*
+[(192:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(193:)Tj
+T*
+(194:)Tj
+T*
+[(195:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(196:)Tj
+ET
+endstream
+endobj
+13 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+15 0 obj
+<<
+/Length 3419
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(4)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(197:)-599.6(        <Opt Parameter List> -> <Parameter List> | <Empty>)]TJ
+0 -1.1 TD
+[(198:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(199:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(200:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(201:)-599.6(        <Identifier>)]TJ
+T*
+(202:)Tj
+T*
+[(203:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(204:)Tj
+T*
+(205:)Tj
+T*
+[(206:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(207:)Tj
+T*
+[(208:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(209:)Tj
+T*
+[(210:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(211:)Tj
+T*
+(212:)Tj
+T*
+[(213:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(214:)Tj
+T*
+[(215:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(216:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(217:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(218:)-599.6(        <Identifier>)]TJ
+T*
+(219:)Tj
+T*
+[(220:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(221:)Tj
+T*
+(222:)Tj
+T*
+[(223:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(224:)Tj
+T*
+[(225:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(226:)Tj
+T*
+[(227:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(228:)Tj
+T*
+(229:)Tj
+T*
+[(230:)-599.6(Token:  Separator       Lexeme: {)]TJ
+T*
+(231:)Tj
+T*
+[(232:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(233:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(234:)-599.6(        <Body> -> { <Statement List> })]TJ
+T*
+(235:)Tj
+T*
+[(236:)-599.6(Token:  Keyword         Lexeme: return)]TJ
+T*
+(237:)Tj
+T*
+[(238:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(239:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(240:)Tj
+T*
+[(241:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(242:)Tj
+T*
+[(243:)-599.6(        <Return> -> return; |  return <Expression>;)]TJ
+T*
+[(244:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(245:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(246:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(247:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(248:)-599.6(        <Identifier>)]TJ
+T*
+(249:)Tj
+T*
+[(250:)-599.6(Token:  Operator        Lexeme: /)]TJ
+T*
+(251:)Tj
+T*
+[(252:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+(253:)Tj
+T*
+[(254:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(255:)Tj
+T*
+[(256:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(257:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(258:)-599.6(        <Identifier>)]TJ
+T*
+(259:)Tj
+T*
+[(260:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(261:)Tj
+T*
+[(262:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(263:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+ET
+endstream
+endobj
+16 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+18 0 obj
+<<
+/Length 3497
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(5)]TJ
+/TT4 1 Tf
+0 -1.6333 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(264:)-599.6(        <Empty> -> ε)]TJ
+T*
+(265:)Tj
+T*
+[(266:)-599.6(Token:  Separator       Lexeme: })]TJ
+T*
+(267:)Tj
+T*
+(268:)Tj
+T*
+[(269:)-599.6(Token:  Separator       Lexeme: $$)]TJ
+T*
+(270:)Tj
+T*
+(271:)Tj
+T*
+[(272:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(273:)Tj
+T*
+[(274:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(275:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(276:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(277:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+[(278:)-599.6(        <Assign> -> <Identifier> = <Expression>;)]TJ
+T*
+[(279:)-599.6(        <Identifier>)]TJ
+T*
+(280:)Tj
+T*
+[(281:)-599.6(Token:  Operator        Lexeme: =)]TJ
+T*
+(282:)Tj
+T*
+(283:)Tj
+T*
+[(284:)-599.6(Token:  Integer         Lexeme: 3)]TJ
+T*
+(285:)Tj
+T*
+[(286:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(287:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(288:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(289:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(290:)-599.6(        <Integer>)]TJ
+T*
+(291:)Tj
+T*
+[(292:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(293:)Tj
+T*
+[(294:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(295:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(296:)-599.6(        <Empty> -> ε)]TJ
+T*
+(297:)Tj
+T*
+[(298:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(299:)Tj
+T*
+[(300:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(301:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+[(302:)-599.6(        <Assign> -> <Identifier> = <Expression>;)]TJ
+T*
+[(303:)-599.6(        <Identifier>)]TJ
+T*
+(304:)Tj
+T*
+[(305:)-599.6(Token:  Operator        Lexeme: =)]TJ
+T*
+(306:)Tj
+T*
+(307:)Tj
+T*
+[(308:)-599.6(Token:  Integer         Lexeme: 5)]TJ
+T*
+(309:)Tj
+T*
+[(310:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(311:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(312:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(313:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(314:)-599.6(        <Integer>)]TJ
+T*
+(315:)Tj
+T*
+[(316:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(317:)Tj
+T*
+[(318:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(319:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(320:)-599.6(        <Empty> -> ε)]TJ
+T*
+(321:)Tj
+T*
+[(322:)-599.6(Token:  Keyword         Lexeme: put)]TJ
+T*
+(323:)Tj
+T*
+[(324:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(325:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+ET
+endstream
+endobj
+19 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+21 0 obj
+<<
+/Length 3505
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(6)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(326:)Tj
+0 -1.1 TD
+[(327:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(328:)Tj
+T*
+[(329:)-599.6(        <Print> -> put \( <Expression> \);)]TJ
+T*
+(330:)Tj
+T*
+[(331:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(332:)Tj
+T*
+[(333:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(334:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(335:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(336:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(337:)-599.6(        <Identifier>)]TJ
+T*
+(338:)Tj
+T*
+[(339:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(340:)Tj
+T*
+[(341:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(342:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(343:)-599.6(        <Empty> -> ε)]TJ
+T*
+(344:)Tj
+T*
+[(345:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(346:)Tj
+T*
+(347:)Tj
+T*
+[(348:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(349:)Tj
+T*
+[(350:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(351:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+[(352:)-599.6(        <Assign> -> <Identifier> = <Expression>;)]TJ
+T*
+[(353:)-599.6(        <Identifier>)]TJ
+T*
+(354:)Tj
+T*
+[(355:)-599.6(Token:  Operator        Lexeme: =)]TJ
+T*
+(356:)Tj
+T*
+(357:)Tj
+T*
+[(358:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(359:)Tj
+T*
+[(360:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(361:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(362:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(363:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(364:)-599.6(        <Identifier>)]TJ
+T*
+(365:)Tj
+T*
+[(366:)-599.6(Token:  Operator        Lexeme: +)]TJ
+T*
+(367:)Tj
+T*
+[(368:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(369:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(370:)Tj
+T*
+[(371:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(372:)Tj
+T*
+[(373:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(374:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(375:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(376:)-599.6(        <Identifier>)]TJ
+T*
+(377:)Tj
+T*
+[(378:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(379:)Tj
+T*
+[(380:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(381:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(382:)-599.6(        <Empty> -> ε)]TJ
+T*
+(383:)Tj
+T*
+[(384:)-599.6(Token:  Separator       Lexeme: $$)]TJ
+T*
+(385:)Tj
+T*
+[(386:)-599.6(Syntax Analysis Successful.)]TJ
+T*
+(387:)Tj
+T*
+[(388:)-599.6(RUNNING TEST CASE FILE "test2.txt")]TJ
+ET
+endstream
+endobj
+22 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+24 0 obj
+<<
+/Length 3196
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(7)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(389:)Tj
+0 -1.1 TD
+(390:)Tj
+T*
+[(391:)-599.6(Token:  Keyword         Lexeme: function)]TJ
+T*
+(392:)Tj
+T*
+[(393:)-599.6(        <Rat18F> -> <Opt Function Definitions> $$ <Opt Declaration List> <Statemen)]TJ
+-1.3 -1.1 TD
+(t List>)Tj
+1.3 -1.1 TD
+[(394:)-599.6(        <Opt Function Definitions> ->  <Function Definitions> | <Empty>)]TJ
+T*
+(395:)Tj
+T*
+[(396:)-599.6(Token:  Identifier      Lexeme: isEqual)]TJ
+T*
+(397:)Tj
+T*
+[(398:)-599.6(        <Function Definitions> -> <Function> | <Function> <Function Definitions>)]TJ
+T*
+[(399:)-599.6(        <Function> ->  function <Identifier> \( <Opt Parameter List> \) <Opt Declara)]TJ
+-1.3 -1.1 TD
+(tion List> <Body>)Tj
+1.3 -1.1 TD
+[(400:)-599.6(        <Identifier>)]TJ
+T*
+(401:)Tj
+T*
+[(402:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(403:)Tj
+T*
+(404:)Tj
+T*
+[(405:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(406:)Tj
+T*
+[(407:)-599.6(        <Opt Parameter List> -> <Parameter List> | <Empty>)]TJ
+T*
+[(408:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(409:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(410:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(411:)-599.6(        <Identifier>)]TJ
+T*
+(412:)Tj
+T*
+[(413:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(414:)Tj
+T*
+(415:)Tj
+T*
+[(416:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(417:)Tj
+T*
+[(418:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(419:)Tj
+T*
+[(420:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(421:)Tj
+T*
+(422:)Tj
+T*
+[(423:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(424:)Tj
+T*
+[(425:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(426:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(427:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(428:)-599.6(        <Identifier>)]TJ
+T*
+(429:)Tj
+T*
+[(430:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(431:)Tj
+T*
+(432:)Tj
+T*
+[(433:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(434:)Tj
+T*
+[(435:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(436:)Tj
+T*
+[(437:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(438:)Tj
+T*
+(439:)Tj
+T*
+[(440:)-599.6(Token:  Separator       Lexeme: {)]TJ
+T*
+(441:)Tj
+T*
+[(442:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(443:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(444:)-599.6(        <Body> -> { <Statement List> })]TJ
+T*
+(445:)Tj
+T*
+[(446:)-599.6(Token:  Keyword         Lexeme: return)]TJ
+T*
+(447:)Tj
+T*
+[(448:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(449:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(450:)Tj
+T*
+[(451:)-599.6(Token:  Integer         Lexeme: 10)]TJ
+T*
+(452:)Tj
+T*
+[(453:)-599.6(        <Return> -> return; |  return <Expression>;)]TJ
+T*
+[(454:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(455:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+ET
+endstream
+endobj
+25 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+27 0 obj
+<<
+/Length 3544
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(8)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(456:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+0 -1.1 TD
+[(457:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(458:)-599.6(        <Integer>)]TJ
+T*
+(459:)Tj
+T*
+[(460:)-599.6(Token:  Operator        Lexeme: -)]TJ
+T*
+(461:)Tj
+T*
+[(462:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(463:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(464:)Tj
+T*
+[(465:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(466:)Tj
+T*
+[(467:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(468:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(469:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(470:)-599.6(        <Identifier>)]TJ
+T*
+(471:)Tj
+T*
+[(472:)-599.6(Token:  Operator        Lexeme: +)]TJ
+T*
+(473:)Tj
+T*
+[(474:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(475:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(476:)Tj
+T*
+[(477:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(478:)Tj
+T*
+[(479:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(480:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(481:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(482:)-599.6(        <Identifier>)]TJ
+T*
+(483:)Tj
+T*
+[(484:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(485:)Tj
+T*
+[(486:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(487:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(488:)-599.6(        <Empty> -> ε)]TJ
+T*
+(489:)Tj
+T*
+[(490:)-599.6(Token:  Separator       Lexeme: })]TJ
+T*
+(491:)Tj
+T*
+(492:)Tj
+T*
+[(493:)-599.6(Token:  Keyword         Lexeme: function)]TJ
+T*
+(494:)Tj
+T*
+(495:)Tj
+T*
+[(496:)-599.6(Token:  Identifier      Lexeme: convert1x)]TJ
+T*
+(497:)Tj
+T*
+[(498:)-599.6(        <Function Definitions> -> <Function> | <Function> <Function Definitions>)]TJ
+T*
+[(499:)-599.6(        <Function> ->  function <Identifier> \( <Opt Parameter List> \) <Opt Declara)]TJ
+-1.3 -1.1 TD
+(tion List> <Body>)Tj
+1.3 -1.1 TD
+[(500:)-599.6(        <Identifier>)]TJ
+T*
+(501:)Tj
+T*
+[(502:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(503:)Tj
+T*
+(504:)Tj
+T*
+[(505:)-599.6(Token:  Identifier      Lexeme: fahr)]TJ
+T*
+(506:)Tj
+T*
+[(507:)-599.6(        <Opt Parameter List> -> <Parameter List> | <Empty>)]TJ
+T*
+[(508:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+T*
+[(509:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(510:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(511:)-599.6(        <Identifier>)]TJ
+T*
+(512:)Tj
+T*
+[(513:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(514:)Tj
+T*
+(515:)Tj
+T*
+[(516:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(517:)Tj
+T*
+[(518:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+ET
+endstream
+endobj
+28 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+30 0 obj
+<<
+/Length 3634
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(9)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(519:)Tj
+0 -1.1 TD
+[(520:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(521:)Tj
+T*
+(522:)Tj
+T*
+[(523:)-599.6(Token:  Separator       Lexeme: {)]TJ
+T*
+(524:)Tj
+T*
+[(525:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(526:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(527:)-599.6(        <Body> -> { <Statement List> })]TJ
+T*
+(528:)Tj
+T*
+[(529:)-599.6(Token:  Keyword         Lexeme: return)]TJ
+T*
+(530:)Tj
+T*
+[(531:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(532:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(533:)Tj
+T*
+[(534:)-599.6(Token:  Integer         Lexeme: 5)]TJ
+T*
+(535:)Tj
+T*
+[(536:)-599.6(        <Return> -> return; |  return <Expression>;)]TJ
+T*
+[(537:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(538:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(539:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(540:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(541:)-599.6(        <Integer>)]TJ
+T*
+(542:)Tj
+T*
+[(543:)-599.6(Token:  Operator        Lexeme: *)]TJ
+T*
+(544:)Tj
+T*
+[(545:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+(546:)Tj
+T*
+[(547:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(548:)Tj
+T*
+[(549:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(550:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+(551:)Tj
+T*
+[(552:)-599.6(Token:  Identifier      Lexeme: fahr)]TJ
+T*
+(553:)Tj
+T*
+[(554:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(555:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(556:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(557:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(558:)-599.6(        <Identifier>)]TJ
+T*
+(559:)Tj
+T*
+[(560:)-599.6(Token:  Operator        Lexeme: -)]TJ
+T*
+(561:)Tj
+T*
+[(562:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(563:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(564:)Tj
+T*
+[(565:)-599.6(Token:  Integer         Lexeme: 32)]TJ
+T*
+(566:)Tj
+T*
+[(567:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(568:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(569:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(570:)-599.6(        <Integer>)]TJ
+T*
+(571:)Tj
+T*
+[(572:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(573:)Tj
+T*
+[(574:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(575:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(576:)-599.6(        <Empty> -> ε)]TJ
+T*
+(577:)Tj
+T*
+[(578:)-599.6(Token:  Operator        Lexeme: /)]TJ
+T*
+(579:)Tj
+T*
+[(580:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+(581:)Tj
+ET
+endstream
+endobj
+31 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+33 0 obj
+<<
+/Length 3030
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(10)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(582:)-599.6(Token:  Integer         Lexeme: 9)]TJ
+0 -1.1 TD
+(583:)Tj
+T*
+[(584:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(585:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(586:)-599.6(        <Integer>)]TJ
+T*
+(587:)Tj
+T*
+[(588:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(589:)Tj
+T*
+[(590:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(591:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(592:)-599.6(        <Empty> -> ε)]TJ
+T*
+(593:)Tj
+T*
+[(594:)-599.6(Token:  Separator       Lexeme: })]TJ
+T*
+(595:)Tj
+T*
+(596:)Tj
+T*
+[(597:)-599.6(Token:  Separator       Lexeme: $$)]TJ
+T*
+(598:)Tj
+T*
+(599:)Tj
+T*
+[(600:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(601:)Tj
+T*
+[(602:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(603:)-599.6(        <Declaration List> -> <Declaration>; | <Declaration>; <Declaration List>)]TJ
+T*
+[(604:)-599.6(        <Declaration> -> <Qualifier> <IDs>)]TJ
+T*
+[(605:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(606:)Tj
+T*
+[(607:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(608:)Tj
+T*
+[(609:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(610:)-599.6(        <Identifier>)]TJ
+T*
+(611:)Tj
+T*
+[(612:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(613:)Tj
+T*
+(614:)Tj
+T*
+[(615:)-599.6(Token:  Identifier      Lexeme: high)]TJ
+T*
+(616:)Tj
+T*
+[(617:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(618:)-599.6(        <Identifier>)]TJ
+T*
+(619:)Tj
+T*
+[(620:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(621:)Tj
+T*
+(622:)Tj
+T*
+[(623:)-599.6(Token:  Identifier      Lexeme: step)]TJ
+T*
+(624:)Tj
+T*
+[(625:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(626:)-599.6(        <Identifier>)]TJ
+T*
+(627:)Tj
+T*
+[(628:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(629:)Tj
+T*
+(630:)Tj
+T*
+[(631:)-599.6(Token:  Keyword         Lexeme: get)]TJ
+T*
+(632:)Tj
+T*
+[(633:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(634:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(635:)Tj
+T*
+[(636:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(637:)Tj
+T*
+[(638:)-599.6(        <Scan> -> get \( <IDs> \);)]TJ
+T*
+(639:)Tj
+T*
+[(640:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(641:)Tj
+T*
+[(642:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(643:)-599.6(        <Identifier>)]TJ
+T*
+(644:)Tj
+T*
+[(645:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(646:)Tj
+T*
+(647:)Tj
+T*
+[(648:)-599.6(Token:  Identifier      Lexeme: high)]TJ
+ET
+endstream
+endobj
+34 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+36 0 obj
+<<
+/Length 3373
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(11)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(649:)Tj
+0 -1.1 TD
+[(650:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(651:)-599.6(        <Identifier>)]TJ
+T*
+(652:)Tj
+T*
+[(653:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(654:)Tj
+T*
+(655:)Tj
+T*
+[(656:)-599.6(Token:  Identifier      Lexeme: step)]TJ
+T*
+(657:)Tj
+T*
+[(658:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(659:)-599.6(        <Identifier>)]TJ
+T*
+(660:)Tj
+T*
+[(661:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(662:)Tj
+T*
+(663:)Tj
+T*
+[(664:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(665:)Tj
+T*
+(666:)Tj
+T*
+[(667:)-599.6(Token:  Keyword         Lexeme: while)]TJ
+T*
+(668:)Tj
+T*
+[(669:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(670:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(671:)Tj
+T*
+[(672:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(673:)Tj
+T*
+[(674:)-599.6(        <While> -> while \( <Condition> \)  <Statement>)]TJ
+T*
+(675:)Tj
+T*
+[(676:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(677:)Tj
+T*
+[(678:)-599.6(        <Condition> -> <Expression>  <Relop>  <Expression>)]TJ
+T*
+[(679:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(680:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(681:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(682:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(683:)-599.6(        <Identifier>)]TJ
+T*
+(684:)Tj
+T*
+[(685:)-599.6(Token:  Operator        Lexeme: <)]TJ
+T*
+(686:)Tj
+T*
+[(687:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(688:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(689:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(690:)-599.6(        <Relop> -> <)]TJ
+T*
+(691:)Tj
+T*
+[(692:)-599.6(Token:  Identifier      Lexeme: high)]TJ
+T*
+(693:)Tj
+T*
+[(694:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(695:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(696:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(697:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(698:)-599.6(        <Identifier>)]TJ
+T*
+(699:)Tj
+T*
+[(700:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(701:)Tj
+T*
+[(702:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(703:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(704:)-599.6(        <Empty> -> ε)]TJ
+T*
+(705:)Tj
+T*
+[(706:)-599.6(Token:  Separator       Lexeme: {)]TJ
+T*
+(707:)Tj
+T*
+[(708:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(709:)Tj
+T*
+[(710:)-599.6(Token:  Keyword         Lexeme: put)]TJ
+T*
+(711:)Tj
+T*
+[(712:)-599.6(        <Compound> -> { <Statement List> })]TJ
+ET
+endstream
+endobj
+37 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+41 0 obj
+<<
+/Length 3379
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(12)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(713:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+0 -1.1 TD
+[(714:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(715:)Tj
+T*
+[(716:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(717:)Tj
+T*
+[(718:)-599.6(        <Print> -> put \( <Expression> \);)]TJ
+T*
+(719:)Tj
+T*
+[(720:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(721:)Tj
+T*
+[(722:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(723:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(724:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(725:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(726:)-599.6(        <Identifier>)]TJ
+T*
+(727:)Tj
+T*
+[(728:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(729:)Tj
+T*
+[(730:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(731:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(732:)-599.6(        <Empty> -> ε)]TJ
+T*
+(733:)Tj
+T*
+[(734:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(735:)Tj
+T*
+(736:)Tj
+T*
+[(737:)-599.6(Token:  Keyword         Lexeme: put)]TJ
+T*
+(738:)Tj
+T*
+[(739:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(740:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(741:)Tj
+T*
+[(742:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(743:)Tj
+T*
+[(744:)-599.6(        <Print> -> put \( <Expression> \);)]TJ
+T*
+(745:)Tj
+T*
+[(746:)-599.6(Token:  Identifier      Lexeme: convert1x)]TJ
+T*
+(747:)Tj
+T*
+[(748:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(749:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(750:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(751:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(752:)-599.6(        <Identifier>)]TJ
+T*
+(753:)Tj
+T*
+[(754:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(755:)Tj
+T*
+(756:)Tj
+T*
+[(757:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(758:)Tj
+T*
+[(759:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(760:)-599.6(        <Identifier>)]TJ
+T*
+(761:)Tj
+T*
+[(762:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(763:)Tj
+T*
+(764:)Tj
+T*
+[(765:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(766:)Tj
+T*
+[(767:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(768:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(769:)-599.6(        <Empty> -> ε)]TJ
+T*
+(770:)Tj
+T*
+[(771:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(772:)Tj
+T*
+(773:)Tj
+T*
+[(774:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(775:)Tj
+T*
+[(776:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+ET
+endstream
+endobj
+42 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+44 0 obj
+<<
+/Length 3386
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(13)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(777:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+[(778:)-599.6(        <Assign> -> <Identifier> = <Expression>;)]TJ
+T*
+[(779:)-599.6(        <Identifier>)]TJ
+T*
+(780:)Tj
+T*
+[(781:)-599.6(Token:  Operator        Lexeme: =)]TJ
+T*
+(782:)Tj
+T*
+(783:)Tj
+T*
+[(784:)-599.6(Token:  Identifier      Lexeme: low)]TJ
+T*
+(785:)Tj
+T*
+[(786:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(787:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(788:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(789:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(790:)-599.6(        <Identifier>)]TJ
+T*
+(791:)Tj
+T*
+[(792:)-599.6(Token:  Operator        Lexeme: +)]TJ
+T*
+(793:)Tj
+T*
+[(794:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(795:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(796:)Tj
+T*
+[(797:)-599.6(Token:  Identifier      Lexeme: step)]TJ
+T*
+(798:)Tj
+T*
+[(799:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(800:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(801:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(802:)-599.6(        <Identifier>)]TJ
+T*
+(803:)Tj
+T*
+[(804:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(805:)Tj
+T*
+[(806:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(807:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(808:)-599.6(        <Empty> -> ε)]TJ
+T*
+(809:)Tj
+T*
+[(810:)-599.6(Token:  Separator       Lexeme: })]TJ
+T*
+(811:)Tj
+T*
+(812:)Tj
+T*
+[(813:)-599.6(Token:  Keyword         Lexeme: whileend)]TJ
+T*
+(814:)Tj
+T*
+(815:)Tj
+T*
+[(816:)-599.6(Token:  Separator       Lexeme: $$)]TJ
+T*
+(817:)Tj
+T*
+[(818:)-599.6(Syntax Analysis Successful.)]TJ
+T*
+(819:)Tj
+T*
+[(820:)-599.6(RUNNING TEST CASE FILE "test3.txt")]TJ
+T*
+(821:)Tj
+T*
+(822:)Tj
+T*
+[(823:)-599.6(Token:  Keyword         Lexeme: function)]TJ
+T*
+(824:)Tj
+T*
+[(825:)-599.6(        <Rat18F> -> <Opt Function Definitions> $$ <Opt Declaration List> <Statemen)]TJ
+-1.3 -1.1 TD
+(t List>)Tj
+1.3 -1.1 TD
+[(826:)-599.6(        <Opt Function Definitions> ->  <Function Definitions> | <Empty>)]TJ
+T*
+(827:)Tj
+T*
+[(828:)-599.6(Token:  Identifier      Lexeme: myInvalidFunction)]TJ
+T*
+(829:)Tj
+T*
+[(830:)-599.6(        <Function Definitions> -> <Function> | <Function> <Function Definitions>)]TJ
+T*
+[(831:)-599.6(        <Function> ->  function <Identifier> \( <Opt Parameter List> \) <Opt Declara)]TJ
+-1.3 -1.1 TD
+(tion List> <Body>)Tj
+1.3 -1.1 TD
+[(832:)-599.6(        <Identifier>)]TJ
+T*
+(833:)Tj
+T*
+[(834:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(835:)Tj
+T*
+(836:)Tj
+T*
+[(837:)-599.6(Token:  Identifier      Lexeme: var1x)]TJ
+T*
+(838:)Tj
+T*
+[(839:)-599.6(        <Opt Parameter List> -> <Parameter List> | <Empty>)]TJ
+ET
+endstream
+endobj
+45 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+47 0 obj
+<<
+/Length 3607
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(14)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(840:)-599.6(        <Parameter List> -> <Parameter> | <Parameter> , <Parameter List>)]TJ
+0 -1.1 TD
+[(841:)-599.6(        <Parameter> -> <IDs> : <Qualifier>)]TJ
+T*
+[(842:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(843:)-599.6(        <Identifier>)]TJ
+T*
+(844:)Tj
+T*
+[(845:)-599.6(Token:  Separator       Lexeme: :)]TJ
+T*
+(846:)Tj
+T*
+(847:)Tj
+T*
+[(848:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(849:)Tj
+T*
+[(850:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(851:)Tj
+T*
+[(852:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(853:)Tj
+T*
+(854:)Tj
+T*
+[(855:)-599.6(Token:  Separator       Lexeme: {)]TJ
+T*
+(856:)Tj
+T*
+[(857:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(858:)-599.6(        <Empty> -> ε)]TJ
+T*
+[(859:)-599.6(        <Body> -> { <Statement List> })]TJ
+T*
+(860:)Tj
+T*
+[(861:)-599.6(Token:  Keyword         Lexeme: return)]TJ
+T*
+(862:)Tj
+T*
+[(863:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(864:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+(865:)Tj
+T*
+[(866:)-599.6(Token:  Separator       Lexeme: \()]TJ
+T*
+(867:)Tj
+T*
+[(868:)-599.6(        <Return> -> return; |  return <Expression>;)]TJ
+T*
+[(869:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(870:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(871:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(872:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+(873:)Tj
+T*
+[(874:)-599.6(Token:  Identifier      Lexeme: var1x)]TJ
+T*
+(875:)Tj
+T*
+[(876:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(877:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(878:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(879:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(880:)-599.6(        <Identifier>)]TJ
+T*
+(881:)Tj
+T*
+[(882:)-599.6(Token:  Operator        Lexeme: *)]TJ
+T*
+(883:)Tj
+T*
+[(884:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+(885:)Tj
+T*
+[(886:)-599.6(Token:  Identifier      Lexeme: var2x)]TJ
+T*
+(887:)Tj
+T*
+[(888:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(889:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(890:)-599.6(        <Identifier>)]TJ
+T*
+(891:)Tj
+T*
+[(892:)-599.6(Token:  Separator       Lexeme: \))]TJ
+T*
+(893:)Tj
+T*
+[(894:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(895:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(896:)-599.6(        <Empty> -> ε)]TJ
+T*
+(897:)Tj
+T*
+[(898:)-599.6(Token:  Operator        Lexeme: +)]TJ
+T*
+(899:)Tj
+T*
+[(900:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(901:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+(902:)Tj
+T*
+[(903:)-599.6(Token:  Integer         Lexeme: 50)]TJ
+ET
+endstream
+endobj
+48 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+50 0 obj
+<<
+/Length 3320
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(15)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(904:)Tj
+0 -1.1 TD
+[(905:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(906:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(907:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(908:)-599.6(        <Integer>)]TJ
+T*
+(909:)Tj
+T*
+[(910:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(911:)Tj
+T*
+[(912:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(913:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(914:)-599.6(        <Empty> -> ε)]TJ
+T*
+(915:)Tj
+T*
+[(916:)-599.6(Token:  Separator       Lexeme: })]TJ
+T*
+(917:)Tj
+T*
+(918:)Tj
+T*
+[(919:)-599.6(Token:  Separator       Lexeme: $$)]TJ
+T*
+(920:)Tj
+T*
+(921:)Tj
+T*
+[(922:)-599.6(Token:  Keyword         Lexeme: int)]TJ
+T*
+(923:)Tj
+T*
+[(924:)-599.6(        <Opt Declaration List> -> <Declaration List> | <Empty>)]TJ
+T*
+[(925:)-599.6(        <Declaration List> -> <Declaration>; | <Declaration>; <Declaration List>)]TJ
+T*
+[(926:)-599.6(        <Declaration> -> <Qualifier> <IDs>)]TJ
+T*
+[(927:)-599.6(        <Qualifier> ->  int | boolean | real)]TJ
+T*
+(928:)Tj
+T*
+[(929:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(930:)Tj
+T*
+[(931:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(932:)-599.6(        <Identifier>)]TJ
+T*
+(933:)Tj
+T*
+[(934:)-599.6(Token:  Separator       Lexeme: ,)]TJ
+T*
+(935:)Tj
+T*
+(936:)Tj
+T*
+[(937:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+T*
+(938:)Tj
+T*
+[(939:)-599.6(        <IDs> -> <Identifier> | <Identifier>, <IDs>)]TJ
+T*
+[(940:)-599.6(        <Identifier>)]TJ
+T*
+(941:)Tj
+T*
+[(942:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(943:)Tj
+T*
+(944:)Tj
+T*
+[(945:)-599.6(Token:  Identifier      Lexeme: a)]TJ
+T*
+(946:)Tj
+T*
+[(947:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(948:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+[(949:)-599.6(        <Assign> -> <Identifier> = <Expression>;)]TJ
+T*
+[(950:)-599.6(        <Identifier>)]TJ
+T*
+(951:)Tj
+T*
+[(952:)-599.6(Token:  Operator        Lexeme: =)]TJ
+T*
+(953:)Tj
+T*
+(954:)Tj
+T*
+[(955:)-599.6(Token:  Integer         Lexeme: 0)]TJ
+T*
+(956:)Tj
+T*
+[(957:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(958:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(959:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(960:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(961:)-599.6(        <Integer>)]TJ
+T*
+(962:)Tj
+T*
+[(963:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(964:)Tj
+T*
+[(965:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(966:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(967:)-599.6(        <Empty> -> ε)]TJ
+T*
+(968:)Tj
+ET
+endstream
+endobj
+51 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+53 0 obj
+<<
+/Length 1652
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Thu Nov 15 12:17:05 2018)-4500(16)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(969:)-599.6(Token:  Identifier      Lexeme: b)]TJ
+0 -1.1 TD
+(970:)Tj
+T*
+[(971:)-599.6(        <Statement List> -> <Statement> | <Statement> <Statement List>)]TJ
+T*
+[(972:)-599.6(        <Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> )]TJ
+-1.3 -1.1 TD
+(| <While>)Tj
+1.3 -1.1 TD
+[(973:)-599.6(        <Assign> -> <Identifier> = <Expression>;)]TJ
+T*
+[(974:)-599.6(        <Identifier>)]TJ
+T*
+(975:)Tj
+T*
+[(976:)-599.6(Token:  Operator        Lexeme: =)]TJ
+T*
+(977:)Tj
+T*
+(978:)Tj
+T*
+[(979:)-599.6(Token:  Integer         Lexeme: 1)]TJ
+T*
+(980:)Tj
+T*
+[(981:)-599.6(        <Expression> -> <Term> <ExpressionPrime>)]TJ
+T*
+[(982:)-599.6(        <Term> -> <Factor> <TermPrime>)]TJ
+T*
+[(983:)-599.6(        <Factor> -> - <Primary> | <Primary>)]TJ
+T*
+[(984:)-599.6(        <Primary> -> <Identifier> | <Integer> | <Identifier> \( <IDs> \) | \( <Expres)]TJ
+-1.3 -1.1 TD
+(sion> \) | <Real> | true | false)Tj
+1.3 -1.1 TD
+[(985:)-599.6(        <Integer>)]TJ
+T*
+(986:)Tj
+T*
+[(987:)-599.6(Token:  Separator       Lexeme: ;)]TJ
+T*
+(988:)Tj
+T*
+[(989:)-599.6(        <TermPrime> -> * <Factor> <TermPrime> | / <Factor> <TermPrime> | <Empty>)]TJ
+T*
+[(990:)-599.6(        <ExpressionPrime> -> + <Term> <ExpressionPrime> | - <Term> <ExpressionPrim)]TJ
+-1.3 -1.1 TD
+(e> | <Empty>)Tj
+1.3 -1.1 TD
+[(991:)-599.6(        <Empty> -> ε)]TJ
+T*
+(992:)Tj
+T*
+[(993:)-599.6(Token:  Illegal         Lexeme: invalidVar1)]TJ
+T*
+(994:)Tj
+T*
+(995:)Tj
+T*
+[(996:)-599.6(ERROR: Illegal symbol �invalidVar1� Line: 15)]TJ
+ET
+endstream
+endobj
+54 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+55 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+56 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 600 600 600 600 600 600 600 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+0 0 0 0 600 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 600 0 0 0 0 0 0 600 
+600 0 0 0 600 600 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 55 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 206
+/Widths [600 0 600 0 600 0 0 0 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 600 600 600 600 600 600 0 600 0 600 600 0 600 600 
+600 600 600 600 600 600 600 600 0 0 0 0 0 0 0 0 
+0 600 600 600 600 600 600 600 600 600 0 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 0 600 600 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 576 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 56 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 10 0 R
+/Contents 9 0 R
+>>
+endobj
+11 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 13 0 R
+/Contents 12 0 R
+>>
+endobj
+14 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 16 0 R
+/Contents 15 0 R
+>>
+endobj
+17 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 19 0 R
+/Contents 18 0 R
+>>
+endobj
+20 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 22 0 R
+/Contents 21 0 R
+>>
+endobj
+23 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 25 0 R
+/Contents 24 0 R
+>>
+endobj
+26 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 28 0 R
+/Contents 27 0 R
+>>
+endobj
+29 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 31 0 R
+/Contents 30 0 R
+>>
+endobj
+32 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 34 0 R
+/Contents 33 0 R
+>>
+endobj
+35 0 obj
+<<
+/Type /Page
+/Parent 39 0 R
+/Resources 37 0 R
+/Contents 36 0 R
+>>
+endobj
+40 0 obj
+<<
+/Type /Page
+/Parent 39 0 R
+/Resources 42 0 R
+/Contents 41 0 R
+>>
+endobj
+43 0 obj
+<<
+/Type /Page
+/Parent 39 0 R
+/Resources 45 0 R
+/Contents 44 0 R
+>>
+endobj
+46 0 obj
+<<
+/Type /Page
+/Parent 39 0 R
+/Resources 48 0 R
+/Contents 47 0 R
+>>
+endobj
+49 0 obj
+<<
+/Type /Page
+/Parent 39 0 R
+/Resources 51 0 R
+/Contents 50 0 R
+>>
+endobj
+52 0 obj
+<<
+/Type /Page
+/Parent 39 0 R
+/Resources 54 0 R
+/Contents 53 0 R
+>>
+endobj
+57 0 obj
+<<
+/S /D
+>>
+endobj
+58 0 obj
+<<
+/Nums [0 57 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 8 0 R 11 0 R 14 0 R 17 0 R 20 0 R 23 0 R 26 0 R 29 0 R 32 0 R]
+/Count 10
+/Parent 38 0 R
+>>
+endobj
+39 0 obj
+<<
+/Type /Pages
+/Kids [35 0 R 40 0 R 43 0 R 46 0 R 49 0 R 52 0 R]
+/Count 6
+/Parent 38 0 R
+>>
+endobj
+38 0 obj
+<<
+/Type /Pages
+/Kids [7 0 R 39 0 R ]
+/Count 16
+/MediaBox [0 0 595 842]
+>>
+endobj
+59 0 obj
+<<
+/CreationDate (D:20181115121726-08'00')
+/ModDate (D:20181115121726-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+60 0 obj
+<<
+/Type /Catalog
+/Pages 38 0 R
+/PageLabels 58 0 R
+>>
+endobj
+xref
+0 61
+0000000000 65535 f 
+0000056517 00000 n 
+0000000016 00000 n 
+0000003131 00000 n 
+0000055453 00000 n 
+0000055845 00000 n 
+0000054920 00000 n 
+0000057914 00000 n 
+0000056597 00000 n 
+0000003237 00000 n 
+0000006702 00000 n 
+0000056678 00000 n 
+0000006809 00000 n 
+0000010191 00000 n 
+0000056761 00000 n 
+0000010298 00000 n 
+0000013770 00000 n 
+0000056844 00000 n 
+0000013877 00000 n 
+0000017427 00000 n 
+0000056927 00000 n 
+0000017534 00000 n 
+0000021092 00000 n 
+0000057010 00000 n 
+0000021199 00000 n 
+0000024448 00000 n 
+0000057093 00000 n 
+0000024555 00000 n 
+0000028152 00000 n 
+0000057176 00000 n 
+0000028259 00000 n 
+0000031946 00000 n 
+0000057259 00000 n 
+0000032053 00000 n 
+0000035136 00000 n 
+0000057342 00000 n 
+0000035243 00000 n 
+0000038669 00000 n 
+0000058158 00000 n 
+0000058049 00000 n 
+0000057426 00000 n 
+0000038776 00000 n 
+0000042208 00000 n 
+0000057510 00000 n 
+0000042315 00000 n 
+0000045754 00000 n 
+0000057594 00000 n 
+0000045861 00000 n 
+0000049521 00000 n 
+0000057678 00000 n 
+0000049628 00000 n 
+0000053001 00000 n 
+0000057762 00000 n 
+0000053108 00000 n 
+0000054813 00000 n 
+0000055060 00000 n 
+0000055262 00000 n 
+0000057846 00000 n 
+0000057874 00000 n 
+0000058249 00000 n 
+0000058372 00000 n 
+trailer
+<<
+/Size 61
+/Root 60 0 R
+/Info 59 0 R
+/ID [<f0b4d2fc55a3c1fa770336ccad175f6d><f0b4d2fc55a3c1fa770336ccad175f6d>]
+>>
+startxref
+58442
+%%EOF

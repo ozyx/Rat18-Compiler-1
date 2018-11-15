@@ -6,16 +6,18 @@
 
 int main()
 {
-    const int COL_SIZE = 20;
+	const int COL_SIZE = 20;
 
-    std::ifstream fin;                    // Input file stream
-    std::string inFile;                   // Input file name
-    std::vector<Lexer::Token> lineTokens; // List of lineTokens
-    std::vector<Lexer::Token> tokens;
-    std::stringstream *buffer;
-    std::string line;
+	std::ifstream fin;					  // Input file stream
+	std::string inFile;					  // Input file name
+	std::vector<Lexer::Token> lineTokens; // List of lineTokens
+	std::vector<Lexer::Token> tokens;
+	std::stringstream *buffer;
+	std::string line;
 
-    std::vector<std::string> files = {"test1.txt", "test2.txt", "test3.txt"};
+	std::vector<std::string> files = {"test1.txt", "test2.txt", "test3.txt"};
+	std::ofstream out;
+	out.open("output.txt");
 
 	for (std::string file : files)
 	{
@@ -29,7 +31,7 @@ int main()
 			continue;
 		}
 
-		std::cout << std::endl
+		out << std::endl
 			<< "RUNNING TEST CASE FILE \"" << file << "\"" << std::endl
 			<< std::endl;
 
@@ -49,9 +51,6 @@ int main()
 		}
 		fin.close();
 
-		std::ofstream out;
-		out.open("output.txt");
-
 		SyntaxAnalyzer *syntaxAnalyzer = new SyntaxAnalyzer(tokens, out, true);
 
 		try
@@ -61,15 +60,16 @@ int main()
 		}
 		catch (const SyntaxError &e)
 		{
-			out << std::endl << "ERROR: " << e.getMessage();
+			out << std::endl
+				<< "ERROR: " << e.getMessage();
 		}
 
 		tokens.clear();
 	}
-    std::cout << std::endl
-              << "EXECUTION HAS COMPLETED." << std::endl;
-    std::cout << "Press enter to continue. . ." << std::endl;
-    std::cin.get();
+	std::cout << std::endl
+			  << "EXECUTION HAS COMPLETED." << std::endl;
+	std::cout << "Press enter to continue. . ." << std::endl;
+	std::cin.get();
 
-    return 0;
+	return 0;
 }
