@@ -1,0 +1,820 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 6982
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(main.cpp)-4500(Tue Nov 13 00:32:45 2018)-4500(1)]TJ
+/TT4 1 Tf
+2.5 -1.6333 TD
+(1:)Tj
+0 -1.1 TD
+[(2:)-599.8(#)]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT4 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+(<iostream>)Tj
+/TT4 1 Tf
+0 g
+-7.2 -1.1 TD
+[(3:)-599.8(#)]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT4 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+(<fstream>)Tj
+/TT4 1 Tf
+0 g
+-7.2 -1.1 TD
+[(4:)-599.8(#)]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT4 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+(<iomanip>)Tj
+/TT4 1 Tf
+0 g
+-7.2 -1.1 TD
+[(5:)-599.8(#)]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT4 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("SyntaxAnalyzer.h")Tj
+/TT4 1 Tf
+0 g
+-7.2 -1.1 TD
+(6:)Tj
+T*
+(7:)Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+1.8 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( )Tj
+/TT2 1 Tf
+0 0 1 rg
+0.6 0 TD
+(main)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+(\(\))Tj
+-6.6 -1.1 TD
+[(8:)-599.8({)]TJ
+T*
+[(9:)-599.8(    )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(const)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+( )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( COL_SIZE = 20;)Tj
+-10.2 -1.1 TD
+(10:)Tj
+T*
+[(11:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::ifstream fin;                    )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+21 0 TD
+(// Input file stream)Tj
+/TT4 1 Tf
+-27.6 -1.1 TD
+(12:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::string inFile;                   )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+21 0 TD
+(// Input file name)Tj
+/TT4 1 Tf
+-27.6 -1.1 TD
+(13:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::vector<Lexer::Token> lineTokens; )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+21 0 TD
+(// List of lineTokens)Tj
+/TT4 1 Tf
+-27.6 -1.1 TD
+(14:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::vector<Lexer::Token> tokens;)Tj
+-6.6 -1.1 TD
+[(15:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::stringstream *buffer;)Tj
+-6.6 -1.1 TD
+[(16:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::string line;)Tj
+-6.6 -1.1 TD
+(17:)Tj
+T*
+[(18:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::vector<std::string> files = {)Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+18.6 0 TD
+("test1.txt")Tj
+/TT4 1 Tf
+0 g
+6.6 0 TD
+(, )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+1.2 0 TD
+("test2.txt")Tj
+/TT4 1 Tf
+0 g
+6.6 0 TD
+(, )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+1.2 0 TD
+("test3.txt")Tj
+/TT4 1 Tf
+0 g
+6.6 0 TD
+(};)Tj
+-47.4 -1.1 TD
+(19:)Tj
+T*
+[(20:)-599.7(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(for)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( \(std::string file : files\))Tj
+-9 -1.1 TD
+[(21:)-599.7(        {)]TJ
+T*
+(22:)Tj
+T*
+[(23:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// Open the file)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(24:)Tj
+0 g
+2.4 0 TD
+(                fin.open\(file.c_str\(\)\);)Tj
+-2.4 -1.1 TD
+(25:)Tj
+T*
+[(26:)-599.7(                )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+12 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(!fin\))Tj
+-13.2 -1.1 TD
+[(27:)-599.7(                {)]TJ
+T*
+[(28:)-599.7(                        )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+16.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::cout << )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+6 0 TD
+("file not found")Tj
+/TT4 1 Tf
+0 g
+9.6 0 TD
+( << std::endl;)Tj
+-34.2 -1.1 TD
+[(29:)-599.7(                        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+16.8 0 TD
+(continue)Tj
+/TT4 1 Tf
+0 g
+4.8 0 TD
+(;)Tj
+-21.6 -1.1 TD
+[(30:)-599.7(                })]TJ
+T*
+(31:)Tj
+T*
+[(32:)-599.7(                )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+12 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::cout << std::endl)Tj
+-13.8 -1.1 TD
+[(33:)-599.7(                        << )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+18.6 0 TD
+("RUNNING TEST CASE FILE \\"")Tj
+/TT4 1 Tf
+0 g
+16.2 0 TD
+( << file << )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+7.2 0 TD
+("\\"")Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( << std::end)Tj
+-46.3 -1.1 TD
+(l)Tj
+1.9 -1.1 TD
+[(34:)-599.7(                        << std::endl;)]TJ
+T*
+(35:)Tj
+T*
+[(36:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// File has opened, instantiate the lexer.)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(37:)Tj
+0 g
+2.4 0 TD
+(                Lexer *lexer = )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+18.6 0 TD
+(new)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( Lexer\(\);)Tj
+-22.8 -1.1 TD
+(38:)Tj
+T*
+[(39:)-599.7(                )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+12 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( lineNumber = 1;)Tj
+-13.8 -1.1 TD
+(40:)Tj
+T*
+[(41:)-599.7(                )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+12 0 TD
+(while)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+( \(getline\(fin, line\)\))Tj
+-15 -1.1 TD
+[(42:)-599.7(                {)]TJ
+T*
+[(43:)-599.7(                        buffer = )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+22.2 0 TD
+(new)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( std::stringstream\(line\);)Tj
+-24 -1.1 TD
+[(44:)-599.7(                        lineTokens = lexer->lex\(*buffer, lineNumber\);)]TJ
+T*
+(45:)Tj
+T*
+[(46:)-599.7(                        tokens.insert\(tokens.end\(\), lineTokens.begin\(\), lineTokens)]TJ
+-1.9 -1.1 TD
+(.end\(\)\);)Tj
+1.9 -1.1 TD
+(47:)Tj
+T*
+[(48:)-599.7(                        lineNumber++;)]TJ
+T*
+[(49:)-599.7(                })]TJ
+T*
+[(50:)-599.7(                fin.close\(\);)]TJ
+T*
+(51:)Tj
+T*
+[(52:)-599.7(                )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+12 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::ofstream out;)Tj
+-13.8 -1.1 TD
+[(53:)-599.7(                out.open\()]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+17.4 0 TD
+("output.txt")Tj
+/TT4 1 Tf
+0 g
+7.2 0 TD
+(\);)Tj
+-24.6 -1.1 TD
+(54:)Tj
+T*
+[(55:)-599.7(                SyntaxAnalyzer *syntaxAnalyzer = )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+31.8 0 TD
+(new)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( SyntaxAnalyzer\(tokens, out, t)Tj
+-35.5 -1.1 TD
+(rue\);)Tj
+1.9 -1.1 TD
+(56:)Tj
+T*
+[(57:)-599.7(                )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+12 0 TD
+(try)Tj
+/TT4 1 Tf
+0 g
+-12 -1.1 TD
+[(58:)-599.7(                {)]TJ
+T*
+[(59:)-599.7(                        )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+16.8 0 TD
+(// Run syntactical analysis)Tj
+/TT4 1 Tf
+-16.8 -1.1 TD
+(60:)Tj
+0 g
+2.4 0 TD
+(                        syntaxAnalyzer->Analyze\(\);)Tj
+-2.4 -1.1 TD
+[(61:)-599.7(                })]TJ
+T*
+[(62:)-599.7(                )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+12 0 TD
+(catch)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+( \()Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(const)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+( SyntaxError &e\))Tj
+-19.2 -1.1 TD
+[(63:)-599.7(                {)]TJ
+T*
+[(64:)-599.7(                        out << std::endl << )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+28.8 0 TD
+("ERROR: ")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+( << e.getMessage\(\);)Tj
+-34.2 -1.1 TD
+[(65:)-599.7(                })]TJ
+T*
+(66:)Tj
+T*
+[(67:)-599.7(                tokens.clear\(\);)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Length 978
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(main.cpp)-4500(Tue Nov 13 00:32:45 2018)-4500(2)]TJ
+/TT4 1 Tf
+1.9 -1.6333 TD
+[(68:)-599.7(        })]TJ
+0 -1.1 TD
+[(69:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::cout << std::endl)Tj
+-6.6 -1.1 TD
+[(70:)-599.7(              << )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+12.6 0 TD
+("EXECUTION HAS COMPLETED.")Tj
+/TT4 1 Tf
+0 g
+15.6 0 TD
+( << std::endl;)Tj
+-28.2 -1.1 TD
+[(71:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::cout << )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+6 0 TD
+("Press enter to continue. . .")Tj
+/TT4 1 Tf
+0 g
+18 0 TD
+( << std::endl;)Tj
+-30.6 -1.1 TD
+[(72:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::cin.get\(\);)Tj
+-6.6 -1.1 TD
+(73:)Tj
+T*
+[(74:)-599.7(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( 0;)Tj
+-8.4 -1.1 TD
+[(75:)-599.7(})]TJ
+ET
+endstream
+endobj
+11 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+13 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+14 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 99
+/FontBBox [-28 -250 742 805]
+/FontName /Courier-Oblique
+/ItalicAngle -15
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 122
+/Widths [600 0 600 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 600 600 0 0 600 0 600 0 600 0 600 0 
+0 600 0 600 600 600 600 600 600 600 0 0 600 600 600 600 
+600 0 600 600 600 600 0 0 600 0 0 0 600 0 0 0 
+0 600 0 600 600 600 600 0 600 600 0 0 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 12 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [600 600 0 600 0 0 600 0 600 600 600 600 600 600 600 0 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 0 600 0 600 600 0 0 600 0 0 600 600 600 600 
+0 0 0 600 600 0 0 0 0 0 600 0 0 0 0 600 
+0 600 600 600 600 600 600 600 0 600 0 600 600 600 600 600 
+600 0 600 600 600 600 600 0 600 600 600 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 13 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 600 0 600 600 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 600 0 0 600 0 0 600 0 0 600 
+0 0 600 0 600 0 0 0 0 0 0 0 0 0 0 0 
+0 600 0 600 600 600 600 0 600 600 0 600 600 600 600 600 
+600 0 600 600 600 600 0 0 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Oblique
+/FontDescriptor 14 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 11 0 R
+/Contents 10 0 R
+>>
+endobj
+15 0 obj
+<<
+/S /D
+>>
+endobj
+16 0 obj
+<<
+/Nums [0 15 0 R ]
+>>
+endobj
+8 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 9 0 R]
+/Count 2
+/MediaBox [0 0 595 842]
+>>
+endobj
+17 0 obj
+<<
+/CreationDate (D:20181115115205-08'00')
+/ModDate (D:20181115115205-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+18 0 obj
+<<
+/Type /Catalog
+/Pages 8 0 R
+/PageLabels 16 0 R
+>>
+endobj
+xref
+0 19
+0000000000 65535 f 
+0000010386 00000 n 
+0000000016 00000 n 
+0000007050 00000 n 
+0000009038 00000 n 
+0000009496 00000 n 
+0000009975 00000 n 
+0000008304 00000 n 
+0000010616 00000 n 
+0000010466 00000 n 
+0000007167 00000 n 
+0000008197 00000 n 
+0000008444 00000 n 
+0000008646 00000 n 
+0000008837 00000 n 
+0000010548 00000 n 
+0000010576 00000 n 
+0000010703 00000 n 
+0000010826 00000 n 
+trailer
+<<
+/Size 19
+/Root 18 0 R
+/Info 17 0 R
+/ID [<65f8314f1d0f049f63fcb87985947e65><65f8314f1d0f049f63fcb87985947e65>]
+>>
+startxref
+10895
+%%EOF

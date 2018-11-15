@@ -1,0 +1,351 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 2090
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(test1.txt)-4500(Tue Nov 13 00:32:45 2018)-4500(1)]TJ
+/TT4 1 Tf
+2.5 -1.6333 TD
+[(1:)-599.8([* This is a comment.)]TJ
+0 -1.1 TD
+[(2:)-599.8(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.2 0 TD
+(this)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( is a multiline comment xs *])Tj
+-6.6 -1.1 TD
+(3:)Tj
+T*
+[(4:)-599.8([* there is a comment in the middle of )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+25.2 0 TD
+(this)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( line! *])Tj
+-27.6 -1.1 TD
+(5:)Tj
+T*
+[(6:)-599.8(function )]TJ
+/TT2 1 Tf
+0 0 1 rg
+7.2 0 TD
+(add)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\(a: )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(, b: )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-18 -1.1 TD
+[(7:)-599.8({)]TJ
+T*
+[(8:)-599.8(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.2 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( a + b;)Tj
+-7.8 -1.1 TD
+[(9:)-599.8(})]TJ
+-0.6 -1.1 TD
+(10:)Tj
+T*
+[(11:)-599.7(function )]TJ
+/TT2 1 Tf
+0 0 1 rg
+7.8 0 TD
+(subtract)Tj
+/TT4 1 Tf
+0 g
+4.8 0 TD
+(\(a: )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(, b: )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-21.6 -1.1 TD
+[(12:)-599.7({)]TJ
+T*
+[(13:)-599.7(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( a - b;)Tj
+-8.4 -1.1 TD
+[(14:)-599.7(})]TJ
+T*
+(15:)Tj
+T*
+[(16:)-599.7(function )]TJ
+/TT2 1 Tf
+0 0 1 rg
+7.8 0 TD
+(divide)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+(\(a: )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(, b: )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-20.4 -1.1 TD
+[(17:)-599.7({)]TJ
+T*
+[(18:)-599.7(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( a / b;)Tj
+-8.4 -1.1 TD
+[(19:)-599.7(})]TJ
+T*
+(20:)Tj
+T*
+[(21:)-599.7($$)]TJ
+T*
+(22:)Tj
+T*
+[(23:)-599.7(a = 3;)]TJ
+T*
+[(24:)-599.7(b = 5;)]TJ
+T*
+(25:)Tj
+/TT2 1 Tf
+0 0 1 rg
+2.4 0 TD
+(put)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\(a\);)Tj
+-4.2 -1.1 TD
+[(26:)-599.7(a = a + b;)]TJ
+T*
+(27:)Tj
+T*
+[(28:)-599.7($$)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+8 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+9 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 600 600 0 0 600 0 600 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+0 0 0 0 600 0 0 0 0 0 0 0 0 0 0 0 
+0 600 600 600 600 600 0 0 600 600 0 0 0 0 600 600 
+600 0 600 600 600 600 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 8 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [600 600 0 0 600 0 0 0 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 600 0 0 0 0 0 0 600 0 600 0 0 
+0 600 600 600 600 600 600 0 600 600 0 0 600 600 600 600 
+0 0 600 600 600 600 0 0 600 0 0 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 9 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/S /D
+>>
+endobj
+11 0 obj
+<<
+/Nums [0 10 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R]
+/Count 1
+/MediaBox [0 0 595 842]
+>>
+endobj
+12 0 obj
+<<
+/CreationDate (D:20181115115338-08'00')
+/ModDate (D:20181115115338-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+13 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 11 0 R
+>>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000003642 00000 n 
+0000000016 00000 n 
+0000002158 00000 n 
+0000002795 00000 n 
+0000003198 00000 n 
+0000002264 00000 n 
+0000003790 00000 n 
+0000002404 00000 n 
+0000002605 00000 n 
+0000003722 00000 n 
+0000003750 00000 n 
+0000003871 00000 n 
+0000003994 00000 n 
+trailer
+<<
+/Size 14
+/Root 13 0 R
+/Info 12 0 R
+/ID [<43b993e202c6aaa6f1b6d736e75b3140><43b993e202c6aaa6f1b6d736e75b3140>]
+>>
+startxref
+4063
+%%EOF

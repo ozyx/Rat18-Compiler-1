@@ -1,0 +1,2075 @@
+%PDF-1.3
+%ту╧╙
+2 0 obj
+<<
+/Length 6955
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Tue Nov 13 00:32:45 2018)-4500(1)]TJ
+/TT4 1 Tf
+2.5 -1.6333 TD
+[(1:)-599.8(#)]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT4 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("Lexer.h")Tj
+/TT4 1 Tf
+0 g
+-7.2 -1.1 TD
+(2:)Tj
+T*
+(3:)Tj
+T*
+(4:)Tj
+/TT2 1 Tf
+0 0 1 rg
+1.8 0 TD
+(Lexer::Lexer)Tj
+/TT4 1 Tf
+0 g
+7.2 0 TD
+(\(\) : comment\(false\) {})Tj
+-9 -1.1 TD
+(5:)Tj
+T*
+(6:)Tj
+/TT2 1 Tf
+0 0 1 rg
+1.8 0 TD
+(Lexer::ШLexer)Tj
+/TT4 1 Tf
+0 g
+7.8 0 TD
+(\(\) {})Tj
+-9.6 -1.1 TD
+(7:)Tj
+T*
+[(8:)-599.8(std::vector<Lexer::Token> Lexer::lex\(std::stringstream &buffer, )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+40.2 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( lineNumber\))Tj
+-42 -1.1 TD
+[(9:)-599.8({)]TJ
+-0.6 -1.1 TD
+[(10:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::vector<Token> tokens;)Tj
+-6.6 -1.1 TD
+[(11:)-599.7(    Token *token;)]TJ
+T*
+[(12:)-599.7(    )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(char)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( c;)Tj
+-7.2 -1.1 TD
+[(13:)-599.7(    )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( transition;)Tj
+-6.6 -1.1 TD
+[(14:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::string lexeme = )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+10.8 0 TD
+("")Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+(;)Tj
+-18.6 -1.1 TD
+[(15:)-599.7(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::string tokenStr = )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+12 0 TD
+("")Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+(;)Tj
+-19.8 -1.1 TD
+[(16:)-599.7(    )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( prevState = 0;)Tj
+-6.6 -1.1 TD
+[(17:)-599.7(    )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( currState = 0;)Tj
+-6.6 -1.1 TD
+(18:)Tj
+T*
+[(19:)-599.7(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(while)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+( \(buffer.get\(c\)\))Tj
+-7.8 -1.1 TD
+[(20:)-599.7(    {)]TJ
+T*
+[(21:)-599.7(        )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// Check if we are inside of a multiline comment,)Tj
+/TT4 1 Tf
+-7.2 -1.1 TD
+(22:)Tj
+0 g
+2.4 0 TD
+(        )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// or at the beginning of a new comment range.)Tj
+/TT4 1 Tf
+-7.2 -1.1 TD
+(23:)Tj
+0 g
+2.4 0 TD
+(        )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(comment | \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+10.8 0 TD
+(Т[Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( && buffer.peek\(\) == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+12.6 0 TD
+(Т*Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\)\))Tj
+-35.4 -1.1 TD
+[(24:)-599.7(        {)]TJ
+T*
+[(25:)-599.7(            )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// Iterate until we see a Т*]Т)Tj
+/TT4 1 Tf
+-9.6 -1.1 TD
+(26:)Tj
+0 g
+2.4 0 TD
+(            )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(while)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+( \(c != )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т*Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( | buffer.peek\(\) != )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+12 0 TD
+(Т]Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-32.4 -1.1 TD
+[(27:)-599.7(            {)]TJ
+T*
+[(28:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// If we hit the end of the line, set)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(29:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// comment switch to "true" and reset)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(30:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// the current character so it gets ignored.)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(31:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+9.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(buffer.eof\(\)\))Tj
+-13.2 -1.1 TD
+[(32:)-599.7(                {)]TJ
+T*
+[(33:)-599.7(                    comment = true;)]TJ
+T*
+[(34:)-599.7(                    c = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+16.8 0 TD
+(Т Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(;)Tj
+-18.6 -1.1 TD
+[(35:)-599.7(                    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+14.4 0 TD
+(break)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+(;)Tj
+-17.4 -1.1 TD
+[(36:)-599.7(                })]TJ
+T*
+(37:)Tj
+T*
+[(38:)-599.7(                buffer.get\(c\);)]TJ
+T*
+[(39:)-599.7(            })]TJ
+T*
+(40:)Tj
+T*
+[(41:)-599.7(            )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// If we havenТt reached the end of the file,)Tj
+/TT4 1 Tf
+-9.6 -1.1 TD
+(42:)Tj
+0 g
+2.4 0 TD
+(            )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// and the current character is a Т*Т, we know)Tj
+/TT4 1 Tf
+-9.6 -1.1 TD
+(43:)Tj
+0 g
+2.4 0 TD
+(            )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// we have reached the end of the comment section.)Tj
+/TT4 1 Tf
+-9.6 -1.1 TD
+(44:)Tj
+0 g
+2.4 0 TD
+(            )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(!buffer.eof\(\) && c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+(Т*Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-27 -1.1 TD
+[(45:)-599.7(            {)]TJ
+T*
+[(46:)-599.7(                comment = false;)]TJ
+T*
+(47:)Tj
+T*
+[(48:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// Get both characters Т*]Т out of the stream)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(49:)Tj
+0 g
+2.4 0 TD
+(                buffer.get\(c\).get\(c\);)Tj
+-2.4 -1.1 TD
+[(50:)-599.7(            })]TJ
+T*
+[(51:)-599.7(        })]TJ
+T*
+(52:)Tj
+T*
+[(53:)-599.7(        )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// Get the character type \(transition\))Tj
+/TT4 1 Tf
+-7.2 -1.1 TD
+(54:)Tj
+0 g
+2.4 0 TD
+(        transition = getTransition\(c\);)Tj
+-2.4 -1.1 TD
+(55:)Tj
+T*
+[(56:)-599.7(        )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// Update state)Tj
+/TT4 1 Tf
+-7.2 -1.1 TD
+(57:)Tj
+0 g
+2.4 0 TD
+(        currState = Lexer::stateTable[currState][transition];)Tj
+-2.4 -1.1 TD
+(58:)Tj
+T*
+[(59:)-599.7(        )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// Terminating state)Tj
+/TT4 1 Tf
+-7.2 -1.1 TD
+(60:)Tj
+0 g
+2.4 0 TD
+(        )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(currState == TRM\))Tj
+-8.4 -1.1 TD
+[(61:)-599.7(        {)]TJ
+T*
+[(62:)-599.7(            tokenStr = stateToString\(prevState\);)]TJ
+T*
+(63:)Tj
+T*
+[(64:)-599.7(            )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+9.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(tokenStr != )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+8.4 0 TD
+("Illegal")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+(\))Tj
+-24.6 -1.1 TD
+[(65:)-599.7(            {)]TJ
+T*
+(66:)Tj
+T*
+[(67:)-599.7(                )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+12 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(tokenStr == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+8.4 0 TD
+("Identifier")Tj
+/TT4 1 Tf
+0 g
+7.2 0 TD
+(\))Tj
+-28.8 -1.1 TD
+[(68:)-599.7(                {)]TJ
+T*
+[(69:)-599.7(                    )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+14.4 0 TD
+(// Check if this identifier is a keyword)Tj
+/TT4 1 Tf
+-14.4 -1.1 TD
+(70:)Tj
+0 g
+2.4 0 TD
+(                    )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+12 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(isKeyword\(lexeme\)\))Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Length 5507
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Tue Nov 13 00:32:45 2018)-4500(2)]TJ
+/TT4 1 Tf
+1.9 -1.6333 TD
+[(71:)-599.7(                    {)]TJ
+0 -1.1 TD
+[(72:)-599.7(                        tokenStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+23.4 0 TD
+("Keyword")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+(;)Tj
+-28.8 -1.1 TD
+[(73:)-599.7(                    })]TJ
+T*
+[(74:)-599.7(                })]TJ
+T*
+(75:)Tj
+T*
+[(76:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// Create token and add to list of tokens)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(77:)Tj
+0 g
+2.4 0 TD
+(                token = )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+14.4 0 TD
+(new)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( Token\(tokenStr, lexeme, lineNumber\);)Tj
+-18.6 -1.1 TD
+[(78:)-599.7(                tokens.push_back\(*token\);)]TJ
+T*
+(79:)Tj
+T*
+[(80:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// reset state machine)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(81:)Tj
+0 g
+2.4 0 TD
+(                currState = NS;)Tj
+-2.4 -1.1 TD
+[(82:)-599.7(                lexeme.clear\(\);)]TJ
+T*
+[(83:)-599.7(                tokenStr.clear\(\);)]TJ
+T*
+(84:)Tj
+T*
+[(85:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// If we reached the terminating state by anything other)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(86:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// than whitespace, we need to put it back and re-examine)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(87:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// the character on the next iteration.)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(88:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+9.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(!isspace\(c\)\))Tj
+-13.2 -1.1 TD
+[(89:)-599.7(                {)]TJ
+T*
+[(90:)-599.7(                    buffer.putback\(c\);)]TJ
+T*
+[(91:)-599.7(                })]TJ
+T*
+[(92:)-599.7(            })]TJ
+T*
+[(93:)-599.7(            )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+9.6 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+-9.6 -1.1 TD
+[(94:)-599.7(            {)]TJ
+T*
+[(95:)-599.7(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12 0 TD
+(// Push back rejected token)Tj
+/TT4 1 Tf
+-12 -1.1 TD
+(96:)Tj
+0 g
+2.4 0 TD
+(                )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+9.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(!lexeme.empty\(\)\))Tj
+-13.2 -1.1 TD
+[(97:)-599.7(                {)]TJ
+T*
+[(98:)-599.7(                    token = )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+19.2 0 TD
+(new)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( Token\(tokenStr, lexeme, lineNumber\);)Tj
+-21 -1.1 TD
+[(99:)-599.7(                    tokens.push_back\(*token\);)]TJ
+-0.6 -1.1 TD
+[(100:)-599.6(                })]TJ
+T*
+(101:)Tj
+T*
+[(102:)-599.6(                )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+12.6 0 TD
+(// reset state machine)Tj
+/TT4 1 Tf
+-12.6 -1.1 TD
+(103:)Tj
+0 g
+3 0 TD
+(                currState = NS;)Tj
+-3 -1.1 TD
+[(104:)-599.6(                lexeme.clear\(\);)]TJ
+T*
+[(105:)-599.6(                tokenStr.clear\(\);)]TJ
+T*
+[(106:)-599.6(            })]TJ
+T*
+[(107:)-599.6(        })]TJ
+T*
+[(108:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+-7.8 -1.1 TD
+[(109:)-599.6(        {)]TJ
+T*
+[(110:)-599.6(            )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+10.2 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(!isspace\(c\)\))Tj
+-11.4 -1.1 TD
+[(111:)-599.6(            {)]TJ
+T*
+[(112:)-599.6(                lexeme.push_back\(c\);)]TJ
+T*
+[(113:)-599.6(            })]TJ
+T*
+[(114:)-599.6(        })]TJ
+T*
+(115:)Tj
+T*
+[(116:)-599.6(        prevState = currState;)]TJ
+T*
+[(117:)-599.6(    })]TJ
+T*
+(118:)Tj
+T*
+[(119:)-599.6(    )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+5.4 0 TD
+(// Grab the last token)Tj
+/TT4 1 Tf
+-5.4 -1.1 TD
+(120:)Tj
+0 g
+3 0 TD
+(    tokenStr = stateToString\(prevState\);)Tj
+-3 -1.1 TD
+(121:)Tj
+T*
+[(122:)-599.6(    )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+5.4 0 TD
+(// Evaluate the last token)Tj
+/TT4 1 Tf
+-5.4 -1.1 TD
+(123:)Tj
+0 g
+3 0 TD
+(    )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+2.4 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(tokenStr != )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+8.4 0 TD
+("Illegal")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+(\))Tj
+-20.4 -1.1 TD
+[(124:)-599.6(    {)]TJ
+T*
+[(125:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(tokenStr == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+8.4 0 TD
+("Identifier")Tj
+/TT4 1 Tf
+0 g
+7.2 0 TD
+(\))Tj
+-24.6 -1.1 TD
+[(126:)-599.6(        {)]TJ
+T*
+[(127:)-599.6(            )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// Check if this identifier is a keyword)Tj
+/TT4 1 Tf
+-10.2 -1.1 TD
+(128:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(isKeyword\(lexeme\)\))Tj
+-11.4 -1.1 TD
+[(129:)-599.6(            {)]TJ
+T*
+[(130:)-599.6(                tokenStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+19.2 0 TD
+("Keyword")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+(;)Tj
+-24.6 -1.1 TD
+[(131:)-599.6(            })]TJ
+T*
+[(132:)-599.6(        })]TJ
+T*
+(133:)Tj
+T*
+[(134:)-599.6(        )]TJ
+/TT6 1 Tf
+0.698 0.133 0.133 rg
+7.8 0 TD
+(// Create token and add to list of tokens)Tj
+/TT4 1 Tf
+-7.8 -1.1 TD
+(135:)Tj
+0 g
+3 0 TD
+(        token = )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+9.6 0 TD
+(new)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( Token\(tokenStr, lexeme, lineNumber\);)Tj
+-14.4 -1.1 TD
+[(136:)-599.6(        tokens.push_back\(*token\);)]TJ
+T*
+[(137:)-599.6(    })]TJ
+T*
+(138:)Tj
+T*
+[(139:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( tokens;)Tj
+-9 -1.1 TD
+[(140:)-599.6(})]TJ
+ET
+endstream
+endobj
+11 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+13 0 obj
+<<
+/Length 6632
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Tue Nov 13 00:32:45 2018)-4500(3)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+(141:)Tj
+0 -1.1 TD
+(142:)Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( )Tj
+/TT2 1 Tf
+0 0 1 rg
+0.6 0 TD
+(Lexer::getTransition)Tj
+/TT4 1 Tf
+0 g
+12 0 TD
+(\()Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(char)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( c\) )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(const)Tj
+/TT4 1 Tf
+0 g
+-22.8 -1.1 TD
+[(143:)-599.6({)]TJ
+T*
+[(144:)-599.6(    )]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+5.4 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( transition = REJECT;)Tj
+-7.2 -1.1 TD
+(145:)Tj
+T*
+[(146:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(isdigit\(c\)\))Tj
+-6.6 -1.1 TD
+[(147:)-599.6(    {)]TJ
+T*
+[(148:)-599.6(        transition = INTEGER;)]TJ
+T*
+[(149:)-599.6(    })]TJ
+T*
+[(150:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(isalpha\(c\)\))Tj
+-9.6 -1.1 TD
+[(151:)-599.6(    {)]TJ
+T*
+[(152:)-599.6(        transition = IDENTIFIER;)]TJ
+T*
+[(153:)-599.6(    })]TJ
+T*
+[(154:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т.Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(155:)-599.6(    {)]TJ
+T*
+[(156:)-599.6(        transition = REAL;)]TJ
+T*
+[(157:)-599.6(    })]TJ
+T*
+[(158:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т^Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(159:)-599.6(    {)]TJ
+T*
+[(160:)-599.6(        transition = CARROT;)]TJ
+T*
+[(161:)-599.6(    })]TJ
+T*
+[(162:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т=Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(163:)-599.6(    {)]TJ
+T*
+[(164:)-599.6(        transition = EQUALS;)]TJ
+T*
+[(165:)-599.6(    })]TJ
+T*
+[(166:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т>Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(167:)-599.6(    {)]TJ
+T*
+[(168:)-599.6(        transition = GREATERTHAN;)]TJ
+T*
+[(169:)-599.6(    })]TJ
+T*
+[(170:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т<Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(171:)-599.6(    {)]TJ
+T*
+[(172:)-599.6(        transition = LESSTHAN;)]TJ
+T*
+[(173:)-599.6(    })]TJ
+T*
+[(174:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т+Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(175:)-599.6(    {)]TJ
+T*
+[(176:)-599.6(        transition = PLUS;)]TJ
+T*
+[(177:)-599.6(    })]TJ
+T*
+[(178:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т-Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(179:)-599.6(    {)]TJ
+T*
+[(180:)-599.6(        transition = MINUS;)]TJ
+T*
+[(181:)-599.6(    })]TJ
+T*
+[(182:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т*Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(183:)-599.6(    {)]TJ
+T*
+[(184:)-599.6(        transition = MULTIPLY;)]TJ
+T*
+[(185:)-599.6(    })]TJ
+T*
+[(186:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т/Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(187:)-599.6(    {)]TJ
+T*
+[(188:)-599.6(        transition = DIVIDE;)]TJ
+T*
+[(189:)-599.6(    })]TJ
+T*
+[(190:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(isValidSeparator\(c\)\))Tj
+-9.6 -1.1 TD
+[(191:)-599.6(    {)]TJ
+T*
+[(192:)-599.6(        transition = SEPARATOR;)]TJ
+T*
+[(193:)-599.6(    })]TJ
+T*
+[(194:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(else)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT4 1 Tf
+0 g
+1.2 0 TD
+( \(c == )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+4.2 0 TD
+(Т$Т)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(\))Tj
+-15.6 -1.1 TD
+[(195:)-599.6(    {)]TJ
+T*
+[(196:)-599.6(        transition = FUNC_SEPARATOR;)]TJ
+T*
+[(197:)-599.6(    })]TJ
+T*
+(198:)Tj
+T*
+[(199:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( transition;)Tj
+-9 -1.1 TD
+[(200:)-599.6(})]TJ
+T*
+(201:)Tj
+T*
+[(202:)-599.6(std::string Lexer::stateToString\()]TJ
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+22.8 0 TD
+(int)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+( state\) )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(const)Tj
+/TT4 1 Tf
+0 g
+-29.4 -1.1 TD
+[(203:)-599.6({)]TJ
+T*
+[(204:)-599.6(    )]TJ
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+5.4 0 TD
+(std)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(::string stateStr = )Tj
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+12 0 TD
+("Illegal")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+(;)Tj
+-24.6 -1.1 TD
+(205:)Tj
+T*
+[(206:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(switch)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( \(state\))Tj
+-9 -1.1 TD
+[(207:)-599.6(    {)]TJ
+T*
+[(208:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S01)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(209:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S02)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(210:)-599.6(        stateStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("Identifier")Tj
+/TT4 1 Tf
+0 g
+7.2 0 TD
+(;)Tj
+ET
+endstream
+endobj
+14 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+16 0 obj
+<<
+/Length 3964
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Tue Nov 13 00:32:45 2018)-4500(4)]TJ
+/TT4 1 Tf
+1.3 -1.6333 TD
+[(211:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(break)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+(;)Tj
+-10.8 -1.1 TD
+[(212:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S04)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(213:)-599.6(        stateStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("Integer")Tj
+/TT4 1 Tf
+0 g
+5.4 0 TD
+(;)Tj
+-19.8 -1.1 TD
+[(214:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(break)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+(;)Tj
+-10.8 -1.1 TD
+[(215:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S06)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(216:)-599.6(        stateStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("Real")Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+(;)Tj
+-18 -1.1 TD
+[(217:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(break)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+(;)Tj
+-10.8 -1.1 TD
+[(218:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S07)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(219:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S09)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(220:)-599.6(        stateStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("Separator")Tj
+/TT4 1 Tf
+0 g
+6.6 0 TD
+(;)Tj
+-21 -1.1 TD
+[(221:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(break)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+(;)Tj
+-10.8 -1.1 TD
+[(222:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S11)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(223:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S12)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(224:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S13)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(225:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(case)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0.373 0.62 0.627 rg
+0.6 0 TD
+(S14)Tj
+/TT4 1 Tf
+0 g
+1.8 0 TD
+(:)Tj
+-10.2 -1.1 TD
+[(226:)-599.6(        stateStr = )]TJ
+/TT2 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("Operator")Tj
+/TT4 1 Tf
+0 g
+6 0 TD
+(;)Tj
+-20.4 -1.1 TD
+[(227:)-599.6(        )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(break)Tj
+/TT4 1 Tf
+0 g
+3 0 TD
+(;)Tj
+-10.8 -1.1 TD
+[(228:)-599.6(    })]TJ
+T*
+(229:)Tj
+T*
+[(230:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( stateStr;)Tj
+-9 -1.1 TD
+[(231:)-599.6(})]TJ
+T*
+(232:)Tj
+T*
+(233:)Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(bool)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0 0 1 rg
+0.6 0 TD
+(Lexer::isValidSeparator)Tj
+/TT4 1 Tf
+0 g
+13.8 0 TD
+(\()Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(char)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( c\) )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(const)Tj
+/TT4 1 Tf
+0 g
+-25.2 -1.1 TD
+[(234:)-599.6({)]TJ
+T*
+[(235:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( separators.count\(c\);)Tj
+-9 -1.1 TD
+[(236:)-599.6(})]TJ
+T*
+(237:)Tj
+T*
+(238:)Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(bool)Tj
+/TT4 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT2 1 Tf
+0 0 1 rg
+0.6 0 TD
+(Lexer::isKeyword)Tj
+/TT4 1 Tf
+0 g
+9.6 0 TD
+(\(std::string token\) )Tj
+/TT2 1 Tf
+0.133 0.545 0.133 rg
+12 0 TD
+(const)Tj
+/TT4 1 Tf
+0 g
+-27.6 -1.1 TD
+[(239:)-599.6({)]TJ
+T*
+[(240:)-599.6(    )]TJ
+/TT2 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT4 1 Tf
+0 g
+3.6 0 TD
+( keywords.count\(token\);)Tj
+-9 -1.1 TD
+[(241:)-599.6(})]TJ
+ET
+endstream
+endobj
+17 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+18 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+19 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+20 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 99
+/FontBBox [-28 -250 742 805]
+/FontName /Courier-Oblique
+/ItalicAngle -15
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 0 600 0 600 0 0 0 0 0 600 600 0 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 0 600 600 600 0 
+0 0 0 0 0 0 0 0 0 600 0 600 600 0 600 600 
+0 0 600 600 600 0 600 0 0 0 0 600 0 600 600 0 
+0 600 600 600 600 600 600 600 600 600 0 600 600 0 600 600 
+600 0 600 600 600 600 600 600 600 600 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 18 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [600 600 0 600 0 0 600 0 600 600 600 0 600 0 600 0 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 0 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 0 0 600 0 600 0 600 0 600 
+0 600 600 600 600 600 600 600 600 600 0 600 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 0 600 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 19 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 146
+/Widths [600 0 600 0 0 0 0 0 600 600 600 0 600 600 600 600 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 600 0 600 0 600 0 600 0 0 0 0 0 0 
+600 0 0 0 600 600 0 0 0 0 0 0 0 600 0 0 
+0 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Oblique
+/FontDescriptor 20 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 11 0 R
+/Contents 10 0 R
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 14 0 R
+/Contents 13 0 R
+>>
+endobj
+15 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 17 0 R
+/Contents 16 0 R
+>>
+endobj
+21 0 obj
+<<
+/S /D
+>>
+endobj
+22 0 obj
+<<
+/Nums [0 21 0 R ]
+>>
+endobj
+8 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 9 0 R 12 0 R 15 0 R]
+/Count 4
+/MediaBox [0 0 595 842]
+>>
+endobj
+23 0 obj
+<<
+/CreationDate (D:20181115115316-08'00')
+/ModDate (D:20181115115316-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+24 0 obj
+<<
+/Type /Catalog
+/Pages 8 0 R
+/PageLabels 22 0 R
+>>
+endobj
+xref
+0 25
+0000000000 65535 f 
+0000025990 00000 n 
+0000000016 00000 n 
+0000007023 00000 n 
+0000024468 00000 n 
+0000024998 00000 n 
+0000025501 00000 n 
+0000023734 00000 n 
+0000026386 00000 n 
+0000026070 00000 n 
+0000007140 00000 n 
+0000012700 00000 n 
+0000026152 00000 n 
+0000012818 00000 n 
+0000019503 00000 n 
+0000026235 00000 n 
+0000019610 00000 n 
+0000023627 00000 n 
+0000023874 00000 n 
+0000024076 00000 n 
+0000024267 00000 n 
+0000026318 00000 n 
+0000026346 00000 n 
+0000026487 00000 n 
+0000026610 00000 n 
+trailer
+<<
+/Size 25
+/Root 24 0 R
+/Info 23 0 R
+/ID [<f18c60f3350076b100c09a96c4bd7870><f18c60f3350076b100c09a96c4bd7870>]
+>>
+startxref
+26679
+%%EOF
