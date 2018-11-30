@@ -5,7 +5,7 @@ NAME = program.exe
 
 all: Program
 
-Program: Lexer.o SyntaxAnalyzer.o main.o
+Program: Lexer.o SymbolTable.o SyntaxAnalyzer.o main.o
 	$(CC) -o $(NAME) $(OBJS)
 
 main.o: main.cpp
@@ -13,6 +13,9 @@ main.o: main.cpp
 
 SyntaxAnalyzer.o: SyntaxAnalyzer.cpp
 	$(CC) $(FLAGS) -c SyntaxAnalyzer.cpp -o SyntaxAnalyzer.o
+
+SymbolTable.o: SymbolTable.cpp
+	$(CC) $(FLAGS) -c SymbolTable.cpp -o SymbolTable.o
 
 Lexer.o: Lexer.cpp
 	$(CC) $(FLAGS) -c Lexer.cpp -o Lexer.o
