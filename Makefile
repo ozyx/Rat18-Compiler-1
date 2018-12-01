@@ -1,6 +1,6 @@
 CC = g++
 FLAGS = -std=c++1y -Wall -g
-OBJS = main.o Lexer.o SyntaxAnalyzer.o
+OBJS = main.o Lexer.o SymbolTable.o SyntaxAnalyzer.o
 NAME = program.exe
 
 all: Program
