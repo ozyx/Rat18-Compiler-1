@@ -78,6 +78,7 @@ bool SymbolTable::lookup(std::string id)
 bool SymbolTable::remove(std::string id)
 {
     bool success = false;
+    int pos = 0;
 
     if (lookup(id))
     {
@@ -86,8 +87,13 @@ bool SymbolTable::remove(std::string id)
         {
             if (it->token.lexeme == id)
             {
-                this->table.erase(it);
+                this->table.erase(this->table.begin() + pos);
                 success = true;
+            }
+            else
+            {
+                ++pos;
+                ++it;
             }
         }
     }
@@ -101,7 +107,8 @@ bool SymbolTable::remove(std::string id)
  * 
  * @return std::string
  */
-std::string list()
+std::string SymbolTable::list()
 {
     //TODO: Make this return a formatted string
+    return "";
 }
