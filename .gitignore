@@ -31,5 +31,13 @@
 *.out
 *.app
 
+# Visual Studio
+x64
+.vs
+*.filters
+*.user
+*.suo
+
 # Misc
 .DS_Store
+*.zip
