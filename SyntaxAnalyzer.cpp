@@ -1,8 +1,8 @@
 #include "SyntaxAnalyzer.h"
 
-SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print) : tokens(tokens), it(tokens.begin()), currentToken(*(it)), output(output)
+SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print) : tokens(tokens), it(tokens.begin()), currentToken(*(it)), output(output), save(nullptr)
 {
-	this->print = print;
+    this->print = print;
 }
 
 SyntaxAnalyzer::~SyntaxAnalyzer() { output.close(); }
@@ -14,7 +14,7 @@ SyntaxAnalyzer::~SyntaxAnalyzer() { output.close(); }
 void SyntaxAnalyzer::getNextToken()
 {
     // Increment iterator
-	++it;
+    ++it;
 
     if (it == this->tokens.end())
     {
@@ -29,10 +29,10 @@ void SyntaxAnalyzer::getNextToken()
         printCurrentToken();
     }
 
-	if (this->currentToken.token == "Illegal")
-	{
-		throw SyntaxError("Illegal symbol \'" + this->currentToken.lexeme + "\'", this->currentToken.lineNumber);
-	}
+    if (this->currentToken.token == "Illegal")
+    {
+        throw SyntaxError("Illegal symbol \'" + this->currentToken.lexeme + "\'", this->currentToken.lineNumber);
+    }
 }
 
 // The root of the top-down parser
@@ -214,6 +214,14 @@ void SyntaxAnalyzer::Identifier()
     {
         output << "\t<Identifier>" << std::endl;
     }
+    if (!symbolTable.lookup(currentToken.lexeme))
+    {
+        symbolTable.insert(currentToken);
+    }
+    else
+    {
+        // TODO: error, symbol is already existing in table
+    }
 }
 
 void SyntaxAnalyzer::StatementList()
@@ -305,6 +313,8 @@ void SyntaxAnalyzer::Assign()
 
     Identifier();
 
+    save = &currentToken;
+
     getNextToken();
 
     if (currentToken.lexeme != "=")
@@ -314,6 +324,8 @@ void SyntaxAnalyzer::Assign()
 
     getNextToken();
     Expression();
+
+    symbolTable.gen_instr("POPM", symbolTable.get_address(*save));
 
     if (currentToken.lexeme != ";")
     {
@@ -342,9 +354,19 @@ void SyntaxAnalyzer::ExpressionPrime()
 
     if (currentToken.lexeme == "+" | currentToken.lexeme == "-")
     {
+        std::string op = currentToken.lexeme;
         getNextToken();
 
         Term();
+
+        if (op == "+")
+        {
+            symbolTable.gen_instr("ADD", NIL);
+        }
+        else
+        {
+            symbolTable.gen_instr("SUB", NIL);
+        }
         ExpressionPrime();
     }
     else
@@ -480,7 +502,7 @@ void SyntaxAnalyzer::If()
         throw SyntaxError("Expected '('", currentToken.lineNumber);
     }
 
-	getNextToken();
+    getNextToken();
 
     Condition();
 
@@ -649,9 +671,21 @@ void SyntaxAnalyzer::TermPrime()
 
     if (currentToken.lexeme == "*" | currentToken.lexeme == "/")
     {
+        std::string op = currentToken.lexeme;
+
         getNextToken();
 
         Factor();
+
+        if (op == "*")
+        {
+            symbolTable.gen_instr("MUL", NIL);
+        }
+        else
+        {
+            symbolTable.gen_instr("DIV", NIL);
+        }
+
         TermPrime();
     }
 }
@@ -737,8 +771,8 @@ void SyntaxAnalyzer::While()
 void SyntaxAnalyzer::printCurrentToken()
 {
     output << std::left << std::endl
-              << std::setw(8) << "Token:" << std::setw(16) << currentToken.token << std::setw(8) << "Lexeme:" << currentToken.lexeme << std::endl
-              << std::endl;
+           << std::setw(8) << "Token:" << std::setw(16) << currentToken.token << std::setw(8) << "Lexeme:" << currentToken.lexeme << std::endl
+           << std::endl;
 }
 
 SyntaxError::SyntaxError(std::string message, int lineNumber)
@@ -752,4 +786,9 @@ SyntaxError::~SyntaxError() {}
 std::string SyntaxError::getMessage() const
 {
     return (this->message + " Line: " + std::to_string(this->lineNumber));
+}
+
+void SyntaxAnalyzer::PrintSymbolTable()
+{
+    std::cout << this->symbolTable.list();
 }

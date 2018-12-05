@@ -1,12 +1,24 @@
 #ifndef SYMBOLTABLE_H
 #define SYMBOLTABLE_H
 #include "Lexer.h"
+#include "Globals.h"
 #include <string>
 #include <vector>
+#include <sstream>
+#include <iomanip>
 
 class SymbolTable
 {
 public:
+  struct Instr
+  {
+    int address;
+    std::string op;
+    int operand;
+
+    Instr(std::string op, int operand) : address(instr_address++), op(op), operand(operand) {}
+  };
+
   struct Symbol
   {
     Lexer::Token token;
@@ -20,7 +32,7 @@ public:
   ~SymbolTable();
 
   // Accessors
-  bool lookup(std::string id);
+  int lookup(std::string id);
 
   std::string list();
 
@@ -29,10 +41,15 @@ public:
 
   bool remove(std::string id);
 
+  int get_address(Lexer::Token token);
+
+  void gen_instr(std::string op, int operand);
+
 private:
   void incrementMem();
 
   std::vector<Symbol> table;
+  std::vector<Instr> instructions;
   int memaddress;
 };
 

@@ -45,10 +45,9 @@ bool SymbolTable::insert(Lexer::Token t)
  * in the symbol table.
  * 
  * @param id The identifier (lexeme)
- * @return true if already existing
- * @return false if not existing
+ * @return address if existing, 0 if not
  */
-bool SymbolTable::lookup(std::string id)
+int SymbolTable::lookup(std::string id)
 {
     std::vector<Symbol>::iterator it = this->table.begin();
     bool found = false;
@@ -65,7 +64,7 @@ bool SymbolTable::lookup(std::string id)
         }
     }
 
-    return found;
+    return found? it->address : 0;
 }
 
 /**
@@ -109,6 +108,33 @@ bool SymbolTable::remove(std::string id)
  */
 std::string SymbolTable::list()
 {
-    //TODO: Make this return a formatted string
-    return "";
+    std::ostringstream os;
+    const int COL_WIDTH = 15;
+
+    os << std::left << std::setw(COL_WIDTH) << "Identifier" << std::setw(COL_WIDTH) << "Type" << "Memory Address" << std::endl;
+
+    for(std::vector<Symbol>::const_iterator it = this->table.begin(); it != this->table.end(); ++it)
+    {
+        os << std::setw(COL_WIDTH) << it->token.lexeme << std::setw(COL_WIDTH) << it->token.token << it->address << std::endl;
+    }
+
+    return os.str();
+}
+
+void SymbolTable::gen_instr(std::string op, int operand)
+{
+    if(!operand)
+    {
+        // something went wrong
+        // TODO: error?
+        return;
+    }
+    Instr *instr = new Instr(op, operand);
+
+    this->instructions.push_back(*instr);
+}
+
+int SymbolTable::get_address(Lexer::Token token)
+{
+    return lookup(token.lexeme);
 }

@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include "Lexer.h"
+#include "SymbolTable.h"
 
 class SyntaxError
 {
@@ -30,6 +31,8 @@ public:
 
   // Begins the analysis process with the given tokens
   void Analyze();
+
+  void PrintSymbolTable();
 
 private:
   void Rat18F();
@@ -75,6 +78,8 @@ private:
   Lexer::Token currentToken;
   bool print;
   std::ofstream &output;
+  SymbolTable symbolTable;
+  Lexer::Token *save;
 };
 
 #endif // SYNTAXANALYZER_H

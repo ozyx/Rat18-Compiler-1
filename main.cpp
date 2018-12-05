@@ -65,7 +65,9 @@ int main()
 		}
 
 		tokens.clear();
+		syntaxAnalyzer->PrintSymbolTable();
 	}
+
 	std::cout << std::endl
 			  << "EXECUTION HAS COMPLETED." << std::endl;
 	std::cout << "Press enter to continue. . ." << std::endl;
