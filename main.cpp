@@ -65,7 +65,8 @@ int main()
 		}
 
 		tokens.clear();
-		syntaxAnalyzer->PrintSymbolTable();
+		syntaxAnalyzer->PrintAll();
+		delete syntaxAnalyzer;
 	}
 
 	std::cout << std::endl

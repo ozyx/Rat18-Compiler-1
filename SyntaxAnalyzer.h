@@ -32,7 +32,7 @@ public:
   // Begins the analysis process with the given tokens
   void Analyze();
 
-  void PrintSymbolTable();
+  void PrintAll();
 
 private:
   void Rat18F();
