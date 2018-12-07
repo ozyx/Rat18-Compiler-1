@@ -457,11 +457,13 @@ void SyntaxAnalyzer::Primary()
 	else if (currentToken.lexeme == "true")
 	{
 		output << "\ttrue" << std::endl;
+		symbolTable.gen_instr("PUSHI", 1);
 		getNextToken();
 	}
 	else if (currentToken.lexeme == "false")
 	{
 		output << "\tfalse" << std::endl;
+		symbolTable.gen_instr("PUSHI", 0);
 		getNextToken();
 	}
 }
@@ -549,6 +551,34 @@ void SyntaxAnalyzer::Condition()
 
 	getNextToken();
 	Expression();
+
+	if (*savedOp == "<")
+	{
+		symbolTable.gen_instr("LES", NIL);
+	}
+	else if (*savedOp == ">")
+	{
+		symbolTable.gen_instr("GRT", NIL);
+	}
+	else if (*savedOp == "==")
+	{
+		symbolTable.gen_instr("EQU", NIL);
+	}
+	else if (*savedOp == "^=")
+	{
+		symbolTable.gen_instr("NEQ", NIL);
+	}
+	else if (*savedOp == "=>")
+	{
+		symbolTable.gen_instr("GEQ", NIL);
+	}
+	else if (*savedOp == "=<")
+	{
+		symbolTable.gen_instr("LEQ", NIL);
+	}
+
+	symbolTable.push_jumpstack(symbolTable.get_instr_address());
+	symbolTable.gen_instr("JUMPZ", NIL);
 }
 
 void SyntaxAnalyzer::Relop()
@@ -558,38 +588,12 @@ void SyntaxAnalyzer::Relop()
 		throw SyntaxError("Expected relational operator", currentToken.lineNumber);
 	}
 
+	this->savedOp = new std::string(currentToken.lexeme);
+
 	if (print)
 	{
 		output << "\t<Relop> -> " << currentToken.lexeme << std::endl;
 	}
-
-	if (currentToken.lexeme == "<")
-	{
-		symbolTable.gen_instr("LES", NIL);
-	}
-	else if (currentToken.lexeme == ">")
-	{
-		symbolTable.gen_instr("GRT", NIL);
-	}
-	else if (currentToken.lexeme == "==")
-	{
-		symbolTable.gen_instr("EQU", NIL);
-	}
-	else if (currentToken.lexeme == "^=")
-	{
-		symbolTable.gen_instr("NEQ", NIL);
-	}
-	else if (currentToken.lexeme == "=>")
-	{
-		symbolTable.gen_instr("GEQ", NIL);
-	}
-	else if (currentToken.lexeme == "=<")
-	{
-		symbolTable.gen_instr("LEQ", NIL);
-	}
-
-	symbolTable.push_jumpstack(symbolTable.get_instr_address());
-	symbolTable.gen_instr("JUMPZ", NIL);
 }
 
 void SyntaxAnalyzer::Empty()

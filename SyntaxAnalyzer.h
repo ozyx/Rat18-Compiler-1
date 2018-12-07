@@ -79,6 +79,7 @@ private:
   bool print;
   std::ofstream &output;
   SymbolTable symbolTable;
+  std::string *savedOp;
   Lexer::Token *save;
 };
 
