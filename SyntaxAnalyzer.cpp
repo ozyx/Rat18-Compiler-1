@@ -88,7 +88,7 @@ void SyntaxAnalyzer::Function()
 	}
 
 	Identifier();
-
+	
 	getNextToken();
 	if (currentToken.lexeme != "(")
 	{
@@ -415,6 +415,7 @@ void SyntaxAnalyzer::Primary()
 	if (currentToken.token == "Identifier")
 	{
 		Identifier();
+		symbolTable.gen_instr("PUSHM", symbolTable.lookup(currentToken.lexeme));
 
 		getNextToken();
 		if (currentToken.lexeme == "(")
@@ -433,6 +434,7 @@ void SyntaxAnalyzer::Primary()
 	else if (currentToken.token == "Integer")
 	{
 		Integer();
+		symbolTable.gen_instr("PUSHI", stoi(currentToken.lexeme));
 		getNextToken();
 	}
 	else if (currentToken.lexeme == "(")

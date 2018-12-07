@@ -1,32 +1,15 @@
-[* This is a comment.
-    this is a multiline comment xs *]
+    [* this is comment for this sample code 
+         for assignment 3 *]
 
-[* there is a comment in the middle of this line! *]
+    $$ 
+    int      i, max, sum;   [* declarations *]
 
-function add(a: int, b: int)
-{
-    return a + b;
-}
-
-function subtract(a: int, b: int)
-{
-    return a - b;
-}
-
-function divide(a: int, b: int)
-{
-    return a / b;
-}
-
-$$
-
-a = 3;
-b = 5;
-put(a);
-a = a + b;
-if(a < b)
-{
-  [* do something ]*
-}
-
-$$
+    sum = 0;
+    i = 1;
+    get ( max);
+    while (i <  max)  {
+          sum = sum + i;
+          i  = i + 1; 
+     }
+     put (sum + max);
+     $$

@@ -15,7 +15,7 @@ int main()
 	std::stringstream *buffer;
 	std::string line;
 
-	std::vector<std::string> files = {"test1.txt", "test2.txt", "test3.txt"};
+	std::vector<std::string> files = {"test1.txt"/*, "test2.txt", "test3.txt"*/};
 	std::ofstream out;
 	out.open("output.txt");
 

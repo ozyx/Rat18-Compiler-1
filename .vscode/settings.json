@@ -28,6 +28,8 @@
         "**/*.out": true,
         "**/*.exe": true,
         "**/*.zip": true,
-        "**/*.pdf": true
+        "**/*.pdf": true,
+        "**/*.sln": true,
+        "**/*.vcxproj": true
     }
 }

@@ -165,12 +165,6 @@ std::string SymbolTable::list_instr()
  */
 void SymbolTable::gen_instr(std::string op, int operand)
 {
-	if (!operand)
-	{
-		// something went wrong
-		// TODO: error?
-		return;
-	}
 	Instr *instr = new Instr(op, operand);
 
 	this->instructions.push_back(*instr);
