@@ -10,7 +10,7 @@ SymbolTable::SymbolTable() : memaddress(5000) {}
  */
 SymbolTable::~SymbolTable()
 {
-	instr_address = 0;
+	instr_address = 1;
 }
 
 /**
