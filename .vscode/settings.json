@@ -30,6 +30,9 @@
         "**/*.zip": true,
         "**/*.pdf": true,
         "**/*.sln": true,
-        "**/*.vcxproj": true
+        "**/*.vcxproj": true,
+        "**/*.user": true,
+        "**/*.filters": true,
+        "x64": true
     }
 }

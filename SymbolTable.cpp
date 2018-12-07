@@ -180,6 +180,13 @@ void SymbolTable::push_jumpstack(int address)
 	this->jumpstack.push_back(address);
 }
 
+/**
+ * @brief Used to close off JUMP instructions.
+ * Find the previous JUMP instruction and fill out its
+ * operand with the current instruction address.
+ * 
+ * @param jump_addr The address of the previous JUMP instruction
+ */
 void SymbolTable::back_patch(int jump_addr)
 {
 	const int addr = jumpstack.back();
@@ -196,7 +203,7 @@ void SymbolTable::back_patch(int jump_addr)
 }
 
 /**
- * @brief Get a particular token's memory address
+ * @brief Get a particular token's memory address (e.g: 500, 5001...)
  * 
  * @param token the token
  * @return int the token's address. 0 if unsuccessful.
@@ -207,7 +214,7 @@ int SymbolTable::get_address(Lexer::Token token)
 }
 
 /**
- * @brief Get the current memory address
+ * @brief Get the current memory address (e.g: 5000, 5001...)
  * 
  * @return int the memory address
  */
@@ -216,6 +223,11 @@ int SymbolTable::get_mem()
 	return this->memaddress;
 }
 
+/**
+ * @brief Get the current instruction address (i.e: 1, 2, 3...)
+ * 
+ * @return int The instruction address
+ */
 int SymbolTable::get_instr_address() const
 {
 	return instr_address;
