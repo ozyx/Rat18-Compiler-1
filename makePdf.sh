@@ -14,19 +14,19 @@ fi
 for file in *.cpp
 do
     echo $file
-    enscript --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
+    enscript --font=Courier7 --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
 done
 
 # Generate pdfs for h
 for file in *.h
 do
     echo $file
-    enscript --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
+    enscript --font=Courier7 --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
 done
 
 # Generate pdfs for txt
 for file in *.txt
 do
     echo $file
-    enscript --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
+    enscript --font=Courier7 --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
 done
