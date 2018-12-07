@@ -217,7 +217,7 @@ void SyntaxAnalyzer::Identifier()
 	{
 		output << "\t<Identifier>" << std::endl;
 	}
-	if (!symbolTable.lookup(currentToken.lexeme))
+	if (!symbolTable.lookup(currentToken))
 	{
 		symbolTable.insert(currentToken);
 	}
@@ -415,7 +415,7 @@ void SyntaxAnalyzer::Primary()
 	if (currentToken.token == "Identifier")
 	{
 		Identifier();
-		symbolTable.gen_instr("PUSHM", symbolTable.lookup(currentToken.lexeme));
+		symbolTable.gen_instr("PUSHM", symbolTable.lookup(currentToken));
 
 		getNextToken();
 		if (currentToken.lexeme == "(")
@@ -588,7 +588,7 @@ void SyntaxAnalyzer::Relop()
 		symbolTable.gen_instr("LEQ", NIL);
 	}
 
-	symbolTable.push_jumpstack(instr_address);
+	symbolTable.push_jumpstack(symbolTable.get_instr_address());
 	symbolTable.gen_instr("JUMPZ", NIL);
 }
 
@@ -682,6 +682,11 @@ void SyntaxAnalyzer::Scan()
 	}
 
 	getNextToken();
+
+	symbolTable.gen_instr("STDIN", NIL);
+	int addr = symbolTable.get_address(currentToken);
+	symbolTable.gen_instr("POPM", addr);
+
 	IDs();
 
 	if (currentToken.lexeme != ")")
@@ -782,6 +787,9 @@ void SyntaxAnalyzer::While()
 		output << "\t<While> -> while ( <Condition> )  <Statement>" << std::endl;
 	}
 
+	int addr = symbolTable.get_instr_address();
+	symbolTable.gen_instr("LABEL", NIL);
+
 	if (currentToken.lexeme != "(")
 	{
 		throw SyntaxError("Expected '('", currentToken.lineNumber);
@@ -796,6 +804,9 @@ void SyntaxAnalyzer::While()
 	}
 	getNextToken();
 	Statement();
+
+	symbolTable.gen_instr("JUMP", addr);
+	symbolTable.back_patch(symbolTable.get_instr_address());
 
 	if (currentToken.lexeme != "whileend")
 	{

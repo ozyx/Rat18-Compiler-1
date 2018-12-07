@@ -8,6 +8,8 @@
 #include <iomanip>
 #include <assert.h>
 
+static int instr_address = 1;
+
 class SymbolTable
 {
 public:
@@ -33,36 +35,24 @@ public:
   ~SymbolTable();
 
   // Accessors
-  int lookup(std::string id);
+  int lookup(Lexer::Token t);
 
   std::string list();
   std::string list_instr();
 
   int get_address(Lexer::Token token);
   int get_mem();
+  int get_instr_address() const;
   
   // Mutators
   bool insert(Lexer::Token t);
 
-  bool remove(std::string id);
+  bool remove(Lexer::Token t);
 
   void gen_instr(std::string op, int operand);
   void push_jumpstack(int address);
-  void back_patch(int jump_addr)
-  {
-	  const int addr = jumpstack.back();
-	  jumpstack.pop_back();
+  void back_patch(int jump_addr);
 
-	  for (Instr instr : instructions)
-	  {
-		  if (instr.address == addr)
-		  {
-			  instr.operand = jump_addr;
-			  return;
-		  }
-	  }
-	  assert("SOMETHING WENT WRONG SymbolTable.h Line 63");
-  }
 private:
   void incrementMem();
 

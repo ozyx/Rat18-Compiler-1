@@ -32,7 +32,7 @@ bool SymbolTable::insert(Lexer::Token t)
 {
 	bool success = false;
 
-	if (!lookup(t.lexeme))
+	if (!lookup(t))
 	{
 		Symbol *s = new Symbol(t, this->memaddress);
 		this->table.push_back(*s);
@@ -50,14 +50,14 @@ bool SymbolTable::insert(Lexer::Token t)
  * @param id The identifier (lexeme)
  * @return address if existing, 0 if not
  */
-int SymbolTable::lookup(std::string id)
+int SymbolTable::lookup(Lexer::Token t)
 {
 	std::vector<Symbol>::iterator it = this->table.begin();
 	bool found = false;
 
 	while (!found && it != this->table.end())
 	{
-		if (it->token.lexeme == id)
+		if (it->token.lexeme == t.lexeme && it->token.token == t.token)
 		{
 			found = true;
 		}
@@ -77,17 +77,17 @@ int SymbolTable::lookup(std::string id)
  * @return true if successful
  * @return false if unsuccessful
  */
-bool SymbolTable::remove(std::string id)
+bool SymbolTable::remove(Lexer::Token t)
 {
 	bool success = false;
 	int pos = 0;
 
-	if (lookup(id))
+	if (lookup(t))
 	{
 		std::vector<Symbol>::const_iterator it = this->table.begin();
 		while (!success && it != this->table.end())
 		{
-			if (it->token.lexeme == id)
+			if (it->token.lexeme == t.lexeme)
 			{
 				this->table.erase(this->table.begin() + pos);
 				success = true;
@@ -180,6 +180,22 @@ void SymbolTable::push_jumpstack(int address)
 	this->jumpstack.push_back(address);
 }
 
+void SymbolTable::back_patch(int jump_addr)
+{
+	const int addr = jumpstack.back();
+	jumpstack.pop_back();
+
+	for (Instr instr : instructions)
+	{
+		if (instr.address == addr)
+		{
+			instr.operand = jump_addr;
+			return;
+		}
+	}
+	assert("SOMETHING WENT WRONG SymbolTable.h Line 63");
+}
+
 /**
  * @brief Get a particular token's memory address
  * 
@@ -188,7 +204,7 @@ void SymbolTable::push_jumpstack(int address)
  */
 int SymbolTable::get_address(Lexer::Token token)
 {
-	return lookup(token.lexeme);
+	return lookup(token);
 }
 
 /**
@@ -199,4 +215,9 @@ int SymbolTable::get_address(Lexer::Token token)
 int SymbolTable::get_mem()
 {
 	return this->memaddress;
+}
+
+int SymbolTable::get_instr_address() const
+{
+	return instr_address;
 }
