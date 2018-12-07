@@ -24,5 +24,9 @@ a = 3;
 b = 5;
 put(a);
 a = a + b;
+if(a < b)
+{
+  [* do something ]*
+}
 
 $$

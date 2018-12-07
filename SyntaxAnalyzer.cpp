@@ -3,6 +3,7 @@
 SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print) : tokens(tokens), it(tokens.begin()), currentToken(*(it)), output(output), save(nullptr)
 {
 	this->print = print;
+	this->save = new Lexer::Token();
 }
 
 SyntaxAnalyzer::~SyntaxAnalyzer() { 
@@ -315,7 +316,8 @@ void SyntaxAnalyzer::Assign()
 
 	Identifier();
 
-	save = &currentToken;
+	// Save the value of the current token to gen instruction later
+	*save = currentToken;
 
 	getNextToken();
 
@@ -513,9 +515,9 @@ void SyntaxAnalyzer::If()
 		throw SyntaxError("Expected ')'", currentToken.lineNumber);
 	}
 
-	Statement();
-
 	getNextToken();
+
+	Statement();
 
 	if (currentToken.lexeme == "else")
 	{
@@ -528,6 +530,8 @@ void SyntaxAnalyzer::If()
 	{
 		throw SyntaxError("Expected 'ifend' keyword", currentToken.lineNumber);
 	}
+
+	getNextToken();
 }
 
 void SyntaxAnalyzer::Condition()

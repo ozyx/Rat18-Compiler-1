@@ -8,7 +8,7 @@ SymbolTable::SymbolTable() : memaddress(5000) {}
 /**
  * @brief Destroy the SymbolTable object
  */
-SymbolTable::~SymbolTable() 
+SymbolTable::~SymbolTable()
 {
 	instr_address = 0;
 }
@@ -124,6 +124,12 @@ std::string SymbolTable::list()
 	return os.str();
 }
 
+/**
+ * @brief List all of the instructions
+ * in the instruction table
+ * 
+ * @return std::string A formatted list of instructions
+ */
 std::string SymbolTable::list_instr()
 {
 	std::ostringstream os;
@@ -133,12 +139,30 @@ std::string SymbolTable::list_instr()
 
 	for (std::vector<Instr>::const_iterator it = this->instructions.begin(); it != this->instructions.end(); ++it)
 	{
-		os << std::setw(COL_WIDTH) << it->address << std::setw(COL_WIDTH) << it->op << it->operand << std::endl;
+		os << std::setw(COL_WIDTH) << it->address << std::setw(COL_WIDTH) << it->op;
+
+		if (it->operand == NIL)
+		{
+			os << "NIL";
+		}
+		else
+		{
+			os << it->operand;
+		}
+
+		os << std::endl;
 	}
 
 	return os.str();
 }
 
+/**
+ * @brief Generate a new instruction and
+ * add it to the instruction table.
+ * 
+ * @param op The op (ADD, SUB, EQU, etc...)
+ * @param operand The operand (an integer, memory address, etc...)
+ */
 void SymbolTable::gen_instr(std::string op, int operand)
 {
 	if (!operand)
@@ -152,16 +176,32 @@ void SymbolTable::gen_instr(std::string op, int operand)
 	this->instructions.push_back(*instr);
 }
 
+/**
+ * @brief Push an address onto the jumpstack
+ * 
+ * @param address the address
+ */
 void SymbolTable::push_jumpstack(int address)
 {
 	this->jumpstack.push_back(address);
 }
 
+/**
+ * @brief Get a particular token's memory address
+ * 
+ * @param token the token
+ * @return int the token's address. 0 if unsuccessful.
+ */
 int SymbolTable::get_address(Lexer::Token token)
 {
 	return lookup(token.lexeme);
 }
 
+/**
+ * @brief Get the current memory address
+ * 
+ * @return int the memory address
+ */
 int SymbolTable::get_mem()
 {
 	return this->memaddress;
