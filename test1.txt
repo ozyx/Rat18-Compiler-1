@@ -11,5 +11,6 @@
           sum = sum + i;
           i  = i + 1; 
      }
+     whileend
      put (sum + max);
      $$

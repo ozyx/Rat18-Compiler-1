@@ -670,6 +670,8 @@ void SyntaxAnalyzer::Print()
 		throw SyntaxError("Expected ';'", currentToken.lineNumber);
 	}
 
+	symbolTable.gen_instr("STDOUT", NIL);
+
 	getNextToken();
 }
 
@@ -809,13 +811,13 @@ void SyntaxAnalyzer::While()
 	getNextToken();
 	Statement();
 
-	symbolTable.gen_instr("JUMP", addr);
-	symbolTable.back_patch(symbolTable.get_instr_address());
-
 	if (currentToken.lexeme != "whileend")
 	{
 		throw SyntaxError("Expected 'whileend' keyword", currentToken.lineNumber);
 	}
+	symbolTable.gen_instr("JUMP", addr);
+	symbolTable.back_patch(symbolTable.get_instr_address());
+
 	getNextToken();
 }
 

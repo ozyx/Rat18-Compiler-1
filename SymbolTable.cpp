@@ -185,15 +185,14 @@ void SymbolTable::back_patch(int jump_addr)
 	const int addr = jumpstack.back();
 	jumpstack.pop_back();
 
-	for (Instr instr : instructions)
+	if (this->instructions.size() >= addr)
 	{
-		if (instr.address == addr)
-		{
-			instr.operand = jump_addr;
-			return;
-		}
+		this->instructions.at(addr - 1).operand = jump_addr;
 	}
-	assert("SOMETHING WENT WRONG SymbolTable.h Line 63");
+	else
+	{
+		// TODO: ERROR
+	}
 }
 
 /**
