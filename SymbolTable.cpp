@@ -141,11 +141,7 @@ std::string SymbolTable::list_instr()
 	{
 		os << std::setw(COL_WIDTH) << it->address << std::setw(COL_WIDTH) << it->op;
 
-		if (it->operand == NIL)
-		{
-			os << "NIL";
-		}
-		else
+		if (it->operand != NIL)
 		{
 			os << it->operand;
 		}
