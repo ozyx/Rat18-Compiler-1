@@ -528,13 +528,12 @@ void SyntaxAnalyzer::If()
 		Statement();
 	}
 
-	getNextToken();
-
 	if (currentToken.lexeme != "ifend")
 	{
 		throw SyntaxError("Expected 'ifend' keyword", currentToken.lineNumber);
 	}
 
+	symbolTable.back_patch(symbolTable.get_instr_address());
 	getNextToken();
 }
 

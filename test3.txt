@@ -1,23 +1,17 @@
-[* this is the third test case,
-   where we include some edge cases *]
-
-function myInvalidFunction (var1x : int)
-{
-    [* this comment should be ignored *]
-
-    return (var1x * var2x) + 50;
-}
-
-$$ [* this should be registered *]
-    int a, b;
-    a = 0;
-    b = 1;
-    invalidVar1 = 3;
-
-    while (a < b)
-    {
-        b = myInvalidFunction(a, b);
-        a = a + 25;
-    }
-    whileend
-$$
+    $$ 
+	int interestTotal,Principle, years, periods, rate, totalPower, count;
+	get(Principle);
+	get(years);
+	get(periods);
+	get(rate);
+	count =0;
+	interestTotal = 0;
+	totalPower = years*periods;
+	
+	if( count < totalPower)
+	{
+		interestTotal = interestTotal * Principle*(1 + (rate/periods));
+	} ifend
+	
+	put(interestTotal);
+	$$

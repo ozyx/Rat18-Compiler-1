@@ -1,12 +1,12 @@
 #ifndef SYMBOLTABLE_H
 #define SYMBOLTABLE_H
-#include "Lexer.h"
-#include "Globals.h"
+
 #include <string>
 #include <vector>
 #include <sstream>
 #include <iomanip>
-#include <assert.h>
+#include "Lexer.h"
+#include "Globals.h"
 
 static int instr_address = 1;
 
@@ -59,6 +59,7 @@ private:
   std::vector<Symbol> table;
   std::vector<Instr> instructions;
   std::vector<int> jumpstack;
+  std::vector<std::string> typestack;
   int memaddress;
 };
 

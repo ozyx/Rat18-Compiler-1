@@ -1,25 +1,11 @@
-[* this is comment for this sample code which
-   converts  Fahrenheit into Celcius *]
-
-function isEqual (a: int, b: int)
-{
-    return 10 - a + b;
-}   
-
-function convert1x (fahr : int)
-{
-    return 5 * (fahr -32) / 9;
-}
-
-$$
-     int    low,  high, step;      [* declarations *]
-
-     get (low, high, step);
-     while (low  <  high )  
-         {  put (low);
-             put (convert1x  (low));
-             low =  low  +  step;
-         } 
-      whileend
-
-$$
+    $$ 
+	int base,power;
+	int count, total;
+	count = 0;
+	get(base);
+	get(power);
+	while(count < power){
+		total = total*base;
+	}whileend
+	put(total);
+	$$
