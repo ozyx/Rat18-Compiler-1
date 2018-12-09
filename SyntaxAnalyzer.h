@@ -8,7 +8,6 @@
 class SyntaxError
 {
 public:
-
   // Constructor
   SyntaxError(std::string message, int lineNumber);
 
@@ -24,7 +23,6 @@ private:
 class SyntaxAnalyzer
 {
 public:
-
   // Constructor
   SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print = false);
   ~SyntaxAnalyzer();
@@ -35,6 +33,12 @@ public:
   void PrintAll();
 
 private:
+  enum ErrorType
+  {
+    TYPE_MISMATCH,
+    DUPLICATE_SYMBOL
+  };
+
   void Rat18F();
   void OptFunctionDefinitions();
   void FunctionDefinitions();
@@ -70,6 +74,8 @@ private:
   void Integer();
   void Real();
 
+  void error(ErrorType errorType, int lineNumber, std::string expected = "");
+
   void getNextToken();
   void printCurrentToken();
 
@@ -82,6 +88,8 @@ private:
   std::string *savedOp;
   std::string *savedType;
   Lexer::Token *save;
+  std::ostringstream err;
+  int errCount;
 };
 
 #endif // SYNTAXANALYZER_H

@@ -46,6 +46,7 @@ public:
   int get_mem();
   int get_instr_address() const;
   std::string get_type(Lexer::Token token) const;
+  std::string top_typestack() const;
   
   // Mutators
   bool insert(Lexer::Token t, std::string type);
@@ -56,7 +57,6 @@ public:
   void push_jumpstack(int address);
   void push_typestack(std::string type);
   bool pop_typestack();
-  std::string top_typestack() const;
   void back_patch(int jump_addr);
 
 private:
@@ -67,6 +67,7 @@ private:
   std::vector<int> jumpstack;
   std::stack <std::string> typestack;
   int memaddress;
+  std::ostringstream error;
 };
 
 #endif // SYMBOLTABLE_H

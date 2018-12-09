@@ -4,11 +4,40 @@ SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofs
 {
     this->print = print;
     this->save = new Lexer::Token();
+    this->errCount = 0;
 }
 
 SyntaxAnalyzer::~SyntaxAnalyzer()
 {
     output.close();
+}
+
+void SyntaxAnalyzer::error(ErrorType errorType, int lineNumber, std::string expected)
+{
+    errCount++;
+    err << "[ERR] (Line " << lineNumber << ") ";
+    switch(errorType)
+    {
+        case TYPE_MISMATCH:
+            {
+                err << "TYPE MISMATCH";
+                if(expected != "")
+                {
+                    err << ". Expected \"" << expected << "\"";
+                }
+                break;
+            }
+            case DUPLICATE_SYMBOL:
+            {
+                err << "DUPLICATE SYMBOL";
+                if (expected != "")
+                {
+                    err << " \"" << expected << "\"";
+                }
+                break;
+            }
+    }
+    err << std::endl;
 }
 
 /**
@@ -228,10 +257,6 @@ void SyntaxAnalyzer::Identifier()
     {
         symbolTable.insert(currentToken, *savedType);
     }
-    else
-    {
-        // TODO: error, symbol is already existing in table
-    }
 }
 
 void SyntaxAnalyzer::StatementList()
@@ -424,7 +449,8 @@ void SyntaxAnalyzer::Primary()
     {
         if (symbolTable.get_type(currentToken) != symbolTable.top_typestack())
         {
-            // TODO: Error TYPE MISMATCH
+            // Error TYPE MISMATCH
+            error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
         }
 
         Identifier();
@@ -448,7 +474,8 @@ void SyntaxAnalyzer::Primary()
     {
         if (symbolTable.top_typestack() != "int")
         {
-            // TODO: Error TYPE MISMATCH
+            // Error TYPE MISMATCH
+            error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
         }
 
         Integer();
@@ -471,7 +498,8 @@ void SyntaxAnalyzer::Primary()
     {
         if (symbolTable.top_typestack() != "real")
         {
-            // TODO: Error TYPE MISMATCH
+            // Error TYPE MISMATCH
+            error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
         }
         this->symbolTable.pop_typestack();
         Real();
@@ -481,7 +509,8 @@ void SyntaxAnalyzer::Primary()
     {
         if (symbolTable.top_typestack() != "boolean")
         {
-            // TODO: Error TYPE MISMATCH
+            // Error TYPE MISMATCH
+            error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
         }
         output << "\ttrue" << std::endl;
         symbolTable.gen_instr("PUSHI", 1);
@@ -492,6 +521,7 @@ void SyntaxAnalyzer::Primary()
         if (symbolTable.top_typestack() != "boolean")
         {
             // TODO: Error TYPE MISMATCH
+            error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
         }
         output << "\tfalse" << std::endl;
         symbolTable.gen_instr("PUSHI", 0);
@@ -876,4 +906,11 @@ void SyntaxAnalyzer::PrintAll()
     std::cout << this->symbolTable.list();
     std::cout << std::endl;
     std::cout << this->symbolTable.list_instr();
+    if(this->errCount > 0)
+    {
+    std::cout << std::endl;
+    std::cout << errCount << " ERROR" << ((errCount > 1) ? "S" : "");
+    std::cout << " FOUND" << std::endl;
+    std::cout << err.str();
+    }
 }
