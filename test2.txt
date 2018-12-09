@@ -1,11 +1,11 @@
     $$ 
-	int base,power;
-	int count, total;
-	count = 0;
-	get(base);
-	get(power);
-	while(count < power){
-		total = total*base;
-	}whileend
-	put(total);
-	$$
+    int base,power;
+    int count, total;
+    count = 0;
+    get(base);
+    get(power);
+    while(count < power){
+        total = total*base;
+    }whileend
+    put(total);
+    $$

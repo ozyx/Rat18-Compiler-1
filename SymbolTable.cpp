@@ -10,7 +10,7 @@ SymbolTable::SymbolTable() : memaddress(5000) {}
  */
 SymbolTable::~SymbolTable()
 {
-	instr_address = 1;
+    instr_address = 1;
 }
 
 /**
@@ -18,7 +18,7 @@ SymbolTable::~SymbolTable()
  */
 void SymbolTable::incrementMem()
 {
-	++this->memaddress;
+    ++this->memaddress;
 }
 
 /**
@@ -28,19 +28,19 @@ void SymbolTable::incrementMem()
  * @return true if successful
  * @return false if unsuccessful
  */
-bool SymbolTable::insert(Lexer::Token t)
+bool SymbolTable::insert(Lexer::Token t, std::string type)
 {
-	bool success = false;
+    bool success = false;
 
-	if (!lookup(t))
-	{
-		Symbol *s = new Symbol(t, this->memaddress);
-		this->table.push_back(*s);
-		incrementMem();
-		success = true;
-	}
+    if (!lookup(t))
+    {
+        Symbol *s = new Symbol(t, this->memaddress, type);
+        this->table.push_back(*s);
+        incrementMem();
+        success = true;
+    }
 
-	return success;
+    return success;
 }
 
 /**
@@ -52,22 +52,22 @@ bool SymbolTable::insert(Lexer::Token t)
  */
 int SymbolTable::lookup(Lexer::Token t)
 {
-	std::vector<Symbol>::iterator it = this->table.begin();
-	bool found = false;
+    std::vector<Symbol>::iterator it = this->table.begin();
+    bool found = false;
 
-	while (!found && it != this->table.end())
-	{
-		if (it->token.lexeme == t.lexeme && it->token.token == t.token)
-		{
-			found = true;
-		}
-		else
-		{
-			++it;
-		}
-	}
+    while (!found && it != this->table.end())
+    {
+        if (it->token.lexeme == t.lexeme && it->token.token == t.token)
+        {
+            found = true;
+        }
+        else
+        {
+            ++it;
+        }
+    }
 
-	return found ? it->address : 0;
+    return found ? it->address : 0;
 }
 
 /**
@@ -79,28 +79,28 @@ int SymbolTable::lookup(Lexer::Token t)
  */
 bool SymbolTable::remove(Lexer::Token t)
 {
-	bool success = false;
-	int pos = 0;
+    bool success = false;
+    int pos = 0;
 
-	if (lookup(t))
-	{
-		std::vector<Symbol>::const_iterator it = this->table.begin();
-		while (!success && it != this->table.end())
-		{
-			if (it->token.lexeme == t.lexeme)
-			{
-				this->table.erase(this->table.begin() + pos);
-				success = true;
-			}
-			else
-			{
-				++pos;
-				++it;
-			}
-		}
-	}
+    if (lookup(t))
+    {
+        std::vector<Symbol>::const_iterator it = this->table.begin();
+        while (!success && it != this->table.end())
+        {
+            if (it->token.lexeme == t.lexeme)
+            {
+                this->table.erase(this->table.begin() + pos);
+                success = true;
+            }
+            else
+            {
+                ++pos;
+                ++it;
+            }
+        }
+    }
 
-	return success;
+    return success;
 }
 
 /**
@@ -111,17 +111,18 @@ bool SymbolTable::remove(Lexer::Token t)
  */
 std::string SymbolTable::list()
 {
-	std::ostringstream os;
-	const int COL_WIDTH = 15;
+    std::ostringstream os;
+    const int COL_WIDTH = 15;
 
-	os << std::left << std::setw(COL_WIDTH) << "Identifier" << std::setw(COL_WIDTH) << "Type" << "Memory Address" << std::endl;
+    os << std::left << std::setw(COL_WIDTH) << "Identifier" << std::setw(COL_WIDTH) << "Type"
+       << "Memory Address" << std::endl;
 
-	for (std::vector<Symbol>::const_iterator it = this->table.begin(); it != this->table.end(); ++it)
-	{
-		os << std::setw(COL_WIDTH) << it->token.lexeme << std::setw(COL_WIDTH) << it->token.token << it->address << std::endl;
-	}
+    for (std::vector<Symbol>::const_iterator it = this->table.begin(); it != this->table.end(); ++it)
+    {
+        os << std::setw(COL_WIDTH) << it->token.lexeme << std::setw(COL_WIDTH) << it->type << it->address << std::endl;
+    }
 
-	return os.str();
+    return os.str();
 }
 
 /**
@@ -132,24 +133,25 @@ std::string SymbolTable::list()
  */
 std::string SymbolTable::list_instr()
 {
-	std::ostringstream os;
-	const int COL_WIDTH = 15;
+    std::ostringstream os;
+    const int COL_WIDTH = 15;
 
-	os << std::left << std::setw(COL_WIDTH) << "address" << std::setw(COL_WIDTH) << "op" << "operand" << std::endl;
+    os << std::left << std::setw(COL_WIDTH) << "address" << std::setw(COL_WIDTH) << "op"
+       << "operand" << std::endl;
 
-	for (std::vector<Instr>::const_iterator it = this->instructions.begin(); it != this->instructions.end(); ++it)
-	{
-		os << std::setw(COL_WIDTH) << it->address << std::setw(COL_WIDTH) << it->op;
+    for (std::vector<Instr>::const_iterator it = this->instructions.begin(); it != this->instructions.end(); ++it)
+    {
+        os << std::setw(COL_WIDTH) << it->address << std::setw(COL_WIDTH) << it->op;
 
-		if (it->operand != NIL)
-		{
-			os << it->operand;
-		}
+        if (it->operand != NIL)
+        {
+            os << it->operand;
+        }
 
-		os << std::endl;
-	}
+        os << std::endl;
+    }
 
-	return os.str();
+    return os.str();
 }
 
 /**
@@ -161,9 +163,9 @@ std::string SymbolTable::list_instr()
  */
 void SymbolTable::gen_instr(std::string op, int operand)
 {
-	Instr *instr = new Instr(op, operand);
+    Instr *instr = new Instr(op, operand);
 
-	this->instructions.push_back(*instr);
+    this->instructions.push_back(*instr);
 }
 
 /**
@@ -173,7 +175,7 @@ void SymbolTable::gen_instr(std::string op, int operand)
  */
 void SymbolTable::push_jumpstack(int address)
 {
-	this->jumpstack.push_back(address);
+    this->jumpstack.push_back(address);
 }
 
 /**
@@ -185,17 +187,17 @@ void SymbolTable::push_jumpstack(int address)
  */
 void SymbolTable::back_patch(int jump_addr)
 {
-	const int addr = jumpstack.back();
-	jumpstack.pop_back();
+    const int addr = jumpstack.back();
+    jumpstack.pop_back();
 
-	if (this->instructions.size() >= addr)
-	{
-		this->instructions.at(addr - 1).operand = jump_addr;
-	}
-	else
-	{
-		// TODO: ERROR
-	}
+    if (this->instructions.size() >= addr)
+    {
+        this->instructions.at(addr - 1).operand = jump_addr;
+    }
+    else
+    {
+        // TODO: ERROR
+    }
 }
 
 /**
@@ -206,7 +208,7 @@ void SymbolTable::back_patch(int jump_addr)
  */
 int SymbolTable::get_address(Lexer::Token token)
 {
-	return lookup(token);
+    return lookup(token);
 }
 
 /**
@@ -216,7 +218,7 @@ int SymbolTable::get_address(Lexer::Token token)
  */
 int SymbolTable::get_mem()
 {
-	return this->memaddress;
+    return this->memaddress;
 }
 
 /**
@@ -226,5 +228,66 @@ int SymbolTable::get_mem()
  */
 int SymbolTable::get_instr_address() const
 {
-	return instr_address;
+    return instr_address;
+}
+
+/**
+ * @brief Push a value onto the typestack
+ * 
+ * @param type the type
+ */
+void SymbolTable::push_typestack(std::string type)
+{
+    this->typestack.push(type);
+}
+
+/**
+ * @brief Pop a value from the typestack
+ * 
+ * @return true if successful
+ * @return false if stack is empty
+ */
+bool SymbolTable::pop_typestack()
+{
+    bool success = false;
+
+    if(!this->typestack.empty())
+    {
+        success = true;
+        this->typestack.pop();
+    }
+
+    return success;
+}
+
+/**
+ * @brief Retrieve the top element on the stack
+ * 
+ * @return std::string the type
+ */
+std::string SymbolTable::top_typestack() const
+{
+    return this->typestack.top();
+}
+
+/**
+ * @brief Get the type of the given Token
+ * 
+ * @param token 
+ * @return std::string 
+ */
+std::string SymbolTable::get_type(Lexer::Token token) const
+{
+    std::string type = "";
+
+    for(Symbol s : this->table)
+    {
+        if(s.token.lexeme == token.lexeme)
+        {
+            type = s.type;
+            break;
+        }
+    }
+
+    return type;
 }

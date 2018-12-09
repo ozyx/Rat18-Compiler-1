@@ -1,17 +1,17 @@
     $$ 
-	int interestTotal,Principle, years, periods, rate, totalPower, count;
-	get(Principle);
-	get(years);
-	get(periods);
-	get(rate);
-	count =0;
-	interestTotal = 0;
-	totalPower = years*periods;
-	
-	if( count < totalPower)
-	{
-		interestTotal = interestTotal * Principle*(1 + (rate/periods));
-	} ifend
-	
-	put(interestTotal);
-	$$
+    int interestTotal,Principle, years, periods, rate, totalPower, count;
+    get(Principle);
+    get(years);
+    get(periods);
+    get(rate);
+    count =0;
+    interestTotal = 0;
+    totalPower = years*periods;
+    
+    if( count < totalPower)
+    {
+        interestTotal = interestTotal * Principle*(1 + (rate/periods));
+    } ifend
+    
+    put(interestTotal);
+    $$

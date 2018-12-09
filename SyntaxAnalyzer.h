@@ -25,7 +25,7 @@ class SyntaxAnalyzer
 {
 public:
 
-	// Constructor
+  // Constructor
   SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print = false);
   ~SyntaxAnalyzer();
 
@@ -80,6 +80,7 @@ private:
   std::ofstream &output;
   SymbolTable symbolTable;
   std::string *savedOp;
+  std::string *savedType;
   Lexer::Token *save;
 };
 
