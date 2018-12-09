@@ -1,0 +1,64 @@
+    $$ 
+    real xCoord ,yCoord , zCoord;
+    
+    int XCoord, YCoord, ZCoord;
+    
+    int aCoord, bCoord, cCoord;
+    int operation;
+    
+    xCoord = 10123;
+    yCoord = 610;
+    zCoord = 3;
+    XCoord = 20;
+    YCoord = 912;
+    ZCoord = 120;
+    aCoord = 123;
+    bCoord = 0;
+    cCoord = 0;
+
+    xCoord = XCoord;
+    
+    get(operation);
+    
+    while(operation ^= 0 ){
+        if(operation == 1)
+        {
+            aCoord = xCoord + XCoord;
+            bCoord = yCoord + YCoord;
+            cCoord = zCoord + ZCoord;
+        }ifend
+        if(operation == 20)
+        {
+            aCoord = xCoord - XCoord;
+            bCoord = yCoord - YCoord;
+            cCoord = zCoord - ZCoord;
+        }ifend
+        if(operation == 3)
+        {
+            aCoord = xCoord * XCoord;
+            bCoord = yCoord * YCoord;
+            cCoord = zCoord * ZCoord;
+        }ifend
+        if(operation == 45)
+        {
+            aCoord = xCoord / XCoord;
+            bCoord = yCoord / YCoord;
+            cCoord = zCoord / ZCoord;
+        
+        }ifend
+        if( operation > 4)
+        {
+            operation = 0;
+        }ifend
+        if (operation > 0)
+        {
+        operation = 0;
+        }ifend
+    operation = operation - 1;
+    }whileend
+    
+    put(aCoord);
+    put(bCoord);
+    put(cCoord);
+    
+    $$

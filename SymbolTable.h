@@ -47,6 +47,7 @@ public:
   int get_instr_address() const;
   std::string get_type(Lexer::Token token) const;
   std::string top_typestack() const;
+  bool typestack_empty() const;
   
   // Mutators
   bool insert(Lexer::Token t, std::string type);

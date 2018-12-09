@@ -291,3 +291,14 @@ std::string SymbolTable::get_type(Lexer::Token token) const
 
     return type;
 }
+
+/**
+ * @brief Check if typestack is empty
+ * 
+ * @return true if empty
+ * @return false if not empty
+ */
+bool SymbolTable::typestack_empty() const
+{
+    return this->typestack.empty();
+}

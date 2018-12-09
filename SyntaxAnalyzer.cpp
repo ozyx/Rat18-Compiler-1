@@ -16,26 +16,26 @@ void SyntaxAnalyzer::error(ErrorType errorType, int lineNumber, std::string expe
 {
     errCount++;
     err << "[ERR] (Line " << lineNumber << ") ";
-    switch(errorType)
+    switch (errorType)
     {
-        case TYPE_MISMATCH:
-            {
-                err << "TYPE MISMATCH";
-                if(expected != "")
-                {
-                    err << ". Expected \"" << expected << "\"";
-                }
-                break;
-            }
-            case DUPLICATE_SYMBOL:
-            {
-                err << "DUPLICATE SYMBOL";
-                if (expected != "")
-                {
-                    err << " \"" << expected << "\"";
-                }
-                break;
-            }
+    case TYPE_MISMATCH:
+    {
+        err << "TYPE MISMATCH";
+        if (expected != "")
+        {
+            err << ". Expected \"" << expected << "\"";
+        }
+        break;
+    }
+    case DUPLICATE_SYMBOL:
+    {
+        err << "DUPLICATE SYMBOL";
+        if (expected != "")
+        {
+            err << " \"" << expected << "\"";
+        }
+        break;
+    }
     }
     err << std::endl;
 }
@@ -368,6 +368,9 @@ void SyntaxAnalyzer::Assign()
     {
         throw SyntaxError("Expected ';'", currentToken.lineNumber);
     }
+
+    symbolTable.pop_typestack();
+
     getNextToken();
 }
 
@@ -447,7 +450,11 @@ void SyntaxAnalyzer::Primary()
 
     if (currentToken.token == "Identifier")
     {
-        if (symbolTable.get_type(currentToken) != symbolTable.top_typestack())
+        if (symbolTable.typestack_empty())
+        {
+            symbolTable.push_typestack(*savedType);
+        }
+        else if (symbolTable.get_type(currentToken) != symbolTable.top_typestack())
         {
             // Error TYPE MISMATCH
             error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
@@ -501,7 +508,7 @@ void SyntaxAnalyzer::Primary()
             // Error TYPE MISMATCH
             error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
         }
-        this->symbolTable.pop_typestack();
+
         Real();
         getNextToken();
     }
@@ -906,11 +913,11 @@ void SyntaxAnalyzer::PrintAll()
     std::cout << this->symbolTable.list();
     std::cout << std::endl;
     std::cout << this->symbolTable.list_instr();
-    if(this->errCount > 0)
+    if (this->errCount > 0)
     {
-    std::cout << std::endl;
-    std::cout << errCount << " ERROR" << ((errCount > 1) ? "S" : "");
-    std::cout << " FOUND" << std::endl;
-    std::cout << err.str();
+        std::cout << std::endl;
+        std::cout << errCount << " ERROR" << ((errCount > 1) ? "S" : "");
+        std::cout << " FOUND" << std::endl;
+        std::cout << err.str();
     }
 }
