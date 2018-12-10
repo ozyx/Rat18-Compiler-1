@@ -1,15 +1,16 @@
-    $$ 
-    real xCoord ,yCoord , zCoord;
-    
+    $$
+    real realVarA ,realVarB , realVarC;
+
     int XCoord, YCoord, ZCoord;
-    
+    int XCoord; [* duplicate symbol *]
     int aCoord, bCoord, cCoord;
     int operation;
+
     boolean success;
     
-    xCoord = 10123; [* type mismatch *]
-    yCoord = 610; [* type mismatch *]
-    zCoord = 3; [* type mismatch *]
+    realVarA = 10123; [* type mismatch *]
+    realVarB = 610; [* type mismatch *]
+    realVarC = 3; [* type mismatch *]
     XCoord = 20;
     YCoord = 912;
     ZCoord = 120;
@@ -18,34 +19,34 @@
     cCoord = unknown; [* undeclared variable *]
     success = 420; [* type mismatch *]
 
-    xCoord = XCoord;
+    realVarA = XCoord; [* type mismatch *]
     
     get(operation);
     
     while(operation ^= 0 ){
         if(operation == 1)
         {
-            aCoord = xCoord + XCoord;
-            bCoord = yCoord + YCoord;
-            cCoord = zCoord + ZCoord;
+            aCoord = realVarA + XCoord; [* type mismatch *]
+            bCoord = realVarB + YCoord; [* type mismatch *]
+            cCoord = realVarC + ZCoord; [* type mismatch *]
         }ifend
         if(operation == 20)
         {
-            aCoord = xCoord - XCoord;
-            bCoord = yCoord - YCoord;
-            cCoord = zCoord - ZCoord;
+            aCoord = realVarA - XCoord; [* type mismatch *]
+            bCoord = realVarB - YCoord; [* type mismatch *]
+            cCoord = realVarC - ZCoord; [* type mismatch *]
         }ifend
         if(operation == 3)
         {
-            aCoord = xCoord * XCoord;
-            bCoord = yCoord * YCoord;
-            cCoord = zCoord * ZCoord;
+            aCoord = XCoord * 2; 
+            bCoord = YCoord * 1.5; [* type mismatch *]
+            cCoord = ZCoord * ZCoord;
         }ifend
         if(operation == 45)
         {
-            aCoord = xCoord / XCoord;
-            bCoord = yCoord / YCoord;
-            cCoord = zCoord / ZCoord;
+            aCoord = realVarA / XCoord; [* type mismatch *]
+            bCoord = realVarB / YCoord; [* type mismatch *]
+            cCoord = realVarC / ZCoord; [* type mismatch *]
         
         }ifend
         if( operation > 4)
@@ -54,9 +55,9 @@
         }ifend
         if (operation > 0)
         {
-        operation = 0;
+            operation = 0;
         }ifend
-    operation = operation - 1;
+        operation = operation - 1;
     }whileend
     
     put(aCoord);

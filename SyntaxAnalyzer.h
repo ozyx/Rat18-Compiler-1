@@ -36,7 +36,8 @@ private:
   enum ErrorType
   {
     TYPE_MISMATCH,
-    DUPLICATE_SYMBOL
+    DUPLICATE_SYMBOL,
+	UNDECLARED_VARIABLE
   };
 
   void Rat18F();
@@ -90,6 +91,7 @@ private:
   Lexer::Token *save;
   std::ostringstream err;
   int errCount;
+  bool isDeclaration;
 };
 
 #endif // SYNTAXANALYZER_H
