@@ -372,7 +372,15 @@ void SyntaxAnalyzer::Assign()
 
 	// Save the value of the current token to gen instruction later
 	*save = currentToken;
-	symbolTable.push_typestack(symbolTable.get_type(*save));
+	std::string type = symbolTable.get_type(*save);
+	if (type == "")
+	{
+		error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
+	}
+	else
+	{
+		symbolTable.push_typestack(symbolTable.get_type(*save));
+	}
 
 	getNextToken();
 
@@ -644,6 +652,11 @@ void SyntaxAnalyzer::Condition()
 
 	// Save variable type to push to typestack later
 	savedType = new std::string(symbolTable.get_type(currentToken));
+
+	if (*savedType == "")
+	{
+		error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
+	}
 
 	Expression();
 

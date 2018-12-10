@@ -19,6 +19,7 @@
     aCoord = true; [* type mismatch *]
     bCoord = false; [* type mismatch *]
     cCoord = unknown; [* undeclared variable *]
+    unknown = cCoord; [* undeclared variable *]
     success = 420; [* type mismatch *]
 
     realVarA = XCoord; [* type mismatch *]
