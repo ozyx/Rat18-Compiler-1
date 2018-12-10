@@ -5,16 +5,18 @@
     
     int aCoord, bCoord, cCoord;
     int operation;
+    boolean success;
     
-    xCoord = 10123;
-    yCoord = 610;
-    zCoord = 3;
+    xCoord = 10123; [* type mismatch *]
+    yCoord = 610; [* type mismatch *]
+    zCoord = 3; [* type mismatch *]
     XCoord = 20;
     YCoord = 912;
     ZCoord = 120;
-    aCoord = 123;
-    bCoord = 0;
-    cCoord = 0;
+    aCoord = true; [* type mismatch *]
+    bCoord = false; [* type mismatch *]
+    cCoord = unknown; [* undeclared variable *]
+    success = 420; [* type mismatch *]
 
     xCoord = XCoord;
     
