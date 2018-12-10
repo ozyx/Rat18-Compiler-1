@@ -1,3 +1,5 @@
+    [* This test file should contain no errors *]
+
     $$ 
     int interestTotal,Principle, years, periods, rate, totalPower, count;
     get(Principle);

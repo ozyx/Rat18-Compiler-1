@@ -1,11 +1,24 @@
-    $$ 
-    int base,power;
+    [* This test file should contain no errors. *]
+    
+    $$
+    [* declarations *]
+    int base, power;
     int count, total;
+
+    [* assignments *]
     count = 0;
+    total = 0;
+
+    [* input *]
     get(base);
     get(power);
+
+    [* calculation *]
     while(count < power){
         total = total*base;
+        count = count + 1;
     }whileend
+
+    [* output *]
     put(total);
     $$

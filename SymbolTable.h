@@ -9,6 +9,7 @@
 #include "Lexer.h"
 #include "Globals.h"
 
+// Begin instruction address at 1
 static int instr_address = 1;
 
 class SymbolTable
@@ -37,30 +38,43 @@ public:
   ~SymbolTable();
 
   // Accessors
-  int lookup(Lexer::Token t);
 
+	// Symbol Table
+  int lookup(Lexer::Token t);
+  std::string get_type(Lexer::Token token) const;
+  int get_mem();
+  int get_address(Lexer::Token token);
+
+	// Output
   std::string list();
   std::string list_instr();
 
-  int get_address(Lexer::Token token);
-  int get_mem();
+	// Instruction table
   int get_instr_address() const;
-  std::string get_type(Lexer::Token token) const;
+
+	// Typestack
   std::string top_typestack() const;
   bool typestack_empty() const;
   
   // Mutators
-  bool insert(Lexer::Token t, std::string type);
 
+	// Symbol Table
+  bool insert(Lexer::Token t, std::string type);
   bool remove(Lexer::Token t);
 
+	// Instruction table
   void gen_instr(std::string op, int operand);
+
+	// Jumpstack
   void push_jumpstack(int address);
-  void push_typestack(std::string type);
-  bool pop_typestack();
   void back_patch(int jump_addr);
 
+	// Typestack
+  void push_typestack(std::string type);
+  bool pop_typestack();
+
 private:
+
   void incrementMem();
 
   std::vector<Symbol> table;

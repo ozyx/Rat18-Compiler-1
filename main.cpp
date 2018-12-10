@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -15,7 +14,7 @@ int main()
 	std::stringstream *buffer;
 	std::string line;
 
-	std::vector<std::string> files = {"test4.txt"/*, "test2.txt", "test3.txt"*/};
+	std::vector<std::string> files = {"test1.txt", "test2.txt", "test3.txt", "test4.txt"};
 	std::ofstream out;
 	out.open("output.txt");
 
@@ -51,7 +50,7 @@ int main()
 		}
 		fin.close();
 
-		SyntaxAnalyzer *syntaxAnalyzer = new SyntaxAnalyzer(tokens, out, true);
+		SyntaxAnalyzer *syntaxAnalyzer = new SyntaxAnalyzer(tokens, out, false);
 
 		try
 		{
@@ -66,6 +65,7 @@ int main()
 
 		tokens.clear();
 		syntaxAnalyzer->PrintAll();
+
 		delete syntaxAnalyzer;
 	}
 

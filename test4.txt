@@ -1,3 +1,5 @@
+    [* This test file should contain 20 errors *]
+
     $$
     real realVarA ,realVarB , realVarC;
 
@@ -30,7 +32,7 @@
             bCoord = realVarB + YCoord; [* type mismatch *]
             cCoord = realVarC + ZCoord; [* type mismatch *]
         }ifend
-        if(operation == 20)
+        if(operation == 2.0) [* type mismatch *]
         {
             aCoord = realVarA - XCoord; [* type mismatch *]
             bCoord = realVarB - YCoord; [* type mismatch *]
@@ -59,7 +61,7 @@
         }ifend
         operation = operation - 1;
     }whileend
-    
+
     put(aCoord);
     put(bCoord);
     put(cCoord);
