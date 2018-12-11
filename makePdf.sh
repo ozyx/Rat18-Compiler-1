@@ -24,9 +24,11 @@ do
     enscript --font=Courier7 --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
 done
 
-# Generate pdfs for txt
-for file in *.txt
+# Generate pdfs for tests
+for file in test*.txt
 do
     echo $file
     enscript --font=Courier7 --line-numbers -p - --color=1 $file | pstopdf -i -o $DIRECTORY/${file}.pdf
 done
+
+enscript --font=Courier7 -p - --color=1 output.txt | pstopdf -i -o $DIRECTORY/output.txt.pdf

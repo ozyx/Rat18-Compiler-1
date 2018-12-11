@@ -1,0 +1,411 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 3867
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(SyntaxAnalyzer.h)-4500(Mon Dec 10 17:16:51 2018)-4500(1)]TJ
+/TT4 1 Tf
+7 0 0 7 46.8 793 Tm
+[(1:)-599.8(#ifndef SYNTAXANALYZER_H)]TJ
+0 -1.1429 TD
+[(2:)-599.8(#define SYNTAXANALYZER_H)]TJ
+T*
+(3:)Tj
+T*
+[(4:)-599.8(#include <fstream>)]TJ
+T*
+[(5:)-599.8(#include "Lexer.h")]TJ
+T*
+[(6:)-599.8(#include "SymbolTable.h")]TJ
+T*
+(7:)Tj
+T*
+[(8:)-599.8(class SyntaxError)]TJ
+T*
+[(9:)-599.8({)]TJ
+-0.6 -1.1429 TD
+[(10:)-599.7(public:)]TJ
+T*
+[(11:)-599.7(  // Constructor)]TJ
+T*
+[(12:)-599.7(  SyntaxError\(std::string message, int lineNumber\);)]TJ
+T*
+(13:)Tj
+T*
+[(14:)-599.7(  òSyntaxError\(\);)]TJ
+T*
+(15:)Tj
+T*
+[(16:)-599.7(  std::string getMessage\(\) const;)]TJ
+T*
+(17:)Tj
+T*
+[(18:)-599.7(private:)]TJ
+T*
+[(19:)-599.7(  std::string message;)]TJ
+T*
+[(20:)-599.7(  int lineNumber;)]TJ
+T*
+[(21:)-599.7(};)]TJ
+T*
+(22:)Tj
+T*
+[(23:)-599.7(class SyntaxAnalyzer)]TJ
+T*
+[(24:)-599.7({)]TJ
+T*
+[(25:)-599.7(public:)]TJ
+T*
+[(26:)-599.7(  // Constructor)]TJ
+T*
+[(27:)-599.7(  SyntaxAnalyzer\(const std::vector<Lexer::Token> &tokens, std::ofstream &output, bool print = false\);)]TJ
+T*
+[(28:)-599.7(  òSyntaxAnalyzer\(\);)]TJ
+T*
+(29:)Tj
+T*
+[(30:)-599.7(  // Begins the analysis process with the given tokens)]TJ
+T*
+[(31:)-599.7(  void Analyze\(\);)]TJ
+T*
+(32:)Tj
+T*
+[(33:)-599.7(  std::string PrintAll\(\);)]TJ
+T*
+(34:)Tj
+T*
+[(35:)-599.7(private:)]TJ
+T*
+[(36:)-599.7(  enum ErrorType)]TJ
+T*
+[(37:)-599.7(  {)]TJ
+T*
+[(38:)-599.7(    TYPE_MISMATCH,)]TJ
+T*
+[(39:)-599.7(    DUPLICATE_SYMBOL,)]TJ
+T*
+[(40:)-599.7(        UNDECLARED_VARIABLE)]TJ
+T*
+[(41:)-599.7(  };)]TJ
+T*
+(42:)Tj
+T*
+[(43:)-599.7(  void Rat18F\(\);)]TJ
+T*
+[(44:)-599.7(  void OptFunctionDefinitions\(\);)]TJ
+T*
+[(45:)-599.7(  void FunctionDefinitions\(\);)]TJ
+T*
+[(46:)-599.7(  void Function\(\);)]TJ
+T*
+[(47:)-599.7(  void OptParameterList\(\);)]TJ
+T*
+[(48:)-599.7(  void ParameterList\(\);)]TJ
+T*
+[(49:)-599.7(  void Parameter\(\);)]TJ
+T*
+[(50:)-599.7(  void Qualifier\(\);)]TJ
+T*
+[(51:)-599.7(  void Body\(\);)]TJ
+T*
+[(52:)-599.7(  void OptDeclarationList\(\);)]TJ
+T*
+[(53:)-599.7(  void DeclarationList\(\);)]TJ
+T*
+[(54:)-599.7(  void Declaration\(\);)]TJ
+T*
+[(55:)-599.7(  void IDs\(\);)]TJ
+T*
+[(56:)-599.7(  void StatementList\(\);)]TJ
+T*
+[(57:)-599.7(  void Statement\(\);)]TJ
+T*
+[(58:)-599.7(  void Compound\(\);)]TJ
+T*
+[(59:)-599.7(  void Assign\(\);)]TJ
+T*
+[(60:)-599.7(  void If\(\);)]TJ
+T*
+[(61:)-599.7(  void Return\(\);)]TJ
+T*
+[(62:)-599.7(  void Print\(\);)]TJ
+T*
+[(63:)-599.7(  void Scan\(\);)]TJ
+T*
+[(64:)-599.7(  void While\(\);)]TJ
+T*
+[(65:)-599.7(  void Condition\(\);)]TJ
+T*
+[(66:)-599.7(  void Relop\(\);)]TJ
+T*
+[(67:)-599.7(  void Expression\(\);)]TJ
+T*
+[(68:)-599.7(  void Term\(\);)]TJ
+T*
+[(69:)-599.7(  void Factor\(\);)]TJ
+T*
+[(70:)-599.7(  void Primary\(\);)]TJ
+T*
+[(71:)-599.7(  void Empty\(\);)]TJ
+T*
+[(72:)-599.7(  void ExpressionPrime\(\);)]TJ
+T*
+[(73:)-599.7(  void TermPrime\(\);)]TJ
+T*
+[(74:)-599.7(  void Identifier\(\);)]TJ
+T*
+[(75:)-599.7(  void Integer\(\);)]TJ
+T*
+[(76:)-599.7(  void Real\(\);)]TJ
+T*
+(77:)Tj
+T*
+[(78:)-599.7(  void error\(ErrorType errorType, int lineNumber, std::string expected = ""\);)]TJ
+T*
+(79:)Tj
+T*
+[(80:)-599.7(  void getNextToken\(\);)]TJ
+T*
+[(81:)-599.7(  void printCurrentToken\(\);)]TJ
+T*
+(82:)Tj
+T*
+[(83:)-599.7(  const std::vector<Lexer::Token> &tokens;)]TJ
+T*
+[(84:)-599.7(  std::vector<Lexer::Token>::const_iterator it;)]TJ
+T*
+[(85:)-599.7(  Lexer::Token currentToken;)]TJ
+T*
+[(86:)-599.7(  bool print;)]TJ
+T*
+[(87:)-599.7(  std::ofstream &output;)]TJ
+T*
+[(88:)-599.7(  SymbolTable symbolTable;)]TJ
+T*
+[(89:)-599.7(  std::string *savedOp;)]TJ
+T*
+[(90:)-599.7(  std::string *savedType;)]TJ
+T*
+[(91:)-599.7(  Lexer::Token *save;)]TJ
+T*
+[(92:)-599.7(  std::ostringstream err;)]TJ
+T*
+[(93:)-599.7(  int errCount;)]TJ
+T*
+[(94:)-599.7(  bool isDeclaration;)]TJ
+T*
+[(95:)-599.7(};)]TJ
+T*
+(96:)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Length 199
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(SyntaxAnalyzer.h)-4500(Mon Dec 10 17:16:51 2018)-4500(2)]TJ
+/TT4 1 Tf
+7 0 0 7 42.6 793 Tm
+[(97:)-599.7(#endif // SYNTAXANALYZER_H)]TJ
+ET
+endstream
+endobj
+10 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+11 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 122
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 0 0 600 600 600 600 0 600 0 0 0 0 0 
+0 600 0 0 600 0 0 0 0 0 0 0 0 600 0 0 
+0 0 0 600 0 0 0 0 0 0 0 0 0 0 0 0 
+0 600 0 600 0 600 0 0 600 0 0 0 600 0 600 600 
+0 0 600 0 600 0 0 0 600 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 11 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 0 600 600 0 0 600 0 600 600 600 0 600 0 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 600 600 600 600 600 0 600 600 0 0 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 0 0 0 0 600 
+0 600 600 600 600 600 600 600 600 600 0 600 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 600 600 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 12 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 10 0 R
+/Contents 9 0 R
+>>
+endobj
+13 0 obj
+<<
+/S /D
+>>
+endobj
+14 0 obj
+<<
+/Nums [0 13 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 8 0 R]
+/Count 2
+/MediaBox [0 0 595 842]
+>>
+endobj
+15 0 obj
+<<
+/CreationDate (D:20181210171905-08'00')
+/ModDate (D:20181210171905-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+16 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 14 0 R
+>>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000005896 00000 n 
+0000000016 00000 n 
+0000003935 00000 n 
+0000004931 00000 n 
+0000005335 00000 n 
+0000004398 00000 n 
+0000006125 00000 n 
+0000005976 00000 n 
+0000004041 00000 n 
+0000004291 00000 n 
+0000004538 00000 n 
+0000004740 00000 n 
+0000006057 00000 n 
+0000006085 00000 n 
+0000006212 00000 n 
+0000006335 00000 n 
+trailer
+<<
+/Size 17
+/Root 16 0 R
+/Info 15 0 R
+/ID [<dbef4e2bdbf4c3f7d955b56e887b9566><dbef4e2bdbf4c3f7d955b56e887b9566>]
+>>
+startxref
+6404
+%%EOF

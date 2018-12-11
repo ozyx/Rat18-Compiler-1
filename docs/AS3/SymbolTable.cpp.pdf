@@ -1,0 +1,909 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 3987
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(SymbolTable.cpp)-4500(Mon Dec 10 17:16:51 2018)-4500(1)]TJ
+/TT4 1 Tf
+7 0 0 7 46.8 793 Tm
+[(1:)-599.8(#include "SymbolTable.h")]TJ
+0 -1.1429 TD
+(2:)Tj
+T*
+[(3:)-599.8(/**)]TJ
+T*
+[(4:)-599.8( * @brief Construct a new SymbolTable object)]TJ
+T*
+[(5:)-599.8( */)]TJ
+T*
+[(6:)-599.8(SymbolTable::SymbolTable\(\) : memaddress\(5000\) {})]TJ
+T*
+(7:)Tj
+T*
+[(8:)-599.8(/**)]TJ
+T*
+[(9:)-599.8( * @brief Destroy the SymbolTable object)]TJ
+-0.6 -1.1429 TD
+[(10:)-599.7( */)]TJ
+T*
+[(11:)-599.7(SymbolTable::òSymbolTable\(\))]TJ
+T*
+[(12:)-599.7({)]TJ
+T*
+[(13:)-599.7(    instr_address = 1;)]TJ
+T*
+[(14:)-599.7(})]TJ
+T*
+(15:)Tj
+T*
+[(16:)-599.7(/**)]TJ
+T*
+[(17:)-599.7( * @brief Increment the current memory address by one)]TJ
+T*
+[(18:)-599.7( */)]TJ
+T*
+[(19:)-599.7(void SymbolTable::incrementMem\(\))]TJ
+T*
+[(20:)-599.7({)]TJ
+T*
+[(21:)-599.7(    ++this->memaddress;)]TJ
+T*
+[(22:)-599.7(})]TJ
+T*
+(23:)Tj
+T*
+[(24:)-599.7(/**)]TJ
+T*
+[(25:)-599.7( * @brief Insert a Symbol into the symbol table)]TJ
+T*
+[(26:)-599.7( *)]TJ
+T*
+[(27:)-599.7( * @param t The token object)]TJ
+T*
+[(28:)-599.7( * @return true if successful)]TJ
+T*
+[(29:)-599.7( * @return false if unsuccessful)]TJ
+T*
+[(30:)-599.7( */)]TJ
+T*
+[(31:)-599.7(bool SymbolTable::insert\(Lexer::Token t, std::string type\))]TJ
+T*
+[(32:)-599.7({)]TJ
+T*
+[(33:)-599.7(    bool success = false;)]TJ
+T*
+(34:)Tj
+T*
+[(35:)-599.7(    if \(!lookup\(t\)\))]TJ
+T*
+[(36:)-599.7(    {)]TJ
+T*
+[(37:)-599.7(        Symbol *s = new Symbol\(t, this->memaddress, type\);)]TJ
+T*
+[(38:)-599.7(        this->table.push_back\(*s\);)]TJ
+T*
+[(39:)-599.7(        incrementMem\(\);)]TJ
+T*
+[(40:)-599.7(        success = true;)]TJ
+T*
+[(41:)-599.7(    })]TJ
+T*
+(42:)Tj
+T*
+[(43:)-599.7(    return success;)]TJ
+T*
+[(44:)-599.7(})]TJ
+T*
+(45:)Tj
+T*
+[(46:)-599.7(/**)]TJ
+T*
+[(47:)-599.7( * @brief Check to see if an identifier already exists)]TJ
+T*
+[(48:)-599.7( * in the symbol table.)]TJ
+T*
+[(49:)-599.7( *)]TJ
+T*
+[(50:)-599.7( * @param id The identifier \(lexeme\))]TJ
+T*
+[(51:)-599.7( * @return address if existing, 0 if not)]TJ
+T*
+[(52:)-599.7( */)]TJ
+T*
+[(53:)-599.7(int SymbolTable::lookup\(Lexer::Token t\))]TJ
+T*
+[(54:)-599.7({)]TJ
+T*
+[(55:)-599.7(    std::vector<Symbol>::iterator it = this->table.begin\(\);)]TJ
+T*
+[(56:)-599.7(    bool found = false;)]TJ
+T*
+(57:)Tj
+T*
+[(58:)-599.7(    while \(!found && it != this->table.end\(\)\))]TJ
+T*
+[(59:)-599.7(    {)]TJ
+T*
+[(60:)-599.7(        if \(it->token.lexeme == t.lexeme && it->token.token == t.token\))]TJ
+T*
+[(61:)-599.7(        {)]TJ
+T*
+[(62:)-599.7(            found = true;)]TJ
+T*
+[(63:)-599.7(        })]TJ
+T*
+[(64:)-599.7(        else)]TJ
+T*
+[(65:)-599.7(        {)]TJ
+T*
+[(66:)-599.7(            ++it;)]TJ
+T*
+[(67:)-599.7(        })]TJ
+T*
+[(68:)-599.7(    })]TJ
+T*
+(69:)Tj
+T*
+[(70:)-599.7(    return found ? it->address : 0;)]TJ
+T*
+[(71:)-599.7(})]TJ
+T*
+(72:)Tj
+T*
+[(73:)-599.7(/**)]TJ
+T*
+[(74:)-599.7( * @brief Remove a Symbol from the symbol table.)]TJ
+T*
+[(75:)-599.7( *)]TJ
+T*
+[(76:)-599.7( * @param id The identifier \(lexeme\))]TJ
+T*
+[(77:)-599.7( * @return true if successful)]TJ
+T*
+[(78:)-599.7( * @return false if unsuccessful)]TJ
+T*
+[(79:)-599.7( */)]TJ
+T*
+[(80:)-599.7(bool SymbolTable::remove\(Lexer::Token t\))]TJ
+T*
+[(81:)-599.7({)]TJ
+T*
+[(82:)-599.7(    bool success = false;)]TJ
+T*
+[(83:)-599.7(    int pos = 0;)]TJ
+T*
+(84:)Tj
+T*
+[(85:)-599.7(    if \(lookup\(t\)\))]TJ
+T*
+[(86:)-599.7(    {)]TJ
+T*
+[(87:)-599.7(        std::vector<Symbol>::const_iterator it = this->table.begin\(\);)]TJ
+T*
+[(88:)-599.7(        while \(!success && it != this->table.end\(\)\))]TJ
+T*
+[(89:)-599.7(        {)]TJ
+T*
+[(90:)-599.7(            if \(it->token.lexeme == t.lexeme\))]TJ
+T*
+[(91:)-599.7(            {)]TJ
+T*
+[(92:)-599.7(                this->table.erase\(this->table.begin\(\) + pos\);)]TJ
+T*
+[(93:)-599.7(                success = true;)]TJ
+T*
+[(94:)-599.7(            })]TJ
+T*
+[(95:)-599.7(            else)]TJ
+T*
+[(96:)-599.7(            {)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Length 4558
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(SymbolTable.cpp)-4500(Mon Dec 10 17:16:51 2018)-4500(2)]TJ
+/TT4 1 Tf
+7 0 0 7 42.6 793 Tm
+[(97:)-599.7(                ++pos;)]TJ
+0 -1.1429 TD
+[(98:)-599.7(                ++it;)]TJ
+T*
+[(99:)-599.7(            })]TJ
+-0.6 -1.1429 TD
+[(100:)-599.6(        })]TJ
+T*
+[(101:)-599.6(    })]TJ
+T*
+(102:)Tj
+T*
+[(103:)-599.6(    return success;)]TJ
+T*
+[(104:)-599.6(})]TJ
+T*
+(105:)Tj
+T*
+[(106:)-599.6(/**)]TJ
+T*
+[(107:)-599.6( * @brief Return a string representation of the)]TJ
+T*
+[(108:)-599.6( * current symbol table.)]TJ
+T*
+[(109:)-599.6( *)]TJ
+T*
+[(110:)-599.6( * @return std::string)]TJ
+T*
+[(111:)-599.6( */)]TJ
+T*
+[(112:)-599.6(std::string SymbolTable::list\(\))]TJ
+T*
+[(113:)-599.6({)]TJ
+T*
+[(114:)-599.6(    std::ostringstream os;)]TJ
+T*
+[(115:)-599.6(    const int COL_WIDTH = 15;)]TJ
+T*
+(116:)Tj
+T*
+[(117:)-599.6(    os << std::left << std::setw\(COL_WIDTH\) << "Identifier" << std::setw\(COL_WIDTH\) << "Type")]TJ
+T*
+[(118:)-599.6(       << "Memory Address" << std::endl;)]TJ
+T*
+[(119:)-599.6(        os << std::setfill\(í-í\) << std::setw\(COL_WIDTH * 2 + 14\) << í-í << std::setfill\(í í\) << std::endl;)]TJ
+T*
+(120:)Tj
+T*
+[(121:)-599.6(    for \(std::vector<Symbol>::const_iterator it = this->table.begin\(\); it != this->table.end\(\); ++it\))]TJ
+T*
+[(122:)-599.6(    {)]TJ
+T*
+[(123:)-599.6(        os << std::setw\(COL_WIDTH\) << it->token.lexeme << std::setw\(COL_WIDTH\) << it->type << it->address << std::endl;)]TJ
+T*
+[(124:)-599.6(    })]TJ
+T*
+(125:)Tj
+T*
+[(126:)-599.6(    return os.str\(\);)]TJ
+T*
+[(127:)-599.6(})]TJ
+T*
+(128:)Tj
+T*
+[(129:)-599.6(/**)]TJ
+T*
+[(130:)-599.6( * @brief List all of the instructions)]TJ
+T*
+[(131:)-599.6( * in the instruction table)]TJ
+T*
+[(132:)-599.6( * )]TJ
+T*
+[(133:)-599.6( * @return std::string A formatted list of instructions)]TJ
+T*
+[(134:)-599.6( */)]TJ
+T*
+[(135:)-599.6(std::string SymbolTable::list_instr\(\))]TJ
+T*
+[(136:)-599.6({)]TJ
+T*
+[(137:)-599.6(    std::ostringstream os;)]TJ
+T*
+[(138:)-599.6(    const int COL_WIDTH = 15;)]TJ
+T*
+(139:)Tj
+T*
+[(140:)-599.6(    os << std::left << std::setw\(COL_WIDTH\) << "Address" << std::setw\(COL_WIDTH\) << "OpCode")]TJ
+T*
+[(141:)-599.6(       << "Operand" << std::endl;)]TJ
+T*
+[(142:)-599.6(        os << std::setfill\(í-í\) << std::setw\(COL_WIDTH * 2 + 7\) << í-í << std::setfill\(í í\) << std::endl;)]TJ
+T*
+(143:)Tj
+T*
+[(144:)-599.6(    for \(std::vector<Instr>::const_iterator it = this->instructions.begin\(\); it != this->instructions.end\(\); ++it\))]TJ
+T*
+[(145:)-599.6(    {)]TJ
+T*
+[(146:)-599.6(        os << std::setw\(COL_WIDTH\) << it->address << std::setw\(COL_WIDTH\) << it->op;)]TJ
+T*
+(147:)Tj
+T*
+[(148:)-599.6(        if \(it->operand != NIL\))]TJ
+T*
+[(149:)-599.6(        {)]TJ
+T*
+[(150:)-599.6(            os << it->operand;)]TJ
+T*
+[(151:)-599.6(        })]TJ
+T*
+(152:)Tj
+T*
+[(153:)-599.6(        os << std::endl;)]TJ
+T*
+[(154:)-599.6(    })]TJ
+T*
+(155:)Tj
+T*
+[(156:)-599.6(    return os.str\(\);)]TJ
+T*
+[(157:)-599.6(})]TJ
+T*
+(158:)Tj
+T*
+[(159:)-599.6(/**)]TJ
+T*
+[(160:)-599.6( * @brief Generate a new instruction and)]TJ
+T*
+[(161:)-599.6( * add it to the instruction table.)]TJ
+T*
+[(162:)-599.6( * )]TJ
+T*
+[(163:)-599.6( * @param op The op \(ADD, SUB, EQU, etc...\))]TJ
+T*
+[(164:)-599.6( * @param operand The operand \(an integer, memory address, etc...\))]TJ
+T*
+[(165:)-599.6( */)]TJ
+T*
+[(166:)-599.6(void SymbolTable::gen_instr\(std::string op, int operand\))]TJ
+T*
+[(167:)-599.6({)]TJ
+T*
+[(168:)-599.6(    Instr *instr = new Instr\(op, operand\);)]TJ
+T*
+(169:)Tj
+T*
+[(170:)-599.6(    this->instructions.push_back\(*instr\);)]TJ
+T*
+[(171:)-599.6(})]TJ
+T*
+(172:)Tj
+T*
+[(173:)-599.6(/**)]TJ
+T*
+[(174:)-599.6( * @brief Push an address onto the jumpstack)]TJ
+T*
+[(175:)-599.6( * )]TJ
+T*
+[(176:)-599.6( * @param address the address)]TJ
+T*
+[(177:)-599.6( */)]TJ
+T*
+[(178:)-599.6(void SymbolTable::push_jumpstack\(int address\))]TJ
+T*
+[(179:)-599.6({)]TJ
+T*
+[(180:)-599.6(    this->jumpstack.push_back\(address\);)]TJ
+T*
+[(181:)-599.6(})]TJ
+T*
+(182:)Tj
+T*
+[(183:)-599.6(/**)]TJ
+T*
+[(184:)-599.6( * @brief Used to close off JUMP instructions.)]TJ
+T*
+[(185:)-599.6( * Find the previous JUMP instruction and fill out its)]TJ
+T*
+[(186:)-599.6( * operand with the current instruction address.)]TJ
+T*
+[(187:)-599.6( * )]TJ
+T*
+[(188:)-599.6( * @param jump_addr The address of the previous JUMP instruction)]TJ
+T*
+[(189:)-599.6( */)]TJ
+T*
+[(190:)-599.6(void SymbolTable::back_patch\(int jump_addr\))]TJ
+T*
+[(191:)-599.6({)]TJ
+T*
+[(192:)-599.6(    const int addr = jumpstack.back\(\);)]TJ
+ET
+endstream
+endobj
+10 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+12 0 obj
+<<
+/Length 3827
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(SymbolTable.cpp)-4500(Mon Dec 10 17:16:51 2018)-4500(3)]TJ
+/TT4 1 Tf
+7 0 0 7 38.4 793 Tm
+[(193:)-599.6(    jumpstack.pop_back\(\);)]TJ
+0 -1.1429 TD
+(194:)Tj
+T*
+[(195:)-599.6(    if \(this->instructions.size\(\) >= addr\))]TJ
+T*
+[(196:)-599.6(    {)]TJ
+T*
+[(197:)-599.6(        this->instructions.at\(addr - 1\).operand = jump_addr;)]TJ
+T*
+[(198:)-599.6(    })]TJ
+T*
+[(199:)-599.6(    else)]TJ
+T*
+[(200:)-599.6(    {)]TJ
+T*
+[(201:)-599.6(        // TODO: ERROR)]TJ
+T*
+[(202:)-599.6(    })]TJ
+T*
+[(203:)-599.6(})]TJ
+T*
+(204:)Tj
+T*
+[(205:)-599.6(/**)]TJ
+T*
+[(206:)-599.6( * @brief Get a particular tokenís memory address \(e.g: 500, 5001...\))]TJ
+T*
+[(207:)-599.6( * )]TJ
+T*
+[(208:)-599.6( * @param token the token)]TJ
+T*
+[(209:)-599.6( * @return int the tokenís address. 0 if unsuccessful.)]TJ
+T*
+[(210:)-599.6( */)]TJ
+T*
+[(211:)-599.6(int SymbolTable::get_address\(Lexer::Token token\))]TJ
+T*
+[(212:)-599.6({)]TJ
+T*
+[(213:)-599.6(    return lookup\(token\);)]TJ
+T*
+[(214:)-599.6(})]TJ
+T*
+(215:)Tj
+T*
+[(216:)-599.6(/**)]TJ
+T*
+[(217:)-599.6( * @brief Get the current memory address \(e.g: 5000, 5001...\))]TJ
+T*
+[(218:)-599.6( * )]TJ
+T*
+[(219:)-599.6( * @return int the memory address)]TJ
+T*
+[(220:)-599.6( */)]TJ
+T*
+[(221:)-599.6(int SymbolTable::get_mem\(\))]TJ
+T*
+[(222:)-599.6({)]TJ
+T*
+[(223:)-599.6(    return this->memaddress;)]TJ
+T*
+[(224:)-599.6(})]TJ
+T*
+(225:)Tj
+T*
+[(226:)-599.6(/**)]TJ
+T*
+[(227:)-599.6( * @brief Get the current instruction address \(i.e: 1, 2, 3...\))]TJ
+T*
+[(228:)-599.6( * )]TJ
+T*
+[(229:)-599.6( * @return int The instruction address)]TJ
+T*
+[(230:)-599.6( */)]TJ
+T*
+[(231:)-599.6(int SymbolTable::get_instr_address\(\) const)]TJ
+T*
+[(232:)-599.6({)]TJ
+T*
+[(233:)-599.6(    return instr_address;)]TJ
+T*
+[(234:)-599.6(})]TJ
+T*
+(235:)Tj
+T*
+[(236:)-599.6(/**)]TJ
+T*
+[(237:)-599.6( * @brief Push a value onto the typestack)]TJ
+T*
+[(238:)-599.6( * )]TJ
+T*
+[(239:)-599.6( * @param type the type)]TJ
+T*
+[(240:)-599.6( */)]TJ
+T*
+[(241:)-599.6(void SymbolTable::push_typestack\(std::string type\))]TJ
+T*
+[(242:)-599.6({)]TJ
+T*
+[(243:)-599.6(    this->typestack.push\(type\);)]TJ
+T*
+[(244:)-599.6(})]TJ
+T*
+(245:)Tj
+T*
+[(246:)-599.6(/**)]TJ
+T*
+[(247:)-599.6( * @brief Pop a value from the typestack)]TJ
+T*
+[(248:)-599.6( * )]TJ
+T*
+[(249:)-599.6( * @return true if successful)]TJ
+T*
+[(250:)-599.6( * @return false if stack is empty)]TJ
+T*
+[(251:)-599.6( */)]TJ
+T*
+[(252:)-599.6(bool SymbolTable::pop_typestack\(\))]TJ
+T*
+[(253:)-599.6({)]TJ
+T*
+[(254:)-599.6(    bool success = false;)]TJ
+T*
+(255:)Tj
+T*
+[(256:)-599.6(    if\(!this->typestack.empty\(\)\))]TJ
+T*
+[(257:)-599.6(    {)]TJ
+T*
+[(258:)-599.6(        success = true;)]TJ
+T*
+[(259:)-599.6(        this->typestack.pop\(\);)]TJ
+T*
+[(260:)-599.6(    })]TJ
+T*
+(261:)Tj
+T*
+[(262:)-599.6(    return success;)]TJ
+T*
+[(263:)-599.6(})]TJ
+T*
+(264:)Tj
+T*
+[(265:)-599.6(/**)]TJ
+T*
+[(266:)-599.6( * @brief Retrieve the top element on the stack)]TJ
+T*
+[(267:)-599.6( * )]TJ
+T*
+[(268:)-599.6( * @return std::string the type)]TJ
+T*
+[(269:)-599.6( */)]TJ
+T*
+[(270:)-599.6(std::string SymbolTable::top_typestack\(\) const)]TJ
+T*
+[(271:)-599.6({)]TJ
+T*
+[(272:)-599.6(    return this->typestack.top\(\);)]TJ
+T*
+[(273:)-599.6(})]TJ
+T*
+(274:)Tj
+T*
+[(275:)-599.6(/**)]TJ
+T*
+[(276:)-599.6( * @brief Get the type of the given Token)]TJ
+T*
+[(277:)-599.6( * )]TJ
+T*
+[(278:)-599.6( * @param token )]TJ
+T*
+[(279:)-599.6( * @return std::string )]TJ
+T*
+[(280:)-599.6( */)]TJ
+T*
+[(281:)-599.6(std::string SymbolTable::get_type\(Lexer::Token token\) const)]TJ
+T*
+[(282:)-599.6({)]TJ
+T*
+[(283:)-599.6(    std::string type = "";)]TJ
+T*
+(284:)Tj
+T*
+[(285:)-599.6(    for\(Symbol s : this->table\))]TJ
+T*
+[(286:)-599.6(    {)]TJ
+T*
+[(287:)-599.6(        if\(s.token.lexeme == token.lexeme\))]TJ
+T*
+[(288:)-599.6(        {)]TJ
+ET
+endstream
+endobj
+13 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+15 0 obj
+<<
+/Length 793
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(SymbolTable.cpp)-4500(Mon Dec 10 17:16:51 2018)-4500(4)]TJ
+/TT4 1 Tf
+7 0 0 7 38.4 793 Tm
+[(289:)-599.6(            type = s.type;)]TJ
+0 -1.1429 TD
+[(290:)-599.6(            break;)]TJ
+T*
+[(291:)-599.6(        })]TJ
+T*
+[(292:)-599.6(    })]TJ
+T*
+(293:)Tj
+T*
+[(294:)-599.6(    return type;)]TJ
+T*
+[(295:)-599.6(})]TJ
+T*
+(296:)Tj
+T*
+[(297:)-599.6(/**)]TJ
+T*
+[(298:)-599.6( * @brief Check if typestack is empty)]TJ
+T*
+[(299:)-599.6( * )]TJ
+T*
+[(300:)-599.6( * @return true if empty)]TJ
+T*
+[(301:)-599.6( * @return false if not empty)]TJ
+T*
+[(302:)-599.6( */)]TJ
+T*
+[(303:)-599.6(bool SymbolTable::typestack_empty\(\) const)]TJ
+T*
+[(304:)-599.6({)]TJ
+T*
+[(305:)-599.6(    return this->typestack.empty\(\);)]TJ
+T*
+[(306:)-599.6(})]TJ
+ET
+endstream
+endobj
+16 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+17 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+18 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 600 600 600 600 600 0 600 0 0 0 0 0 
+0 0 0 0 600 0 0 0 0 0 0 0 0 600 0 0 
+0 0 0 600 600 0 0 0 0 0 0 0 0 0 0 0 
+0 600 600 600 0 600 0 0 0 0 0 0 600 600 600 600 
+600 0 0 0 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 17 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 600 600 600 0 0 600 0 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 0 600 600 600 600 
+600 600 600 600 600 600 0 600 0 0 0 0 0 0 0 600 
+0 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 600 600 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 18 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 10 0 R
+/Contents 9 0 R
+>>
+endobj
+11 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 13 0 R
+/Contents 12 0 R
+>>
+endobj
+14 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 16 0 R
+/Contents 15 0 R
+>>
+endobj
+19 0 obj
+<<
+/S /D
+>>
+endobj
+20 0 obj
+<<
+/Nums [0 19 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 8 0 R 11 0 R 14 0 R]
+/Count 4
+/MediaBox [0 0 595 842]
+>>
+endobj
+21 0 obj
+<<
+/CreationDate (D:20181210171904-08'00')
+/ModDate (D:20181210171904-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+22 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 20 0 R
+>>
+endobj
+xref
+0 23
+0000000000 65535 f 
+0000015323 00000 n 
+0000000016 00000 n 
+0000004055 00000 n 
+0000014350 00000 n 
+0000014752 00000 n 
+0000013817 00000 n 
+0000015718 00000 n 
+0000015403 00000 n 
+0000004161 00000 n 
+0000008771 00000 n 
+0000015484 00000 n 
+0000008878 00000 n 
+0000012758 00000 n 
+0000015567 00000 n 
+0000012865 00000 n 
+0000013710 00000 n 
+0000013957 00000 n 
+0000014159 00000 n 
+0000015650 00000 n 
+0000015678 00000 n 
+0000015819 00000 n 
+0000015942 00000 n 
+trailer
+<<
+/Size 23
+/Root 22 0 R
+/Info 21 0 R
+/ID [<8ce1b5240782d4e94600f7fd5774c248><8ce1b5240782d4e94600f7fd5774c248>]
+>>
+startxref
+16011
+%%EOF

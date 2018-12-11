@@ -1,0 +1,837 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 3607
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(1)]TJ
+/TT4 1 Tf
+7 0 0 7 29 785 Tm
+(RUNNING TEST CASE FILE "test1.txt")Tj
+0 -2.2857 TD
+(Syntax Analysis Successful.)Tj
+T*
+(Identifier     Type           Memory Address)Tj
+0 -1.1429 TD
+(--------------------------------------------)Tj
+T*
+(i              int            5000)Tj
+T*
+(max            int            5001)Tj
+T*
+(sum            int            5002)Tj
+0 -2.2857 TD
+(Address        OpCode         Operand)Tj
+0 -1.1429 TD
+(-------------------------------------)Tj
+T*
+(1              PUSHI          0)Tj
+T*
+(2              POPM           5002)Tj
+T*
+(3              PUSHI          1)Tj
+T*
+(4              POPM           5000)Tj
+T*
+(5              STDIN          )Tj
+T*
+(6              POPM           5001)Tj
+T*
+(7              LABEL          )Tj
+T*
+(8              PUSHM          5000)Tj
+T*
+(9              PUSHM          5001)Tj
+T*
+(10             LES            )Tj
+T*
+(11             JUMPZ          21)Tj
+T*
+(12             PUSHM          5002)Tj
+T*
+(13             PUSHM          5000)Tj
+T*
+(14             ADD            )Tj
+T*
+(15             POPM           5002)Tj
+T*
+(16             PUSHM          5000)Tj
+T*
+(17             PUSHI          1)Tj
+T*
+(18             ADD            )Tj
+T*
+(19             POPM           5000)Tj
+T*
+(20             JUMP           7)Tj
+T*
+(21             PUSHM          5002)Tj
+T*
+(22             PUSHM          5001)Tj
+T*
+(23             ADD            )Tj
+T*
+(24             STDOUT         )Tj
+0 -2.2857 TD
+(3AC Code Generated Successfully!)Tj
+0 -3.4286 TD
+(RUNNING TEST CASE FILE "test2.txt")Tj
+0 -2.2857 TD
+(Syntax Analysis Successful.)Tj
+T*
+(Identifier     Type           Memory Address)Tj
+0 -1.1429 TD
+(--------------------------------------------)Tj
+T*
+(base           int            5000)Tj
+T*
+(power          int            5001)Tj
+T*
+(count          int            5002)Tj
+T*
+(total          int            5003)Tj
+0 -2.2857 TD
+(Address        OpCode         Operand)Tj
+0 -1.1429 TD
+(-------------------------------------)Tj
+T*
+(1              PUSHI          0)Tj
+T*
+(2              POPM           5002)Tj
+T*
+(3              PUSHI          0)Tj
+T*
+(4              POPM           5003)Tj
+T*
+(5              STDIN          )Tj
+T*
+(6              POPM           5000)Tj
+T*
+(7              STDIN          )Tj
+T*
+(8              POPM           5001)Tj
+T*
+(9              LABEL          )Tj
+T*
+(10             PUSHM          5002)Tj
+T*
+(11             PUSHM          5001)Tj
+T*
+(12             LES            )Tj
+T*
+(13             JUMPZ          23)Tj
+T*
+(14             PUSHM          5003)Tj
+T*
+(15             PUSHM          5000)Tj
+T*
+(16             MUL            )Tj
+T*
+(17             POPM           5003)Tj
+T*
+(18             PUSHM          5002)Tj
+T*
+(19             PUSHI          1)Tj
+T*
+(20             ADD            )Tj
+T*
+(21             POPM           5002)Tj
+T*
+(22             JUMP           9)Tj
+T*
+(23             PUSHM          5003)Tj
+T*
+(24             STDOUT         )Tj
+0 -2.2857 TD
+(3AC Code Generated Successfully!)Tj
+0 -3.4286 TD
+(RUNNING TEST CASE FILE "test3.txt")Tj
+0 -2.2857 TD
+(Syntax Analysis Successful.)Tj
+T*
+(Identifier     Type           Memory Address)Tj
+0 -1.1429 TD
+(--------------------------------------------)Tj
+T*
+(interestTotal  int            5000)Tj
+T*
+(Principle      int            5001)Tj
+T*
+(years          int            5002)Tj
+T*
+(periods        int            5003)Tj
+T*
+(rate           int            5004)Tj
+T*
+(totalPower     int            5005)Tj
+T*
+(count          int            5006)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Length 3913
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(2)]TJ
+/TT4 1 Tf
+7 0 0 7 29 793 Tm
+(Address        OpCode         Operand)Tj
+0 -1.1429 TD
+(-------------------------------------)Tj
+T*
+(1              STDIN          )Tj
+T*
+(2              POPM           5001)Tj
+T*
+(3              STDIN          )Tj
+T*
+(4              POPM           5002)Tj
+T*
+(5              STDIN          )Tj
+T*
+(6              POPM           5003)Tj
+T*
+(7              STDIN          )Tj
+T*
+(8              POPM           5004)Tj
+T*
+(9              PUSHI          0)Tj
+T*
+(10             POPM           5006)Tj
+T*
+(11             PUSHI          0)Tj
+T*
+(12             POPM           5000)Tj
+T*
+(13             PUSHM          5002)Tj
+T*
+(14             PUSHM          5003)Tj
+T*
+(15             MUL            )Tj
+T*
+(16             POPM           5005)Tj
+T*
+(17             PUSHM          5006)Tj
+T*
+(18             PUSHM          5005)Tj
+T*
+(19             LES            )Tj
+T*
+(20             JUMPZ          31)Tj
+T*
+(21             PUSHM          5000)Tj
+T*
+(22             PUSHM          5001)Tj
+T*
+(23             MUL            )Tj
+T*
+(24             PUSHI          1)Tj
+T*
+(25             PUSHM          5004)Tj
+T*
+(26             PUSHM          5003)Tj
+T*
+(27             DIV            )Tj
+T*
+(28             ADD            )Tj
+T*
+(29             MUL            )Tj
+T*
+(30             POPM           5000)Tj
+T*
+(31             PUSHM          5000)Tj
+T*
+(32             STDOUT         )Tj
+0 -2.2857 TD
+(3AC Code Generated Successfully!)Tj
+0 -3.4286 TD
+(RUNNING TEST CASE FILE "test4.txt")Tj
+0 -2.2857 TD
+(Syntax Analysis Successful.)Tj
+T*
+(Identifier     Type           Memory Address)Tj
+0 -1.1429 TD
+(--------------------------------------------)Tj
+T*
+(realVarA       real           5000)Tj
+T*
+(realVarB       real           5001)Tj
+T*
+(realVarC       real           5002)Tj
+T*
+(XCoord         int            5003)Tj
+T*
+(YCoord         int            5004)Tj
+T*
+(ZCoord         int            5005)Tj
+T*
+(aCoord         int            5006)Tj
+T*
+(bCoord         int            5007)Tj
+T*
+(cCoord         int            5008)Tj
+T*
+(operation      int            5009)Tj
+T*
+(success        boolean        5010)Tj
+0 -2.2857 TD
+(Address        OpCode         Operand)Tj
+0 -1.1429 TD
+(-------------------------------------)Tj
+T*
+(1              PUSHI          10123)Tj
+T*
+(2              POPM           5000)Tj
+T*
+(3              PUSHI          610)Tj
+T*
+(4              POPM           5001)Tj
+T*
+(5              PUSHI          3)Tj
+T*
+(6              POPM           5002)Tj
+T*
+(7              PUSHI          20)Tj
+T*
+(8              POPM           5003)Tj
+T*
+(9              PUSHI          912)Tj
+T*
+(10             POPM           5004)Tj
+T*
+(11             PUSHI          120)Tj
+T*
+(12             POPM           5005)Tj
+T*
+(13             PUSHI          1)Tj
+T*
+(14             POPM           5006)Tj
+T*
+(15             PUSHI          0)Tj
+T*
+(16             POPM           5007)Tj
+T*
+(17             PUSHM          0)Tj
+T*
+(18             POPM           5008)Tj
+T*
+(19             PUSHM          5008)Tj
+T*
+(20             POPM           0)Tj
+T*
+(21             PUSHI          420)Tj
+T*
+(22             POPM           5010)Tj
+T*
+(23             PUSHM          5003)Tj
+T*
+(24             POPM           5000)Tj
+T*
+(25             STDIN          )Tj
+T*
+(26             POPM           5009)Tj
+T*
+(27             LABEL          )Tj
+T*
+(28             PUSHM          5009)Tj
+T*
+(29             PUSHI          0)Tj
+T*
+(30             NEQ            )Tj
+T*
+(31             JUMPZ          111)Tj
+T*
+(32             PUSHM          5009)Tj
+T*
+(33             PUSHI          1)Tj
+T*
+(34             EQU            )Tj
+T*
+(35             JUMPZ          48)Tj
+T*
+(36             PUSHM          5000)Tj
+T*
+(37             PUSHM          5003)Tj
+T*
+(38             ADD            )Tj
+ET
+endstream
+endobj
+10 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+12 0 obj
+<<
+/Length 4211
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(3)]TJ
+/TT4 1 Tf
+7 0 0 7 29 793 Tm
+(39             POPM           5006)Tj
+0 -1.1429 TD
+(40             PUSHM          5001)Tj
+T*
+(41             PUSHM          5004)Tj
+T*
+(42             ADD            )Tj
+T*
+(43             POPM           5007)Tj
+T*
+(44             PUSHM          5002)Tj
+T*
+(45             PUSHM          5005)Tj
+T*
+(46             ADD            )Tj
+T*
+(47             POPM           5008)Tj
+T*
+(48             PUSHM          5009)Tj
+T*
+(49             EQU            )Tj
+T*
+(50             JUMPZ          63)Tj
+T*
+(51             PUSHM          5000)Tj
+T*
+(52             PUSHM          5003)Tj
+T*
+(53             SUB            )Tj
+T*
+(54             POPM           5006)Tj
+T*
+(55             PUSHM          5001)Tj
+T*
+(56             PUSHM          5004)Tj
+T*
+(57             SUB            )Tj
+T*
+(58             POPM           5007)Tj
+T*
+(59             PUSHM          5002)Tj
+T*
+(60             PUSHM          5005)Tj
+T*
+(61             SUB            )Tj
+T*
+(62             POPM           5008)Tj
+T*
+(63             PUSHM          5009)Tj
+T*
+(64             PUSHI          3)Tj
+T*
+(65             EQU            )Tj
+T*
+(66             JUMPZ          78)Tj
+T*
+(67             PUSHM          5003)Tj
+T*
+(68             PUSHI          2)Tj
+T*
+(69             MUL            )Tj
+T*
+(70             POPM           5006)Tj
+T*
+(71             PUSHM          5004)Tj
+T*
+(72             MUL            )Tj
+T*
+(73             POPM           5007)Tj
+T*
+(74             PUSHM          5005)Tj
+T*
+(75             PUSHM          5005)Tj
+T*
+(76             MUL            )Tj
+T*
+(77             POPM           5008)Tj
+T*
+(78             PUSHM          5009)Tj
+T*
+(79             PUSHI          45)Tj
+T*
+(80             EQU            )Tj
+T*
+(81             JUMPZ          94)Tj
+T*
+(82             PUSHM          5000)Tj
+T*
+(83             PUSHM          5003)Tj
+T*
+(84             DIV            )Tj
+T*
+(85             POPM           5006)Tj
+T*
+(86             PUSHM          5001)Tj
+T*
+(87             PUSHM          5004)Tj
+T*
+(88             DIV            )Tj
+T*
+(89             POPM           5007)Tj
+T*
+(90             PUSHM          5002)Tj
+T*
+(91             PUSHM          5005)Tj
+T*
+(92             DIV            )Tj
+T*
+(93             POPM           5008)Tj
+T*
+(94             PUSHM          5009)Tj
+T*
+(95             PUSHI          4)Tj
+T*
+(96             GRT            )Tj
+T*
+(97             JUMPZ          100)Tj
+T*
+(98             PUSHI          0)Tj
+T*
+(99             POPM           5009)Tj
+T*
+(100            PUSHM          5009)Tj
+T*
+(101            PUSHI          0)Tj
+T*
+(102            GRT            )Tj
+T*
+(103            JUMPZ          106)Tj
+T*
+(104            PUSHI          0)Tj
+T*
+(105            POPM           5009)Tj
+T*
+(106            PUSHM          5009)Tj
+T*
+(107            PUSHI          1)Tj
+T*
+(108            SUB            )Tj
+T*
+(109            POPM           5009)Tj
+T*
+(110            JUMP           27)Tj
+T*
+(111            PUSHM          5006)Tj
+T*
+(112            STDOUT         )Tj
+T*
+(113            PUSHM          5007)Tj
+T*
+(114            STDOUT         )Tj
+T*
+(115            PUSHM          5008)Tj
+T*
+(116            STDOUT         )Tj
+0 -2.2857 TD
+(21 ERRORS FOUND)Tj
+0 -1.1429 TD
+(---------------)Tj
+T*
+([ERR] \(Line 7\) DUPLICATE SYMBOL "XCoord")Tj
+T*
+([ERR] \(Line 13\) TYPE MISMATCH. Expected "real")Tj
+T*
+([ERR] \(Line 14\) TYPE MISMATCH. Expected "real")Tj
+T*
+([ERR] \(Line 15\) TYPE MISMATCH. Expected "real")Tj
+T*
+([ERR] \(Line 19\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 20\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 21\) UNDECLARED VARIABLE "unknown")Tj
+T*
+([ERR] \(Line 22\) UNDECLARED VARIABLE "unknown")Tj
+T*
+([ERR] \(Line 23\) TYPE MISMATCH. Expected "boolean")Tj
+T*
+([ERR] \(Line 25\) TYPE MISMATCH. Expected "real")Tj
+T*
+([ERR] \(Line 32\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 33\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 34\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 36\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 38\) TYPE MISMATCH. Expected "int")Tj
+ET
+endstream
+endobj
+13 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+15 0 obj
+<<
+/Length 484
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(4)]TJ
+/TT4 1 Tf
+7 0 0 7 29 793 Tm
+([ERR] \(Line 39\) TYPE MISMATCH. Expected "int")Tj
+0 -1.1429 TD
+([ERR] \(Line 40\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 45\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 50\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 51\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 52\) TYPE MISMATCH. Expected "int")Tj
+ET
+endstream
+endobj
+16 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+17 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+18 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 600 600 600 600 600 0 600 0 0 0 0 0 
+0 0 0 0 600 0 0 0 0 0 0 0 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 600 0 600 0 0 0 0 0 0 0 0 600 600 
+600 0 0 0 600 600 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 17 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [600 600 600 0 0 0 0 0 600 600 0 0 0 600 600 0 
+600 600 600 600 600 600 600 600 600 600 0 0 0 0 0 0 
+0 600 600 600 600 600 600 600 600 600 600 0 600 600 600 600 
+600 600 600 600 600 600 600 0 600 600 600 600 0 600 0 0 
+0 600 600 600 600 600 600 0 0 600 0 600 600 600 600 600 
+600 0 600 600 600 600 0 600 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 18 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 10 0 R
+/Contents 9 0 R
+>>
+endobj
+11 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 13 0 R
+/Contents 12 0 R
+>>
+endobj
+14 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 16 0 R
+/Contents 15 0 R
+>>
+endobj
+19 0 obj
+<<
+/S /D
+>>
+endobj
+20 0 obj
+<<
+/Nums [0 19 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 8 0 R 11 0 R 14 0 R]
+/Count 4
+/MediaBox [0 0 595 842]
+>>
+endobj
+21 0 obj
+<<
+/CreationDate (D:20181210171905-08'00')
+/ModDate (D:20181210171905-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+22 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 20 0 R
+>>
+endobj
+xref
+0 23
+0000000000 65535 f 
+0000014263 00000 n 
+0000000016 00000 n 
+0000003675 00000 n 
+0000013400 00000 n 
+0000013792 00000 n 
+0000012867 00000 n 
+0000014658 00000 n 
+0000014343 00000 n 
+0000003781 00000 n 
+0000007746 00000 n 
+0000014424 00000 n 
+0000007853 00000 n 
+0000012117 00000 n 
+0000014507 00000 n 
+0000012224 00000 n 
+0000012760 00000 n 
+0000013007 00000 n 
+0000013209 00000 n 
+0000014590 00000 n 
+0000014618 00000 n 
+0000014759 00000 n 
+0000014882 00000 n 
+trailer
+<<
+/Size 23
+/Root 22 0 R
+/Info 21 0 R
+/ID [<42eb78f015dc0377eaae65ea68d874d8><42eb78f015dc0377eaae65ea68d874d8>]
+>>
+startxref
+14951
+%%EOF

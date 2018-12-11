@@ -1,0 +1,441 @@
+%PDF-1.3
+%ту╧╙
+2 0 obj
+<<
+/Length 5489
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.h)-4500(Sat Dec 08 17:07:36 2018)-4500(1)]TJ
+/TT4 1 Tf
+7 0 0 7 46.8 793 Tm
+[(1:)-599.8(#ifndef LEXER_H)]TJ
+0 -1.1429 TD
+[(2:)-599.8(#define LEXER_H)]TJ
+T*
+(3:)Tj
+T*
+[(4:)-599.8(#include <sstream>)]TJ
+T*
+[(5:)-599.8(#include <vector>)]TJ
+T*
+[(6:)-599.8(#include <iostream>)]TJ
+T*
+[(7:)-599.8(#include <unordered_set>)]TJ
+T*
+[(8:)-599.8(#include <iomanip>)]TJ
+T*
+(9:)Tj
+-0.6 -1.1429 TD
+[(10:)-599.7(class Lexer)]TJ
+T*
+[(11:)-599.7({)]TJ
+T*
+[(12:)-599.7(public:)]TJ
+T*
+[(13:)-599.7(    enum State)]TJ
+T*
+[(14:)-599.7(    {)]TJ
+T*
+[(15:)-599.7(        NS = 0, // NULL STATE)]TJ
+T*
+[(16:)-599.7(        S01,    // ACCEPTABLE ID)]TJ
+T*
+[(17:)-599.7(        S02,    // ACCEPTABLE ID)]TJ
+T*
+[(18:)-599.7(        S03,)]TJ
+T*
+[(19:)-599.7(        S04, // ACCEPTABLE INT)]TJ
+T*
+[(20:)-599.7(        S05,)]TJ
+T*
+[(21:)-599.7(        S06, // ACCEPTABLE REAL)]TJ
+T*
+[(22:)-599.7(        S07,)]TJ
+T*
+[(23:)-599.7(        S08,)]TJ
+T*
+[(24:)-599.7(        S09,)]TJ
+T*
+[(25:)-599.7(        S10,)]TJ
+T*
+[(26:)-599.7(        S11, // ACCEPTABLE Т$$Т)]TJ
+T*
+[(27:)-599.7(        S12,)]TJ
+T*
+[(28:)-599.7(        S13,)]TJ
+T*
+[(29:)-599.7(        S14,)]TJ
+T*
+[(30:)-599.7(        TRM // TERMINATING)]TJ
+T*
+[(31:)-599.7(    };)]TJ
+T*
+(32:)Tj
+T*
+[(33:)-599.7(    enum TransitionType)]TJ
+T*
+[(34:)-599.7(    {)]TJ
+T*
+[(35:)-599.7(        IDENTIFIER = 0,)]TJ
+T*
+[(36:)-599.7(        INTEGER,)]TJ
+T*
+[(37:)-599.7(        REAL,)]TJ
+T*
+[(38:)-599.7(        CARROT,)]TJ
+T*
+[(39:)-599.7(        EQUALS,)]TJ
+T*
+[(40:)-599.7(        GREATERTHAN,)]TJ
+T*
+[(41:)-599.7(        LESSTHAN,)]TJ
+T*
+[(42:)-599.7(        PLUS,)]TJ
+T*
+[(43:)-599.7(        MINUS,)]TJ
+T*
+[(44:)-599.7(        MULTIPLY,)]TJ
+T*
+[(45:)-599.7(        DIVIDE,)]TJ
+T*
+[(46:)-599.7(        SEPARATOR,)]TJ
+T*
+[(47:)-599.7(        FUNC_SEPARATOR,)]TJ
+T*
+[(48:)-599.7(        REJECT)]TJ
+T*
+[(49:)-599.7(    };)]TJ
+T*
+(50:)Tj
+T*
+[(51:)-599.7(    // State table)]TJ
+T*
+[(52:)-599.7(    int stateTable[18][14] = { {S01, S04, TRM, S10, S12, S14, S14, S14, S14, S14, S14, S07, S08, TRM}, // INITIAL STATE)]TJ
+T*
+[(53:)-599.7(                              {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE ID)]TJ
+T*
+[(54:)-599.7(                              {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE ID)]TJ
+T*
+[(55:)-599.7(                              {S02, S03, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},)]TJ
+T*
+[(56:)-599.7(                              {TRM, S04, S05, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE INT)]TJ
+T*
+[(57:)-599.7(                              {TRM, S06, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},)]TJ
+T*
+[(58:)-599.7(                              {TRM, S06, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE REAL)]TJ
+T*
+[(59:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE SEPA)]TJ
+-1.9429 -1.1429 TD
+(RATOR)Tj
+1.9429 -1.1429 TD
+[(60:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, S09, TRM},)]TJ
+T*
+[(61:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},  // ACCEPTABLE Т$$)]TJ
+-1.9429 -1.1429 TD
+(Т)Tj
+1.9429 -1.1429 TD
+[(62:)-599.7(                              {TRM, TRM, TRM, TRM, S11, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM},)]TJ
+T*
+[(63:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "^=")]TJ
+T*
+[(64:)-599.7(                              {TRM, TRM, TRM, TRM, S13, S13, S13, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE "=")]TJ
+T*
+[(65:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE DOUB)]TJ
+-1.9429 -1.1429 TD
+(LE OP)Tj
+1.9429 -1.1429 TD
+[(66:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM}, // ACCEPTABLE SING)]TJ
+-1.9429 -1.1429 TD
+(LE OF)Tj
+1.9429 -1.1429 TD
+[(67:)-599.7(                              {TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM, TRM} }; // TERMINATING)]TJ
+T*
+(68:)Tj
+T*
+[(69:)-599.7(    std::unordered_set<std::string> keywords = { "while", "whileend", "int", "function", "if", "ifend", "return", "get",)]TJ
+-1.9429 -1.1429 TD
+( "put", "true", "false", "boolean", "real", "else" };)Tj
+1.9429 -1.1429 TD
+[(70:)-599.7(    std::unordered_set<char> separators = { Т\(Т, Т\)Т, Т{Т, Т}Т, Т,Т, Т:Т, Т;Т };)]TJ
+T*
+(71:)Tj
+T*
+[(72:)-599.7(    struct Token)]TJ
+T*
+[(73:)-599.7(    {)]TJ
+T*
+[(74:)-599.7(        Token\(\) : token\("nil"\), lexeme\("nil"\), lineNumber\(-1\) {};)]TJ
+T*
+[(75:)-599.7(        Token\(std::string token, std::string lexeme, int lineNumber\))]TJ
+T*
+[(76:)-599.7(        {)]TJ
+T*
+[(77:)-599.7(            this->token = token;)]TJ
+T*
+[(78:)-599.7(            this->lexeme = lexeme;)]TJ
+T*
+[(79:)-599.7(            this->lineNumber = lineNumber;)]TJ
+T*
+[(80:)-599.7(        })]TJ
+T*
+(81:)Tj
+T*
+[(82:)-599.7(        std::string token;)]TJ
+T*
+[(83:)-599.7(        std::string lexeme;)]TJ
+T*
+[(84:)-599.7(        int lineNumber;)]TJ
+T*
+[(85:)-599.7(    };)]TJ
+T*
+(86:)Tj
+T*
+[(87:)-599.7(    // Constructor)]TJ
+T*
+[(88:)-599.7(    Lexer\(\);)]TJ
+T*
+(89:)Tj
+T*
+[(90:)-599.7(    // Destructor)]TJ
+T*
+[(91:)-599.7(    ШLexer\(\);)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Length 739
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.h)-4500(Sat Dec 08 17:07:36 2018)-4500(2)]TJ
+/TT4 1 Tf
+7 0 0 7 42.6 793 Tm
+(92:)Tj
+0 -1.1429 TD
+[(93:)-599.7(    std::vector<Token> lex\(std::stringstream &buffer, int lineNumber\);)]TJ
+T*
+(94:)Tj
+T*
+[(95:)-599.7(private:)]TJ
+T*
+[(96:)-599.7(    bool comment;)]TJ
+T*
+(97:)Tj
+T*
+[(98:)-599.7(    int getTransition\(char tokenChar\) const;)]TJ
+T*
+(99:)Tj
+-0.6 -1.1429 TD
+[(100:)-599.6(    std::string stateToString\(int state\) const;)]TJ
+T*
+(101:)Tj
+T*
+[(102:)-599.6(    bool isValidSeparator\(char c\) const;)]TJ
+T*
+(103:)Tj
+T*
+[(104:)-599.6(    bool isKeyword\(std::string token\) const;)]TJ
+T*
+[(105:)-599.6(};)]TJ
+T*
+(106:)Tj
+T*
+[(107:)-599.6(#endif // LEXER_H)]TJ
+ET
+endstream
+endobj
+10 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+11 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 0 0 600 600 600 0 600 0 0 0 0 0 
+0 0 0 0 600 0 0 0 0 0 0 0 600 0 0 0 
+0 0 0 600 0 0 0 0 0 0 0 0 0 0 0 0 
+0 600 0 600 0 600 0 0 600 0 0 0 0 0 0 0 
+0 0 600 0 600 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 11 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 0 600 600 600 0 600 0 600 600 0 0 600 600 0 600 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 0 600 600 0 600 0 600 600 600 
+0 600 600 600 600 600 600 600 600 600 0 600 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 0 600 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 12 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 10 0 R
+/Contents 9 0 R
+>>
+endobj
+13 0 obj
+<<
+/S /D
+>>
+endobj
+14 0 obj
+<<
+/Nums [0 13 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 8 0 R]
+/Count 2
+/MediaBox [0 0 595 842]
+>>
+endobj
+15 0 obj
+<<
+/CreationDate (D:20181210171904-08'00')
+/ModDate (D:20181210171904-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+16 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 14 0 R
+>>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000008050 00000 n 
+0000000016 00000 n 
+0000005557 00000 n 
+0000007093 00000 n 
+0000007481 00000 n 
+0000006560 00000 n 
+0000008279 00000 n 
+0000008130 00000 n 
+0000005663 00000 n 
+0000006453 00000 n 
+0000006700 00000 n 
+0000006902 00000 n 
+0000008211 00000 n 
+0000008239 00000 n 
+0000008366 00000 n 
+0000008489 00000 n 
+trailer
+<<
+/Size 17
+/Root 16 0 R
+/Info 15 0 R
+/ID [<76a7ea2ce30288a6aea1149b0be8e3cb><76a7ea2ce30288a6aea1149b0be8e3cb>]
+>>
+startxref
+8558
+%%EOF

@@ -1,0 +1,739 @@
+%PDF-1.3
+%ту╧╙
+2 0 obj
+<<
+/Length 4797
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Sat Dec 08 17:07:39 2018)-4500(1)]TJ
+/TT4 1 Tf
+7 0 0 7 46.8 793 Tm
+[(1:)-599.8(#include "Lexer.h")]TJ
+0 -1.1429 TD
+(2:)Tj
+T*
+(3:)Tj
+T*
+[(4:)-599.8(Lexer::Lexer\(\) : comment\(false\) {})]TJ
+T*
+(5:)Tj
+T*
+[(6:)-599.8(Lexer::ШLexer\(\) {})]TJ
+T*
+(7:)Tj
+T*
+[(8:)-599.8(std::vector<Lexer::Token> Lexer::lex\(std::stringstream &buffer, int lineNumber\))]TJ
+T*
+[(9:)-599.8({)]TJ
+-0.6 -1.1429 TD
+[(10:)-599.7(    std::vector<Token> tokens;)]TJ
+T*
+[(11:)-599.7(    Token *token;)]TJ
+T*
+[(12:)-599.7(    char c;)]TJ
+T*
+[(13:)-599.7(    int transition;)]TJ
+T*
+[(14:)-599.7(    std::string lexeme = "";)]TJ
+T*
+[(15:)-599.7(    std::string tokenStr = "";)]TJ
+T*
+[(16:)-599.7(    int prevState = 0;)]TJ
+T*
+[(17:)-599.7(    int currState = 0;)]TJ
+T*
+(18:)Tj
+T*
+[(19:)-599.7(    while \(buffer.get\(c\)\))]TJ
+T*
+[(20:)-599.7(    {)]TJ
+T*
+[(21:)-599.7(        // Check if we are inside of a multiline comment,)]TJ
+T*
+[(22:)-599.7(        // or at the beginning of a new comment range.)]TJ
+T*
+[(23:)-599.7(        if \(comment | \(c == Т[Т && buffer.peek\(\) == Т*Т\)\))]TJ
+T*
+[(24:)-599.7(        {)]TJ
+T*
+[(25:)-599.7(            // Iterate until we see a Т*]Т)]TJ
+T*
+[(26:)-599.7(            while \(c != Т*Т | buffer.peek\(\) != Т]Т\))]TJ
+T*
+[(27:)-599.7(            {)]TJ
+T*
+[(28:)-599.7(                // If we hit the end of the line, set)]TJ
+T*
+[(29:)-599.7(                // comment switch to "true" and reset)]TJ
+T*
+[(30:)-599.7(                // the current character so it gets ignored.)]TJ
+T*
+[(31:)-599.7(                if \(buffer.eof\(\)\))]TJ
+T*
+[(32:)-599.7(                {)]TJ
+T*
+[(33:)-599.7(                    comment = true;)]TJ
+T*
+[(34:)-599.7(                    c = Т Т;)]TJ
+T*
+[(35:)-599.7(                    break;)]TJ
+T*
+[(36:)-599.7(                })]TJ
+T*
+(37:)Tj
+T*
+[(38:)-599.7(                buffer.get\(c\);)]TJ
+T*
+[(39:)-599.7(            })]TJ
+T*
+(40:)Tj
+T*
+[(41:)-599.7(            // If we havenТt reached the end of the file,)]TJ
+T*
+[(42:)-599.7(            // and the current character is a Т*Т, we know)]TJ
+T*
+[(43:)-599.7(            // we have reached the end of the comment section.)]TJ
+T*
+[(44:)-599.7(            if \(!buffer.eof\(\) && c == Т*Т\))]TJ
+T*
+[(45:)-599.7(            {)]TJ
+T*
+[(46:)-599.7(                comment = false;)]TJ
+T*
+(47:)Tj
+T*
+[(48:)-599.7(                // Get both characters Т*]Т out of the stream)]TJ
+T*
+[(49:)-599.7(                buffer.get\(c\).get\(c\);)]TJ
+T*
+[(50:)-599.7(            })]TJ
+T*
+[(51:)-599.7(        })]TJ
+T*
+(52:)Tj
+T*
+[(53:)-599.7(        // Get the character type \(transition\))]TJ
+T*
+[(54:)-599.7(        transition = getTransition\(c\);)]TJ
+T*
+(55:)Tj
+T*
+[(56:)-599.7(        // Update state)]TJ
+T*
+[(57:)-599.7(        currState = Lexer::stateTable[currState][transition];)]TJ
+T*
+(58:)Tj
+T*
+[(59:)-599.7(        // Terminating state)]TJ
+T*
+[(60:)-599.7(        if \(currState == TRM\))]TJ
+T*
+[(61:)-599.7(        {)]TJ
+T*
+[(62:)-599.7(            tokenStr = stateToString\(prevState\);)]TJ
+T*
+(63:)Tj
+T*
+[(64:)-599.7(            if \(tokenStr != "Illegal"\))]TJ
+T*
+[(65:)-599.7(            {)]TJ
+T*
+(66:)Tj
+T*
+[(67:)-599.7(                if \(tokenStr == "Identifier"\))]TJ
+T*
+[(68:)-599.7(                {)]TJ
+T*
+[(69:)-599.7(                    // Check if this identifier is a keyword)]TJ
+T*
+[(70:)-599.7(                    if \(isKeyword\(lexeme\)\))]TJ
+T*
+[(71:)-599.7(                    {)]TJ
+T*
+[(72:)-599.7(                        tokenStr = "Keyword";)]TJ
+T*
+[(73:)-599.7(                    })]TJ
+T*
+[(74:)-599.7(                })]TJ
+T*
+(75:)Tj
+T*
+[(76:)-599.7(                // Create token and add to list of tokens)]TJ
+T*
+[(77:)-599.7(                token = new Token\(tokenStr, lexeme, lineNumber\);)]TJ
+T*
+[(78:)-599.7(                tokens.push_back\(*token\);)]TJ
+T*
+(79:)Tj
+T*
+[(80:)-599.7(                // reset state machine)]TJ
+T*
+[(81:)-599.7(                currState = NS;)]TJ
+T*
+[(82:)-599.7(                lexeme.clear\(\);)]TJ
+T*
+[(83:)-599.7(                tokenStr.clear\(\);)]TJ
+T*
+(84:)Tj
+T*
+[(85:)-599.7(                // If we reached the terminating state by anything other)]TJ
+T*
+[(86:)-599.7(                // than whitespace, we need to put it back and re-examine)]TJ
+T*
+[(87:)-599.7(                // the character on the next iteration.)]TJ
+T*
+[(88:)-599.7(                if \(!isspace\(c\)\))]TJ
+T*
+[(89:)-599.7(                {)]TJ
+T*
+[(90:)-599.7(                    buffer.putback\(c\);)]TJ
+T*
+[(91:)-599.7(                })]TJ
+T*
+[(92:)-599.7(            })]TJ
+T*
+[(93:)-599.7(            else)]TJ
+T*
+[(94:)-599.7(            {)]TJ
+T*
+[(95:)-599.7(                // Push back rejected token)]TJ
+T*
+[(96:)-599.7(                if \(!lexeme.empty\(\)\))]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Length 4015
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Sat Dec 08 17:07:39 2018)-4500(2)]TJ
+/TT4 1 Tf
+7 0 0 7 42.6 793 Tm
+[(97:)-599.7(                {)]TJ
+0 -1.1429 TD
+[(98:)-599.7(                    token = new Token\(tokenStr, lexeme, lineNumber\);)]TJ
+T*
+[(99:)-599.7(                    tokens.push_back\(*token\);)]TJ
+-0.6 -1.1429 TD
+[(100:)-599.6(                })]TJ
+T*
+(101:)Tj
+T*
+[(102:)-599.6(                // reset state machine)]TJ
+T*
+[(103:)-599.6(                currState = NS;)]TJ
+T*
+[(104:)-599.6(                lexeme.clear\(\);)]TJ
+T*
+[(105:)-599.6(                tokenStr.clear\(\);)]TJ
+T*
+[(106:)-599.6(            })]TJ
+T*
+[(107:)-599.6(        })]TJ
+T*
+[(108:)-599.6(        else)]TJ
+T*
+[(109:)-599.6(        {)]TJ
+T*
+[(110:)-599.6(            if \(!isspace\(c\)\))]TJ
+T*
+[(111:)-599.6(            {)]TJ
+T*
+[(112:)-599.6(                lexeme.push_back\(c\);)]TJ
+T*
+[(113:)-599.6(            })]TJ
+T*
+[(114:)-599.6(        })]TJ
+T*
+(115:)Tj
+T*
+[(116:)-599.6(        prevState = currState;)]TJ
+T*
+[(117:)-599.6(    })]TJ
+T*
+(118:)Tj
+T*
+[(119:)-599.6(    // Grab the last token)]TJ
+T*
+[(120:)-599.6(    tokenStr = stateToString\(prevState\);)]TJ
+T*
+(121:)Tj
+T*
+[(122:)-599.6(    // Evaluate the last token)]TJ
+T*
+[(123:)-599.6(    if \(tokenStr != "Illegal"\))]TJ
+T*
+[(124:)-599.6(    {)]TJ
+T*
+[(125:)-599.6(        if \(tokenStr == "Identifier"\))]TJ
+T*
+[(126:)-599.6(        {)]TJ
+T*
+[(127:)-599.6(            // Check if this identifier is a keyword)]TJ
+T*
+[(128:)-599.6(            if \(isKeyword\(lexeme\)\))]TJ
+T*
+[(129:)-599.6(            {)]TJ
+T*
+[(130:)-599.6(                tokenStr = "Keyword";)]TJ
+T*
+[(131:)-599.6(            })]TJ
+T*
+[(132:)-599.6(        })]TJ
+T*
+(133:)Tj
+T*
+[(134:)-599.6(        // Create token and add to list of tokens)]TJ
+T*
+[(135:)-599.6(        token = new Token\(tokenStr, lexeme, lineNumber\);)]TJ
+T*
+[(136:)-599.6(        tokens.push_back\(*token\);)]TJ
+T*
+[(137:)-599.6(    })]TJ
+T*
+(138:)Tj
+T*
+[(139:)-599.6(    return tokens;)]TJ
+T*
+[(140:)-599.6(})]TJ
+T*
+(141:)Tj
+T*
+[(142:)-599.6(int Lexer::getTransition\(char c\) const)]TJ
+T*
+[(143:)-599.6({)]TJ
+T*
+[(144:)-599.6(    int transition = REJECT;)]TJ
+T*
+(145:)Tj
+T*
+[(146:)-599.6(    if \(isdigit\(c\)\))]TJ
+T*
+[(147:)-599.6(    {)]TJ
+T*
+[(148:)-599.6(        transition = INTEGER;)]TJ
+T*
+[(149:)-599.6(    })]TJ
+T*
+[(150:)-599.6(    else if \(isalpha\(c\)\))]TJ
+T*
+[(151:)-599.6(    {)]TJ
+T*
+[(152:)-599.6(        transition = IDENTIFIER;)]TJ
+T*
+[(153:)-599.6(    })]TJ
+T*
+[(154:)-599.6(    else if \(c == Т.Т\))]TJ
+T*
+[(155:)-599.6(    {)]TJ
+T*
+[(156:)-599.6(        transition = REAL;)]TJ
+T*
+[(157:)-599.6(    })]TJ
+T*
+[(158:)-599.6(    else if \(c == Т^Т\))]TJ
+T*
+[(159:)-599.6(    {)]TJ
+T*
+[(160:)-599.6(        transition = CARROT;)]TJ
+T*
+[(161:)-599.6(    })]TJ
+T*
+[(162:)-599.6(    else if \(c == Т=Т\))]TJ
+T*
+[(163:)-599.6(    {)]TJ
+T*
+[(164:)-599.6(        transition = EQUALS;)]TJ
+T*
+[(165:)-599.6(    })]TJ
+T*
+[(166:)-599.6(    else if \(c == Т>Т\))]TJ
+T*
+[(167:)-599.6(    {)]TJ
+T*
+[(168:)-599.6(        transition = GREATERTHAN;)]TJ
+T*
+[(169:)-599.6(    })]TJ
+T*
+[(170:)-599.6(    else if \(c == Т<Т\))]TJ
+T*
+[(171:)-599.6(    {)]TJ
+T*
+[(172:)-599.6(        transition = LESSTHAN;)]TJ
+T*
+[(173:)-599.6(    })]TJ
+T*
+[(174:)-599.6(    else if \(c == Т+Т\))]TJ
+T*
+[(175:)-599.6(    {)]TJ
+T*
+[(176:)-599.6(        transition = PLUS;)]TJ
+T*
+[(177:)-599.6(    })]TJ
+T*
+[(178:)-599.6(    else if \(c == Т-Т\))]TJ
+T*
+[(179:)-599.6(    {)]TJ
+T*
+[(180:)-599.6(        transition = MINUS;)]TJ
+T*
+[(181:)-599.6(    })]TJ
+T*
+[(182:)-599.6(    else if \(c == Т*Т\))]TJ
+T*
+[(183:)-599.6(    {)]TJ
+T*
+[(184:)-599.6(        transition = MULTIPLY;)]TJ
+T*
+[(185:)-599.6(    })]TJ
+T*
+[(186:)-599.6(    else if \(c == Т/Т\))]TJ
+T*
+[(187:)-599.6(    {)]TJ
+T*
+[(188:)-599.6(        transition = DIVIDE;)]TJ
+T*
+[(189:)-599.6(    })]TJ
+T*
+[(190:)-599.6(    else if \(isValidSeparator\(c\)\))]TJ
+T*
+[(191:)-599.6(    {)]TJ
+T*
+[(192:)-599.6(        transition = SEPARATOR;)]TJ
+ET
+endstream
+endobj
+10 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+12 0 obj
+<<
+/Length 1923
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(Lexer.cpp)-4500(Sat Dec 08 17:07:39 2018)-4500(3)]TJ
+/TT4 1 Tf
+7 0 0 7 38.4 793 Tm
+[(193:)-599.6(    })]TJ
+0 -1.1429 TD
+[(194:)-599.6(    else if \(c == Т$Т\))]TJ
+T*
+[(195:)-599.6(    {)]TJ
+T*
+[(196:)-599.6(        transition = FUNC_SEPARATOR;)]TJ
+T*
+[(197:)-599.6(    })]TJ
+T*
+(198:)Tj
+T*
+[(199:)-599.6(    return transition;)]TJ
+T*
+[(200:)-599.6(})]TJ
+T*
+(201:)Tj
+T*
+[(202:)-599.6(std::string Lexer::stateToString\(int state\) const)]TJ
+T*
+[(203:)-599.6({)]TJ
+T*
+[(204:)-599.6(    std::string stateStr = "Illegal";)]TJ
+T*
+(205:)Tj
+T*
+[(206:)-599.6(    switch \(state\))]TJ
+T*
+[(207:)-599.6(    {)]TJ
+T*
+[(208:)-599.6(    case S01:)]TJ
+T*
+[(209:)-599.6(    case S02:)]TJ
+T*
+[(210:)-599.6(        stateStr = "Identifier";)]TJ
+T*
+[(211:)-599.6(        break;)]TJ
+T*
+[(212:)-599.6(    case S04:)]TJ
+T*
+[(213:)-599.6(        stateStr = "Integer";)]TJ
+T*
+[(214:)-599.6(        break;)]TJ
+T*
+[(215:)-599.6(    case S06:)]TJ
+T*
+[(216:)-599.6(        stateStr = "Real";)]TJ
+T*
+[(217:)-599.6(        break;)]TJ
+T*
+[(218:)-599.6(    case S07:)]TJ
+T*
+[(219:)-599.6(    case S09:)]TJ
+T*
+[(220:)-599.6(        stateStr = "Separator";)]TJ
+T*
+[(221:)-599.6(        break;)]TJ
+T*
+[(222:)-599.6(    case S11:)]TJ
+T*
+[(223:)-599.6(    case S12:)]TJ
+T*
+[(224:)-599.6(    case S13:)]TJ
+T*
+[(225:)-599.6(    case S14:)]TJ
+T*
+[(226:)-599.6(        stateStr = "Operator";)]TJ
+T*
+[(227:)-599.6(        break;)]TJ
+T*
+[(228:)-599.6(    })]TJ
+T*
+(229:)Tj
+T*
+[(230:)-599.6(    return stateStr;)]TJ
+T*
+[(231:)-599.6(})]TJ
+T*
+(232:)Tj
+T*
+[(233:)-599.6(bool Lexer::isValidSeparator\(char c\) const)]TJ
+T*
+[(234:)-599.6({)]TJ
+T*
+[(235:)-599.6(    return separators.count\(c\);)]TJ
+T*
+[(236:)-599.6(})]TJ
+T*
+(237:)Tj
+T*
+[(238:)-599.6(bool Lexer::isKeyword\(std::string token\) const)]TJ
+T*
+[(239:)-599.6({)]TJ
+T*
+[(240:)-599.6(    return keywords.count\(token\);)]TJ
+T*
+[(241:)-599.6(})]TJ
+ET
+endstream
+endobj
+13 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+14 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+15 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 600 0 0 0 600 600 600 600 0 0 0 0 0 
+0 0 0 0 600 0 0 0 0 0 0 0 600 0 0 0 
+0 0 0 600 0 0 0 0 0 0 0 0 0 0 0 0 
+0 600 0 600 0 600 0 0 0 0 0 0 0 0 0 0 
+600 0 600 0 600 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 14 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 600 600 600 600 0 600 0 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 0 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 0 0 600 0 600 0 600 600 600 
+0 600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 0 600 600 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 15 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 10 0 R
+/Contents 9 0 R
+>>
+endobj
+11 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 13 0 R
+/Contents 12 0 R
+>>
+endobj
+16 0 obj
+<<
+/S /D
+>>
+endobj
+17 0 obj
+<<
+/Nums [0 16 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 8 0 R 11 0 R]
+/Count 3
+/MediaBox [0 0 595 842]
+>>
+endobj
+18 0 obj
+<<
+/CreationDate (D:20181210171904-08'00')
+/ModDate (D:20181210171904-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+19 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 17 0 R
+>>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000012726 00000 n 
+0000000016 00000 n 
+0000004865 00000 n 
+0000011761 00000 n 
+0000012149 00000 n 
+0000011228 00000 n 
+0000013038 00000 n 
+0000012806 00000 n 
+0000004971 00000 n 
+0000009038 00000 n 
+0000012887 00000 n 
+0000009145 00000 n 
+0000011121 00000 n 
+0000011368 00000 n 
+0000011570 00000 n 
+0000012970 00000 n 
+0000012998 00000 n 
+0000013132 00000 n 
+0000013255 00000 n 
+trailer
+<<
+/Size 20
+/Root 19 0 R
+/Info 18 0 R
+/ID [<017fa5b7981eff743b0fc10a536c7582><017fa5b7981eff743b0fc10a536c7582>]
+>>
+startxref
+13324
+%%EOF
