@@ -6,6 +6,7 @@ SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofs
 	this->save = new Lexer::Token();
 	this->errCount = 0;
 	this->isDeclaration = false;
+	this->assign = false;
 }
 
 SyntaxAnalyzer::~SyntaxAnalyzer()
@@ -376,6 +377,7 @@ void SyntaxAnalyzer::Assign()
 	if (type == "")
 	{
 		error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
+		this->assign = true;
 	}
 	else
 	{
@@ -486,17 +488,29 @@ void SyntaxAnalyzer::Primary()
 
 	if (currentToken.token == "Identifier")
 	{
+		if (symbolTable.get_type(currentToken) == "")
+		{
+			if (!this->assign)
+			{
+				error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
+			}
+			this->assign = false;
+		}
+
 		// If typestack is empty, we should be within a Condition.
 		// Push the current Identifier's type onto the stack to compare with
 		// the next one we see.
 		if (symbolTable.typestack_empty())
 		{
-			symbolTable.push_typestack(*savedType);
+			if (symbolTable.get_type(currentToken) != "")
+			{
+				symbolTable.push_typestack(*savedType);
+			}
 		}
 		// If the Identifier doesn't have a type, it isn't in the symbol table.
 		else if (symbolTable.get_type(currentToken) == "")
 		{
-			error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
+			// error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
 		}
 		// Error TYPE MISMATCH
 		else if ((symbolTable.get_type(currentToken) != symbolTable.top_typestack()) && symbolTable.top_typestack() != "")
@@ -564,7 +578,7 @@ void SyntaxAnalyzer::Primary()
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
 
-		if (print) 
+		if (print)
 		{
 			output << "\ttrue" << std::endl;
 		}
@@ -872,7 +886,8 @@ void SyntaxAnalyzer::TermPrime()
 void SyntaxAnalyzer::Analyze()
 {
 	Rat18F();
-	output << "Syntax Analysis Successful." << std::endl << std::endl;
+	output << "Syntax Analysis Successful." << std::endl
+		   << std::endl;
 }
 
 void SyntaxAnalyzer::OptParameterList()
@@ -952,8 +967,8 @@ void SyntaxAnalyzer::While()
 void SyntaxAnalyzer::printCurrentToken()
 {
 	output << std::left << std::endl
-		<< std::setw(8) << "Token:" << std::setw(16) << currentToken.token << std::setw(8) << "Lexeme:" << currentToken.lexeme << std::endl
-		<< std::endl;
+		   << std::setw(8) << "Token:" << std::setw(16) << currentToken.token << std::setw(8) << "Lexeme:" << currentToken.lexeme << std::endl
+		   << std::endl;
 }
 
 SyntaxError::SyntaxError(std::string message, int lineNumber)
@@ -985,7 +1000,8 @@ std::string SyntaxAnalyzer::PrintAll()
 	}
 	else
 	{
-		out << std::endl << "3AC Code Generated Successfully!" << std::endl;
+		out << std::endl
+			<< "3AC Code Generated Successfully!" << std::endl;
 	}
 	out << std::endl;
 

@@ -92,6 +92,7 @@ private:
   std::ostringstream err;
   int errCount;
   bool isDeclaration;
+  bool assign;
 };
 
 #endif // SYNTAXANALYZER_H

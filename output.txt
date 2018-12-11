@@ -178,98 +178,110 @@ Address        OpCode         Operand
 24             POPM           5000
 25             STDIN          
 26             POPM           5009
-27             LABEL          
-28             PUSHM          5009
-29             PUSHI          0
-30             NEQ            
-31             JUMPZ          111
-32             PUSHM          5009
-33             PUSHI          1
-34             EQU            
-35             JUMPZ          48
-36             PUSHM          5000
-37             PUSHM          5003
-38             ADD            
-39             POPM           5006
-40             PUSHM          5001
-41             PUSHM          5004
-42             ADD            
-43             POPM           5007
-44             PUSHM          5002
-45             PUSHM          5005
-46             ADD            
-47             POPM           5008
-48             PUSHM          5009
-49             EQU            
-50             JUMPZ          63
-51             PUSHM          5000
-52             PUSHM          5003
-53             SUB            
-54             POPM           5006
-55             PUSHM          5001
-56             PUSHM          5004
-57             SUB            
-58             POPM           5007
-59             PUSHM          5002
-60             PUSHM          5005
-61             SUB            
-62             POPM           5008
-63             PUSHM          5009
-64             PUSHI          3
-65             EQU            
-66             JUMPZ          78
-67             PUSHM          5003
-68             PUSHI          2
-69             MUL            
-70             POPM           5006
-71             PUSHM          5004
-72             MUL            
-73             POPM           5007
-74             PUSHM          5005
-75             PUSHM          5005
-76             MUL            
-77             POPM           5008
-78             PUSHM          5009
-79             PUSHI          45
-80             EQU            
-81             JUMPZ          94
-82             PUSHM          5000
-83             PUSHM          5003
-84             DIV            
-85             POPM           5006
-86             PUSHM          5001
-87             PUSHM          5004
-88             DIV            
-89             POPM           5007
-90             PUSHM          5002
-91             PUSHM          5005
-92             DIV            
-93             POPM           5008
-94             PUSHM          5009
-95             PUSHI          4
-96             GRT            
-97             JUMPZ          100
-98             PUSHI          0
-99             POPM           5009
-100            PUSHM          5009
-101            PUSHI          0
-102            GRT            
-103            JUMPZ          106
-104            PUSHI          0
-105            POPM           5009
+27             PUSHM          0
+28             PUSHI          5
+29             EQU            
+30             JUMPZ          33
+31             PUSHI          0
+32             POPM           5010
+33             PUSHI          5
+34             PUSHM          0
+35             EQU            
+36             JUMPZ          39
+37             PUSHI          1
+38             POPM           5010
+39             LABEL          
+40             PUSHM          5009
+41             PUSHI          0
+42             NEQ            
+43             JUMPZ          123
+44             PUSHM          5009
+45             PUSHI          1
+46             EQU            
+47             JUMPZ          60
+48             PUSHM          5000
+49             PUSHM          5003
+50             ADD            
+51             POPM           5006
+52             PUSHM          5001
+53             PUSHM          5004
+54             ADD            
+55             POPM           5007
+56             PUSHM          5002
+57             PUSHM          5005
+58             ADD            
+59             POPM           5008
+60             PUSHM          5009
+61             EQU            
+62             JUMPZ          75
+63             PUSHM          5000
+64             PUSHM          5003
+65             SUB            
+66             POPM           5006
+67             PUSHM          5001
+68             PUSHM          5004
+69             SUB            
+70             POPM           5007
+71             PUSHM          5002
+72             PUSHM          5005
+73             SUB            
+74             POPM           5008
+75             PUSHM          5009
+76             PUSHI          3
+77             EQU            
+78             JUMPZ          90
+79             PUSHM          5003
+80             PUSHI          2
+81             MUL            
+82             POPM           5006
+83             PUSHM          5004
+84             MUL            
+85             POPM           5007
+86             PUSHM          5005
+87             PUSHM          5005
+88             MUL            
+89             POPM           5008
+90             PUSHM          5009
+91             PUSHI          45
+92             EQU            
+93             JUMPZ          106
+94             PUSHM          5000
+95             PUSHM          5003
+96             DIV            
+97             POPM           5006
+98             PUSHM          5001
+99             PUSHM          5004
+100            DIV            
+101            POPM           5007
+102            PUSHM          5002
+103            PUSHM          5005
+104            DIV            
+105            POPM           5008
 106            PUSHM          5009
-107            PUSHI          1
-108            SUB            
-109            POPM           5009
-110            JUMP           27
-111            PUSHM          5006
-112            STDOUT         
-113            PUSHM          5007
-114            STDOUT         
-115            PUSHM          5008
-116            STDOUT         
+107            PUSHI          4
+108            GRT            
+109            JUMPZ          112
+110            PUSHI          0
+111            POPM           5009
+112            PUSHM          5009
+113            PUSHI          0
+114            GRT            
+115            JUMPZ          118
+116            PUSHI          0
+117            POPM           5009
+118            PUSHM          5009
+119            PUSHI          1
+120            SUB            
+121            POPM           5009
+122            JUMP           39
+123            PUSHM          5006
+124            STDOUT         
+125            PUSHM          5007
+126            STDOUT         
+127            PUSHM          5008
+128            STDOUT         
 
-21 ERRORS FOUND
+23 ERRORS FOUND
 ---------------
 [ERR] (Line 7) DUPLICATE SYMBOL "XCoord"
 [ERR] (Line 13) TYPE MISMATCH. Expected "real"
@@ -281,15 +293,17 @@ Address        OpCode         Operand
 [ERR] (Line 22) UNDECLARED VARIABLE "unknown"
 [ERR] (Line 23) TYPE MISMATCH. Expected "boolean"
 [ERR] (Line 25) TYPE MISMATCH. Expected "real"
-[ERR] (Line 32) TYPE MISMATCH. Expected "int"
-[ERR] (Line 33) TYPE MISMATCH. Expected "int"
-[ERR] (Line 34) TYPE MISMATCH. Expected "int"
-[ERR] (Line 36) TYPE MISMATCH. Expected "int"
-[ERR] (Line 38) TYPE MISMATCH. Expected "int"
-[ERR] (Line 39) TYPE MISMATCH. Expected "int"
-[ERR] (Line 40) TYPE MISMATCH. Expected "int"
+[ERR] (Line 31) UNDECLARED VARIABLE "unknown"
+[ERR] (Line 37) UNDECLARED VARIABLE "unknown"
 [ERR] (Line 45) TYPE MISMATCH. Expected "int"
-[ERR] (Line 50) TYPE MISMATCH. Expected "int"
+[ERR] (Line 46) TYPE MISMATCH. Expected "int"
+[ERR] (Line 47) TYPE MISMATCH. Expected "int"
+[ERR] (Line 49) TYPE MISMATCH. Expected "int"
 [ERR] (Line 51) TYPE MISMATCH. Expected "int"
 [ERR] (Line 52) TYPE MISMATCH. Expected "int"
+[ERR] (Line 53) TYPE MISMATCH. Expected "int"
+[ERR] (Line 58) TYPE MISMATCH. Expected "int"
+[ERR] (Line 63) TYPE MISMATCH. Expected "int"
+[ERR] (Line 64) TYPE MISMATCH. Expected "int"
+[ERR] (Line 65) TYPE MISMATCH. Expected "int"
 
