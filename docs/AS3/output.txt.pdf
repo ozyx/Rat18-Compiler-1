@@ -12,7 +12,7 @@ BT
 /GS1 gs
 0 Tc
 0 Tw
-[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(1)]TJ
+[(output.txt)-4500(Mon Dec 10 19:30:51 2018)-4500(1)]TJ
 /TT4 1 Tf
 7 0 0 7 29 785 Tm
 (RUNNING TEST CASE FILE "test1.txt")Tj
@@ -191,7 +191,7 @@ endobj
 endobj
 9 0 obj
 <<
-/Length 3913
+/Length 3908
 >>
 stream
 BT
@@ -201,7 +201,7 @@ BT
 /GS1 gs
 0 Tc
 0 Tw
-[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(2)]TJ
+[(output.txt)-4500(Mon Dec 10 19:30:51 2018)-4500(2)]TJ
 /TT4 1 Tf
 7 0 0 7 29 793 Tm
 (Address        OpCode         Operand)Tj
@@ -360,29 +360,29 @@ T*
 T*
 (26             POPM           5009)Tj
 T*
-(27             LABEL          )Tj
+(27             PUSHM          0)Tj
 T*
-(28             PUSHM          5009)Tj
+(28             PUSHI          5)Tj
 T*
-(29             PUSHI          0)Tj
+(29             EQU            )Tj
 T*
-(30             NEQ            )Tj
+(30             JUMPZ          33)Tj
 T*
-(31             JUMPZ          111)Tj
+(31             PUSHI          0)Tj
 T*
-(32             PUSHM          5009)Tj
+(32             POPM           5010)Tj
 T*
-(33             PUSHI          1)Tj
+(33             PUSHI          5)Tj
 T*
-(34             EQU            )Tj
+(34             PUSHM          0)Tj
 T*
-(35             JUMPZ          48)Tj
+(35             EQU            )Tj
 T*
-(36             PUSHM          5000)Tj
+(36             JUMPZ          39)Tj
 T*
-(37             PUSHM          5003)Tj
+(37             PUSHI          1)Tj
 T*
-(38             ADD            )Tj
+(38             POPM           5010)Tj
 ET
 endstream
 endobj
@@ -400,7 +400,7 @@ endobj
 endobj
 12 0 obj
 <<
-/Length 4211
+/Length 4025
 >>
 stream
 BT
@@ -410,166 +410,190 @@ BT
 /GS1 gs
 0 Tc
 0 Tw
-[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(3)]TJ
+[(output.txt)-4500(Mon Dec 10 19:30:51 2018)-4500(3)]TJ
 /TT4 1 Tf
 7 0 0 7 29 793 Tm
-(39             POPM           5006)Tj
+(39             LABEL          )Tj
 0 -1.1429 TD
-(40             PUSHM          5001)Tj
+(40             PUSHM          5009)Tj
 T*
-(41             PUSHM          5004)Tj
+(41             PUSHI          0)Tj
 T*
-(42             ADD            )Tj
+(42             NEQ            )Tj
 T*
-(43             POPM           5007)Tj
+(43             JUMPZ          123)Tj
 T*
-(44             PUSHM          5002)Tj
+(44             PUSHM          5009)Tj
 T*
-(45             PUSHM          5005)Tj
+(45             PUSHI          1)Tj
 T*
-(46             ADD            )Tj
+(46             EQU            )Tj
 T*
-(47             POPM           5008)Tj
+(47             JUMPZ          60)Tj
 T*
-(48             PUSHM          5009)Tj
+(48             PUSHM          5000)Tj
 T*
-(49             EQU            )Tj
+(49             PUSHM          5003)Tj
 T*
-(50             JUMPZ          63)Tj
+(50             ADD            )Tj
 T*
-(51             PUSHM          5000)Tj
+(51             POPM           5006)Tj
 T*
-(52             PUSHM          5003)Tj
+(52             PUSHM          5001)Tj
 T*
-(53             SUB            )Tj
+(53             PUSHM          5004)Tj
 T*
-(54             POPM           5006)Tj
+(54             ADD            )Tj
 T*
-(55             PUSHM          5001)Tj
+(55             POPM           5007)Tj
 T*
-(56             PUSHM          5004)Tj
+(56             PUSHM          5002)Tj
 T*
-(57             SUB            )Tj
+(57             PUSHM          5005)Tj
 T*
-(58             POPM           5007)Tj
+(58             ADD            )Tj
 T*
-(59             PUSHM          5002)Tj
+(59             POPM           5008)Tj
 T*
-(60             PUSHM          5005)Tj
+(60             PUSHM          5009)Tj
 T*
-(61             SUB            )Tj
+(61             EQU            )Tj
 T*
-(62             POPM           5008)Tj
+(62             JUMPZ          75)Tj
 T*
-(63             PUSHM          5009)Tj
+(63             PUSHM          5000)Tj
 T*
-(64             PUSHI          3)Tj
+(64             PUSHM          5003)Tj
 T*
-(65             EQU            )Tj
+(65             SUB            )Tj
 T*
-(66             JUMPZ          78)Tj
+(66             POPM           5006)Tj
 T*
-(67             PUSHM          5003)Tj
+(67             PUSHM          5001)Tj
 T*
-(68             PUSHI          2)Tj
+(68             PUSHM          5004)Tj
 T*
-(69             MUL            )Tj
+(69             SUB            )Tj
 T*
-(70             POPM           5006)Tj
+(70             POPM           5007)Tj
 T*
-(71             PUSHM          5004)Tj
+(71             PUSHM          5002)Tj
 T*
-(72             MUL            )Tj
+(72             PUSHM          5005)Tj
 T*
-(73             POPM           5007)Tj
+(73             SUB            )Tj
 T*
-(74             PUSHM          5005)Tj
+(74             POPM           5008)Tj
 T*
-(75             PUSHM          5005)Tj
+(75             PUSHM          5009)Tj
 T*
-(76             MUL            )Tj
+(76             PUSHI          3)Tj
 T*
-(77             POPM           5008)Tj
+(77             EQU            )Tj
 T*
-(78             PUSHM          5009)Tj
+(78             JUMPZ          90)Tj
 T*
-(79             PUSHI          45)Tj
+(79             PUSHM          5003)Tj
 T*
-(80             EQU            )Tj
+(80             PUSHI          2)Tj
 T*
-(81             JUMPZ          94)Tj
+(81             MUL            )Tj
 T*
-(82             PUSHM          5000)Tj
+(82             POPM           5006)Tj
 T*
-(83             PUSHM          5003)Tj
+(83             PUSHM          5004)Tj
 T*
-(84             DIV            )Tj
+(84             MUL            )Tj
 T*
-(85             POPM           5006)Tj
+(85             POPM           5007)Tj
 T*
-(86             PUSHM          5001)Tj
+(86             PUSHM          5005)Tj
 T*
-(87             PUSHM          5004)Tj
+(87             PUSHM          5005)Tj
 T*
-(88             DIV            )Tj
+(88             MUL            )Tj
 T*
-(89             POPM           5007)Tj
+(89             POPM           5008)Tj
 T*
-(90             PUSHM          5002)Tj
+(90             PUSHM          5009)Tj
 T*
-(91             PUSHM          5005)Tj
+(91             PUSHI          45)Tj
 T*
-(92             DIV            )Tj
+(92             EQU            )Tj
 T*
-(93             POPM           5008)Tj
+(93             JUMPZ          106)Tj
 T*
-(94             PUSHM          5009)Tj
+(94             PUSHM          5000)Tj
 T*
-(95             PUSHI          4)Tj
+(95             PUSHM          5003)Tj
 T*
-(96             GRT            )Tj
+(96             DIV            )Tj
 T*
-(97             JUMPZ          100)Tj
+(97             POPM           5006)Tj
 T*
-(98             PUSHI          0)Tj
+(98             PUSHM          5001)Tj
 T*
-(99             POPM           5009)Tj
+(99             PUSHM          5004)Tj
 T*
-(100            PUSHM          5009)Tj
+(100            DIV            )Tj
 T*
-(101            PUSHI          0)Tj
+(101            POPM           5007)Tj
 T*
-(102            GRT            )Tj
+(102            PUSHM          5002)Tj
 T*
-(103            JUMPZ          106)Tj
+(103            PUSHM          5005)Tj
 T*
-(104            PUSHI          0)Tj
+(104            DIV            )Tj
 T*
-(105            POPM           5009)Tj
+(105            POPM           5008)Tj
 T*
 (106            PUSHM          5009)Tj
 T*
-(107            PUSHI          1)Tj
+(107            PUSHI          4)Tj
 T*
-(108            SUB            )Tj
+(108            GRT            )Tj
 T*
-(109            POPM           5009)Tj
+(109            JUMPZ          112)Tj
 T*
-(110            JUMP           27)Tj
+(110            PUSHI          0)Tj
 T*
-(111            PUSHM          5006)Tj
+(111            POPM           5009)Tj
 T*
-(112            STDOUT         )Tj
+(112            PUSHM          5009)Tj
 T*
-(113            PUSHM          5007)Tj
+(113            PUSHI          0)Tj
 T*
-(114            STDOUT         )Tj
+(114            GRT            )Tj
 T*
-(115            PUSHM          5008)Tj
+(115            JUMPZ          118)Tj
 T*
-(116            STDOUT         )Tj
+(116            PUSHI          0)Tj
+T*
+(117            POPM           5009)Tj
+T*
+(118            PUSHM          5009)Tj
+T*
+(119            PUSHI          1)Tj
+T*
+(120            SUB            )Tj
+T*
+(121            POPM           5009)Tj
+T*
+(122            JUMP           39)Tj
+T*
+(123            PUSHM          5006)Tj
+T*
+(124            STDOUT         )Tj
+T*
+(125            PUSHM          5007)Tj
+T*
+(126            STDOUT         )Tj
+T*
+(127            PUSHM          5008)Tj
+T*
+(128            STDOUT         )Tj
 0 -2.2857 TD
-(21 ERRORS FOUND)Tj
+(23 ERRORS FOUND)Tj
 0 -1.1429 TD
 (---------------)Tj
 T*
@@ -578,30 +602,6 @@ T*
 ([ERR] \(Line 13\) TYPE MISMATCH. Expected "real")Tj
 T*
 ([ERR] \(Line 14\) TYPE MISMATCH. Expected "real")Tj
-T*
-([ERR] \(Line 15\) TYPE MISMATCH. Expected "real")Tj
-T*
-([ERR] \(Line 19\) TYPE MISMATCH. Expected "int")Tj
-T*
-([ERR] \(Line 20\) TYPE MISMATCH. Expected "int")Tj
-T*
-([ERR] \(Line 21\) UNDECLARED VARIABLE "unknown")Tj
-T*
-([ERR] \(Line 22\) UNDECLARED VARIABLE "unknown")Tj
-T*
-([ERR] \(Line 23\) TYPE MISMATCH. Expected "boolean")Tj
-T*
-([ERR] \(Line 25\) TYPE MISMATCH. Expected "real")Tj
-T*
-([ERR] \(Line 32\) TYPE MISMATCH. Expected "int")Tj
-T*
-([ERR] \(Line 33\) TYPE MISMATCH. Expected "int")Tj
-T*
-([ERR] \(Line 34\) TYPE MISMATCH. Expected "int")Tj
-T*
-([ERR] \(Line 36\) TYPE MISMATCH. Expected "int")Tj
-T*
-([ERR] \(Line 38\) TYPE MISMATCH. Expected "int")Tj
 ET
 endstream
 endobj
@@ -619,7 +619,7 @@ endobj
 endobj
 15 0 obj
 <<
-/Length 484
+/Length 1260
 >>
 stream
 BT
@@ -629,20 +629,48 @@ BT
 /GS1 gs
 0 Tc
 0 Tw
-[(output.txt)-4500(Mon Dec 10 17:16:51 2018)-4500(4)]TJ
+[(output.txt)-4500(Mon Dec 10 19:30:51 2018)-4500(4)]TJ
 /TT4 1 Tf
 7 0 0 7 29 793 Tm
-([ERR] \(Line 39\) TYPE MISMATCH. Expected "int")Tj
+([ERR] \(Line 15\) TYPE MISMATCH. Expected "real")Tj
 0 -1.1429 TD
-([ERR] \(Line 40\) TYPE MISMATCH. Expected "int")Tj
+([ERR] \(Line 19\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 20\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 21\) UNDECLARED VARIABLE "unknown")Tj
+T*
+([ERR] \(Line 22\) UNDECLARED VARIABLE "unknown")Tj
+T*
+([ERR] \(Line 23\) TYPE MISMATCH. Expected "boolean")Tj
+T*
+([ERR] \(Line 25\) TYPE MISMATCH. Expected "real")Tj
+T*
+([ERR] \(Line 31\) UNDECLARED VARIABLE "unknown")Tj
+T*
+([ERR] \(Line 37\) UNDECLARED VARIABLE "unknown")Tj
 T*
 ([ERR] \(Line 45\) TYPE MISMATCH. Expected "int")Tj
 T*
-([ERR] \(Line 50\) TYPE MISMATCH. Expected "int")Tj
+([ERR] \(Line 46\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 47\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 49\) TYPE MISMATCH. Expected "int")Tj
 T*
 ([ERR] \(Line 51\) TYPE MISMATCH. Expected "int")Tj
 T*
 ([ERR] \(Line 52\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 53\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 58\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 63\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 64\) TYPE MISMATCH. Expected "int")Tj
+T*
+([ERR] \(Line 65\) TYPE MISMATCH. Expected "int")Tj
 ET
 endstream
 endobj
@@ -709,7 +737,7 @@ endobj
 /FirstChar 32
 /LastChar 120
 /Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
-600 600 600 600 600 600 600 600 600 0 600 0 0 0 0 0 
+600 600 600 600 600 600 0 0 600 600 600 0 0 0 0 0 
 0 0 0 0 600 0 0 0 0 0 0 0 0 600 0 0 
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 0 0 0 600 0 600 0 0 0 0 0 0 0 0 600 600 
@@ -788,8 +816,8 @@ endobj
 endobj
 21 0 obj
 <<
-/CreationDate (D:20181210171905-08'00')
-/ModDate (D:20181210171905-08'00')
+/CreationDate (D:20181210193321-08'00')
+/ModDate (D:20181210193321-08'00')
 /Producer (Apple pstopdf)
 >>
 endobj
@@ -803,35 +831,35 @@ endobj
 xref
 0 23
 0000000000 65535 f 
-0000014263 00000 n 
+0000014847 00000 n 
 0000000016 00000 n 
 0000003675 00000 n 
-0000013400 00000 n 
-0000013792 00000 n 
-0000012867 00000 n 
-0000014658 00000 n 
-0000014343 00000 n 
+0000013986 00000 n 
+0000014376 00000 n 
+0000013453 00000 n 
+0000015242 00000 n 
+0000014927 00000 n 
 0000003781 00000 n 
-0000007746 00000 n 
-0000014424 00000 n 
-0000007853 00000 n 
-0000012117 00000 n 
-0000014507 00000 n 
-0000012224 00000 n 
-0000012760 00000 n 
-0000013007 00000 n 
-0000013209 00000 n 
-0000014590 00000 n 
-0000014618 00000 n 
-0000014759 00000 n 
-0000014882 00000 n 
+0000007741 00000 n 
+0000015008 00000 n 
+0000007848 00000 n 
+0000011926 00000 n 
+0000015091 00000 n 
+0000012033 00000 n 
+0000013346 00000 n 
+0000013593 00000 n 
+0000013795 00000 n 
+0000015174 00000 n 
+0000015202 00000 n 
+0000015343 00000 n 
+0000015466 00000 n 
 trailer
 <<
 /Size 23
 /Root 22 0 R
 /Info 21 0 R
-/ID [<42eb78f015dc0377eaae65ea68d874d8><42eb78f015dc0377eaae65ea68d874d8>]
+/ID [<da7bc2c8e34869b09bd2393f26604b4e><da7bc2c8e34869b09bd2393f26604b4e>]
 >>
 startxref
-14951
+15535
 %%EOF
