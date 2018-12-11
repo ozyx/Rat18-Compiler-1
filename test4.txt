@@ -27,14 +27,16 @@
     get(operation);
 
     [* undeclared var in condition tests *]
-    if(unknown == 5)
+	[* 1 *]
+    if(unknown == 5) [*undeclared variable *]
     {
         success = false;
     }ifend
 
-    if(5 == unknown)
+	[* 2 *]
+    if(5 == unknown) [*undeclared variable *]
     {
-        success = false;
+        success = true;
     }ifend
     
     while(operation ^= 0 ){

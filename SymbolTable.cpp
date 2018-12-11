@@ -289,6 +289,11 @@ std::string SymbolTable::get_type(Lexer::Token token) const
         }
     }
 
+	if (token.token == "Integer")
+	{
+		type = "int";
+	}
+
     return type;
 }
 
