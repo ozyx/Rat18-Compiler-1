@@ -30,7 +30,7 @@ public:
   // Begins the analysis process with the given tokens
   void Analyze();
 
-  void PrintAll();
+  std::string PrintAll();
 
 private:
   enum ErrorType

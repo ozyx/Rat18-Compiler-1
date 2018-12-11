@@ -10,7 +10,6 @@ SyntaxAnalyzer::SyntaxAnalyzer(const std::vector<Lexer::Token> &tokens, std::ofs
 
 SyntaxAnalyzer::~SyntaxAnalyzer()
 {
-	output.close();
 }
 
 void SyntaxAnalyzer::error(ErrorType errorType, int lineNumber, std::string expected)
@@ -557,7 +556,12 @@ void SyntaxAnalyzer::Primary()
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
-		output << "\ttrue" << std::endl;
+
+		if (print) 
+		{
+			output << "\ttrue" << std::endl;
+		}
+
 		symbolTable.gen_instr("PUSHI", 1);
 		getNextToken();
 	}
@@ -568,7 +572,11 @@ void SyntaxAnalyzer::Primary()
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
-		output << "\tfalse" << std::endl;
+
+		if (print)
+		{
+			output << "\tfalse" << std::endl;
+		}
 		symbolTable.gen_instr("PUSHI", 0);
 		getNextToken();
 	}
@@ -857,7 +865,7 @@ void SyntaxAnalyzer::TermPrime()
 void SyntaxAnalyzer::Analyze()
 {
 	Rat18F();
-	output << "Syntax Analysis Successful." << std::endl;
+	output << "Syntax Analysis Successful." << std::endl << std::endl;
 }
 
 void SyntaxAnalyzer::OptParameterList()
@@ -954,16 +962,25 @@ std::string SyntaxError::getMessage() const
 	return (this->message + " Line: " + std::to_string(this->lineNumber));
 }
 
-void SyntaxAnalyzer::PrintAll()
+std::string SyntaxAnalyzer::PrintAll()
 {
-	std::cout << this->symbolTable.list();
-	std::cout << std::endl;
-	std::cout << this->symbolTable.list_instr();
+	std::ostringstream out;
+	out << this->symbolTable.list();
+	out << std::endl;
+	out << this->symbolTable.list_instr();
 	if (this->errCount > 0)
 	{
-		std::cout << std::endl;
-		std::cout << errCount << " ERROR" << ((errCount > 1) ? "S" : "");
-		std::cout << " FOUND" << std::endl;
-		std::cout << err.str();
+		out << std::endl;
+		out << errCount << " ERROR" << ((errCount > 1) ? "S" : "");
+		out << " FOUND" << std::endl;
+		out << std::setfill('-') << std::setw(15) << '-' << std::setfill(' ') << std::endl;
+		out << err.str();
 	}
+	else
+	{
+		out << std::endl << "3AC Code Generated Successfully!" << std::endl;
+	}
+	out << std::endl;
+
+	return out.str();
 }

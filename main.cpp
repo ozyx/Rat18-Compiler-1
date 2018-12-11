@@ -26,7 +26,7 @@ int main()
 
 		if (!fin)
 		{
-			std::cout << "file not found" << std::endl;
+			out << "file not found" << std::endl;
 			continue;
 		}
 
@@ -64,11 +64,12 @@ int main()
 		}
 
 		tokens.clear();
-		syntaxAnalyzer->PrintAll();
+		out << syntaxAnalyzer->PrintAll();
 
 		delete syntaxAnalyzer;
 	}
 
+	out.close();
 	std::cout << std::endl
 			  << "EXECUTION HAS COMPLETED." << std::endl;
 	std::cout << "Press enter to continue. . ." << std::endl;

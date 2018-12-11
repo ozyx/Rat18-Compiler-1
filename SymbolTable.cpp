@@ -116,6 +116,7 @@ std::string SymbolTable::list()
 
     os << std::left << std::setw(COL_WIDTH) << "Identifier" << std::setw(COL_WIDTH) << "Type"
        << "Memory Address" << std::endl;
+	os << std::setfill('-') << std::setw(COL_WIDTH * 2 + 14) << '-' << std::setfill(' ') << std::endl;
 
     for (std::vector<Symbol>::const_iterator it = this->table.begin(); it != this->table.end(); ++it)
     {
@@ -136,8 +137,9 @@ std::string SymbolTable::list_instr()
     std::ostringstream os;
     const int COL_WIDTH = 15;
 
-    os << std::left << std::setw(COL_WIDTH) << "address" << std::setw(COL_WIDTH) << "op"
-       << "operand" << std::endl;
+    os << std::left << std::setw(COL_WIDTH) << "Address" << std::setw(COL_WIDTH) << "OpCode"
+       << "Operand" << std::endl;
+	os << std::setfill('-') << std::setw(COL_WIDTH * 2 + 7) << '-' << std::setfill(' ') << std::endl;
 
     for (std::vector<Instr>::const_iterator it = this->instructions.begin(); it != this->instructions.end(); ++it)
     {
