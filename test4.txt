@@ -1,4 +1,4 @@
-    [* This test file should contain 21 errors *]
+    [* This test file should contain 23 errors *]
 
     $$
     real realVarA ,realVarB , realVarC;
