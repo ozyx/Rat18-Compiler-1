@@ -1,0 +1,315 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 3446
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 29 806.3333 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+[(test4.txt)-4500(Mon Dec 10 17:16:46 2018)-4500(1)]TJ
+/TT4 1 Tf
+7 0 0 7 46.8 793 Tm
+[(1:)-599.8(    [* This test file should contain 20 errors *])]TJ
+0 -1.1429 TD
+(2:)Tj
+T*
+[(3:)-599.8(    $$)]TJ
+T*
+[(4:)-599.8(    real realVarA ,realVarB , realVarC;)]TJ
+T*
+(5:)Tj
+T*
+[(6:)-599.8(    int XCoord, YCoord, ZCoord;)]TJ
+T*
+[(7:)-599.8(    int XCoord; [* duplicate symbol *])]TJ
+T*
+[(8:)-599.8(    int aCoord, bCoord, cCoord;)]TJ
+T*
+[(9:)-599.8(    int operation;)]TJ
+-0.6 -1.1429 TD
+(10:)Tj
+T*
+[(11:)-599.7(    boolean success;)]TJ
+T*
+[(12:)-599.7(    )]TJ
+T*
+[(13:)-599.7(    realVarA = 10123; [* type mismatch *])]TJ
+T*
+[(14:)-599.7(    realVarB = 610; [* type mismatch *])]TJ
+T*
+[(15:)-599.7(    realVarC = 3; [* type mismatch *])]TJ
+T*
+[(16:)-599.7(    XCoord = 20;)]TJ
+T*
+[(17:)-599.7(    YCoord = 912;)]TJ
+T*
+[(18:)-599.7(    ZCoord = 120;)]TJ
+T*
+[(19:)-599.7(    aCoord = true; [* type mismatch *])]TJ
+T*
+[(20:)-599.7(    bCoord = false; [* type mismatch *])]TJ
+T*
+[(21:)-599.7(    cCoord = unknown; [* undeclared variable *])]TJ
+T*
+[(22:)-599.7(    unknown = cCoord; [* undeclared variable *])]TJ
+T*
+[(23:)-599.7(    success = 420; [* type mismatch *])]TJ
+T*
+(24:)Tj
+T*
+[(25:)-599.7(    realVarA = XCoord; [* type mismatch *])]TJ
+T*
+[(26:)-599.7(    )]TJ
+T*
+[(27:)-599.7(    get\(operation\);)]TJ
+T*
+[(28:)-599.7(    )]TJ
+T*
+[(29:)-599.7(    while\(operation ^= 0 \){)]TJ
+T*
+[(30:)-599.7(        if\(operation == 1\))]TJ
+T*
+[(31:)-599.7(        {)]TJ
+T*
+[(32:)-599.7(            aCoord = realVarA + XCoord; [* type mismatch *])]TJ
+T*
+[(33:)-599.7(            bCoord = realVarB + YCoord; [* type mismatch *])]TJ
+T*
+[(34:)-599.7(            cCoord = realVarC + ZCoord; [* type mismatch *])]TJ
+T*
+[(35:)-599.7(        }ifend)]TJ
+T*
+[(36:)-599.7(        if\(operation == 2.0\) [* type mismatch *])]TJ
+T*
+[(37:)-599.7(        {)]TJ
+T*
+[(38:)-599.7(            aCoord = realVarA - XCoord; [* type mismatch *])]TJ
+T*
+[(39:)-599.7(            bCoord = realVarB - YCoord; [* type mismatch *])]TJ
+T*
+[(40:)-599.7(            cCoord = realVarC - ZCoord; [* type mismatch *])]TJ
+T*
+[(41:)-599.7(        }ifend)]TJ
+T*
+[(42:)-599.7(        if\(operation == 3\))]TJ
+T*
+[(43:)-599.7(        {)]TJ
+T*
+[(44:)-599.7(            aCoord = XCoord * 2; )]TJ
+T*
+[(45:)-599.7(            bCoord = YCoord * 1.5; [* type mismatch *])]TJ
+T*
+[(46:)-599.7(            cCoord = ZCoord * ZCoord;)]TJ
+T*
+[(47:)-599.7(        }ifend)]TJ
+T*
+[(48:)-599.7(        if\(operation == 45\))]TJ
+T*
+[(49:)-599.7(        {)]TJ
+T*
+[(50:)-599.7(            aCoord = realVarA / XCoord; [* type mismatch *])]TJ
+T*
+[(51:)-599.7(            bCoord = realVarB / YCoord; [* type mismatch *])]TJ
+T*
+[(52:)-599.7(            cCoord = realVarC / ZCoord; [* type mismatch *])]TJ
+T*
+[(53:)-599.7(        )]TJ
+T*
+[(54:)-599.7(        }ifend)]TJ
+T*
+[(55:)-599.7(        if\( operation > 4\))]TJ
+T*
+[(56:)-599.7(        {)]TJ
+T*
+[(57:)-599.7(            operation = 0;)]TJ
+T*
+[(58:)-599.7(        }ifend)]TJ
+T*
+[(59:)-599.7(        if \(operation > 0\))]TJ
+T*
+[(60:)-599.7(        {)]TJ
+T*
+[(61:)-599.7(            operation = 0;)]TJ
+T*
+[(62:)-599.7(        }ifend)]TJ
+T*
+[(63:)-599.7(        operation = operation - 1;)]TJ
+T*
+[(64:)-599.7(    }whileend)]TJ
+T*
+(65:)Tj
+T*
+[(66:)-599.7(    put\(aCoord\);)]TJ
+T*
+[(67:)-599.7(    put\(bCoord\);)]TJ
+T*
+[(68:)-599.7(    put\(cCoord\);)]TJ
+T*
+[(69:)-599.7(    )]TJ
+T*
+[(70:)-599.7(    $$)]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+>>
+/ExtGState <<
+/GS1 6 0 R
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+8 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+9 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 0 0 0 0 0 0 0 0 0 0 0 0 600 0 
+600 600 600 0 600 0 600 600 600 0 600 0 0 0 0 0 
+0 0 0 0 600 0 0 0 0 0 0 0 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 600 0 600 0 0 0 0 0 0 0 0 600 600 
+0 0 0 600 600 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 8 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [600 0 0 0 600 0 0 0 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 0 600 600 0 
+0 600 600 600 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 600 0 600 0 600 600 600 600 0 600 600 0 
+0 600 600 600 600 600 600 600 600 600 0 600 600 600 600 600 
+600 0 600 600 600 600 600 600 0 600 0 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 9 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 7 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/S /D
+>>
+endobj
+11 0 obj
+<<
+/Nums [0 10 0 R ]
+>>
+endobj
+7 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R]
+/Count 1
+/MediaBox [0 0 595 842]
+>>
+endobj
+12 0 obj
+<<
+/CreationDate (D:20181210171905-08'00')
+/ModDate (D:20181210171905-08'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+13 0 obj
+<<
+/Type /Catalog
+/Pages 7 0 R
+/PageLabels 11 0 R
+>>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000005006 00000 n 
+0000000016 00000 n 
+0000003514 00000 n 
+0000004151 00000 n 
+0000004536 00000 n 
+0000003620 00000 n 
+0000005154 00000 n 
+0000003760 00000 n 
+0000003961 00000 n 
+0000005086 00000 n 
+0000005114 00000 n 
+0000005235 00000 n 
+0000005358 00000 n 
+trailer
+<<
+/Size 14
+/Root 13 0 R
+/Info 12 0 R
+/ID [<dbda10ea1c4ed6b3340f933847f09a34><dbda10ea1c4ed6b3340f933847f09a34>]
+>>
+startxref
+5427
+%%EOF
