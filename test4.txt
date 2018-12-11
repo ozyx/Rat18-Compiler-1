@@ -25,6 +25,19 @@
     realVarA = XCoord; [* type mismatch *]
     
     get(operation);
+
+    [* undeclared var in condition tests *]
+	[* 1 *]
+    if(unknown == 5) [*undeclared variable *]
+    {
+        success = false;
+    }ifend
+
+	[* 2 *]
+    if(5 == unknown) [*undeclared variable *]
+    {
+        success = true;
+    }ifend
     
     while(operation ^= 0 ){
         if(operation == 1)

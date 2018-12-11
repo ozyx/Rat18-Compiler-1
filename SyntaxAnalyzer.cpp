@@ -244,7 +244,8 @@ void SyntaxAnalyzer::IDs()
 		output << "\t<IDs> -> <Identifier> | <Identifier>, <IDs>" << std::endl;
 	}
 
-	if (isDeclaration) {
+	if (isDeclaration)
+	{
 		if (!symbolTable.lookup(currentToken))
 		{
 			symbolTable.insert(currentToken, *savedType);
@@ -477,6 +478,12 @@ void SyntaxAnalyzer::Primary()
 		output << "\t<Primary> -> <Identifier> | <Integer> | <Identifier> ( <IDs> ) | ( <Expression> ) | <Real> | true | false" << std::endl;
 	}
 
+	// If the last symbol was undeclared, clear the typestack
+	if (!symbolTable.typestack_empty() && symbolTable.top_typestack() == "")
+	{
+		symbolTable.pop_typestack();
+	}
+
 	if (currentToken.token == "Identifier")
 	{
 		// If typestack is empty, we should be within a Condition.
@@ -492,7 +499,7 @@ void SyntaxAnalyzer::Primary()
 			error(UNDECLARED_VARIABLE, currentToken.lineNumber, currentToken.lexeme);
 		}
 		// Error TYPE MISMATCH
-		else if (symbolTable.get_type(currentToken) != symbolTable.top_typestack())
+		else if ((symbolTable.get_type(currentToken) != symbolTable.top_typestack()) && symbolTable.top_typestack() != "")
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
@@ -517,7 +524,7 @@ void SyntaxAnalyzer::Primary()
 	else if (currentToken.token == "Integer")
 	{
 		// ERROR: TYPE MISMATCH
-		if (symbolTable.top_typestack() != "int")
+		if (!symbolTable.typestack_empty() && symbolTable.top_typestack() != "int")
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
@@ -541,7 +548,7 @@ void SyntaxAnalyzer::Primary()
 	else if (currentToken.token == "Real")
 	{
 		// Error TYPE MISMATCH
-		if (symbolTable.top_typestack() != "real")
+		if (!symbolTable.typestack_empty() && symbolTable.top_typestack() != "real")
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
@@ -552,7 +559,7 @@ void SyntaxAnalyzer::Primary()
 	else if (currentToken.lexeme == "true")
 	{
 		// Error TYPE MISMATCH
-		if (symbolTable.top_typestack() != "boolean")
+		if (!symbolTable.typestack_empty() && symbolTable.top_typestack() != "boolean")
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
@@ -568,7 +575,7 @@ void SyntaxAnalyzer::Primary()
 	else if (currentToken.lexeme == "false")
 	{
 		// Error TYPE MISMATCH
-		if (symbolTable.top_typestack() != "boolean")
+		if (!symbolTable.typestack_empty() && symbolTable.top_typestack() != "boolean")
 		{
 			error(TYPE_MISMATCH, currentToken.lineNumber, symbolTable.top_typestack());
 		}
